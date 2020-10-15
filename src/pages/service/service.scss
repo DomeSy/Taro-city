@@ -1,0 +1,11 @@
+@import "@styles/theme.scss";
+
+.Service{
+  &-img{
+    height: 206px;
+  }
+  &-border{
+    height: 8px;
+    background: $font-color-background;
+  }
+}

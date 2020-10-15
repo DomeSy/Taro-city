@@ -1,0 +1,32 @@
+@import "@styles/theme.scss";
+
+.Search{
+  background: $background;
+  display: flex;
+  // flex-grow: row;
+  align-items: center;
+  .site{
+    height: 100%;
+  }
+  .searchs{
+    // background: orangered;
+    flex-grow: 1;
+    padding: 14px 24px 14px 12px;
+    .sInput{
+      height: 100%;
+      border: 2px solid $background-tip;
+      border-radius: 30px;
+      padding: 6px 24px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      .text{
+        color: $font-color-effect;
+        font-size: $font-size-tip;
+        font-family: $font-family;
+        line-height: $line-height-tip;
+        margin-left: 15px;
+      }
+    }
+  }
+}

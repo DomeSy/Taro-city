@@ -1,0 +1,21 @@
+@import "@styles/theme.scss";
+
+.Space{
+  &-centent{
+    padding: 40px 24px;
+    &-none{
+      height: 256px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed  #979797;
+      border-radius: 8px;
+      &-text{
+        font-family: $font-family;
+        line-height: $line-height-effect;
+        font-size: $font-size-effect;
+        color: $font-color;
+      }
+    }
+  }
+}

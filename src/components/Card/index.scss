@@ -1,0 +1,21 @@
+@import "@styles/theme.scss";
+
+.DCard{
+  height: 100%;
+  &-swiper{
+    &-item{
+      &-view{
+        width: 95%;
+        height: 220px;
+        &-img{
+          width: 100%;
+          height: 180px;
+        }
+      }
+    }
+  }
+  .swiper-pagination-bullet-active{
+    width: 48px;
+    border-radius: 8px;
+  }
+}

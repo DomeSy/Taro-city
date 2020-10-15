@@ -1,0 +1,44 @@
+@import "@styles/theme.scss";
+
+.Theme{
+  &-conent{
+    padding: 24px;
+    &-top{
+      height: 432px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      &-left{
+        width: 343px;
+        height: 100%;
+        background: oldlace;
+      }
+      &-right{
+        width: 343px;
+        height: 100%;
+        &-t{
+          height: 208px;
+          background: lawngreen;
+          margin-bottom: 16px;
+        }
+        &-b{
+          height: 208px;
+          background: darkcyan;
+        }
+      }
+    }
+    &-buttom{
+      height: 208px;
+      display: flex;
+      justify-content: space-between;
+      &-left{
+        width: 343px;
+        background: hotpink;
+      }
+      &-right{
+        width: 343px;
+        background: palegoldenrod;
+      }
+    }
+  }
+}

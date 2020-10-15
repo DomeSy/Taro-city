@@ -1,0 +1,38 @@
+@import "@styles/theme.scss";
+
+.Info{
+  padding: 24px 60px 24px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-infos{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    &-img{
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: url(../../../../assets/my/heard.png);
+      background-size: 100% 100%;
+    }
+    &-name{
+      margin-left: 40px;
+      font-family: $font-family;
+      font-size: 32px;
+      line-height: 45px;
+      color: $font-color;
+    }
+  }
+  &-opinion{
+    padding: 8px 24px;
+    border: 1px solid $blue;
+    border-radius: 25px;
+    &-text{
+      font-family: $font-family;
+      color: $blue;
+      font-size: $font-size-effect;
+      line-height: $line-height-effect;
+    }
+  }
+}

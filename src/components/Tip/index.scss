@@ -1,0 +1,26 @@
+@import "@styles/theme.scss";
+
+.Tip{
+  position: relative;
+  bottom: 0px;
+  .bottom{
+    text-align: center;
+    font-size: $font-size-tip;
+    color: $font-color-tip;
+    font-weight: $font-weight;
+    font-family: $font-family;
+    .text1{
+      color: $blue;
+      padding: 40px 0 16px 0px;
+    }
+    .text2{
+      color: $font-color-tip;
+      padding-bottom: 8px;
+    }
+  }
+  .img{
+    height: 90px;
+    background: url(../../assets/background.png);
+    background-size: 100% 100%;
+  }
+}

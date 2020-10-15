@@ -1,0 +1,32 @@
+@import "@styles/theme.scss";
+
+.DListTheme{
+  padding: 0 24px;
+  &-them{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid $background-tip;
+    &-img{
+      width: 80px;
+      height: 80px;
+    }
+    &-detail{
+      width: 582px;
+      font-family: $font-family;
+      &-title{
+        line-height: $line-height;
+        font-size: $font-size;
+        color: $font-color;
+        margin-bottom: 19px;
+      }
+      &-text{
+        line-height: $line-height-effect;
+        font-size: $font-size-effect;
+        color: $font-color-effect;
+        @include text-ellipsis;
+      }
+    }
+  }
+}

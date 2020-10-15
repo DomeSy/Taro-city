@@ -1,0 +1,16 @@
+@import "@styles/theme.scss";
+
+.DSite{
+  width: 100%;
+  padding: 23px 24px 20px 24px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  .text{
+    color: $font-color;
+    font-family: $font-family;
+    line-height: 45px;
+    font-size: 32px;
+    margin-right: 8px;
+  }
+}

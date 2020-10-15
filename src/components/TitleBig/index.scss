@@ -1,0 +1,29 @@
+@import "@styles/theme.scss";
+
+.DTitleBig{
+  padding: 23px 24px 9px 24px;
+  display: flex;
+  justify-content: left;
+  &-list{
+    font-family: $font-family;
+    margin-right: 32px;
+    &:last-of-type{
+      margin-right: 0;
+    }
+    &-text-active{
+      line-height: 50px;
+      font-size: 36px;
+      color: $font-color;
+    }
+    &-text{
+      line-height: 50px;
+      font-size: 28px;
+      color: $font-color-effect;
+    }
+    &-underline{
+      background: $blue;
+      height: 4px;
+      margin: 10px 16px 0 16px;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@import "@styles/theme.scss";
+
+.DListUseTime{
+  padding: 0px 48px 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  &-list{
+    width: 327px;
+    height: 40px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    &-img{
+      width: 8px;
+      height: 8px;
+      background: $blue;
+      border-radius: 50%;
+      margin-right: 16px;
+    }
+    &-text{
+      font-family: $font-family;
+      font-size: $font-size-list;
+      line-height: $line-height-list;
+      color: $font-color-list;
+      margin-right: 20px;
+      @include text-ellipsis;
+    }
+    &-hot{
+      width: 63px;
+      height: 32px;
+    }
+  }
+}

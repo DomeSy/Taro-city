@@ -1,0 +1,58 @@
+@import "@styles/theme.scss";
+
+.My{
+  &-border{
+    height: 8px;
+    background: $font-color-background;
+  }
+  &-List{
+    padding: 24px 44px 24px 24px;
+    display: flex;
+    justify-content: left;
+    &-center{
+      width: 164px;
+      margin-left: 56px;
+      &:first-of-type{
+        margin-left: 0px;
+      }
+      &-img{
+        display: flex;
+        justify-content: left;
+        padding-left: 29px;
+        &-imgs{
+          width: 72px;
+          height: 72px;
+        }
+        &-top{
+          width: 63px;
+          height: 42px;
+          background: url(../../assets/hot.png);
+          background-size: 100% 100%;
+        }
+      }
+      &-text{
+        margin-top: 10px;
+        width: 130px;
+        line-height: $line-height-effect;
+        font-size: $font-size-effect;
+        color: $font-color;
+        text-align: center;
+      }
+    }
+  }
+  &-login{
+    display: flex;
+    justify-content: center;
+    &-btn{
+      padding: 8px 24px;
+      border: 1px solid $blue;
+      border-radius: 34px;
+      &-text{
+        font-family: $font-family;
+        color: $blue;
+        font-size: $font-size;
+        line-height: $line-height;
+      }
+    }
+  }
+}

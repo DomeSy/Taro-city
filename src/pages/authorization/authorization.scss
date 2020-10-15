@@ -1,0 +1,40 @@
+@import "@styles/theme.scss";
+.Authorization{
+  font-family: $font-family;
+  &-text{
+    padding: 32px 24px 20px 24px;
+    line-height: $line-height-effect;
+    font-size: $font-size-effect;
+    color: $font-color-effect;
+  }
+  &-list{
+    padding: 27px 24px;
+    border-bottom: 1px solid $list;
+    font-family: $font-family;
+    &-text{
+      font-size: $font-size;
+      line-height: $line-height;
+      margin-bottom: 9px;
+      display: flex;
+      justify-content: space-between;
+      &-name{
+        color: $font-color;
+      }
+      &-cancel{
+        color: $blue;
+      }
+    }
+    &-area{
+      font-size: $font-size-effect;
+      line-height: $line-height-effect;
+      display: flex;
+      justify-content: left;
+      &-name{
+        color: #666666;
+      }
+      &-text{
+        color: $font-color
+      }
+    }
+  }
+}
