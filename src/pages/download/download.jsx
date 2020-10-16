@@ -3,8 +3,9 @@ import { View } from '@tarojs/components';
 import './download.scss'
 
 class Index extends Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super(...arguments)
+
     // console.log()
   }
   render() {

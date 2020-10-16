@@ -3,9 +3,8 @@ import { View } from '@tarojs/components';
 import './medical.scss'
 
 class Card extends Component {
-  constructor(props){
-    super(props)
-    // console.log()
+  constructor(){
+    super(...arguments)
   }
   render() {
 

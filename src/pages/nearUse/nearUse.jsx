@@ -4,9 +4,9 @@ import { View } from '@tarojs/components';
 import './nearUse.scss'
 
 class Card extends Component {
-  constructor(props){
-    super(props)
-    // console.log()
+  constructor(){
+    super(...arguments)
+
   }
   render() {
 

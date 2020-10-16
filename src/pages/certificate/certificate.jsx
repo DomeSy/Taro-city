@@ -3,8 +3,8 @@ import { View } from '@tarojs/components';
 import './certificate.scss'
 
 class Card extends Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super(...arguments)
     // console.log()
   }
   render() {

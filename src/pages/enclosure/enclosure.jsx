@@ -5,8 +5,9 @@ import { List } from '@components';
 import './enclosure.scss'
 
 class Card extends Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super(...arguments)
+
     // console.log()
     this.state = {
       list: [

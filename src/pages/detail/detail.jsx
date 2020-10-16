@@ -9,8 +9,9 @@ import hot from '@assets/hot.png'
 
 
 class Card extends Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super(...arguments)
+
     this.state = {
       img: `background: url(${banner});background-size: 100% 100%`,
       data: [

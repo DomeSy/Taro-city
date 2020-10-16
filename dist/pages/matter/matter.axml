@@ -1,2 +1,0 @@
-<import src="../../base.axml"/>
-  <template is="taro_tmpl" data="{{root:root}}" />

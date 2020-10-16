@@ -4,9 +4,9 @@ import './consulting.scss'
 import { ListText } from '@components';
 
 class Card extends Component {
-  constructor(props){
-    super(props)
-    // console.log()
+  constructor(){
+    super(...arguments)
+
   }
   render() {
 
