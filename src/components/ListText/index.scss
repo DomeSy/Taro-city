@@ -1,0 +1,26 @@
+@import "@styles/theme.scss";
+
+.DListTest{
+  background: $white;
+  padding: 28px 24px 36px 24px;
+  font-family: $font-family;
+  border-top: 20px solid $background;
+  &:first-of-type{
+    border-top: 0;
+  }
+  &-title{
+    font-size: 32px;
+    line-height: 40px;
+    color: $font-color;
+    font-weight: 500;
+  }
+  &-text{
+    margin-top: 10px;
+    font-size: $font-size-effect;
+    line-height: $line-height-effect;
+    color: $font-color-effect;
+    &:first-of-type{
+      margin-top: 20px;
+    }
+  }
+}

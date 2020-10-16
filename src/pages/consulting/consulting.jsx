@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './consulting.scss'
+import { ListText } from '@components';
 
 class Card extends Component {
   constructor(props){
@@ -11,7 +12,7 @@ class Card extends Component {
 
     return (
       <View>
-        我的咨询
+        <ListText />
       </View>
     )
   }

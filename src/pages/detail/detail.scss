@@ -1,1 +1,22 @@
 @import "@styles/theme.scss";
+.Detail{
+  height: 100vh;
+  background: $background;
+  &-img{
+    height: 206px;
+  }
+  &-buttom{
+    padding: 24px;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    font-family: $font-family;
+    display: flex;
+    justify-content: left;
+    &-text{
+      color: $font-color;
+    }
+    &-download{
+      color: $blue;
+    } 
+  }
+}

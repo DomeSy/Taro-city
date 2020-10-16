@@ -1,0 +1,44 @@
+@import "@styles/theme.scss";
+
+.DList{
+  font-family: $font-family;
+  background: $white;
+  padding-left: 24px;
+  &-title{
+    padding: 23px 24px 23px 0;
+    font-weight: 600px;
+    font-size: $font-size-title;
+    line-height: $line-height-title;
+    color: $font-color;
+  }
+  &-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $font-color-background;
+    padding-right: 24px;
+    &:last-of-type{
+      border-bottom: 0px;
+    }
+    &-content{
+      display: flex;
+      justify-content: left;
+      &-text{
+        line-height: $line-height-list;
+        font-size: $font-size-list;
+        color: $font-color;
+        padding: 30px 0 26px 0;
+      }
+      &-hot{
+        width: 63px;
+        height: 32px;
+        margin-left: 8px;
+      }
+    }
+    &-effect{
+      font-size: $font-size-list;
+      line-height: $line-height-list;
+      color:$font-color-effect;
+    }
+  }
+}

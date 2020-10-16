@@ -1,1 +1,49 @@
 @import "@styles/theme.scss";
+
+.Certificate{
+  height: 100vh;
+  background: $background;
+  &-card{
+    margin: 11px 24px 0 24px;
+    background: url(../../assets/banner.png);
+    background-size: 100% 100%;
+    padding: 60px 40px 90px 40px;
+    font-family: $font-family;
+    &-title{
+      line-height: 50px;
+      font-size: 36px;
+      color: $white;
+    }
+    &-content{
+      &:first-of-type{
+        margin-top: 0px;
+      }
+      margin-top: 10px;
+      display: flex;
+      justify-content: left;
+      line-height: $line-height-list;
+      font-size: $font-size-list;
+      &-text{
+        color: $font-color-tip;
+      }
+      &-text1{
+        color: $white;
+        margin-left: 20px;
+      }
+    }
+  }
+  &-ma{
+    height: 480px;
+    margin: 0 24px;
+    background: $white;
+  }
+  &-text{
+    font-family: $font-family;
+    display: flex;
+    justify-content: center;
+    padding: 40px 24px;
+    font-size: $font-size-effect;
+    line-height: $line-height-effect;
+    color: $blue;
+  }
+}

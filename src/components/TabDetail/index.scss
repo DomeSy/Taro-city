@@ -1,0 +1,30 @@
+@import "@styles/theme.scss";
+
+.DTabDetail{
+  padding: 24px;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  &-list{
+    width: 100%;
+    text-align: center;
+    border-left: 1px solid $font-color-background;
+    &:first-of-type{
+      border-left: 0px;
+    }
+    &-img{
+      display: flex;
+      justify-content: center;
+      &-imgs{
+        width: 72px;
+        height: 72px;
+      }
+    }
+    &-text{
+      font-family: $font-family;
+      font-size: $font-size-list;
+      line-height: $line-height-list;
+      color: $font-color;
+    }
+  }
+}

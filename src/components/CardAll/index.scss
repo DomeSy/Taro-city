@@ -1,0 +1,14 @@
+@import "@styles/theme.scss";
+
+.DCardAll{
+  &-list{
+    &:first-of-type{
+      margin-top: 11px;
+    }
+    padding: 12px 24px;
+    &-img{
+      height: 188px;
+      // background: rosybrown;
+    }
+  }
+}

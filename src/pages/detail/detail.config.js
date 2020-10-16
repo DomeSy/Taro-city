@@ -1,4 +1,4 @@
 export default {
-  navigationBarTitleText: '卡包',
+  navigationBarTitleText: '爱山东',
 
 }

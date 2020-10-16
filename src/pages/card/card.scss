@@ -1,1 +1,26 @@
 @import "@styles/theme.scss";
+
+.Card{
+  &-tip{
+    padding: 29px 24px;
+    font-family: $font-family;
+    color: $font-color-effect;
+    font-size: $font-size-effect;
+    line-height: $line-height-effect;
+  }
+  &-btn{
+    position: fixed;
+    width: 328px;
+    bottom: 0;
+    left: 0;
+    margin: 40px 211px;
+    line-height: 58px;
+    font-size: $font-size-effect;
+    text-align: center;
+    background: $blue;
+    border-radius: 34px;
+    display: flex;
+    justify-content: center;
+    color: $white;
+  }
+}

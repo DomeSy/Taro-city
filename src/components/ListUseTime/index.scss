@@ -23,7 +23,7 @@
       font-family: $font-family;
       font-size: $font-size-list;
       line-height: $line-height-list;
-      color: $font-color-list;
+      color: $font-color;
       margin-right: 20px;
       @include text-ellipsis;
     }
