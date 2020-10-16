@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "sync",
+  "version": "8.3.0",
+  "description": "Universal Router Sync Add-on",
+  "homepage": "https://www.kriasoft.com/universal-router/",
+  "repository": "kriasoft/universal-router",
+  "author": "Kriasoft <support@kriasoft.com> (https://www.kriasoft.com)",
+  "contributors": [
+    "Konstantin Tarkus <hello@tarkus.me> (https://tarkus.me)",
+    "Vladimir Kutepov"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "isomorphic",
+    "universal",
+    "router",
+    "routing",
+    "routes",
+    "route"
+  ],
+  "main": "index.js",
+  "module": "module.js",
+  "esnext": "../src/UniversalRouterSync.js",
+  "types": "../src/UniversalRouterSync.d.ts"
+}

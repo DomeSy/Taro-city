@@ -1,0 +1,14 @@
+export declare function isAsyncMode(obj: any): boolean;
+export declare function isConcurrentMode(obj: any): boolean;
+export declare function isValidElementType(obj: any): boolean;
+export declare function isContextConsumer(obj: any): any;
+export declare function isContextProvider(obj: any): any;
+export declare function isFowardRef(obj: any): boolean;
+export declare function isMemo(obj: any): boolean;
+export declare function isFragment(object: any): boolean;
+export declare function isLazy(object: any): boolean;
+export declare function isPortal(object: any): boolean;
+export declare function isProfiler(object: any): boolean;
+export declare function isStrictMode(object: any): boolean;
+export declare function isSuspense(object: any): boolean;
+export declare function isElement(object: any): boolean;

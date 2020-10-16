@@ -1,0 +1,23 @@
+import { noop } from 'nerv-shared';
+declare function getShim(): any;
+declare const PropTypes: {
+    array: any;
+    bool: any;
+    func: any;
+    number: any;
+    object: any;
+    string: any;
+    any: any;
+    arrayOf: typeof getShim;
+    element: any;
+    instanceOf: typeof getShim;
+    node: any;
+    objectOf: typeof getShim;
+    oneOf: typeof getShim;
+    oneOfType: typeof getShim;
+    shape: typeof getShim;
+    exact: typeof getShim;
+    PropTypes: {};
+    checkPropTypes: typeof noop;
+};
+export { PropTypes };
