@@ -1,0 +1,25 @@
+@import "@styles/theme.scss";
+
+.DListShow{
+  padding: 24px;
+  background: $white;
+  &-list{
+    font-family: $font-family;
+    display: flex;
+    justify-content: left;
+    font-size: $font-size-title;
+    line-height: $line-height-list;
+    margin-top: 20px;
+    &:first-of-type{
+      margin-top: 0;
+    }
+    &-name{
+      width: 25%;
+      color: $font-color;
+    }
+    &-text{
+      width: 75%;
+      color: $font-color-effect
+    }
+  }
+}

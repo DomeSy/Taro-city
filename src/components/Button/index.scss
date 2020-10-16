@@ -1,0 +1,8 @@
+@import "@styles/theme.scss";
+
+.DButton{
+  padding: 24px;
+  &-btn{
+    background: $blue;
+  }
+}

@@ -1,0 +1,25 @@
+@import "@styles/theme.scss";
+
+.DTextarea{
+  background: $white;
+  &-title{
+    padding: 24px 24px 4px 24px;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    color: $font-color;
+  }
+  .taro-textarea{
+    font-size: $font-size-list;
+    // height: 300px;
+  }
+  .at-textarea{
+    border: 0;
+    padding: 24px;
+  }
+  .at-textarea__textarea{
+    height: 148px !important; 
+  }
+  .at-textarea__counter{
+    display: none ;
+  }
+}

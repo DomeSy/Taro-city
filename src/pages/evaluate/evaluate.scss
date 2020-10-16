@@ -1,1 +1,32 @@
 @import "@styles/theme.scss";
+
+.Evaluate{
+  height: 100vh;
+  background: $background;
+  &-grade{
+    margin-top: 20px;
+    padding: 24px 24px 0px 24px;
+    background: $white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    &-text{
+      width: 25%;
+      font-family: $font-family;
+      font-size: $font-size-list;
+      line-height: $line-height-list;
+      color: $font-color;
+    }
+    &-border{
+      height: 16px;
+    }
+    &-tip{
+      padding: 0 24px;
+      font-family: $font-family;
+      line-height: $line-height-effect;
+      font-size: $font-size-effect;
+      color: $font-color-effect;
+      text-align: center;
+    }
+  }
+}
