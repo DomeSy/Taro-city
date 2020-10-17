@@ -2,7 +2,6 @@ import React from 'react'
 import { View } from '@tarojs/components';
 import { AtIcon } from 'taro-ui'
 
-import hot from '@assets/hot.png'
 import './index.scss'
 
 /*

@@ -12,6 +12,7 @@ export { default as TabDetail } from './TabDetail'
 export { default as Button } from './Button'
 export { default as ListShow } from './ListShow'
 export { default as Textarea } from './Textarea'
+export { default as ListShowText } from './ListShowText'
 export { default as Tip } from './Tip'
 
 

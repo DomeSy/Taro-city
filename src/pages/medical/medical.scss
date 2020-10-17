@@ -1,1 +1,37 @@
 @import "@styles/theme.scss";
+.Medical{
+  height: 100vh;
+  &-img{
+    margin: 24px;
+    background: url(../../assets/banner.png);
+    background-size: 100% 100%;
+    padding: 60px 48px;
+    font-family: $font-family;
+    &-name{
+      color: $white;
+      font-size: 34px;
+      line-height: 48px;
+      font-weight: 500px;
+      margin-bottom: 40px;
+    }
+    &-sfz{
+      color: $white;
+      font-size: $font-size-effect;
+      line-height: $line-height-effect;
+    }
+  }
+  &-tip{
+    padding: 40px 24px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &-text{
+      font-family: $font-family;
+      font-size: $font-size-tip;
+      line-height: $line-height-tip;
+      color: $font-color-tip;
+      text-align: center;
+    }
+  }
+}

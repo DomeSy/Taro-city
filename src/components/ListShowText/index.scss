@@ -1,0 +1,19 @@
+@import "@styles/theme.scss";
+
+.DListShowText{
+  padding: 24px;
+  background: $white;
+  &-list{
+    font-family: $font-family;
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-title;
+    line-height: $line-height-list;
+    padding: 26px 0;
+    border-bottom: 1px solid $font-color-background;
+    color: $font-color;
+    &:first-of-type{
+      margin-top: 0;
+    }
+  }
+}
