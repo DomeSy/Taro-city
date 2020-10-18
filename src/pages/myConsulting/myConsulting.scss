@@ -1,1 +1,32 @@
 @import "@styles/theme.scss";
+
+.MyConsulting{
+  padding: 40px 24px;
+  &-table{
+    border: 1px solid $list;
+    &-list{
+      display: flex;
+      border-top: 1px solid $list;
+      justify-content: space-between;
+      font-family: $font-family;
+      line-height: $line-height-list;
+      font-size: $font-size-list;
+      &:first-of-type{
+        border-top: 0px;
+      }
+      &-text{
+        padding: 20px;
+        text-align: right;
+        color: $font-color;
+        width: 199px;
+        border-right: 1px solid $list;
+        background: #e7f1ff;
+      }
+      &-value{
+        width: 500px;
+        padding: 20px;
+        color: $gray;
+      }
+    }
+  }
+}
