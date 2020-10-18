@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './download.scss'
 
-class Index extends Component {
+class Download extends Component {
   constructor(){
     super(...arguments)
 
@@ -23,4 +23,4 @@ class Index extends Component {
   }
 }
 
-export default Index
+export default IndeDownloadx

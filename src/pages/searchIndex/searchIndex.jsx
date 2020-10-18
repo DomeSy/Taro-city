@@ -2,18 +2,18 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './searchIndex.scss'
 
-class Card extends Component {
+class SearchIndex extends Component {
   constructor(){
     super(...arguments)
   }
   render() {
 
     return (
-      <View>
+      <View className="SearchIndex">
         搜索首页
       </View>
     )
   }
 }
 
-export default Card
+export default SearchIndex

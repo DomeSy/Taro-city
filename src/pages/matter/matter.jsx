@@ -1,35 +1,34 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
+import { View } from '@tarojs/components'
+import { Tabs } from '@components'
 import './matter.scss'
 
-class Card extends Component {
+class Matter extends Component {
   constructor(){
     super(...arguments)
     this.state={
-      list: [
+      list:[
         {
-          text: '申报号：',
-          value: '130101000407458'
+          text: '绑定驾驶证',
+          active: true
         },
         {
-          text: '事项名称：',
-          value: '130101000407458'
+          text: '绑定驾驶证1',
+          active: false
         },
         {
-          text: '申报名称：',
-          value: '130101000407458'
+          text: '绑定驾驶证12',
+          active: false
+        }
+      ],
+      listText:[
+        {
+          text: '关于解庆国涉路工程建设许可（新增平交道口）的业务',
+          time: '2020-06-22'
         },
         {
-          text: '申报名称：',
-          value: '130101000407458'
-        },
-        {
-          text: '申报名称：',
-          value: '130101000407458'
-        },
-        {
-          text: '办理状态：',
-          value: '我哦哦哦哦哦哦哦我哦哦哦哦哦哦哦我哦哦哦哦哦哦哦我哦哦哦哦哦哦哦'
+          text: '关于解庆国涉路工程建设许可（新增平交道口）的业务关于解庆国涉路工程建设许可（新增平交道口）的业务',
+          time: '2020-06-22'
         }
       ]
     }
@@ -37,23 +36,22 @@ class Card extends Component {
   
   render() {
 
-    const { list } = this.state
+    const { list, listText } = this.state
 
     return (
       <View className="Matter">
-        <View className="Matter-table">
-          {
-            list.map((item, index) => (
-              <View className="Matter-table-list" key={index}>
-                <View className="Matter-table-list-text">{item.text}</View>
-                <View className="Matter-table-list-value">{item.value}</View>
-              </View>
-            ))
-          }
-        </View>
+        <Tabs list={list} />
+        {
+          listText.map((item, index) => (
+            <View className="Matter-list" key={index}>
+              <View className="Matter-list-text">{item.text}</View>
+              <View className="Matter-list-time">{item.time}</View>
+            </View>
+          ))
+        }
       </View>
     )
   }
 }
 
-export default Card
+export default Matter

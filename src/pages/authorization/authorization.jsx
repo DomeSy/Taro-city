@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './authorization.scss'
 
-class Card extends Component {
+class Authorization extends Component {
   constructor(){
     super(...arguments)
     // console.log()
@@ -45,4 +45,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Authorization

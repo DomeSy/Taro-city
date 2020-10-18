@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './certificate.scss'
 
-class Card extends Component {
+class Certificate extends Component {
   constructor(){
     super(...arguments)
     // console.log()
@@ -48,4 +48,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Certificate

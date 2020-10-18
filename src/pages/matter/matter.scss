@@ -1,5 +1,18 @@
 @import "@styles/theme.scss";
 
 .Matter{
-
+  &-list{
+    font-family: $font-family;
+    padding: 29px 24px 23px 24px;
+    border-bottom: 1px solid $font-color-background;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    &-text{
+      color: $font-color;
+    }
+    &-time{
+      color:$font-color-effect;
+      margin-top: 4px;
+    }
+  }
 }

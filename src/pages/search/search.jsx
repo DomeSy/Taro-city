@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './search.scss'
 
-class Card extends Component {
+class Search extends Component {
   constructor(){
     super(...arguments)
 
@@ -10,11 +10,11 @@ class Card extends Component {
   render() {
 
     return (
-      <View>
+      <View className="Search">
         搜索结果
       </View>
     )
   }
 }
 
-export default Card
+export default Search

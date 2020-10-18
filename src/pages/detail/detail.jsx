@@ -8,7 +8,7 @@ import hot from '@assets/hot.png'
 
 
 
-class Card extends Component {
+class Detail extends Component {
   constructor(){
     super(...arguments)
 
@@ -73,4 +73,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Detail

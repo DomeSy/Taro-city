@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './none.scss'
 
-class Card extends Component {
+class None extends Component {
   constructor(){
     super(...arguments)
 
@@ -10,11 +10,11 @@ class Card extends Component {
   render() {
 
     return (
-      <View>
+      <View className="None">
         正在建设
       </View>
     )
   }
 }
 
-export default Card
+export default None

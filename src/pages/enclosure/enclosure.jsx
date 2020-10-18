@@ -4,7 +4,7 @@ import { List } from '@components';
 
 import './enclosure.scss'
 
-class Card extends Component {
+class Enclosure extends Component {
   constructor(){
     super(...arguments)
 
@@ -32,4 +32,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Enclosure

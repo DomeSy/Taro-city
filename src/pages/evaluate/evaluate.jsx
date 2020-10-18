@@ -4,7 +4,7 @@ import { AtRate } from 'taro-ui'
 import './evaluate.scss'
 import { ListShow, Textarea, Button } from '@components';
 
-class Card extends Component {
+class Evaluate extends Component {
   constructor(){
     super(...arguments)
     this.state = {
@@ -59,4 +59,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Evaluate

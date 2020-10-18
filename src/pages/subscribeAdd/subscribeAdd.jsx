@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './subscribeAdd.scss'
 
-class Card extends Component {
+class SubscribeAdd extends Component {
   constructor(){
     super(...arguments)
 
@@ -10,11 +10,11 @@ class Card extends Component {
   render() {
 
     return (
-      <View>
+      <View className="SubscribeAdd">
        订阅专属空间
       </View>
     )
   }
 }
 
-export default Card
+export default SubscribeAdd

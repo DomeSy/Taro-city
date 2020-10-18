@@ -1,0 +1,29 @@
+@import "@styles/theme.scss";
+
+.DTabs{
+  padding: 0 24px;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $font-color-background;
+  &-list{
+    width: 100%;
+    text-align: center;
+    // background: olive;
+    padding: 18px 0;
+    &-content{
+      &-text{
+        font-family: $font-family;
+        font-size: 34px;
+        line-height: 48px;
+        color: $gray;
+      }
+      &-active{
+        font-weight: 500px;
+        color: #1677ff;
+        padding: 16px 0;
+        border-bottom: 4px solid #1677ff;
+      }
+    }
+  }
+}

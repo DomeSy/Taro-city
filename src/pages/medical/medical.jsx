@@ -3,7 +3,7 @@ import { View } from '@tarojs/components';
 import { ListShowText, TipEffect } from '@components'
 import './medical.scss'
 
-class Card extends Component {
+class Medical extends Component {
   constructor(){
     super(...arguments)
 
@@ -42,4 +42,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Medical

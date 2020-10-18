@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './myConsulting.scss'
 
-class Index extends Component {
+class MyConsulting extends Component {
   constructor(){
     super(...arguments)
     this.state={
@@ -56,4 +56,4 @@ class Index extends Component {
   }
 }
 
-export default Index
+export default MyConsulting

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './nearUse.scss'
 
-class Card extends Component {
+class NearUse extends Component {
   constructor(){
     super(...arguments)
 
@@ -11,11 +11,11 @@ class Card extends Component {
   render() {
 
     return (
-      <View>
+      <View className="NearUse">
         近期使用
       </View>
     )
   }
 }
 
-export default Card
+export default NearUse

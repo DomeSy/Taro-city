@@ -3,7 +3,7 @@ import { View } from '@tarojs/components';
 import './consulting.scss'
 import { ListText } from '@components';
 
-class Card extends Component {
+class Consulting extends Component {
   constructor(){
     super(...arguments)
 
@@ -18,4 +18,4 @@ class Card extends Component {
   }
 }
 
-export default Card
+export default Consulting

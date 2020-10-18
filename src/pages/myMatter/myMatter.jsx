@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import './myMatter.scss'
 
-class Card extends Component {
+class MyMatter extends Component {
   constructor(){
     super(...arguments)
 
@@ -10,11 +10,11 @@ class Card extends Component {
   render() {
 
     return (
-      <View>
+      <View className="MyMatter">
         我的办件
       </View>
     )
   }
 }
 
-export default Card
+export default MyMatter
