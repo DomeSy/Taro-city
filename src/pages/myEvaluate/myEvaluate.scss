@@ -1,1 +1,28 @@
 @import "@styles/theme.scss";
+
+.MyEvaluate{
+  height: 100vh;
+  background: $background;
+  &-Tabs{
+    background: $white;
+    padding: 24px 91px;
+    display: flex;
+    justify-content: space-between;
+    &-text{
+      font-family: $font-family;
+      padding: 8px 24px;
+      font-size: $font-size-effect;
+      line-height: $line-height-effect;
+      color: $blue;
+      background: #e7f1ff;
+      border-radius: 25px;
+    }
+    &-active{
+      background: $blue;
+      color: $white;
+    }
+  }
+  &-border{
+    height: 20px;
+  }
+}

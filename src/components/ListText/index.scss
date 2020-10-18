@@ -19,8 +19,25 @@
     font-size: $font-size-effect;
     line-height: $line-height-effect;
     color: $font-color-effect;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     &:first-of-type{
       margin-top: 20px;
+    }
+    &-evaluate{
+      padding: 3px 22px;
+      border: 1px solid #979797;
+      border-radius: 4px;
+    }
+  }
+  &-padding{
+    padding-top: 20px;
+  }
+  &-rate{
+    padding: 15px 0 20px 0;
+    .at-rate__icon--on{
+      color: $blue
     }
   }
 }

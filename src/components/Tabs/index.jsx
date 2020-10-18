@@ -2,6 +2,11 @@ import React,{ useState } from 'react'
 import { View, Text } from '@tarojs/components';
 import './index.scss'
 
+/*
+  list:
+    text: 文字
+    active：初始被选中的状态
+*/
 function Index({list = []}){
 
   const [listArr, setListArr] = useState(list)
@@ -12,8 +17,6 @@ function Index({list = []}){
         items.text == item.text ? items.active = true : items.active = false
         return items
       })
-      console.log(listsArr,'--')
-
       setListArr(listsArr)
     }
   }

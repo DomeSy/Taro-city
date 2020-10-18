@@ -11,7 +11,6 @@ export default {
     'pages/evaluate/evaluate',
     'pages/myEvaluate/myEvaluate',
     'pages/matter/matter',
-    'pages/myMatter/myMatter',
     'pages/authorization/authorization',
     'pages/subscribe/subscribe',
     'pages/subscribeJurisdiction/subscribeJurisdiction',
