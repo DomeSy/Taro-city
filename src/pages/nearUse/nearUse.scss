@@ -1,1 +1,52 @@
 @import "@styles/theme.scss";
+
+.NearUse{
+  font-family: $font-family;
+  margin-left: 24px;
+  &-tip{
+    padding: 24px 24px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-effect;
+    line-height: $line-height-effect;
+    &-text{
+      color: $font-color-effect;
+    }
+    &-img{
+      color: $blue;
+    }
+  }
+  &-list{
+    padding: 30px 24px 26px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $font-color-background;
+    &-content{
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      &-radius{
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $blue;
+      }
+      &-text{
+        font-size: $font-size-list;
+        line-height: $line-height-list;
+        color: $font-color;
+        margin-left: 16px;
+      }
+      &-img{
+        width: 63px;
+        height: 32px;
+        margin-left: 16px;
+      }
+    }
+    &-none{
+      font-size: 40px;
+      color: $font-color-effect;
+    }
+  }
+}

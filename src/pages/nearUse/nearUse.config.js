@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '近期使用',
+  navigationBarTitleText: '最近使用',
 }
