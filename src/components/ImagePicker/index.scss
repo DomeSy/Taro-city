@@ -1,0 +1,22 @@
+@import "@styles/theme.scss";
+
+.DImagePicker{
+  &-title{
+    padding: 24px;
+    font-family: $font-family;
+    display: flex;
+    justify-content: space-between;
+    line-height: $line-height;
+    font-size: $font-size;
+    &-text{
+      color: $font-color;
+    }
+    &-number{
+      color: #999999;
+    }
+  }
+  &-image{
+    background: $white;
+    padding: 40px 24px;
+  }
+}

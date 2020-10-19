@@ -1,1 +1,24 @@
 @import "@styles/theme.scss";
+
+.Opinion{
+  height: 100vh;
+  background: $background;
+  &-border{
+    height: 36px;
+  }
+  &-tip{
+    padding: 24px;
+    text-align: center;
+    font-family: $font-family;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    color: $font-color-effect;
+  }
+  &-tel{
+    text-align: center;
+    font-family: $font-family;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    color: $blue;
+  }
+}
