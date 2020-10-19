@@ -14,8 +14,8 @@ export { default as ListShow } from './ListShow'
 export { default as Textarea } from './Textarea'
 export { default as ListShowText } from './ListShowText'
 export { default as ImagePicker } from './ImagePicker'
+export { default as SearchView } from './SearchView'
 export { default as Tabs } from './Tabs'
 export { default as LogoText } from './LogoText'
 export { default as Tip } from './Tip'
-
 

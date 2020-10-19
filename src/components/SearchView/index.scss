@@ -1,0 +1,33 @@
+@import "@styles/theme.scss";
+
+.SearchView{
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  font-family: $font-family;
+  align-items: center;
+  padding: 14px 24px;
+  background: $white;
+  border-bottom: 1px solid $font-color-background;
+  &-search{
+    border: 2px solid $blue;
+    border-radius: 12px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 12px 24px;
+    &-input{
+      width: 518px;
+      padding: 0;
+      border: 0px;
+      font-size: $font-size-tip;
+      color: $font-color;
+      margin: 0 0 0 8px;
+    }
+  }
+  &-cancel{ 
+    color: $blue;
+    font-size: $font-size;
+    line-height: $line-height;
+  }
+}
