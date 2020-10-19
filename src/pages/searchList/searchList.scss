@@ -1,0 +1,19 @@
+@import "@styles/theme.scss";
+
+.searchList{
+  // padding-left: 24px;
+  &-list{
+    padding: 26px 24px 26px 0;
+    margin-left: 24px;
+    border-bottom: 1px solid $background-tip;
+    &:last-of-type{
+      border-bottom: 0px;
+    }
+    &-text{
+      font-family: $font-family;
+      font-size: $font-size-title;
+      line-height: $line-height-title;
+      color: $font-color;
+    }
+  }
+}

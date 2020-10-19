@@ -17,6 +17,7 @@ export default {
     'pages/safekeeping/safekeeping',
     'pages/enclosure/enclosure',
     'pages/search/search',
+    'pages/searchList/searchList',
     'pages/subscribeAdd/subscribeAdd',
     'pages/none/none',
     'pages/download/download',

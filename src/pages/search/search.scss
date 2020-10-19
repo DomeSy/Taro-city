@@ -26,4 +26,51 @@
       margin-bottom: 20px;
     }
   }
+  &-list{
+    margin-left: 24px;
+    padding: 24px 24px 24px 0px;
+    border-bottom: 1px solid $font-color-tip;
+    font-family: $font-family;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-left{
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      &-clock{
+        width: 36px;
+        height: 36px;
+        background: url(../../assets/clock.png);
+        background-size: 100% 100%;
+      }
+      &-text{
+        width: 512px;
+        margin-left: 36px;
+        font-size: 34px;
+        color: $font-color;
+        line-height: 48px;
+        @include text-ellipsis;
+      }
+    }
+    &-close{
+      width: 44px;
+      height: 44px;
+      background: url(../../assets/close.png);
+      background-size: 100% 100%;
+    }
+  }
+  &-log{
+    padding: 280px 95px 80px 95px;
+    &-text{
+      padding: 24px 0;
+      text-align: center;
+      color: $blue;
+      font-family: $font-family;
+      font-size: 36px;
+      line-height: 50px;
+      border: 2px solid $blue;
+      border-radius: 8px;
+    }
+  }
 }
