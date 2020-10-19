@@ -1,1 +1,73 @@
 @import "@styles/theme.scss";
+
+.Safekeeping{
+  font-family: $font-family;
+  height: 100vh;
+  background: $background;
+  &-top{
+    height: 220px;
+    padding: 78px 24px;
+    display: flex;
+    background: $blue;
+    justify-content: center;
+    align-items: center;
+    font-size: $font-size-title;
+    line-height: $line-height-title;
+    color: $white;
+    &-img{
+      width: 78px;
+      height: 78px;
+      background: url(../../assets/logo.png);
+      background-size: 100% 100%;
+    }
+    &-text{
+      padding: 0 40px;
+      font-weight: 600;
+    }
+    &-text1{
+      padding: 0 40px;
+      border-left: 1px solid $white;
+    }
+  }
+  &-area{
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    background: $white;
+    padding: 0 24px;
+    &-text{
+      padding: 28px 0 20px 0px;
+      color: $font-color;
+    }
+    &-effect{
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      &-text{
+        padding: 28px 24px 20px 24px;
+        color: $blue;
+      }
+      &-icon{
+        margin-top: 8px;
+      }
+    }
+  }
+  &-border{
+    background: $white;
+    padding: 0 24px;
+    &-bottom{
+      height: 8px;
+      background: $font-color-background;
+    }
+  }
+  &-tip{
+    padding: 25px 24px 80px 24px;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $font-color;
+    &-text{
+      color: $blue;
+    }
+  }
+}
