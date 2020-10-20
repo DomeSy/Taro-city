@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { View} from '@tarojs/components'
 import { Tip } from '@components'
+import fetch from '@unilts/request'
+
+// import {fetch} from '@unilts/request.js'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 import '.'
@@ -10,11 +13,19 @@ class Index extends Component {
     console.log(this.props, nextProps)
   }
 
-  componentWillUnmount () { }
+  componentWillUnmount () { console.log('1') }
 
-  componentDidShow () { }
+  async componentDidShow () {
+    const path = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/cardOrder/getAreaCountByYWTypeId.do';
+    const url = 'cardOrder/getAreaCountByYWTypeId.do';
+    const payload = {
+      ywtypeId: 2
+    }
+    const data = await fetch({url, payload, path})
+    console.log(data)
+  }
 
-  componentDidHide () { }
+  componentDidHide () { console.log('3') }
 
   render () {
     return (

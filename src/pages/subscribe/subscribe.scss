@@ -1,1 +1,67 @@
 @import "@styles/theme.scss";
+
+.Subscribe{
+  font-family: $font-family;
+  &-title{
+    margin: 0 24px;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 8px solid $font-color-background;
+    &-text{
+      font-size: 34px;
+      color: $font-color;
+      line-height: 48px;
+    }
+    &-administration{
+      padding: 8px 24px;
+      font-size: $font-size-effect;
+      line-height: $line-height-effect;
+      color: $blue;
+      border-radius: 25px;
+      border: 1px solid $blue;
+    }
+  }
+  &-list{
+    padding: 27px 24px 27px 0;
+    margin-left: 24px;
+    border-bottom: 1px solid $font-color-tip;
+    &-title{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 9px;
+      &-left{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        font-size: $font-size;
+        line-height: $line-height;
+        &-title{
+          color: $font-color;
+        }
+        &-img{
+          width: 63px;
+          height: 32px;
+          margin-left: 8px;
+        }
+      }
+      &-add{
+        color: $blue;
+        font-size: $font-size;
+        line-height: $line-height;
+      }
+    }
+    &-tip{
+      font-size: $font-size-effect;
+      color: $gray;
+      line-height: $line-height-effect;
+    }
+  }
+  &-tip{
+    padding: 24px;
+    font-size: $font-size-effect;
+    line-height: $line-height-effect;
+    color: $font-color-effect;
+  }
+}

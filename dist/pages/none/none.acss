@@ -1,0 +1,68 @@
+@charset "UTF-8";
+/**
+ * 对于部分不兼容的样式，可以通过 mixins 统一处理
+ */
+/**
+ * // NOTE Taro 编译成 RN 时对 border 的处理有问题
+ * RN 不支持针对某一边设置 style，即 border-bottom-style 会报错
+ * 那么 border-bottom: 1px 就需要写成如下形式：
+ * border: 0 style color; border-bottom-width: 1px;
+ */
+/**
+ * 对于不能打包到 RN 的样式，可以用 mixins 引入，相对美观一些
+ */
+/**
+ * // TODO 1px 的线在各端上实现方式不同，统一出来后续再兼容，目前注意两点：
+ * 1. Taro 中大写的 PX 不会被编译成 rpx/em，但 RN 还未兼容该写法
+ * 2. H5 中 1px(转成 rem 后实际小于 0.5px) + border-radius 会导致 border 不显示
+ */
+/**
+ * NOTE RN 无法通过 text-overflow 实现省略号，这些代码不能打包到 RN 中
+ */
+/**
+ * NOTE 实现多行文本省略，RN 用 Text 标签的 numberOfLines，H5/小程序用 -webkit-line-clamp
+ */
+.None {
+  font-family: PingFangSC, PingFangSC-Regular;
+}
+.None-img {
+  padding: 80rpx 24rpx 24rpx 24rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.None-img-content-imgs {
+  height: 440rpx;
+  width: 440rpx;
+}
+.None-img-content-text {
+  font-size: 32rpx;
+  line-height: 45rpx;
+  color: #333333;
+}
+.None-tip {
+  position: absolute;
+  bottom: 80rpx;
+  left: 0;
+  right: 0;
+  padding: 40rpx 24rpx;
+  text-align: center;
+}
+.None-tip-text {
+  font-size: 26rpx;
+  line-height: 37rpx;
+  color: #999999;
+  margin-bottom: 24rpx;
+}
+.None-tip-download {
+  padding: 8rpx 24rpx;
+  background: #f5f5f5;
+  border-radius: 25rpx;
+  font-size: 24rpx;
+  line-height: 33rpx;
+  color: #1679FF;
+}
+
