@@ -1,0 +1,53 @@
+@import "@styles/theme.scss";
+
+.TabsSubscribes{
+  overflow-y: auto;
+  font-family: $font-family;
+  &-Card{
+    padding: 0 0px 0 40px;
+    &-title{
+      padding: 20px 40px 20px 0;
+      line-height: 0;
+      &-name{
+        padding: 7px 28px;
+        background: #f3f8ff;
+        font-size: $font-size-effect;
+        line-height: $line-height-effect;
+        color: $blue;
+        font-weight: 600px;
+      }
+    }
+    &-list{
+      display: flex;
+      flex-wrap: wrap;
+      &-info{
+        margin-right: 28px;
+        margin-bottom: 20px;
+        width: 216px;
+        &-img{
+          height: 136px;
+          position: relative;
+          // padding: 84px 44px 12px 44px;
+          &-cancel{
+            padding: 6px 24px;
+            line-height: 28px;
+            font-size: 20px;
+            color: #FF3B30;
+            background: $white;
+            border-radius: 20px;
+            position: absolute;
+            bottom: 12px;
+            left: 44px;
+          }
+        }
+        &-text{
+          font-weight: 300px;
+          line-height: $line-height-list;
+          font-size: $font-size-list;
+          color: $font-color;
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}

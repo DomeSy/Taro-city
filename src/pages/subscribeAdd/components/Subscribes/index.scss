@@ -1,0 +1,24 @@
+@import "@styles/theme.scss";
+
+.Subscribes{
+  overflow-y: auto;
+  &-main{
+    text-align: center;
+    font-family: $font-family;
+    &-text{
+      padding: 24px;
+      background: #f3f8ff;
+      font-size: $font-size-tip;
+      line-height: $line-height-tip;
+      color: $font-color;
+      @include text-ellipsis;
+    }
+    &-active{
+      background: $white;
+      color: $blue;
+      font-size: $font-size;
+      line-height: $line-height;
+      @include text-ellipsis;
+    }
+  }
+}

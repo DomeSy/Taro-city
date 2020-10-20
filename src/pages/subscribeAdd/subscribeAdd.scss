@@ -1,1 +1,31 @@
 @import "@styles/theme.scss";
+
+.SubscribeAdd{
+  &-content{
+    display: flex;
+    justify-content: space-between;
+    // height: 2000px;
+    &-left{
+      width: 28%;
+      height: calc(100vh - 88px);
+      overflow-y: auto;
+    }
+    &-right{
+      width: 72%;
+      height: calc(100vh - 88px);
+      overflow-y: auto;
+    }
+  }
+  &-tip{
+    padding: 24px;
+    background: $font-color-background;
+    &-text{
+      font-size: $font-size-list;
+      line-height: $line-height-list;
+      color: $font-size;
+      &-download{
+        color: $blue;
+      }
+    }
+  }
+}
