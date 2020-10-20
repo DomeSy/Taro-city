@@ -122,28 +122,10 @@ var Index = /*#__PURE__*/function (_Component) {
     key: "componentDidShow",
     value: function () {
       var _componentDidShow = Object(_Users_Domesy_Documents_taro_node_modules_babel_runtime_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/_Users_Domesy_Documents_taro_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var path, url, payload, data;
         return _Users_Domesy_Documents_taro_node_modules_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                path = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/cardOrder/getAreaCountByYWTypeId.do';
-                url = 'cardOrder/getAreaCountByYWTypeId.do';
-                payload = {
-                  ywtypeId: 2
-                };
-                _context.next = 5;
-                return Object(_unilts_request__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"])({
-                  url: url,
-                  payload: payload,
-                  path: path
-                });
-
-              case 5:
-                data = _context.sent;
-                console.log(data);
-
-              case 7:
               case "end":
                 return _context.stop();
             }
@@ -1009,7 +991,6 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
   !*** ./src/unilts/request.js ***!
   \*******************************/
 /*! exports provided: default */
-/*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1111,7 +1092,7 @@ function _fetch() {
   return _fetch.apply(this, arguments);
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (fetch);
+/* unused harmony default export */ var _unused_webpack_default_export = (fetch);
 
 /***/ })
 

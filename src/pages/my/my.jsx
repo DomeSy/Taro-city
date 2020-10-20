@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
+import { View } from '@tarojs/components'
 import { Info, Space } from './components'
 import banjian from '@assets/my/banjian.png'
 
 import './my.scss'
+import jump from '@unilts/jump';
 
 
 const list = [
@@ -35,6 +36,10 @@ class My extends Component {
     }
   }
 
+  Close = () => {
+    jump({url: '/matter'})
+  }
+
   render() {
     const { list } = this.state;
 
@@ -63,7 +68,7 @@ class My extends Component {
         <Space />
         <View className="My-login">
           <View className="My-login-btn">
-            <View className="My-login-btn-text">
+            <View className="My-login-btn-text" onClick={this.Close}>
               退出登录
             </View>
           </View>

@@ -16,13 +16,13 @@ class Index extends Component {
   componentWillUnmount () { console.log('1') }
 
   async componentDidShow () {
-    const path = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/cardOrder/getAreaCountByYWTypeId.do';
-    const url = 'cardOrder/getAreaCountByYWTypeId.do';
-    const payload = {
-      ywtypeId: 2
-    }
-    const data = await fetch({url, payload, path})
-    console.log(data)
+    // const path = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/cardOrder/getAreaCountByYWTypeId.do';
+    // const url = 'cardOrder/getAreaCountByYWTypeId.do';
+    // const payload = {
+    //   ywtypeId: 2
+    // }
+    // const data = await fetch({url, payload, path})
+    // console.log(data)
   }
 
   componentDidHide () { console.log('3') }

@@ -20,6 +20,7 @@ export default {
     'pages/searchList/searchList',
     'pages/subscribeAdd/subscribeAdd',
     'pages/none/none',
+    'pages/webview/webview',
     'pages/download/download',
     'pages/medical/medical',
     'pages/detail/detail',
