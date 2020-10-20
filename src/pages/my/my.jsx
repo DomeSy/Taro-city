@@ -4,7 +4,7 @@ import { Info, Space } from './components'
 import banjian from '@assets/my/banjian.png'
 
 import './my.scss'
-import jump from '@unilts/jump';
+// import { jump } from '@unilts';
 
 
 const list = [
@@ -37,7 +37,7 @@ class My extends Component {
   }
 
   Close = () => {
-    // jump({url: '/pages/matter/webview'})
+    // jump({url: '/pages/matter/matter'})
   }
 
   render() {
