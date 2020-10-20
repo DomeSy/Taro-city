@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { View} from '@tarojs/components'
 import { Tip } from '@components'
-import { jmasRequest } from '@unilts'
+import { jmasRequest, Method } from '@unilts'
 
-// import {fetch} from '@unilts/request.js'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 import '.'
@@ -17,15 +16,17 @@ class Index extends Component {
 
   async componentDidShow () {
 
-    const datas = {
-        url: 'hcp/hcp01005',
-        data: {
-          porjectNo: '120j84g697475fa4fed8d481238000'
-        }
-    }
+    console.log( Method.desensitization('我是谁', 1))
+
+    // const datas = {
+    //     url: 'hcp/hcp01005',
+    //     data: {
+    //       porjectNo: '120j84g697475fa4fed8d481238000'
+    //     }
+    // }
  
-    const data = await jmasRequest("provincegoodbadreviews", "getGoodBad", datas)
-    console.log(data)
+    // const data = await jmasRequest("provincegoodbadreviews", "getGoodBad", datas)
+    // console.log(data)
   }
 
   componentDidHide () { console.log('3') }

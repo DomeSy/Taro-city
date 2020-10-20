@@ -1,3 +1,4 @@
-export { default as jump } from './jump'
-export { default as request } from './request'
-export { default as jmasRequest } from './jmasRequest'
+export { default as Jump } from './jump'
+export { default as Request } from './request'
+export { default as JmasRequest } from './jmasRequest'
+export { default as Method } from './method'
