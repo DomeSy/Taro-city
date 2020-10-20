@@ -7,6 +7,20 @@ const PAGE_WEBVIEW = '/pages/webview/webview'
  * 也可能是小程序自身的链接，只能用 navigate/redirect 之类的打开
  * 就需要有个地方统一判断处理
  */
+
+ /*
+  url: 跳转的地址，
+    外链直接输入地址，
+    跳转本地页面: url: /pages/matter/matter 或/matter
+  title: 外链标题
+  payload: 跳转是需要的参数
+  method: 跳转的方式
+    navigateTo（默认）：保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 Taro.navigateBack 可以返回到原页面。小程序中页面栈最多十层。
+    redirectTo：关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
+    switchTab：跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+    reLaunch： 关闭所有页面，打开到应用内的某个页面
+    等跳转方式
+*/
 export default function jump(options) {
   const { url, title = '', payload = {}, method = 'navigateTo' } = options
 

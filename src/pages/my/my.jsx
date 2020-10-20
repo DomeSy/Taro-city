@@ -37,7 +37,7 @@ class My extends Component {
   }
 
   Close = () => {
-    jump({url: '/matter'})
+    // jump({url: '/pages/matter/webview'})
   }
 
   render() {

@@ -62,10 +62,7 @@ var My = /*#__PURE__*/function (_Component) {
 
     _this = _super.apply(this, arguments);
 
-    Object(_Users_Domesy_Documents_taro_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Object(_Users_Domesy_Documents_taro_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_this), "Close", function () {
-      Object(_unilts_jump__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"])({
-        url: '/matter'
-      });
+    Object(_Users_Domesy_Documents_taro_node_modules_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(Object(_Users_Domesy_Documents_taro_node_modules_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_this), "Close", function () {// jump({url: '/pages/matter/webview'})
     });
 
     _this.state = {
@@ -339,11 +336,10 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
   !*** ./src/unilts/jump.js ***!
   \****************************/
 /*! exports provided: default */
-/*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return jump; });
+/* unused harmony export default */
 /* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/_@tarojs_taro@3.0.14@@tarojs/taro/index.js");
 /* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -353,6 +349,20 @@ var PAGE_WEBVIEW = '/pages/webview/webview';
  * 也可能是小程序自身的链接，只能用 navigate/redirect 之类的打开
  * 就需要有个地方统一判断处理
  */
+
+/*
+ url: 跳转的地址，
+   外链直接输入地址，
+   跳转本地页面: url: /pages/matter/matter 或/matter
+ title: 外链标题
+ payload: 跳转是需要的参数
+ method: 跳转的方式
+   navigateTo（默认）：保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 Taro.navigateBack 可以返回到原页面。小程序中页面栈最多十层。
+   redirectTo：关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
+   switchTab：跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+   reLaunch： 关闭所有页面，打开到应用内的某个页面
+   等跳转方式
+*/
 
 function jump(options) {
   var url = options.url,
