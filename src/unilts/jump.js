@@ -33,7 +33,7 @@ export default function jump(options) {
     const jumpUrl = /^\/pages\//.test(url) ? url : `/pages${url}${url}`
 
     //  H5 不支持 switchTab，暂时 hack 下
-    if (Taro.getEnv() === 'h5' && method === 'switchTab') {
+    if (Taro.getEnv() === 'WEB' && method === 'switchTab') {
       Taro.navigateBack({ delta: Taro.getCurrentPages().length - 1 })
       setTimeout(() => { Taro.redirectTo({ jumpUrl }) }, 100)
       return
