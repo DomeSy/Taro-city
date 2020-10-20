@@ -4,9 +4,12 @@ const CODE_SUCCESS = '200'
 const local = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/'
 
 // 封装请求
-async function fetch({url, payload = {}, method = 'GET', path = ''}) {
-  const header = { }
-  if (method === 'POST') {
+async function request({url, payload = {}, method = 'GET', path = '', rule}) {
+  const header = {}
+
+  if(rule === 'jmas'){
+    header['content-type'] = 'application/x-www-form-urlencoded'
+  } else if (method === 'POST' && Taro.getEnv() !== 'WEB') {
     header['content-type'] = 'application/json'
   }
 
@@ -17,11 +20,11 @@ async function fetch({url, payload = {}, method = 'GET', path = ''}) {
       data: payload,
       header
     }).then(async (res) => {
-      const { code, data } = res
+      const { statusCode, data } = res
       
-      if(code !== CODE_SUCCESS){
+      if(statusCode !== CODE_SUCCESS && statusCode !== Number(CODE_SUCCESS)){
         Taro.showToast({
-          title: res.msg,
+          title: res.msg || '接口异常',
           icon: 'none'
         })
         return
@@ -42,4 +45,4 @@ async function fetch({url, payload = {}, method = 'GET', path = ''}) {
   }) 
 }
 
-export default fetch
+export default request
