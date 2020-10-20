@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View} from '@tarojs/components'
 import { Tip } from '@components'
-import fetch from '@unilts/request'
+import { jmasRequest } from '@unilts'
 
 // import {fetch} from '@unilts/request.js'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
@@ -16,13 +16,16 @@ class Index extends Component {
   componentWillUnmount () { console.log('1') }
 
   async componentDidShow () {
-    // const path = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/cardOrder/getAreaCountByYWTypeId.do';
-    // const url = 'cardOrder/getAreaCountByYWTypeId.do';
-    // const payload = {
-    //   ywtypeId: 2
-    // }
-    // const data = await fetch({url, payload, path})
-    // console.log(data)
+
+    const datas = {
+        url: 'hcp/hcp01005',
+        data: {
+          porjectNo: '120j84g697475fa4fed8d481238000'
+        }
+    }
+ 
+    const data = await jmasRequest("provincegoodbadreviews", "getGoodBad", datas)
+    console.log(data)
   }
 
   componentDidHide () { console.log('3') }
