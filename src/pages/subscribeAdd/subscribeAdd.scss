@@ -6,12 +6,12 @@
     justify-content: space-between;
     // height: 2000px;
     &-left{
-      width: 28%;
-      height: calc(100vh - 88px);
+      width: calc(100vw - 540px);
+      height: 500px;
       overflow-y: auto;
     }
     &-right{
-      width: 72%;
+      width: 540px;
       height: calc(100vh - 88px);
       overflow-y: auto;
     }

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { View, Text } from '@tarojs/components'
+import Taro,{ useDidHide, useDidShow } from '@tarojs/taro'
 import './index.scss'
 
 /*
@@ -12,24 +13,28 @@ import './index.scss'
 function Index({list = []}) {
 
   const [lists, setLists] = useState(list)
+  const height = useRef(null)
 
+  const onTab = () => {
+    console.log(height.current.clientHeight,'--')
+  }
 
   return (
-    <View className="TabsSubscribes">
+    <View className="TabsSubscribes" >
       {
         lists.map((item, index) => (
-          <View className="TabsSubscribes-Card" key={index}>
-            <View className="TabsSubscribes-Card-title">
+          <View className="TabsSubscribes-Card" key={index} >
+            <View className="TabsSubscribes-Card-title"  onClick={() => onTab()}>
               <Text className="TabsSubscribes-Card-title-name">{item.title}</Text>
             </View>
             <View className="TabsSubscribes-Card-list">
               {
                 item.listAll.map((items, indexs) => (
-                  <View className="TabsSubscribes-Card-list-info" key={indexs + 'listAll'}>
+                  <View className="TabsSubscribes-Card-list-info" key={indexs + 'listAll'} >
                     <View className="TabsSubscribes-Card-list-info-img" style={items.img}>
                       <View className="TabsSubscribes-Card-list-info-img-cancel">取消订阅</View>
                     </View>
-                    <View className="TabsSubscribes-Card-list-info-text">{items.text}</View>
+                    <View className="TabsSubscribes-Card-list-info-text" ref={height}>{items.text}</View>
                   </View>
                 ))
               }
