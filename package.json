@@ -42,6 +42,7 @@
     "@tarojs/react": "3.0.14",
     "@tarojs/runtime": "3.0.14",
     "@tarojs/taro": "3.0.14",
+    "crypto-js": "^4.0.0",
     "nervjs": "^1.5.7",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",
