@@ -1380,7 +1380,7 @@
     resolve "1.15.1"
     yauzl "2.10.0"
 
-"@tarojs/mini-runner@3.0.14":
+"@tarojs/mini-runner@^3.0.14":
   version "3.0.14"
   resolved "https://registry.npm.taobao.org/@tarojs/mini-runner/download/@tarojs/mini-runner-3.0.14.tgz#5d2411da3521ae80ee493874de3ddaebdf8f3d27"
   integrity sha1-XSQR2jUhroDuSTh03j3a69+PPSc=
@@ -7554,6 +7554,11 @@ mimic-fn@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/mimic-fn/download/mimic-fn-2.1.0.tgz?cache=0&sync_timestamp=1596094012686&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmimic-fn%2Fdownload%2Fmimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha1-ftLCzMyvhNP/y3pptXcR/CCDQBs=
+
+mini-antui@^0.4.35:
+  version "0.4.35"
+  resolved "https://registry.npm.taobao.org/mini-antui/download/mini-antui-0.4.35.tgz#e32d8df1c64ac558f8471db2e46073b20de4dd2c"
+  integrity sha1-4y2N8cZKxVj4Rx2y5GBzsg3k3Sw=
 
 mini-css-extract-plugin@0.8.0:
   version "0.8.0"

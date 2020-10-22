@@ -5,6 +5,7 @@ import banner from '@assets/banner.png'
 import { SearchView } from '@components'
 
 import './subscribeAdd.scss'
+import { Taro } from '@tarojs/taro';
 
 
 //  40 + 139 * 3 = 179 
@@ -467,6 +468,7 @@ class SubscribeAdd extends Component {
       scrollHeight: scrollHeight
     })
   }
+
 
   onChange = (value) => {
     this.setState({

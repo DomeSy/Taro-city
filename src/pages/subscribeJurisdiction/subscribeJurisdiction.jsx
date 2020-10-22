@@ -5,13 +5,24 @@ import './subscribeJurisdiction.scss'
 class SubscribeJurisdiction extends Component {
   constructor(){
     super(...arguments)
-
+    // this.state={
+    //   thumb: 0
+    // }
   }
+
+  Click = () => [
+    
+  ]
   render() {
 
     return (
       <View className="SubscribeJurisdiction">
-       订阅专属空间
+        111
+       {/* <card 
+        thumb={this.state.thumb}
+        title="卡片标题"
+        onClick={this.Click}
+       /> */}
       </View>
     )
   }
