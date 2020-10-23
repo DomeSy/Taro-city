@@ -20,7 +20,7 @@ class Login extends Component {
     })
   }
   componentDidMount = () => {
-    console.log(jisConfig)
+    // console.log(jisConfig)
   }
 
   onMessage = (e) => {

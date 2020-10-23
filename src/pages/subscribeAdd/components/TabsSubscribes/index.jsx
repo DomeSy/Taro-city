@@ -16,7 +16,7 @@ function Index({list = []}) {
   const height = useRef(null)
 
   const onTab = () => {
-    console.log(height.current.clientHeight,'--')
+    // console.log(height.current.clientHeight,'--')
   }
 
   return (

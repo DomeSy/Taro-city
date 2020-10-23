@@ -2,6 +2,7 @@ import qs from 'qs'
 import request from '../request'
 import { FROMPORT, SIGNURL, VERSION, GATEWAY, CHARSET } from './jmasApi'
 
+// appid：appid, interfaceid：接口id, payload: 参数
 const fetch = (appid, interfaceid, payload) => {
   return new Promise(async (resolve, reject) => {
     const datestr = new Date().valueOf()
@@ -42,11 +43,12 @@ const fetch = (appid, interfaceid, payload) => {
 async function jmasRequest(appid = '', interfaceid = '', payload = {}){
   let data = await fetch(appid, interfaceid, JSON.stringify(payload))
   if (data.code == '200') {
-    if(data.data.substring(0,1) == '"'){
-      return JSON.parse(data.data.substring(1,data.data.length -1))
-    }else{
-      return JSON.parse(data.data)
-    }
+    // if(data.data.substring(0,1) == '"'){
+    //   return JSON.parse(data.data.substring(1,data.data.length -1))
+    // }else{
+    //   return JSON.parse(data.data)
+    // }
+    return data.data
   }
 }
 

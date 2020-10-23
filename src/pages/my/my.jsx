@@ -40,15 +40,22 @@ class My extends Component {
   }
 
   componentDidShow = () => {
-    console.log(this.props)
     const { type } = getCurrentInstance().router.params || false;
+    console.log(this.props, '000')
+    this.props.dispatchUser({token: '39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822', usertype: '1'})
+
+
+    // const { dispatchUser } = this.props;
+    // console.log(this.props.dispatchUser())
+    // dispatchUser()
+
     if(type == 'login'){
       const { dispatchUser } = this.props;
       const { token, usertype } = getCurrentInstance().router.params;
       dispatchUser({token, usertype})
+
       // token: 39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822
       // usertype: '1'
-      dis
     }
   }
 

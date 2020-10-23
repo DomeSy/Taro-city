@@ -43,6 +43,7 @@
     "@tarojs/runtime": "3.0.14",
     "@tarojs/taro": "3.0.14",
     "crypto-js": "^4.0.0",
+    "jsencrypt": "^3.0.0-rc.1",
     "mini-antui": "^0.4.35",
     "nervjs": "^1.5.7",
     "react": "^16.10.0",

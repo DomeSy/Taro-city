@@ -5,7 +5,6 @@ const local = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/'
 
 // 封装请求
 async function request({url, payload = {}, method = 'GET', path = '', rule}) {
-  console.log(url, payload = {}, method = 'GET', path = '');
   const header = {}
 
   if(rule === 'jmas'){
@@ -33,7 +32,7 @@ async function request({url, payload = {}, method = 'GET', path = '', rule}) {
 
       resolve(data)
     }).catch((err) => {
-      const defaultMsg = err.code === CODE_AUTH_EXPIRED ? '登录失效' : '请求异常'
+      const defaultMsg = '请求异常'
       if (showToast) {
         Taro.showToast({
           title: err && err.errorMsg || defaultMsg,
