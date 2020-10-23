@@ -5,6 +5,7 @@ import Taro,{ getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 
 import './my.scss'
+import { connect } from 'react-redux'
 // import { jump } from '@unilts';
 
 
@@ -28,6 +29,9 @@ const list = [
   },
 ]
 
+@connect(({ user }) => user, (dispath) => ({
+
+}))
 class My extends Component {
 
   constructor(){
@@ -38,7 +42,7 @@ class My extends Component {
   }
 
   componentDidShow = () => {
-    console.log(getCurrentInstance())
+    console.log(this.props)
     const { type } = getCurrentInstance().router.params || false;
     if(type == 'login'){
       const { token, usertype } = getCurrentInstance().router.params;
