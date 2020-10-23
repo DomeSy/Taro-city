@@ -16,7 +16,7 @@ class Index extends Component {
 
   async componentDidShow () {
 
-    console.log( Method.desensitization('我是谁', 1))
+    // console.log( Method.desensitization('我是谁', 1))
 
     // const datas = {
     //     url: 'hcp/hcp01005',
