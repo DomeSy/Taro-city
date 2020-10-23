@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Info, Space } from './components'
+import Taro,{ getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 
 import './my.scss'
@@ -33,6 +34,16 @@ class My extends Component {
     super(...arguments)
     this.state = {
       list
+    }
+  }
+
+  componentDidShow = () => {
+    console.log(getCurrentInstance())
+    const { type } = getCurrentInstance().router.params || false;
+    if(type == 'login'){
+      const { token, usertype } = getCurrentInstance().router.params;
+      // token: 39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822
+      // usertype: '1'
     }
   }
 

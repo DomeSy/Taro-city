@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Jump } from '@unilts'
-
 import './index.scss'
 
-// 搜索栏
+// 个人信息栏
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -13,6 +12,7 @@ class Index extends Component {
   login = () => {
     Jump({url: '/test'})
   }
+
   render() {
     return (
       <View className="Info">

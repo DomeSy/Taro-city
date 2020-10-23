@@ -13,6 +13,6 @@ Page({
   async webListener(e) { 
     console.log(e.detail.params,'00')
     const { token, usertype } = e.detail.params;
-    Jump({url: '/my', payload: {token, usertype}})
+    Jump({url: '/my', payload: {token, usertype, type: "login"}})
   }
 })
