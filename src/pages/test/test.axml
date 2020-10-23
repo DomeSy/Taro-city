@@ -1,0 +1,3 @@
+<view class="content">
+  <web-view id="webviewContainer" src="http://isdapp.shandong.gov.cn/ceshixcx/jis/#/" onMessage="webListener"></web-view>
+</view>
