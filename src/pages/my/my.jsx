@@ -3,10 +3,10 @@ import { View } from '@tarojs/components'
 import { Info, Space } from './components'
 import Taro,{ getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
+import * as actions from '@actions/user'
 
 import './my.scss'
 import { connect } from 'react-redux'
-// import { jump } from '@unilts';
 
 
 const list = [
@@ -29,9 +29,7 @@ const list = [
   },
 ]
 
-@connect(({ user }) => user, (dispath) => ({
-
-}))
+@connect(({ user }) => user, { ...actions })
 class My extends Component {
 
   constructor(){
@@ -45,9 +43,12 @@ class My extends Component {
     console.log(this.props)
     const { type } = getCurrentInstance().router.params || false;
     if(type == 'login'){
+      const { dispatchUser } = this.props;
       const { token, usertype } = getCurrentInstance().router.params;
+      dispatchUser({token, usertype})
       // token: 39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822
       // usertype: '1'
+      dis
     }
   }
 

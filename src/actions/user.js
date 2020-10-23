@@ -1,8 +1,9 @@
 import { USER_INFO, USER_LOGIN, USER_LOGOUT } from '@constants/user'
-import { createAction } from '@utils/redux'
+import { reduxRquest } from '@unilts'
+
 
 // 获取用户信息
-export const dispatchUser = payload => createAction({
+export const dispatchUser = payload => reduxRquest({
   // url: API_USER,
   fetchOptions: {
     showToast: false,
@@ -13,7 +14,7 @@ export const dispatchUser = payload => createAction({
 })
 
 // 用户登录
-export const dispatchLogin = payload => createAction({
+export const dispatchLogin = payload => reduxRquest({
   // url: API_USER_LOGIN,
   type: USER_LOGIN,
   payload

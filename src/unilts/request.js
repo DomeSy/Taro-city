@@ -5,6 +5,7 @@ const local = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/'
 
 // 封装请求
 async function request({url, payload = {}, method = 'GET', path = '', rule}) {
+  console.log(url, payload = {}, method = 'GET', path = '');
   const header = {}
 
   if(rule === 'jmas'){
