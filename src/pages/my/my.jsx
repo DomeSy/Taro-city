@@ -5,6 +5,8 @@ import { Info, Space } from './components'
 import Taro,{ getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 import * as actions from '@actions/user'
+import { Method } from '@unilts'
+import { AtMessage, AtButton } from 'taro-ui'
 
 import './my.scss'
 
@@ -41,13 +43,7 @@ class My extends Component {
 
   componentDidShow = () => {
     const { type } = getCurrentInstance().router.params || false;
-    console.log(this.props, '000')
-    this.props.dispatchUser({token: '39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822', usertype: '1'})
-
-
-    // const { dispatchUser } = this.props;
-    // console.log(this.props.dispatchUser())
-    // dispatchUser()
+    // this.props.dispatchUser({token: '39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822', usertype: '1'})
 
     if(type == 'login'){
       const { dispatchUser } = this.props;
@@ -60,11 +56,16 @@ class My extends Component {
     // jump({url: '/pages/matter/matter'})
   }
 
+  handleClick = () => {
+ 
+  }
+
   render() {
     const { list } = this.state;
 
     return (
       <View className="My">
+        <AtMessage />
         <Info />
         {/* 信息栏 */}
         <View className="My-border" />
