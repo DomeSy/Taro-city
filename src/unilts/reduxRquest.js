@@ -11,7 +11,6 @@ import jmasRequest from './jmas/jmasRequest'
 */
 export default function createAction({ url, path, payload, method, fetchOptions, cb, type }, way = 'jmas') {
   return (dispatch) => {
-    
     if(way === 'user') {
       return userRquest({ payload, method }).then((res) => {
         return res

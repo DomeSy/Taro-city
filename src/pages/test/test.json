@@ -1,4 +1,8 @@
 {
   "defaultTitle": "用户中心",
-  "titleBarColor": "#4482E9"
+  "titleBarColor": "#4482E9",
+  "usingComponents": {
+    "vtabs": "./vtabs/index",
+    "vtab-content": "./vtabs/vtab-content/index"
+  }
 }

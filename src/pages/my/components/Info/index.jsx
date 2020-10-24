@@ -10,7 +10,7 @@ class Index extends Component {
   }
 
   login = () => {
-    Jump({url: '/test'})
+    Jump({url: '/login'})
   }
 
   render() {
