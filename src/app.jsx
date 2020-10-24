@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
+import { AtMessage } from 'taro-ui'
 
 import configStore from './store'
 
@@ -19,9 +20,12 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <Provider store={store}>
-        {this.props.children}
-      </Provider>
+      <>
+        <AtMessage />
+        <Provider store={store}>
+          {this.props.children}
+        </Provider>
+      </>
     )
   }
 }
