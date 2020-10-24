@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import Method from './method'
 
 const PAGE_WEBVIEW = '/pages/webview/webview'
 
@@ -19,10 +20,15 @@ const PAGE_WEBVIEW = '/pages/webview/webview'
     redirectTo：关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
     switchTab：跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
     reLaunch： 关闭所有页面，打开到应用内的某个页面
-    等跳转方式
+  getEnv:来源，设置非指定端不能进入
 */
-export default function jump(options) {
-  const { url, title = '', payload = {}, method = 'navigateTo' } = options
+export default function jump({ url, title = '', payload = {}, method = 'navigateTo' }, getEnv) {
+
+  if(getEnv && Taro.getEnv() !== getEnv){
+    getEnv = getEnv === 'ALIPAY' ? '支付宝' : getEnv === 'WEAPP' ? '微信' : getEnv === 'WEB' ? 'h5' : getEnv === 'RN' ? 'react-native' : getEnv === 'SWAN' ? '百度' : getEnv === 'QQ' ? 'QQ' : getEnv === 'JD' ? '京东' : getEnv === 'TT' ? ' 字节' : '其他小程序'
+    Method.Message(`目前只支持进入${getEnv}`)
+    return
+  }
 
   if (/^https?:\/\//.test(url)) {
     console.log(urlStringify(PAGE_WEBVIEW, { url, title }), '---')
