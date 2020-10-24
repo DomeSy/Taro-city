@@ -1,6 +1,7 @@
 import Taro from '@tarojs/taro'
 import jmasRequest from './jmas/jmasRequest'
 import { jisConfig } from './index'
+import Method from './method'
 
 
 const getCreatesign = async payload => {
@@ -19,7 +20,8 @@ const getCreatesign = async payload => {
 async function userRquest({ payload = {}, method = 'GET'}) {
 
   const data = await getCreatesign(payload)
-  console.log(data, '--9')
+  // console.log(Method.RSAdecrypt(data), '--9')
+  console.log(data)
  
 }
 

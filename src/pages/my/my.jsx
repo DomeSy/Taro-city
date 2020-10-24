@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
+import { connect } from 'react-redux'
 import { Info, Space } from './components'
 import Taro,{ getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 import * as actions from '@actions/user'
 
 import './my.scss'
-import { connect } from 'react-redux'
 
 
 const list = [
@@ -53,9 +53,6 @@ class My extends Component {
       const { dispatchUser } = this.props;
       const { token, usertype } = getCurrentInstance().router.params;
       dispatchUser({token, usertype})
-
-      // token: 39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822
-      // usertype: '1'
     }
   }
 
