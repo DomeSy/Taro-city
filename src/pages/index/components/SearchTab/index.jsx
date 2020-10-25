@@ -10,7 +10,6 @@ import  './index.scss'
 class Index extends Component {
 
   render() {
-    // console.log(site,'--9')
     return (
       <View className="Search">
         <View className="site">
