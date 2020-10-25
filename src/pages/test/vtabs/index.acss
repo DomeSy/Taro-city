@@ -1,1 +1,79 @@
-.am-vtabs{width:100vw;height:100vh;display:flex;flex-direction:row}.am-vtabs-bar{width:110px;overflow:hidden}.am-vtabs-bar-content{height:100%;width:120px}.am-vtabs-bar-tab{box-sizing:border-box;height:55px;width:110px;text-align:center;line-height:55px;font-size:14px;border-left-width:4px;border-left-style:solid;border-left-color:transparent;border-right-width:4px;border-right-style:solid;border-right-color:transparent;white-space:nowrap;overflow:hidden}.am-vtabs-bar-title{position:relative;display:inline-block}.am-vtabs-bar-badge.dot{position:absolute;top:11px;right:0;transform:translateX(8px)}.am-vtabs-bar-badge.text{position:absolute;top:8px;right:2px;transform:translateX(100%)}.am-vtabs-content-wrap{overflow:hidden;flex:1;height:100%;background-color:#fff}.am-vtabs-slides{height:100%}.am-vtabs-slides.animate{transition-duration:.5s}
+
+.am-vtabs {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row
+}
+
+.am-vtabs-bar {
+  widows: 28%;
+  overflow: hidden
+}
+
+.am-vtabs-bar-content {
+  height: 100%;
+  width: 210px;
+}
+
+.am-vtabs-bar-tab {
+  box-sizing: border-box;
+  height: 88px;
+  padding: 0px 24px;
+  text-align: left;
+  line-height: 88px;
+  font-size: 26px;
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-right-width: 4px;
+  border-right-style: solid;
+  border-right-color: transparent;
+  white-space: nowrap;
+  overflow: hidden
+}
+
+.am-vtabs-bar-title {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.am-vtabs-bar-badge.dot {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  transform: translateX(8px)
+}
+
+.am-vtabs-bar-badge.text {
+  position: absolute;
+  top: 8px;
+  right: 2px;
+  transform: translateX(100%)
+}
+
+.am-vtabs-content-wrap {
+  overflow: hidden;
+  flex: 1;
+  height: 100%;
+  background-color: #fff
+}
+
+.am-vtabs-slides {
+  height: 100%
+}
+
+.am-vtabs-slides.animate {
+  transition-duration: .5s
+}
+
+.am-vtabs-bar-title-text{
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

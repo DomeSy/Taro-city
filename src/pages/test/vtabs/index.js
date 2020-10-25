@@ -12,7 +12,7 @@ Component({
     tabBarActiveTextColor: '#108ee9',
     tabBarInactiveTextColor: '#333333',
     tabBarActiveBgColor: '#ffffff',
-    tabBarInactiveBgColor: '#f8f8f8',
+    tabBarInactiveBgColor: '#f3f8ff',
     tabBarlineColor: '#108ee9',
     onTabClick: function onTabClick() {},
     onScrollBar: function onScrollBar() {}

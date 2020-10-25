@@ -21,7 +21,7 @@
         }}"
         >
         <view class="am-vtabs-bar-title">
-          <text>{{item.title}}</text>
+          <text class="am-vtabs-bar-title-text">{{item.title}}</text>
           <badge
             className="am-vtabs-bar-badge {{item.badgeType ? item.badgeType : ''}}"
             a:if="{{item.badgeType}}"
