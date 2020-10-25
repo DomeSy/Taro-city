@@ -1,0 +1,41 @@
+<view class="SubscribeAdd">
+  <view class="SubscribeAdd-search">
+    <view class="SubscribeAdd-search-img"></view>
+    <view class="SubscribeAdd-search-text">输入要查找的证照</view>
+  </view>
+  <vtabs
+    class="subscribeAddtabs"
+    tabs="{{tabs}}"
+    onTabClick="handleChange"
+    onChange="onChange"
+    activeTab="{{activeTab}}"
+    sameFontSize="{{false}}"
+    tabBarlineShow="{{false}}"
+  >
+    <block a:for="{{tabs}}" a:key="{{index}}" a:for-item="tab">
+      <vtab-content anchor="{{tab.anchor}}">
+        <view className="Subscribes-Card">
+          <view className="Subscribes-Card-title">
+            <text className="Subscribes-Card-title-name">{{tab.title}}</text>
+          </view>
+          <view class="Subscribes-Card-list">
+            <block a:for="{{tab.listAll}}" a:key="{{index}}listAll">
+              <view className="Subscribes-Card-list-info">
+                <view className="Subscribes-Card-list-info-img" style="{{item.img}}">
+                  <view className="Subscribes-Card-list-info-img-cancel">取消订阅</view>
+                </view>
+                <view className="Subscribes-Card-list-info-text">{{item.text}}</view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </vtab-content>
+    </block>
+  </vtabs>
+  <view className="SubscribeAdd-tip">
+    <view className="SubscribeAdd-tip-text">
+      *更多服务，尽在“爱山东”APP。
+      <text className="SubscribeAdd-tip-text-download">如何下载？</text>
+    </view>
+  </view>
+</view>

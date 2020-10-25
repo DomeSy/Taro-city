@@ -1,7 +1,6 @@
 export default {
   pages: [
     'pages/index/index',
-    'pages/test/test',
     'pages/login/login',
     'pages/service/service',
     'pages/my/my',

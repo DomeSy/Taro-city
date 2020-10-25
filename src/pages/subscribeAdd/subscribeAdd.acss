@@ -1,0 +1,82 @@
+.SubscribeAdd{
+  font-family: PingFangSC, PingFangSC-Regular;
+}
+.Subscribes-Card{
+  padding: 0 0px 0 40px;
+}
+.Subscribes-Card-title{
+  padding: 20px 40px 20px 0;
+}
+.Subscribes-Card-title-name{
+  padding: 7px 28px;
+  background: #f3f8ff;
+  font-size: 24px;
+  line-height: 33px;
+  color: #1679FF;
+  font-weight: 600px;
+}
+.Subscribes-Card-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.Subscribes-Card-list-info{
+  margin-right: 28px;
+  margin-bottom: 20px;
+  width: 216px;
+}
+.Subscribes-Card-list-info-img{
+  height: 136px;
+  position: relative;
+}
+.Subscribes-Card-list-info-img-cancel{
+  padding: 6px 24px;
+  line-height: 28px;
+  font-size: 20px;
+  color: #FF3B30;
+  background: #FFFFFF;
+  border-radius: 20px;
+  position: absolute;
+  bottom: 12px;
+  left: 44px;
+}
+.Subscribes-Card-list-info-text{
+  font-weight: 300px;
+  line-height: 40px;
+  font-size: 28px;
+  color: #333333;
+  margin-top: 16px;
+}
+.SubscribeAdd-tip{
+  padding: 24px;
+  background: #EEEEEE;
+}
+.SubscribeAdd-tip-text{
+  font-size: 32px;
+  line-height:  45px;
+  color: #333333;
+}
+.SubscribeAdd-tip-text-download{
+  color: #1679FF;
+}
+.SubscribeAdd-search{
+  margin: 14px 24px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border: 2px solid #1677ff;
+  border-radius: 12px;
+  padding: 11px 24px;
+}
+.SubscribeAdd-search-img{
+  width: 36px;
+  height: 36px;
+  background: url(../../assets/search.png);
+  background-size: 100% 100%;
+}
+.SubscribeAdd-search-text{
+  margin-left: 8px;
+  font-weight: 400;
+  color: #cccccc;
+  line-height: 37px;
+  font-size: 26px;
+}

@@ -1,4 +1,3 @@
-
 export default {
-  navigationBarTitleText: '我的空间'
+  navigationBarTitleText: '订阅证照',
 }
