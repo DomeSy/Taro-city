@@ -18,6 +18,5 @@ class TaroMethod {
       duration
     })
   }
-
 }
 export default TaroMethod
