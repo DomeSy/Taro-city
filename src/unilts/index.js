@@ -3,6 +3,7 @@ export { default as Request } from './request'
 export { default as reduxRquest } from './reduxRquest'
 export { default as JmasRequest } from './jmas/jmasRequest'
 export { default as Method } from './method'
+export { default as TaroMethod } from './taroMethod'
 
 export const jisConfig = {
   httpRequest: 'http://zwfw.sd.gov.cn/JIS/',
