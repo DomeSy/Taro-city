@@ -43,16 +43,18 @@ class My extends Component {
 
   componentDidShow = () => {
     const { type } = getCurrentInstance().router.params || false;
-    // this.props.dispatchUser({token: '39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822', usertype: '1'})
+    const { dispatchUser, dispatchLogin, login } = this.props;
+    dispatchUser()
+    // dispatchLogin({token: '39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822', usertype: '1'})
 
     if(type == 'login'){
-      const { dispatchUser } = this.props;
       const { token, usertype } = getCurrentInstance().router.params;
-      dispatchUser({token, usertype})
+      dispatchLogin({token, usertype})
     }
   }
 
   Close = () => {
+    
     // jump({url: '/pages/matter/matter'})
   }
 
@@ -62,7 +64,6 @@ class My extends Component {
 
   render() {
     const { list } = this.state;
-    console.log(this.props)
     return (
       <View className="My">
         <AtMessage />
