@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import jmasRequest from './jmas/jmasRequest'
-import { jisConfig, TaroMethod } from './index'
+import { jisConfig, TaroMethod, Method } from './index'
 
 const getCreatesign = async payload => {
   const { token } = payload
