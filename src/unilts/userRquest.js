@@ -13,16 +13,19 @@ const getCreatesign = async payload => {
       token
     }
   }
-  return jmasRequest(jisConfig.appmark, 'findoutsideuserbytoken', datas)
+  return jmasRequest(jisConfig.appmark, 'findoutsideuserbytoken', datas, 'user')
 }
 
 // 封装请求
 async function userRquest({ payload = {}, method = 'GET'}) {
-
-  const data = await getCreatesign(payload)
-  // console.log(Method.RSAdecrypt(data), '--9')
-  console.log(data)
- 
+  const res = await getCreatesign(payload)
+  const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
+  if(retcode !== '000000'){
+    Method.Message(msg)
+  }else{
+    return JSON.parse(data)
+  }
 }
+
 
 export default userRquest

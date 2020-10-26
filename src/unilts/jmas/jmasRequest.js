@@ -40,15 +40,16 @@ const fetch = (appid, interfaceid, payload) => {
   })
 }
 
-async function jmasRequest(appid = '', interfaceid = '', payload = {}){
+async function jmasRequest(appid = '', interfaceid = '', payload = {}, way){
   let data = await fetch(appid, interfaceid, JSON.stringify(payload))
   if (data.code == '200') {
-    // if(data.data.substring(0,1) == '"'){
-    //   return JSON.parse(data.data.substring(1,data.data.length -1))
-    // }else{
-    //   return JSON.parse(data.data)
-    // }
-    return data.data
+    if (way === 'user') {
+      return data.data
+    } else if (data.data.substring(0,1) == '"') {
+      return JSON.parse(data.data.substring(1,data.data.length -1))
+    } else {
+      return JSON.parse(data.data)
+    }
   }
 }
 

@@ -12,12 +12,10 @@ export const dispatchUser = payload => reduxRquest({
   },
   type: USER_INFO,
   method: 'POST',
+  cb: res => ({ ...res, token: payload.token, usertype: payload.usertype }),
   payload
 }, 'user')
 
-// export const dispatchUser = payload => {
-//   console.log(payload, '--')
-// }
 
 // 用户登录
 // export const dispatchLogin = payload => reduxRquest({

@@ -1,10 +1,8 @@
 import { USER_INFO, USER_LOGIN, USER_LOGOUT } from '@constants/user'
 
 const INITIAL_STATE = {
-  userInfo: {
-    
-  },
-  token: ''
+  login: false,
+  userInfo: {}
 }
 
 export default function user(state = INITIAL_STATE, action) {
@@ -12,9 +10,9 @@ export default function user(state = INITIAL_STATE, action) {
     case USER_INFO: {
       return {
         ...state,
+        login: true,
         userInfo: {
           ...action.payload,
-          login: true
         }
       }
     }
