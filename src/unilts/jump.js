@@ -32,37 +32,32 @@ export default function jump({ url, title = '', payload = {}, method = 'navigate
     return
   }
 
-  if (/^https?:\/\//.test(url)) {
-    if (method == 'navigateBack') {
-      Taro.navigateBack({
-        delta: back
-      })
-    } else {
+  if(method == 'navigateBack') {
+    Taro.navigateBack({
+      delta: back,
+      url: urlStringify(PAGE_WEBVIEW, { url, title })
+    })
+  } else {
+    if (/^https?:\/\//.test(url)) {
       Taro[method]({
         url: urlStringify(PAGE_WEBVIEW, { url, title })
       })
-    }
-  } else if (/^\//.test(url)) {
-    const jumpUrl = /^\/pages\//.test(url) ? url : `/pages${url}${url}`
-
-    //  H5 不支持 switchTab，暂时 hack 下
-    if (Taro.getEnv() === 'WEB' && method === 'switchTab') {
-      Taro.navigateBack({ delta: Taro.getCurrentPages().length - 1 })
-      setTimeout(() => { Taro.redirectTo({ jumpUrl }) }, 100)
-      return
-    }
-
-    if (method == 'navigateBack') {
-      Taro.navigateBack({
-        delta: back
-      })
-    } else {
+    } else if (/^\//.test(url)) {
+      const jumpUrl = /^\/pages\//.test(url) ? url : `/pages${url}${url}`
+  
+      //  H5 不支持 switchTab，暂时 hack 下
+      if (Taro.getEnv() === 'WEB' && method === 'switchTab') {
+        Taro.navigateBack({ delta: Taro.getCurrentPages().length - 1 })
+        setTimeout(() => { Taro.redirectTo({ jumpUrl }) }, 100)
+        return
+      }
+  
       Taro[method]({
         url: urlStringify(jumpUrl, payload)
       })
+    }else {
+      console.error('url输入错误')
     }
-  }else {
-    console.error('url输入错误')
   }
 }
 
