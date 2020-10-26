@@ -9,16 +9,20 @@ class Index extends Component {
     super(...arguments)
   }
 
-  login = () => {
-    Jump({url: '/login'}, 'ALIPAY')
+  goLogin = () => {
+    const { login } = this.props;
+    login ? Jump({url: '/login', payload: {login}}, 'ALIPAY') : Jump({url: '/login'}, 'ALIPAY')
   }
 
   render() {
+    const { login, userInfo } = this.props;
+    console.log( login, userInfo)
+
     return (
       <View className="Info">
         <View className="Info-infos">
           <View className="Info-infos-img"></View>
-          <View className="Info-infos-name" onClick={this.login}>
+          <View className="Info-infos-name" onClick={this.goLogin}>
             张佳丽
           </View>
         </View>

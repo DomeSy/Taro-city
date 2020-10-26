@@ -1,4 +1,4 @@
 
 export default {
-  navigationBarTitleText: '登录'
+  navigationBarTitleText: '用户中心'
 }

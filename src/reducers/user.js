@@ -20,7 +20,6 @@ export default function user(state = INITIAL_STATE, action) {
         }
       }
       try {
-        console.log(USER_LOGIN, '存储成功')
         Taro.setStorageSync(USER_LOGIN, data)
       } catch (e) { 
         TaroMethod.Message('存储失败')
@@ -34,11 +33,16 @@ export default function user(state = INITIAL_STATE, action) {
         ...action.payload
       }
     }
-    // case USER_LOGOUT: {
-    //   return {
-    //     ...INITIAL_STATE
-    //   }
-    // }
+    case USER_LOGOUT: {
+      try {
+        Taro.removeStorage(USER_LOGIN)
+      } catch (e) { 
+        TaroMethod.Message('退出失败')
+      }
+      return {
+        ...INITIAL_STATE
+      }
+    }
     default:
       return state
   }

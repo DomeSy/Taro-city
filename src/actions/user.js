@@ -20,13 +20,5 @@ export const dispatchLogin = payload => reduxRquest({
   payload
 }, 'user')
 
-
-// 用户登录
-// export const dispatchLogin = payload => reduxRquest({
-//   // url: API_USER_LOGIN,
-//   type: USER_LOGIN,
-//   payload
-// })
-
 // // 用户退出登录
-// export const dispatchLogout = () => ({ type: USER_LOGOUT })
+export const dispatchLogout = () => ({ type: USER_LOGOUT })

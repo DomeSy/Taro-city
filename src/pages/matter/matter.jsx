@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tabs } from '@components'
+
 import './matter.scss'
 
 class Matter extends Component {
@@ -34,9 +35,12 @@ class Matter extends Component {
     }
   }
   
+  back = () => {
+  }
   render() {
 
     const { list, listText } = this.state
+
 
     return (
       <View className="Matter">
@@ -44,7 +48,7 @@ class Matter extends Component {
         {
           listText.map((item, index) => (
             <View className="Matter-list" key={index}>
-              <View className="Matter-list-text">{item.text}</View>
+              <View className="Matter-list-text" onClick={this.back}>{item.text}</View>
               <View className="Matter-list-time">{item.time}</View>
             </View>
           ))
