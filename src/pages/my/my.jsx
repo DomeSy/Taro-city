@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Info, Space } from './components'
-import { getCurrentInstance } from '@tarojs/taro'
+import Taro, { getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 import * as actions from '@actions/user'
 
@@ -29,6 +29,17 @@ const list = [
   },
 ]
 
+function getStorage() {
+  return new Promise(res => {
+    Taro.getStorage({
+      key: 'token',
+      success: function (data) {
+        res(data.data)
+      }
+    })
+  })
+}
+
 @connect(({ user }) => user, { ...actions })
 class My extends Component {
 
@@ -39,14 +50,16 @@ class My extends Component {
     }
   }
 
-  componentDidShow = () => {
-    const { type } = getCurrentInstance().router.params || false;
-    const { dispatchUser, dispatchLogin, dispatchLogout } = this.props;
 
-    if(type == 'login'){
-      const { token, usertype } = getCurrentInstance().router.params;
+  componentDidShow = async () => {
+    const { dispatchUser, dispatchLogin, dispatchLogout } = this.props;
+    const data = await getStorage()
+
+    if(data.type == 'login'){
+      const { token, usertype } = data;
+      console.log(token, usertype)
       dispatchLogin({token, usertype})
-    }else if(type == 'loginOut') {
+    }else if(data.type == 'loginOut') {
       dispatchLogout()
     }else{
       dispatchUser()

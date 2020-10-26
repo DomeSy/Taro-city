@@ -13,10 +13,16 @@ class Index extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { name, loginname } = nextProps.userInfo
-    this.setState({
-      name: name ? Method.Desensit(name, 0, 1) : loginname
-    })
+    if(nextProps.login){
+      const { name, loginname } = nextProps.userInfo
+      this.setState({
+        name: name ? Method.Desensit(name, 0, 1) : loginname
+      })
+    }else{
+      this.setState({
+        name: '请登录'
+      })
+    }
   }
 
   goLogin = () => {

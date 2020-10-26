@@ -2,7 +2,10 @@ import { Jump, jisConfig } from '@unilts';
 
 Page({
   data: {
-    src: ''
+    src: '',
+    type: '',
+    token: '',
+    usertype: ''
   },
   onShow() {
   },
@@ -17,12 +20,28 @@ Page({
   async webListener(e) { 
     const { action } = e.detail;
     if(action === 'loginOut'){
+      my.setStorage({
+        key: 'token',
+        data: {
+          token: '',
+          usertype: '',
+          type: "loginOut"
+        }
+      });
       //退出
-      Jump({url: '/my', payload: {type: "loginOut"}, method: 'navigateBack'})
+      Jump({method: 'navigateBack'})
     }else {
       //登录
       const { token, usertype } = e.detail.params;
-      Jump({url: '/my', payload: {token, usertype, type: "login"}, method: 'navigateBack'})
+      my.setStorage({
+        key: 'token',
+        data: {
+          token,
+          usertype,
+          type: "login"
+        }
+      });
+      Jump({method: 'navigateBack'})
     }
   }
 })
