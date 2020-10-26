@@ -52,17 +52,19 @@ class My extends Component {
 
 
   componentDidShow = async () => {
-    const { dispatchUser, dispatchLogin, dispatchLogout } = this.props;
-    const data = await getStorage()
+    // Taro.clearStorage()
+    const { dispatchUser, dispatchLogin, dispatchLogout, login } = this.props;
+    
+    const data = await getStorage();
+    const type = data ? data.type : false;
 
-    if(data.type == 'login'){
+    if(type == 'login'){
       const { token, usertype } = data;
-      console.log(token, usertype)
       dispatchLogin({token, usertype})
-    }else if(data.type == 'loginOut') {
+    }else if(type == 'loginOut') {
       dispatchLogout()
     }else{
-      dispatchUser()
+      login ? '' : dispatchUser()
     }
   }
 

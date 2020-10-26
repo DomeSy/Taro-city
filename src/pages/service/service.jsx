@@ -3,10 +3,13 @@ import { View } from '@tarojs/components'
 import { Tip } from '@components'
 import { ServerList, UseTime } from './components'
 import { SearchTab } from '../index/components'
+import * as actions from '@actions/user'
+import { connect } from 'react-redux'
 
 import './service.scss'
 import banner from '@assets/banner.png'
 
+@connect(({ user }) => user, { ...actions })
 class Service extends Component {
   constructor(){
     super(...arguments);
@@ -14,6 +17,11 @@ class Service extends Component {
     this.state = {
       banner: `background: url(${banner});background-size: 100% 100%`
     }
+  }
+
+  componentDidShow = () => {
+    const { login, dispatchUser } = this.props;
+    login ? '' : dispatchUser()
   }
 
   config = {
