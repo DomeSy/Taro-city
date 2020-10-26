@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Info, Space } from './components'
-import Taro,{ getCurrentInstance } from '@tarojs/taro'
+import { getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 import * as actions from '@actions/user'
-import { Method, Jump } from '@unilts'
-import { AtMessage, AtButton } from 'taro-ui'
 
 import './my.scss'
 
@@ -44,7 +42,6 @@ class My extends Component {
   componentDidShow = () => {
     const { type } = getCurrentInstance().router.params || false;
     const { dispatchUser, dispatchLogin, dispatchLogout } = this.props;
-    // dispatchLogin({token: '39555083a7364766968221d144053af88759db5ecfc849e2a2a1b38db8819822', usertype: '1'})
 
     if(type == 'login'){
       const { token, usertype } = getCurrentInstance().router.params;
@@ -56,19 +53,12 @@ class My extends Component {
     }
   }
 
-  Close = () => {
-  }
-
-  handleClick = () => {
- 
-  }
-
   render() {
     const { list } = this.state;
     const { login, userInfo } = this.props
+
     return (
       <View className="My">
-        <AtMessage />
         <Info login={login} userInfo={userInfo} />
         {/* 信息栏 */}
         <View className="My-border" />
@@ -90,13 +80,6 @@ class My extends Component {
         <View className="My-border" />
         {/* 我的空间 */}
         <Space />
-        <View className="My-login">
-          <View className="My-login-btn">
-            <View className="My-login-btn-text" onClick={this.Close}>
-              退出登录
-            </View>
-          </View>
-        </View>
       </View>
     )
   }

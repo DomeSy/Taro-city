@@ -40,19 +40,4 @@
       }
     }
   }
-  &-login{
-    display: flex;
-    justify-content: center;
-    &-btn{
-      padding: 8px 24px;
-      border: 1px solid $blue;
-      border-radius: 34px;
-      &-text{
-        font-family: $font-family;
-        color: $blue;
-        font-size: $font-size;
-        line-height: $line-height;
-      }
-    }
-  }
 }
