@@ -43,14 +43,19 @@ const fetch = (appid, interfaceid, payload, way) => {
 }
 
 async function jmasRequest(appid = '', interfaceid = '', payload = {}, way){
-  let data = await fetch(appid, interfaceid, JSON.stringify(payload), way)
-  if (data.code == '200') {
+  let res = await fetch(appid, interfaceid, JSON.stringify(payload), way)
+  if (res.code == '200' ) {
     if (way === 'user') {
-      return data.data
-    } else if (data.data.substring(0,1) == '"') {
-      return JSON.parse(data.data.substring(1,data.data.length -1))
+      return res.data
+    } else if (res.data.substring(0,1) == '"') {
+      return JSON.parse(res.data.substring(1,data.data.length -1))
     } else {
-      return JSON.parse(data.data)
+      const { data, success, message } = JSON.parse(res.data);
+      if(success){
+        return data
+      }else{
+        return message
+      }
     }
   }
 }

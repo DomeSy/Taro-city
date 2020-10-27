@@ -19,7 +19,6 @@ const getCreatesign = async payload => {
 // 封装请求
 async function userRquest({ payload = {}, method = 'GET'}) {
   const res = await getCreatesign(payload)
-  console.log(JSON.parse(Method.RSAdecrypt(res)),'006')
   const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
   if(retcode !== '000000'){
     TaroMethod.Message(msg)

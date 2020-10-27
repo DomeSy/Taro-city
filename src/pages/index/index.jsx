@@ -11,6 +11,8 @@ import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from 
 
 @connect(({ user }) => user, { ...actions })
 class Index extends Component {
+  componentDidMount(){}
+
   componentWillReceiveProps (nextProps) {}
 
   componentWillUnmount () {  }
@@ -19,7 +21,7 @@ class Index extends Component {
     const { login, dispatchUser } = this.props;
     login ? '' : dispatchUser();
     const data = await JmasRequest('jmportalnzjk', 'getpage', {
-      siteid: '01f443bfeb054686a28ca8446f9f3810',
+      siteid: '178966c2ddf04da8aa2fb447eedf677b',
       type: '2'
     })
     console.log(data,'--')
