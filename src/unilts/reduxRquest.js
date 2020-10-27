@@ -8,7 +8,6 @@ import jmasRequest from './jmas/jmasRequest'
     user:用户
     request: 普通请求
     jams： jmas接口请求（默认）
-
   url: 部分地址
   path：完整地址
   payload：参数
@@ -16,11 +15,14 @@ import jmasRequest from './jmas/jmasRequest'
   fetchOptions： 其余操作
   cb：增加原有返回上的数据
   type：类型
+  appid: Jmas的
+  interfaceid, Jmas的
+  wayJmas, Jmas的
 */
-export default function createAction({ url, path, payload, method, fetchOptions, cb, type }, way = 'jmas') {
+export default function createAction({ appid, interfaceid, wayJmas, url, path, payload, method, fetchOptions, cb, type }, way = 'jmas') {
   return async (dispatch) => {
     if(way === 'user') {
-      const res = await userRquest({ payload, method });
+      const res = await userRquest({ payload });
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
     } else if(war == 'request'){
@@ -28,7 +30,7 @@ export default function createAction({ url, path, payload, method, fetchOptions,
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
     } else {
-      const res = await jmasRequest({ url, path, payload, method, ...fetchOptions });
+      const res = await jmasRequest( appid, interfaceid, payload, wayJmas);
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
     }

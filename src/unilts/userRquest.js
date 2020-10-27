@@ -3,20 +3,23 @@ import jmasRequest from './jmas/jmasRequest'
 import { jisConfig, TaroMethod, Method } from './index'
 
 const getCreatesign = async payload => {
-  const { token } = payload
+  const { token, usertype } = payload
+  const servicename = usertype == 1 ? 'findOutsideUserByToken' : 'findCorUserByToken'
+  const interfaceId = usertype == 1 ? 'findoutsideuserbytoken' : 'findcoruserytoken'
   const datas = {
     app_id: jisConfig.appmark,
-    servicename: 'findOutsideUserByToken',
+    servicename,
     params: {
       token
     }
   }
-  return jmasRequest(jisConfig.appmark, 'findoutsideuserbytoken', datas, 'user')
+  return jmasRequest(jisConfig.appmark, interfaceId, datas, 'user')
 }
 
 // 封装请求
 async function userRquest({ payload = {}, method = 'GET'}) {
   const res = await getCreatesign(payload)
+  console.log(JSON.parse(Method.RSAdecrypt(res)),'006')
   const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
   if(retcode !== '000000'){
     TaroMethod.Message(msg)
