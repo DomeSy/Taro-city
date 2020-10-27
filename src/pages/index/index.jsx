@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View} from '@tarojs/components'
+import { View } from '@tarojs/components'
+import { Loading } from '@components'
 import { Tip } from '@components'
 import { JmasRequest, Method } from '@unilts'
 import * as actions from '@actions/user'
