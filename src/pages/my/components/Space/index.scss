@@ -18,4 +18,81 @@
       }
     }
   }
+  &-Card{
+    padding: 12px;
+    font-family: $font-family;
+    &-content{
+      margin-top: 24px;
+      padding: 24px 32px;
+      &-title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $font-color;
+        &-name{
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          &-text{
+            font-size: $font-size;
+            line-height: $line-height;
+          }
+          &-eyes{
+            margin-left: 20px;
+            width: 48px;
+            height: 33px;
+            background: url(../../../../assets/my/openeyes.png);
+            background-size: 100% 100%;
+          }
+          &-close{
+            width: 48px;
+            height: 23px;
+            background: url(../../../../assets/my/closeeyes.png);
+            background-size: 100% 100%;
+          }
+        }
+        &-data{
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
+      &-money{
+        margin-top: 40px;
+        padding: 0 41px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-mid{
+          text-align: center;
+          &-all{
+            line-height: $line-height-list;
+            font-size: $font-size-list;
+            color: $red;
+          }
+          &-text{ 
+            line-height: $line-height-effect;
+            font-size: $font-size-effect;
+            color: $font-color-effect;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      &-tip{
+        padding: 16px 0 4px 0;
+        border-top: 1px solid #d8d8d8;
+        font-size: 20px;
+        line-height: 28px;
+        color: $font-color-effect;
+        display: flex;
+        justify-content: space-between;
+        &-detail{
+          display: flex;
+          justify-content: right;
+          &-text{
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+  }
 }

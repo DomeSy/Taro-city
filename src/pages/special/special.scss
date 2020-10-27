@@ -1,0 +1,14 @@
+@import "@styles/theme.scss";
+
+.Special{
+  &-list{
+    padding: 24px;
+    &-img{
+      height: 180px;
+      margin-top: 24px;
+      &:first-of-type{
+        margin-top: 0;
+      }
+    }
+  }
+}

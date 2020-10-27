@@ -17,6 +17,7 @@ export default {
     'pages/subscribeJurisdiction/subscribeJurisdiction',
     'pages/safekeeping/safekeeping',
     'pages/enclosure/enclosure',
+    'pages/special/special',
     'pages/search/search',
     'pages/searchList/searchList',
     'pages/subscribeAdd/subscribeAdd',
