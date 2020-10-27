@@ -53,8 +53,6 @@ async function jmasRequest(appid = '', interfaceid = '', payload = {}, way){
       const { data, success, message } = JSON.parse(res.data);
       if(success){
         return data
-      }else{
-        return message
       }
     }
   }
