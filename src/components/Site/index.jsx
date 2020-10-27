@@ -4,26 +4,11 @@ import { View } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 
 import './index.scss'
-
-const initialState = [
-  {
-    area: '济南市',
-    active: true
-  },
-  {
-    area: '青岛市',
-  },
-  {
-    area: '淄博市',
-  },
-  {
-    area: '枣庄市',
-  }
-]
+import { Site } from './site';
 
 function Index(){
 
-  const [area, setArea] = useState(initialState);
+  const [area, setArea] = useState(Site);
   const [title, setTitle] = useState("济南市");
   const [open, setOpen] = useState(false);
 
@@ -46,12 +31,11 @@ function Index(){
   }
 
   return (
-    <View className="DSite">
+    <>
       <AtFloatLayout isOpened={open} title="选择城市">
         <View className="DSite-site">
           {
             area.map((item, index) => (
-              // "DSite-site-area DSite-site-active"
               <View 
                 className={item.active ? "DSite-site-area DSite-site-active" :  "DSite-site-area"}
                 key={index}
@@ -63,11 +47,14 @@ function Index(){
           }
         </View>
       </AtFloatLayout>
-      <View className="DSite-text" onClick={() => onChangeArea(open, setOpen)}>
-        {title}
-      </View>
+      <View className="DSite"  onClick={() => onChangeArea(open, setOpen)}>
+        <View className="DSite-text">
+          {title}
+        </View>
       <AtIcon value='chevron-down' size='24' color='rgba(123,123,123,1)'></AtIcon>
     </View>
+    </>
+
   )
 }
 

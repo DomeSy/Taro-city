@@ -17,6 +17,7 @@
     display: flex;
     flex-wrap: wrap;
     &-area{
+      z-index: 1;
       width: 198px;
       background: $background;
       padding: 15px 8px;

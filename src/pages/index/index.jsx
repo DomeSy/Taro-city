@@ -21,12 +21,11 @@ class Index extends Component {
   componentDidShow = async () => {
     const { login, dispatchUser } = this.props;
     login ? '' : dispatchUser();
-    const data = await JmasRequest('jmportalnzjk', 'getpage', {
-      // siteid: '178966c2ddf04da8aa2fb447eedf677b',
-      siteid: '01f443bfeb054686a28ca8446f9f3810',
-      type: '2'
-    })
-    console.log(data,'--')
+    // const data = await JmasRequest('jmportalnzjk', 'getpage', {
+    //   siteid: '178966c2ddf04da8aa2fb447eedf677b',
+    //   type: '2'
+    // })
+    // console.log(data,'--')
 
   }
 
