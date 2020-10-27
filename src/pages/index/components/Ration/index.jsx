@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 import { View, Swiper, SwiperItem } from '@tarojs/components';
 import './index.scss'
 
-// 搜索栏
 class Index extends Component {
   render() {
     return (
       <View className="Ration">
         <Swiper
-          className='swipe'
+          className='Ration-swipe'
           indicatorColor='#FFFFFF'
           indicatorActiveColor='#1677FF'
           circular
@@ -17,13 +16,13 @@ class Index extends Component {
           // autoplay
         >
           <SwiperItem>
-            <View className='img'></View>
+            <View className='Ration-swipe-img'></View>
           </SwiperItem>
           <SwiperItem>
-            <View className=''>2</View>
+            <View className='Ration-swipe-img'></View>
           </SwiperItem>
           <SwiperItem>
-            <View className=''>3</View>
+            <View className='Ration-swipe-img'></View>
           </SwiperItem>
         </Swiper>
       </View>
