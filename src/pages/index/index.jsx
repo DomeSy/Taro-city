@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View} from '@tarojs/components'
 import { Tip } from '@components'
-import { jmasRequest, Method } from '@unilts'
+import { JmasRequest, Method } from '@unilts'
 import * as actions from '@actions/user'
 import { connect } from 'react-redux'
 
@@ -15,9 +15,15 @@ class Index extends Component {
 
   componentWillUnmount () {  }
 
-  componentDidShow = () => {
+  componentDidShow = async () => {
     const { login, dispatchUser } = this.props;
-    login ? '' : dispatchUser()
+    login ? '' : dispatchUser();
+    const data = await JmasRequest('jmportalnzjk', 'getpage', {
+      siteid: '01f443bfeb054686a28ca8446f9f3810',
+      type: '2'
+    })
+    console.log(data,'--')
+
   }
 
   componentDidHide () {  }

@@ -1,11 +1,16 @@
-const SIGNURL = 'https://wfw.isdapp.shandong.gov.cn/jmasapi/jmas-api-gateway-server/createsign.do'
-const GATEWAY = 'https://wfw.isdapp.shandong.gov.cn/jmasapi/jmas-api-gateway-server/gateway.do'
+const USERSIGNURL = 'https://wfw.isdapp.shandong.gov.cn/jmasapi/jmas-api-gateway-server/createsign.do'
+const USERGATEWAY = 'https://wfw.isdapp.shandong.gov.cn/jmasapi/jmas-api-gateway-server/gateway.do'
+const SIGNURL = 'http://103.239.153.99:81/jmasapi/jmas-api-gateway-server/createsign.do'
+const GATEWAY = 'http://103.239.153.99:81/jmasapi/jmas-api-gateway-server/gateway.do'
 
+// http://103.239.153.99:81/jmas/jmportal
 const FROMPORT = '2' //支付宝
 const VERSION = '1.0'
 const CHARSET = 'utf-8'
 
 export {
+  USERSIGNURL,
+  USERGATEWAY,
   SIGNURL,
   GATEWAY,
   FROMPORT,
