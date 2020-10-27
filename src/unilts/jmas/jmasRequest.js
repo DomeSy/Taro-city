@@ -50,10 +50,7 @@ async function jmasRequest(appid = '', interfaceid = '', payload = {}, way){
     } else if (res.data.substring(0,1) == '"') {
       return JSON.parse(res.data.substring(1,data.data.length -1))
     } else {
-      const { data, success, message } = JSON.parse(res.data);
-      if(success){
-        return data
-      }
+      return JSON.parse(res.data)
     }
   }
 }
