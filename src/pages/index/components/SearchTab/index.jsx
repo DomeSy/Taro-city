@@ -16,7 +16,7 @@ class Index extends Component {
     const { DSiteInit } = this.props;
     DSiteInit()
   }
-  
+
   componentDidShow(){}
 
   ChangeSite = (value) => {
@@ -25,6 +25,7 @@ class Index extends Component {
 
   render() {
     const { site } = this.props;
+    console.log(this.props)
 
     return (
       <View className="Search">

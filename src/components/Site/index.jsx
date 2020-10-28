@@ -20,17 +20,15 @@ class My extends Component {
 
   componentWillReceiveProps (nextPrev) {
     const { active } = nextPrev;
-    if(active){
-      const { area } = this.state;
-      const listAll = area.map(item => {
-        item.active = item.area === active.area ? true : false;
-        return item
-      })
-      this.setState({
-        title: active.area,
-        aera: listAll
-      })
-    }
+    const { area } = this.state;
+    const listAll = area.map(item => {
+      item.active = item.area === active.area ? true : false;
+      return item
+    })
+    this.setState({
+      title: active.area,
+      aera: listAll
+    })
   }
 
   onArea = (item, area) => {

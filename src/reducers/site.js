@@ -23,7 +23,7 @@ export default function counter (state = INITIAL_STATE, action) {
         console.error('存储失败')
       }
       return {
-        ...action.payload
+        site: action.payload
       }
     }
     default:
