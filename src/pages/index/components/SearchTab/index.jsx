@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-
+import { Taro } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { Site } from '@components'
 import { AtIcon } from 'taro-ui'
 import { connect } from 'react-redux'
 import * as actions from '@actions/site'
+
 import  './index.scss'
 
 // 搜索栏
@@ -12,14 +13,23 @@ import  './index.scss'
 class Index extends Component {
   constructor () {
     super(...arguments)
-    console.log(this.props,'--')
+    const { DSiteInit } = this.props;
+    DSiteInit()
+  }
+  
+  componentDidShow(){}
+
+  ChangeSite = (value) => {
+    this.props.DSiteSet({area: value.area, siteid: value.siteid})
   }
 
   render() {
+    const { site } = this.props;
+
     return (
       <View className="Search">
         <View className="site">
-          <Site />
+          <Site active={site} onChange={this.ChangeSite} />
         </View>
         <View className="searchs">
           <View className="sInput">

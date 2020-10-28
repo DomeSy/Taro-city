@@ -4,17 +4,18 @@ import { Loading } from '@components'
 import { Tip } from '@components'
 import { JmasRequest, Method } from '@unilts'
 import * as actions from '@actions/user'
+import * as siteActions from '@actions/site'
 import { connect } from 'react-redux'
 
 
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 
-@connect(({ user }) => user, { ...actions })
+@connect(({ user }) => user, { ...actions, ...siteActions })
 class Index extends Component {
   constructor(){
     super(...arguments)
-    const { dispatchUser, login } = this.props;
+    const { dispatchUser, login, DSiteInit } = this.props;
     login ? '' : dispatchUser()
   }
 

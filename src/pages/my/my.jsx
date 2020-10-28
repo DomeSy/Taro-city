@@ -53,6 +53,7 @@ class My extends Component {
   }
 
   componentDidShow = async () => {
+    // Taro.clearStorage()
     const { dispatchLogin, dispatchLogout } = this.props;
     
     const data = await getStorage();

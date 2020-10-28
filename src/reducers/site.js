@@ -1,4 +1,5 @@
-import { SITEINIT, SITEGET } from '../constants/site'
+import Taro from '@tarojs/taro'
+import { SITEINIT, SITESET } from '../constants/site'
 import { site } from '@unilts/site'
 
 const INITIAL_STATE = {
@@ -10,17 +11,22 @@ const INITIAL_STATE = {
 
 export default function counter (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case SITEINIT:
-      return {
-        ...state,
-        num: state.num + 1
+    case SITEINIT: {
+      return action.payload ? {
+        site: action.payload
+      } : INITIAL_STATE 
+    }
+    case SITESET: {
+      try {
+        Taro.setStorageSync(SITESET, action.payload)
+      } catch (e) { 
+        console.error('存储失败')
       }
-     case SITEGET:
-       return {
-         ...state,
-         num: state.num - 1
-       }
-     default:
-       return state
+      return {
+        ...action.payload
+      }
+    }
+    default:
+      return state
   }
 }

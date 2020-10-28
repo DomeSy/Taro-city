@@ -1,13 +1,15 @@
-import { SITEINIT, SITEGET } from '../constants/site'
+import { SITEINIT, SITESET } from '../constants/site'
+import { storage } from '@unilts'
 
-export const add = () => {
+export const DSiteInit = () => storage({
+  type: SITEINIT,
+  key: SITESET
+})
+
+export const DSiteSet = payload => {
   return {
-    type: SITEINIT
-  }
-}
-export const minus = () => {
-  return {
-    type: SITEGET
+    type: SITESET,
+    payload
   }
 }
 
