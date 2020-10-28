@@ -2,43 +2,67 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Loading } from '@components'
 import { Tip } from '@components'
-import { JmasRequest, Method } from '@unilts'
+import { JmasRequest, Method, Jump } from '@unilts'
 import * as actions from '@actions/user'
 import * as siteActions from '@actions/site'
+import * as homeActions from '@actions/home'
 import { connect } from 'react-redux'
 
 
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 
-@connect(({ user }) => user, { ...actions, ...siteActions })
+@connect(({user, site}) => ({...user, ...site}), { ...actions, ...siteActions, ...homeActions })
 class Index extends Component {
   constructor(){
     super(...arguments)
-    const { dispatchUser, login, DSiteInit } = this.props;
-    login ? '' : dispatchUser()
+
+    this.state = {
+      siteid: ''
+    }
   }
 
-  componentDidMount(){}
-
-  componentWillReceiveProps (nextProps) {}
 
   componentWillUnmount () {  }
 
-  componentDidShow = async () => {
-    // const data = await JmasRequest('jmportalnzjk', 'getpage', {
-    //   siteid: '178966c2ddf04da8aa2fb447eedf677b',
-    //   type: '2'
-    // })
-    // console.log(data,'--')
-
+  componentDidMount(){
+    const { dispatchUser, login, DSiteInit, DHomeInit, site:{ siteid }, } = this.props;
+    login ? '' : dispatchUser()
+    DSiteInit()
+    DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
+    this.Init()
+  }
+  
+  componentDidUpdate(){
+    const { DHomeInit, site:{ siteid } } = this.props;
+    // DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
+    this.Init()
+  }
+  Init = () => {
   }
 
-  componentDidHide () {  }
+  componentDidShow = async () => {
+
+    // const data = await JmasRequest('jmportalnzjk', 'getapplist', {
+    //   // siteid: '01f443bfeb054686a28ca8446f9f3810',
+    //   siteid: '178966c2ddf04da8aa2fb447eedf677b',
+    //   colId: 'bc16bc58b4474ecca0405b236c87e78e',
+    //   pageNo:'1',
+    //   pageSize: '10'
+    // })
+    // console.log(data,'--')
+  }
+
+  componentDidHide () {   }
+
+  onClick = () => {
+    Jump({url: '/opinion'})
+  }
 
   render () {
     return (
       <View className="Index">
+        <View onClick={this.onClick}>我是蛇</View>
         {/* 搜索框 */}
         <SearchTab />
         {/* 轮播图 */}

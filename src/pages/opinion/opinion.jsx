@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components';
 import { Textarea, ImagePicker, Button } from '@components';
+import { JmasRequest, Method, Jump } from '@unilts'
+
 import './opinion.scss'
 
 class Opinion extends Component {
@@ -21,6 +23,11 @@ class Opinion extends Component {
     console.log(file,'----')
   }
 
+  onClick = () => {
+    Jump({url: '/index', method: 'switchTab'})
+
+  }
+
   render() {
 
     return (
@@ -29,7 +36,7 @@ class Opinion extends Component {
         <ImagePicker count={4} allCount={4} onChange={(file) => this.onChangeImage(file) }/>
         <View className="Opinion-border" />
         <Button></Button>
-        <View className="Opinion-tip">联系我们</View>
+        <View className="Opinion-tip" onClick={() => this.onClick()}>联系我们</View>
         <View className="Opinion-tel">0531-81286501 / 0531-81286501</View>
       </View>
     )

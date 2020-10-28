@@ -13,8 +13,6 @@ import  './index.scss'
 class Index extends Component {
   constructor () {
     super(...arguments)
-    const { DSiteInit } = this.props;
-    DSiteInit()
   }
 
   componentDidShow(){}

@@ -25,14 +25,19 @@ export default function createAction({ appid, interfaceid, wayJmas, url, path, p
       const res = await userRquest({ payload });
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
-    } else if(war == 'request'){
+    } else if(way == 'request'){
       const res = await request({ url, path, payload, method, ...fetchOptions });
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
     } else {
       const res = await jmasRequest( appid, interfaceid, payload, wayJmas);
-      dispatch({ type, payload: cb ? cb(res) : res })
-      return res
+      const { success, message, data } = res;
+      if(success){
+        dispatch({ type, payload: cb ? cb(data) : data })
+        return data
+      }else{
+        console.log(message)
+      }
     }
   }
 }
