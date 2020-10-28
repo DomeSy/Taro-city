@@ -25,8 +25,8 @@ export default {
     'pages/webview/webview',
     'pages/download/download',
     'pages/medical/medical',
-    'pages/detail/detail',
-    'pages/nearUse/nearUse'
+    'pages/nearUse/nearUse',
+    'pages/detail/detail'
   ],
   window: {
     backgroundTextStyle: 'light',

@@ -18,10 +18,14 @@ class Service extends Component {
       banner: `background: url(${banner});background-size: 100% 100%`
     }
   }
+  
+  componentWillMount(){
+    const { dispatchUser, login } = this.props;
+    login ? '' : dispatchUser()
+  }
 
   componentDidShow = () => {
-    const { login, dispatchUser } = this.props;
-    login ? '' : dispatchUser()
+   
   }
 
   config = {

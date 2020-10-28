@@ -18,6 +18,7 @@ class Opinion extends Component {
   }
 
   onChangeImage = (file) => {
+    console.log(file,'----')
   }
 
   render() {

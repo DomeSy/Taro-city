@@ -12,6 +12,11 @@ import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from 
 
 @connect(({ user }) => user, { ...actions })
 class Index extends Component {
+  componentWillMount(){
+    const { dispatchUser, login } = this.props;
+    login ? '' : dispatchUser()
+  }
+
   componentDidMount(){}
 
   componentWillReceiveProps (nextProps) {}
@@ -19,8 +24,6 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidShow = async () => {
-    const { login, dispatchUser } = this.props;
-    login ? '' : dispatchUser();
     // const data = await JmasRequest('jmportalnzjk', 'getpage', {
     //   siteid: '178966c2ddf04da8aa2fb447eedf677b',
     //   type: '2'
@@ -34,6 +37,7 @@ class Index extends Component {
   render () {
     return (
       <View className="Index">
+        <View>我是谁</View>
         {/* 搜索框 */}
         <SearchTab />
         {/* 轮播图 */}

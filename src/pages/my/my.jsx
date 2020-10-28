@@ -50,9 +50,13 @@ class My extends Component {
     }
   }
 
+  componentWillMount(){
+    const { dispatchUser, login } = this.props;
+    login ? '' : dispatchUser()
+  }
 
   componentDidShow = async () => {
-    const { dispatchUser, dispatchLogin, dispatchLogout, login } = this.props;
+    const { dispatchLogin, dispatchLogout } = this.props;
     
     const data = await getStorage();
     const type = data ? data.type : false;
@@ -64,8 +68,6 @@ class My extends Component {
     }else if(type == 'loginOut') {
       dispatchLogout()
       Taro.removeStorage({ key: 'token' })
-    }else{
-      login ? '' : dispatchUser()
     }
   }
 
