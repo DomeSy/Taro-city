@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro'
 import { USER_INFO, USER_LOGIN, USER_LOGOUT } from '@constants/user'
-import { TaroMethod } from '@unilts'
 
 const INITIAL_STATE = {
   login: false,
@@ -22,7 +21,7 @@ export default function user(state = INITIAL_STATE, action) {
       try {
         Taro.setStorageSync(USER_LOGIN, data)
       } catch (e) { 
-        TaroMethod.Message('存储失败')
+        console.error('存储失败')
       }
       return data
     }
@@ -37,7 +36,7 @@ export default function user(state = INITIAL_STATE, action) {
       try {
         Taro.removeStorage(USER_LOGIN)
       } catch (e) { 
-        TaroMethod.Message('退出失败')
+        console.error('退出失败')
       }
       return {
         ...INITIAL_STATE
