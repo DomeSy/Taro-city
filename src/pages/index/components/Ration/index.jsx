@@ -15,7 +15,6 @@ class Index extends Component {
     const data = await Method.JmasData(cols, '我的证照')
   }
 
-
   render() {
     return (
       <View className="Ration">
