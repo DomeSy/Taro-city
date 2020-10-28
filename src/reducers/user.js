@@ -26,7 +26,6 @@ export default function user(state = INITIAL_STATE, action) {
       return data
     }
     case USER_INFO: {
-      // console.log(action, '008')
       return { 
         ...state,
         ...action.payload
