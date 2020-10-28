@@ -3,28 +3,18 @@ import { View } from '@tarojs/components';
 
 import './index.scss'
 
-const InitialState = [
-  {
-    text: '热门',
-    isUnder: true
-  },
-  {
-    text: '上新',
-    isUnder: false
-  }
-]
+function Index({list, onChang}){
 
-function Index(){
-
-  const [name, setName] = useState(InitialState)
+  const [name, setName] = useState(list)
 
   const check = ({item, name, setName}) =>{
     if(!item.isUnder){
-      const list = name.map(item => {
+      const lists = name.map(item => {
         item.isUnder = ! item.isUnder
         return item
       })
-      setName(list)
+      setName(lists)
+      onChang(item.value)
     }
   }
 

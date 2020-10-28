@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import { View, Swiper, SwiperItem } from '@tarojs/components';
 import './index.scss'
-import { connect } from 'react-redux';
-import { Method } from '@unilts'
 
-@connect(({ home }) => home)
 class Index extends Component {
   constructor(){
     super(...arguments)
   }
 
-  async componentDidUpdate(){
-    const { cols } = this.props.home
-    const data = await Method.JmasData(cols, '我的证照')
-  }
 
   render() {
     return (
