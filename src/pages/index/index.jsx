@@ -12,7 +12,8 @@ import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from 
 
 @connect(({ user }) => user, { ...actions })
 class Index extends Component {
-  componentWillMount(){
+  constructor(){
+    super(...arguments)
     const { dispatchUser, login } = this.props;
     login ? '' : dispatchUser()
   }
@@ -37,7 +38,6 @@ class Index extends Component {
   render () {
     return (
       <View className="Index">
-        <View>我是谁</View>
         {/* 搜索框 */}
         <SearchTab />
         {/* 轮播图 */}

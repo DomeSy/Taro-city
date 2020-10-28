@@ -2,13 +2,13 @@ import React,{ useState } from 'react'
 import { AtFloatLayout } from "taro-ui"
 import { View } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
+import { site } from '@unilts/site';
 
 import './index.scss'
-import { Site } from './site';
 
 function Index(){
 
-  const [area, setArea] = useState(Site);
+  const [area, setArea] = useState(site);
   const [title, setTitle] = useState("济南市");
   const [open, setOpen] = useState(false);
 

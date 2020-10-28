@@ -1,17 +1,21 @@
-import { ADD, MINUS } from '../constants/counter'
+import { SITEINIT, SITEGET } from '../constants/site'
+import { site } from '@unilts/site'
 
 const INITIAL_STATE = {
-  num: 0
+  site: {
+    area: site[0].area,
+    siteid: site[0].siteid
+  }
 }
 
 export default function counter (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case ADD:
+    case SITEINIT:
       return {
         ...state,
         num: state.num + 1
       }
-     case MINUS:
+     case SITEGET:
        return {
          ...state,
          num: state.num - 1

@@ -48,9 +48,6 @@ class My extends Component {
     this.state = {
       list
     }
-  }
-
-  componentWillMount(){
     const { dispatchUser, login } = this.props;
     login ? '' : dispatchUser()
   }
