@@ -8,11 +8,11 @@ export const site = [
   },
   {
     area: '青岛市',
-    siteid: '1',
+    siteid: '178966c2ddf04da8aa2fb447eedf677b',
   },
   {
     area: '淄博市',
-    siteid: '2',
+    siteid: '178966c2ddf04da8aa2fb447eedf677b',
   },
   {
     area: '枣庄市',

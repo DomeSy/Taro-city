@@ -1,5 +1,5 @@
 import qs from 'qs'
-import request from '../request'
+import request from '../Request'
 import { FROMPORT, SIGNURL, VERSION, GATEWAY, USERGATEWAY, USERSIGNURL, CHARSET } from './jmasApi'
 
 // appid：appid, interfaceid：接口id, payload: 参数

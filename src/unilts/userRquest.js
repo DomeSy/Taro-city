@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import jmasRequest from './jmas/jmasRequest'
-import { jisConfig, TaroMethod, Method } from './index'
+import { jisConfig, Method } from './index'
 
 const getCreatesign = async payload => {
   const { token, usertype } = payload
@@ -21,7 +21,7 @@ async function userRquest({ payload = {}, method = 'GET'}) {
   const res = await getCreatesign(payload)
   const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
   if(retcode !== '000000'){
-    TaroMethod.Message(msg)
+    console.error(msg)
   }else{
     return JSON.parse(data)
   }

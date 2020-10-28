@@ -35,7 +35,7 @@ class Index extends Component {
   
   componentDidUpdate(){
     const { DHomeInit, site:{ siteid } } = this.props;
-    // DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
+    DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
     this.Init()
   }
   Init = () => {

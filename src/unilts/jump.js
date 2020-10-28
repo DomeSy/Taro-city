@@ -1,5 +1,4 @@
 import Taro from '@tarojs/taro'
-import { TaroMethod } from './index'
 
 const PAGE_WEBVIEW = '/pages/webview/webview'
 
@@ -28,7 +27,7 @@ export default function jump({ url, title = '', payload = {}, method = 'navigate
 
   if(getEnv && Taro.getEnv() !== getEnv){
     getEnv = getEnv === 'ALIPAY' ? '支付宝' : getEnv === 'WEAPP' ? '微信' : getEnv === 'WEB' ? 'h5' : getEnv === 'RN' ? 'react-native' : getEnv === 'SWAN' ? '百度' : getEnv === 'QQ' ? 'QQ' : getEnv === 'JD' ? '京东' : getEnv === 'TT' ? ' 字节' : '其他小程序'
-    TaroMethod.Message(`目前只支持进入${getEnv}`)
+    console.error(`目前只支持进入${getEnv}`)
     return
   }
 

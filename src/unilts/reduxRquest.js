@@ -1,5 +1,5 @@
 // 封装Redux，简化使用
-import request from './request'
+import request from './Request'
 import userRquest from './userRquest'
 import jmasRequest from './jmas/jmasRequest'
 
