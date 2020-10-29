@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components';
-import { ListAll, TitleBig } from '@components'
+import { TitleBig } from '@components'
+import ListAll from './ListAll'
 import { connect } from 'react-redux'
 import { Method } from '@unilts'
 import './index.scss'
@@ -33,11 +34,17 @@ class Index extends Component {
   }
 
   render() {
-    const { titleList, value } = this.state
+    const { titleList, value } = this.state;
+    let list = []
+    if(!Method.isObject(this.props.home)){
+      const { hotList, newList } = this.props.home 
+      list = value === 0 ? hotList.appList : newList.appList;
+    }
+
     return (
       <View className="Classification">
         <TitleBig list={titleList} onChang={this.onChang}/>
-        <ListAll />
+        <ListAll list={list} />
       </View>
     );
   }

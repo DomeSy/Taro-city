@@ -8,9 +8,7 @@ import * as siteActions from '@actions/site'
 import * as homeActions from '@actions/home'
 import { connect } from 'react-redux'
 
-
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
-
 
 @connect(({user, site}) => ({...user, ...site}), { ...actions, ...siteActions, ...homeActions })
 class Index extends Component {
@@ -29,19 +27,27 @@ class Index extends Component {
     const { dispatchUser, login, DSiteInit, DHomeInit, site:{ siteid }, } = this.props;
     login ? '' : dispatchUser()
     DSiteInit()
-    DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
+    // DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
     this.Init()
   }
   
   componentDidUpdate(){
     const { DHomeInit, site:{ siteid } } = this.props;
-    DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
+    // DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
     this.Init()
   }
   Init = () => {
   }
 
   componentDidShow = async () => {
+
+    const data = await JmasRequest('jmportalnzjk', 'getpage', {
+      // siteid: '01f443bfeb054686a28ca8446f9f3810',
+      siteid: '01f443bfeb054686a28ca8446f9f3810',
+
+      type: '2'
+    })
+    console.log(data,'--9998')
 
     // const data = await JmasRequest('jmportalnzjk', 'getapplist', {
     //   // siteid: '01f443bfeb054686a28ca8446f9f3810',
@@ -50,7 +56,7 @@ class Index extends Component {
     //   pageNo:'1',
     //   pageSize: '10'
     // })
-    // console.log(data,'--')
+    // console.log(data,'--9998')
   }
 
   componentDidHide () {   }

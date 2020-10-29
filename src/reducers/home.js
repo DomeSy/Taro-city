@@ -11,7 +11,7 @@ function JamsData(cols) {
   let homeList = {};
   for(let i = 0; i < cols.length; i++) {
     if(cols[i].resourcename === '热门应用') {
-      homeList.hotLiest = cols[i]
+      homeList.hotList = cols[i]
     } else if(cols[i].resourcename === '主题专区') {
       homeList.themeList = cols[i]
     } else if(cols[i].resourcename === '主题服务') {
