@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Info, Space } from './components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
+import { USER_LOGIN } from '@constants/user'
 import * as actions from '@actions/user'
 
 import './my.scss'
@@ -62,10 +63,10 @@ class My extends Component {
     if(type == 'login'){
       const { token, usertype } = data;
       dispatchLogin({token, usertype})
-      Taro.removeStorage({ key: 'token' })
+      Taro.removeStorage({ key: USER_LOGIN })
     }else if(type == 'loginOut') {
       dispatchLogout()
-      Taro.removeStorage({ key: 'token' })
+      Taro.removeStorage({ key: USER_LOGIN })
     }
   }
 

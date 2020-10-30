@@ -4,7 +4,7 @@ const CODE_SUCCESS = '200'
 const local = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/'
 
 // 封装请求
-async function request({url, payload = {}, method = 'GET', path = '', rule}) {
+async function Request({url, payload = {}, method = 'GET', path = '', rule}) {
   const header = {}
 
   if(rule === 'jmas'){
@@ -45,4 +45,4 @@ async function request({url, payload = {}, method = 'GET', path = '', rule}) {
   }) 
 }
 
-export default request
+export default Request
