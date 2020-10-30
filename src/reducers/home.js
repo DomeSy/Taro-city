@@ -22,6 +22,12 @@ function JamsData(list) {
     } else if(item.resourcename == '主题专区') {
       item.listAll = []
       homeList.themeList = item
+    } else if(item.resourcename == '我的证照') {
+      item.listAll = []
+      homeList.classificationList = item
+    } else if(item.resourcename == '上新') {
+      item.listAll = []
+      homeList.newList = item
     }
   })
 
