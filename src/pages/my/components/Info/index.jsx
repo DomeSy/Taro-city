@@ -11,6 +11,19 @@ class Index extends Component {
       name: '请登录'
     }
   }
+  componentDidMount(){
+    console.log(this.props)
+    if(this.props.login){
+      const { name, loginname } = this.props.userInfo
+      this.setState({
+        name: name ? Method.Desensit(name, 0, 1) : loginname
+      })
+    }else{
+      this.setState({
+        name: '请登录'
+      })
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.login){

@@ -2,13 +2,12 @@ import Taro from '@tarojs/taro'
 import { HOMEINIT } from '../constants/home'
 
 const INITIAL_STATE = {
-  home: {
-
-  }
+  home: {}
 }
 
 function JamsData(list) {
   let homeList = {};
+  // 如有配置需求，需要对接写Jmas后台
   list.map(item => {
     if(item.resourcename == '图片新闻') {
       item.listAll = []
@@ -45,7 +44,6 @@ function JamsData(list) {
 export default function counter (state = INITIAL_STATE, action) {
   switch (action.type) {
     case HOMEINIT: {
-      console.log(action.payload.resource, '0000')
       const homeList = JamsData(action.payload.resource)
       return {
         home: {

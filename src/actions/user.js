@@ -3,8 +3,6 @@ import Taro from '@tarojs/taro'
 import { USER_INFO, USER_LOGIN, USER_LOGOUT } from '@constants/user'
 import { reduxRquest, storage } from '@unilts'
 
-
-
 // 获取用户信息
 export const dispatchUser = () => storage({
   type: USER_INFO,
