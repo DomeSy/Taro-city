@@ -1,6 +1,7 @@
 // 封装Redux，简化使用
 import request from './Request'
-import userRquest from './userRquest'
+import userRequest from './jmas/userRequest'
+import homeRequest from './jmas/homeRequest'
 import jmasRequest from './jmas/jmasRequest'
 
 /*
@@ -22,7 +23,11 @@ import jmasRequest from './jmas/jmasRequest'
 export default function createAction({ appid, interfaceid, wayJmas, url, path, payload, method, fetchOptions, cb, type }, way = 'jmas') {
   return async (dispatch) => {
     if(way === 'user') {
-      const res = await userRquest({ payload });
+      const res = await userRequest({ payload });
+      dispatch({ type, payload: cb ? cb(res) : res })
+      return res
+    } else if(way === 'home') {
+      const res = await homeRequest({ payload });
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
     } else if(way == 'request'){

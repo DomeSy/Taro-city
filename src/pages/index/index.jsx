@@ -27,7 +27,7 @@ class Index extends Component {
     const { dispatchUser, login, DSiteInit, DHomeInit, site:{ siteid }, } = this.props;
     login ? '' : dispatchUser()
     DSiteInit()
-    // DHomeInit('jmportalnzjk', 'getpage', {siteid, type: '2'})
+    DHomeInit({siteid, mobileId: '737d972e0a04436287b7a1b59d142bb8', clienttype: '2'})
     this.Init()
   }
   
@@ -41,14 +41,18 @@ class Index extends Component {
 
   componentDidShow = async () => {
 
-    const data = await JmasRequest('jmportalnzjk', 'getpage', {
-      // siteid: '01f443bfeb054686a28ca8446f9f3810',
-      siteid: '01f443bfeb054686a28ca8446f9f3810',
+    // const data = await JmasRequest('jmportalnzjk', 'channelfirst', {
+    //   siteid: '620fac8584594096b873a411c93ae228',
+    //   mobileId: '737d972e0a04436287b7a1b59d142bb8',
+    //   clienttype: '2'
+    // })
+    // console.log(data,'--9998')
 
-      type: '2'
-    })
-    console.log(data,'--9998')
-
+    // const data = await JmasRequest('jmportalnzjk', 'getcomppageinterface', {
+    //   channelid: "10ed186afbb4483793da62335d9c0682"
+    // })
+    // console.log(data,'--9998')
+    
     // const data = await JmasRequest('jmportalnzjk', 'getapplist', {
     //   // siteid: '01f443bfeb054686a28ca8446f9f3810',
     //   siteid: '178966c2ddf04da8aa2fb447eedf677b',
@@ -68,7 +72,7 @@ class Index extends Component {
   render () {
     return (
       <View className="Index">
-        <View onClick={this.onClick}>我是蛇</View>
+        {/* <View onClick={this.onClick}>我是蛇</View> */}
         {/* 搜索框 */}
         <SearchTab />
         {/* 轮播图 */}

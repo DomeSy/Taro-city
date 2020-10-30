@@ -7,31 +7,40 @@ const INITIAL_STATE = {
   }
 }
 
-function JamsData(cols) {
+function JamsData(list) {
   let homeList = {};
-  for(let i = 0; i < cols.length; i++) {
-    if(cols[i].resourcename === '热门应用') {
-      homeList.hotList = cols[i]
-    } else if(cols[i].resourcename === '主题专区') {
-      homeList.themeList = cols[i]
-    } else if(cols[i].resourcename === '主题服务') {
-      homeList.ThemeServiceList = cols[i]
-    } else if(cols[i].resourcename === '上新') {
-      homeList.newList = cols[i]
-    } else if(cols[i].resourcename === '图片新闻') {
-      homeList.rationList = cols[i]
-    } else if(cols[i].resourcename === '我的证照') {
-      homeList.licenceList = cols[i]
-    } 
-  }
+  list.map(item => {
+    if(item.resourcename == '图片新闻') {
+      item.listAll = []
+      homeList.rationList = item
+    } else if(item.resourcename == '热门应用') {
+      item.listAll = []
+      homeList.hotList = item
+    } else if(item.resourcename == '主题服务') {
+      item.listAll = []
+      homeList.themeserveList = item
+    } else if(item.resourcename == '主题专区') {
+      item.listAll = []
+      homeList.themeList = item
+    }
+  })
+
+  list.map(item => {
+    for(let key in homeList){
+      if(item.parid === homeList[key].resourceid){
+        homeList[key].listAll.push(item)
+        return
+      }
+    }
+  })
   return homeList
 }
 
 export default function counter (state = INITIAL_STATE, action) {
   switch (action.type) {
     case HOMEINIT: {
-      const { cols } = action.payload;
-      const homeList = JamsData(cols)
+      console.log(action.payload.resource, '0000')
+      const homeList = JamsData(action.payload.resource)
       return {
         home: {
           ...homeList

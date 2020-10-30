@@ -34,7 +34,6 @@ function Index({ list = [] }){
   // ]
 
   list = list.length <= number ? list : Method.Intercept(list, number)
-  console.log(list, '----')
 
   return (
     <View className="DListAll">

@@ -1,8 +1,7 @@
-import Taro from '@tarojs/taro'
-import jmasRequest from './jmas/jmasRequest'
-import { jisConfig, Method } from './index'
+import jmasRequest from './jmasRequest'
+import { jisConfig, Method } from '../index'
 
-const getCreatesign = async payload => {
+const getCreatesign = payload => {
   const { token, usertype } = payload
   const servicename = usertype == 1 ? 'findOutsideUserByToken' : 'findCorUserByToken'
   const interfaceId = usertype == 1 ? 'findoutsideuserbytoken' : 'findcoruserytoken'
@@ -17,7 +16,7 @@ const getCreatesign = async payload => {
 }
 
 // 封装请求
-async function userRquest({ payload = {}, method = 'GET'}) {
+async function userRquest({ payload = {}}) {
   const res = await getCreatesign(payload)
   const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
   if(retcode !== '000000'){
