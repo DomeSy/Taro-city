@@ -3,7 +3,7 @@ import { View, Image } from '@tarojs/components'
 
 import './index.scss'
 
-function Index({list}){
+function Index({list = []}){
 
   const getEffectText = (data) => {
     let text = ''

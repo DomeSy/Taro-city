@@ -5,9 +5,9 @@ import { ServerList, UseTime } from './components'
 import { SearchTab } from '../index/components'
 import * as actions from '@actions/user'
 import { connect } from 'react-redux'
+import banner from '@assets/sever/banner.png'
 
 import './service.scss'
-import banner from '@assets/banner.png'
 
 @connect(({ user }) => user, { ...actions })
 class Service extends Component {

@@ -13,6 +13,7 @@ Page({
     const { login } = option;
     const { webUrl } = jisConfig;
     this.data.src = login ? `${webUrl}individualCenter` : webUrl
+    this.webViewContext = my.createWebViewContext('webviewContainer');
   },
   authorize() {
 
@@ -30,7 +31,7 @@ Page({
       });
       //退出
       Jump({method: 'navigateBack'})
-    }else {
+    }else if (action === 'loginApp'){
       //登录
       const { token, usertype } = e.detail.params;
       my.setStorage({
@@ -42,6 +43,18 @@ Page({
         }
       });
       Jump({method: 'navigateBack'})
+    }else if (action === 'scan'){
+      //登录
+      const { token, usertype } = e.detail.params;
+      my.scan({
+        scanType: ['qrCode'],
+        success: (res) => {
+          this.webViewContext.postMessage({
+            action: 'scan',
+            params: res.code
+          })
+        },
+      });
     }
   }
 })
