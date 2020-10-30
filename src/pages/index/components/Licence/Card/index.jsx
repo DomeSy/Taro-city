@@ -1,28 +1,22 @@
 import React from 'react'
-import { View, Swiper, SwiperItem  } from '@tarojs/components';
+import { View, Swiper, SwiperItem, Image  } from '@tarojs/components';
 import banner from '@assets/banner.png'
 
 import './index.scss'
 
+const number = 5
+
 function Index(){
-  const list = [
+  let list = [
     {
       img: `background: url(${banner});background-size: 100% 100%`,
     },
     {
       img: `background: url(${banner});background-size: 100% 100%`,
     }
-    ,
-    {
-      img: `background: url(${banner});background-size: 100% 100%`
-    }
   ]
-
-  let imgUrls = [
-    'https://img10.360buyimg.com/babel/s700x360_jfs/t25855/203/725883724/96703/5a598a0f/5b7a22e1Nfd6ba344.jpg!q90!cc_350x180',
-    'https://img11.360buyimg.com/babel/s700x360_jfs/t1/4776/39/2280/143162/5b9642a5E83bcda10/d93064343eb12276.jpg!q90!cc_350x180',
-    'https://img14.360buyimg.com/babel/s700x360_jfs/t1/4099/12/2578/101668/5b971b4bE65ae279d/89dd1764797acfd9.jpg!q90!cc_350x180'
-  ]
+  list = list.length <= number ? list : Method.Intercept(list, number)
+  const text = list.length <= number ? '立即订阅' : '查看全部'
 
   return (
     <View className="DCard">
@@ -36,14 +30,20 @@ function Index(){
       >
         {
           list.map((item, index) => (
-            <SwiperItem key={index}  nextMargin="300"
-            previousMargin="300" className='DCard-swiper-item'>
+            <SwiperItem key={index}  nextMargin="300" previousMargin="300" className='DCard-swiper-item'>
               <View className='DCard-swiper-item-view'>
-                <View className='DCard-swiper-item-view-img' style={item.img} ></View>
+                <Image className='DCard-swiper-item-view-img' src='../../../../../assets/banner.png' ></Image>
               </View>
             </SwiperItem>
           ))
         }
+          <SwiperItem nextMargin="300" previousMargin="300" className='DCard-swiper-item'>
+              <View className='DCard-swiper-item-view'>
+                <View className='DCard-swiper-item-view-text'>
+                  + {text}
+                </View>
+              </View>
+          </SwiperItem>
       </Swiper>
     </View>
   )
