@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
-import { Loading } from '@components'
-import { Tip } from '@components'
+import { Tip, Loading } from '@components'
 import { JmasRequest, Method, Jump } from '@unilts'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
-import { SITEINIT } from '@constants/site'
+import { SITESET } from '@constants/site'
 import * as actions from '@actions/user'
 import * as siteActions from '@actions/site'
 import * as homeActions from '@actions/home'
 import { connect } from 'react-redux'
+
 
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
@@ -25,19 +25,19 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount(){
-    const { dispatchUser, login, DSiteInit, DHomeInit, site:{ siteid }, } = this.props;
+    const { dispatchUser, login, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
     login ? '' : dispatchUser()
-    let site = Taro.getStorageSync(SITEINIT) ? true : false
-  
     DSiteInit()
-
-    DHomeInit({siteid, mobileId: '737d972e0a04436287b7a1b59d142bb8', clienttype: '2'})
+    Taro.getStorage({
+      key: SITESET,
+      success: (res) => {
+        res.data ? '' : DHomeInit({siteid, mobileId: '737d972e0a04436287b7a1b59d142bb8', clienttype: '2'})
+      }
+    })
     this.Init()
   }
   
   componentDidUpdate(){
-    console.log(Taro.getStorageSync(SITEINIT), '00')
-
     const { DHomeInit, site:{ siteid } } = this.props;
     DHomeInit({siteid, mobileId: '737d972e0a04436287b7a1b59d142bb8', clienttype: '2'})
     this.Init()
@@ -76,6 +76,11 @@ class Index extends Component {
   }
 
   render () {
+
+    // if(Method.isObject(this.props.home)){
+    //   return <Loading></Loading>
+    // }
+
     return (
       <View className="Index">
         {/* <View onClick={this.onClick}>我是蛇</View> */}

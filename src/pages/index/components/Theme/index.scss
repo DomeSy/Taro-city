@@ -18,11 +18,13 @@
         height: 100%;
         &-t{
           height: 208px;
-          background: lawngreen;
+          width: 343px;
+          background: palevioletred;
           margin-bottom: 16px;
         }
         &-b{
           height: 208px;
+          width: 343px;
           background: darkcyan;
         }
       }
@@ -33,10 +35,14 @@
       justify-content: space-between;
       &-left{
         width: 343px;
+        height: 208px;
+
         background: hotpink;
       }
       &-right{
         width: 343px;
+        height: 208px;
+
         background: palegoldenrod;
       }
     }

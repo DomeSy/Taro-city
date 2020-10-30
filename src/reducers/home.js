@@ -23,7 +23,7 @@ function JamsData(list) {
       homeList.themeList = item
     } else if(item.resourcename == '我的证照') {
       item.listAll = []
-      homeList.classificationList = item
+      homeList.licenceList = item
     } else if(item.resourcename == '上新') {
       item.listAll = []
       homeList.newList = item

@@ -1,52 +1,36 @@
 import React from 'react'
-import { View } from '@tarojs/components'
-
-import shebao from '@assets/shebao.png'
+import { View, Image } from '@tarojs/components'
 
 import './index.scss'
 
-function Index(){
+function Index({list}){
 
-  const list = [
-    {
-      img: `background: url(${shebao});background-size: 100% 100%`,
-      text: '户籍户政',
-      text1: '机动车业务、驾驶证业务'
-    },
-    {
-      img: `background: url(${shebao});background-size: 100% 100%`,
-      text: '户籍户政',
-      text1: '身份证业务、落户业务、户籍信息变更、军人户卡卡卡萨达so'
-    },
-    {
-      img: `background: url(${shebao});background-size: 100% 100%`,
-      text: '户籍户政',
-      text1: '机动车业务、驾驶证业务'
-    },
-    {
-      img: `background: url(${shebao});background-size: 100% 100%`,
-      text: '户籍户政',
-      text1: '机动车业务、驾驶证业务'
-    },
-    {
-      img: `background: url(${shebao});background-size: 100% 100%`,
-      text: '户籍户政',
-      text1: '机动车业务、驾驶证业务'
-    },
-  ];
+  const getEffectText = (data) => {
+    let text = ''
+    data.map((item, index) => {
+      if (index === data.length - 1) {
+        text += item.name
+      } else {
+        text += item.name + '、'
+      }
+    })
+    return text
+  }
 
   return (
     <View className="DListTheme">
       {
         list.map((item, index) => (
           <View className="DListTheme-them" key={index}>
-            <View className="DListTheme-them-img" style={item.img}></View>
+            <Image className="DListTheme-them-img" src={item.cateimgurl}></Image>
             <View className="DListTheme-them-detail">
               <View className="DListTheme-them-detail-title">
-                {item.text}
+                {item.resourcename}
               </View>
               <View className="DListTheme-them-detail-text">
-                {item.text1}
+                {
+                  getEffectText(item.apps.data)
+                }
               </View>
             </View>
           </View>

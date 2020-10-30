@@ -5,7 +5,6 @@ import banner from '@assets/banner.png'
 import './index.scss'
 
 function Index(){
-
   const list = [
     {
       img: `background: url(${banner});background-size: 100% 100%`,

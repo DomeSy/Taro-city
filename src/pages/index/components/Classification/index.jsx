@@ -37,8 +37,10 @@ class Index extends Component {
     const { titleList, value } = this.state;
     let list = []
     if(!Method.isObject(this.props.home)){
-      const { hotList, newList } = this.props.home 
-      list = value === 0 ? hotList.appList : newList.appList;
+      let { hotList, newList } = this.props.home
+      hotList = hotList.listAll.length === 0 ? hotList : hotList.listAll;
+      newList = newList.listAll.length === 0 ? newList : newList.listAll;
+      list = value === 0 ? hotList.apps.data : newList.apps.data;
     }
 
     return (
