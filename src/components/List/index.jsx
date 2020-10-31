@@ -13,14 +13,22 @@ import './index.scss'
     isHot:增加文字后的图片
   border: 若有则有个向上的8px的间距
   no:不让跳转
+  type:判断是否是个人法人类型
 */ 
-function Index({title, list = [], border, no}){
+function Index({title, list = [], border, no, type}){
 
   // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人
   const goWebView = (url, fwusertype, name) => {
     if(no) return;
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+    } else {
+      if(type){
+
+      }else{
+        // type为false需要跳转登录
+        Jump({url: '/login'})
+      }
     }
   }
   

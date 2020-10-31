@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 import './detail.scss'
 
-@connect(({detail}) => detail)
+@connect(({detail, user}) => ({...detail, ...user}))
 class Detail extends Component {
   constructor(){
     super(...arguments)
@@ -32,7 +32,8 @@ class Detail extends Component {
   }
 
   render() {
-    const { detail:{ bgpicpath, listTabs, listAll } } = this.props;
+    const { detail:{ bgpicpath, listTabs, listAll }, userInfo } = this.props;
+    const type = userInfo.usertype ? userInfo.usertype : false
     const list = this.listAllDetail(listAll)
     return (
       <View className="Detail">
@@ -42,7 +43,7 @@ class Detail extends Component {
         }
         {
           list.map((item, index) => (
-            <List border title={item.title} list={item.list} key={index}/>
+            <List border title={item.title} list={item.list} key={index} type={type}/>
           ))
         }
         <View className="Detail-buttom">
