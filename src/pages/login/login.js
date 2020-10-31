@@ -77,8 +77,6 @@ Page({
   async webListener(e) { 
     const { action } = e.detail;
     if(action === 'loginOut'){
-      console.log('bbbbbbb')
-
       my.setStorage({
         key: 'token',
         data: {
@@ -87,7 +85,6 @@ Page({
           type: "loginOut"
         }
       });
-      
       //退出
       Jump({method: 'navigateBack'})
     }else if (action === 'loginApp'){
@@ -98,7 +95,8 @@ Page({
         data: {
           token,
           usertype,
-          type: "login"
+          type: "login",
+          isLogin: true
         }
       });
       Jump({method: 'navigateBack'})

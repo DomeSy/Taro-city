@@ -4,12 +4,14 @@ import { View } from '@tarojs/components'
 import { Site } from '@components'
 import { AtIcon } from 'taro-ui'
 import { connect } from 'react-redux'
+import { mobileId, clienttype } from '@unilts'
 import * as actions from '@actions/site'
+import * as homeActions from '@actions/home'
 
 import  './index.scss'
 
 // 搜索栏
-@connect(({ site }) => site, { ...actions })
+@connect(({ site }) => site, { ...actions, ...homeActions })
 class Index extends Component {
   constructor () {
     super(...arguments)
@@ -18,12 +20,13 @@ class Index extends Component {
   componentDidShow(){}
 
   ChangeSite = (value) => {
+    console.log(this.props,'---')
     this.props.DSiteSet({area: value.area, siteid: value.siteid})
+    this.props.DHomeInit({siteid: value.siteid, mobileId, clienttype})
   }
 
   render() {
     const { site } = this.props;
-    console.log(this.props)
 
     return (
       <View className="Search">

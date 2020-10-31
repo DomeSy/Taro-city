@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tip, Loading } from '@components'
-import { JmasRequest, Method, Jump } from '@unilts'
+import { JmasRequest, Method, Jump, mobileId, clienttype  } from '@unilts'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { SITESET } from '@constants/site'
 import * as actions from '@actions/user'
@@ -11,6 +11,17 @@ import { connect } from 'react-redux'
 
 
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
+
+function getStorage() {
+  return new Promise(res => {
+    Taro.getStorage({
+      key: 'token',
+      success: function (data) {
+        res(data.data)
+      }
+    })
+  })
+}
 
 @connect(({user, site}) => ({...user, ...site}), { ...actions, ...siteActions, ...homeActions })
 class Index extends Component {
@@ -24,26 +35,28 @@ class Index extends Component {
 
   componentWillUnmount () {  }
 
-  componentDidMount(){
-    const { dispatchUser, login, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
-    login ? '' : dispatchUser()
+  componentDidMount = async () =>{
+    const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
+    const data = await getStorage();
+    if(data){
+      const { token, type, usertype } = data;
+      if(type === 'login') dispatchLogin({token, usertype}) 
+    }
     DSiteInit()
     Taro.getStorage({
       key: SITESET,
       success: (res) => {
-        res.data ? '' : DHomeInit({siteid, mobileId: '737d972e0a04436287b7a1b59d142bb8', clienttype: '2'})
+        if(res.data){
+          const { siteid } = res.data
+          DHomeInit({siteid, mobileId, clienttype})
+        }else{
+          DHomeInit({siteid, mobileId, clienttype})
+        }
       }
     })
-    this.Init()
   }
   
-  componentDidUpdate(){
-    const { DHomeInit, site:{ siteid } } = this.props;
-    DHomeInit({siteid, mobileId: '737d972e0a04436287b7a1b59d142bb8', clienttype: '2'})
-    this.Init()
-  }
-  Init = () => {
-  }
+  componentDidUpdate(){}
 
   componentDidShow = async () => {
 

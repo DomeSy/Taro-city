@@ -49,8 +49,6 @@ class My extends Component {
     this.state = {
       list
     }
-    const { dispatchUser, login } = this.props;
-    login ? '' : dispatchUser()
   }
 
   componentDidShow = async () => {
@@ -59,14 +57,21 @@ class My extends Component {
     
     const data = await getStorage();
     const type = data ? data.type : false;
-
-    if(type == 'login'){
+    
+    if(type == 'login' && data.isLogin){
       const { token, usertype } = data;
+      Taro.setStorage({
+        key:"token",
+        data: {
+          token,
+          usertype,
+          type: "login",
+          isLogin: false
+        }
+      })
       dispatchLogin({token, usertype})
-      Taro.removeStorage({ key: USER_LOGIN })
     }else if(type == 'loginOut') {
       dispatchLogout()
-      Taro.removeStorage({ key: USER_LOGIN })
     }
   }
 

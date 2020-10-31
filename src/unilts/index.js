@@ -12,3 +12,8 @@ export const jisConfig = {
   appword: 'n8hhwQup2ERK1g4E',
   webUrl: 'http://isdapp.shandong.gov.cn/ceshixcx/jis/#/'
 }
+
+// jmas移动端配置的大类
+export const mobileId = '737d972e0a04436287b7a1b59d142bb8'
+//展示的端
+export const clienttype = '2' 
