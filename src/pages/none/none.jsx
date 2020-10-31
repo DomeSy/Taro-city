@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components';
 import Taro, { getCurrentInstance } from '@tarojs/taro'
+import { Jump } from '@unilts';
 import none from '@assets/none.png'
 
 import './none.scss'
@@ -21,6 +22,10 @@ class None extends Component {
     })
   }
 
+  goDownload = () => {
+    Jump({url: '/download'})
+  }
+
   render() {
     const { img } = this.state
 
@@ -34,7 +39,7 @@ class None extends Component {
         </View>
         <View className="None-tip">
           <View className="None-tip-text">您还可以下载“爱山东”APP，立即使用本项服务</View>
-          <Text className="None-tip-download">下载APP</Text>
+          <Text className="None-tip-download" onClick={() => this.goDownload()}>下载APP</Text>
         </View>
       </View>
     )

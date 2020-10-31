@@ -16,11 +16,12 @@ import './index.scss'
 */ 
 function Index({title, list = [], border, no}){
 
-  // fwusertype:需要判断法人的事件还是个人的，为1个人，为2法人
+  // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人
   const goWebView = (url, fwusertype, name) => {
     if(no) return;
-    Jump({url: '/none', payload: {name}})
-    // url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+    if (fwusertype === 0) {
+      url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+    }
   }
   
   return (
