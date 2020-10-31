@@ -23,7 +23,7 @@ const PAGE_WEBVIEW = '/pages/webview/webview'
     method为navigateBack时，的回跳第几层，默认为1
   getEnv:来源，设置非指定端不能进入
 */
-export default function jump({ url, title = '', payload = {}, method = 'navigateTo', back = 1 }, getEnv) {
+export default function Jump({ url, title = '', payload = {}, method = 'navigateTo', back = 1 }, getEnv) {
 
   if(getEnv && Taro.getEnv() !== getEnv){
     getEnv = getEnv === 'ALIPAY' ? '支付宝' : getEnv === 'WEAPP' ? '微信' : getEnv === 'WEB' ? 'h5' : getEnv === 'RN' ? 'react-native' : getEnv === 'SWAN' ? '百度' : getEnv === 'QQ' ? 'QQ' : getEnv === 'JD' ? '京东' : getEnv === 'TT' ? ' 字节' : '其他小程序'

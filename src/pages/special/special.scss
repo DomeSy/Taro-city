@@ -4,6 +4,8 @@
   &-list{
     padding: 24px;
     &-img{
+      // width: calc(100vw - 48px);
+      width: 702px;
       height: 180px;
       margin-top: 24px;
       &:first-of-type{

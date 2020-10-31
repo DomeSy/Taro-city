@@ -30,7 +30,7 @@ class Index extends Component {
       <>
         {
           themeList[0] ? <View className="Theme">
-            <Title title="主题专区" />
+            <Title title="主题专区" url="/special" />
             <View className="Theme-conent">
               <View className="Theme-conent-top">
                 <Image className="Theme-conent-top-left" src={themeList[0].bgpicpath}></Image>

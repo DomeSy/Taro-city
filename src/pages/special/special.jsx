@@ -1,43 +1,28 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
+import { View, Image } from '@tarojs/components';
 import './special.scss'
 import { Tip } from '@components'
 import banner from '@assets/banner.png'
+import { connect } from 'react-redux';
 
-const list = [
-  {
-    img: `background: url(${banner});background-size: 100% 100%`,
-  },
-  {
-    img: `background: url(${banner});background-size: 100% 100%`,
-  },
-  {
-    img: `background: url(${banner});background-size: 100% 100%`,
-  },
-  {
-    img: `background: url(${banner});background-size: 100% 100%`,
-  },
-  {
-    img: `background: url(${banner});background-size: 100% 100%`,
-  }
-]
-
+@connect(({home}) => home)
 class Special extends Component {
   constructor(){
     super(...arguments)
-    this.state = {
-      list
-    }
+    this.state = {}
   }
   render() {
-    const { list } = this.state
+    
+    let { themeList } = this.props.home
+    themeList = themeList.listAll.length === 0 ? themeList : themeList.listAll;
+    console.log(themeList, '000')
 
     return (
       <View className="Special">
         <View className="Special-list">
           {
-            list.map((item, index) => (
-              <View className="Special-list-img" key={index} style={item.img}></View>
+            themeList.map((item, index) => (
+              <Image className="Special-list-img" key={index} src={item.cateimgurl}></Image>
             ))
           }
         </View>
