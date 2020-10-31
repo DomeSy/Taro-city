@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components';
+import Taro, { getCurrentInstance } from '@tarojs/taro'
 import none from '@assets/none.png'
 
 import './none.scss'
@@ -13,6 +14,13 @@ class None extends Component {
       img: `background: url(${none});background-size: 100% 100%`
     }
   }
+
+  static getDerivedStateFromProps(props, state){
+    Taro.setNavigationBarTitle({
+      title: getCurrentInstance().router.params.name
+    })
+  }
+
   render() {
     const { img } = this.state
 

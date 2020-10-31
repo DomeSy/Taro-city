@@ -39,7 +39,6 @@ class Index extends Component {
 
     if(!Method.isObject(this.props.home)){
       let {  personList, legalList } = this.props.home;
-      console.log(personList, '--99')
       personList = personList.listAll.length === 0 ? personList : personList.listAll;
       legalList = legalList.listAll.length === 0 ? legalList : legalList.listAll;
       list = value === 0 ? personList : legalList;

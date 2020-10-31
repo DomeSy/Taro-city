@@ -6,12 +6,14 @@ export default {
     'pages/my/my',
     'pages/card/card',
     'pages/opinion/opinion',
+    'pages/detail/detail',
     'pages/certificate/certificate',
     'pages/consulting/consulting',
     'pages/myConsulting/myConsulting',
     'pages/evaluate/evaluate',
     'pages/myEvaluate/myEvaluate',
     'pages/matter/matter',
+    'pages/download/download',
     'pages/authorization/authorization',
     'pages/subscribe/subscribe',
     'pages/subscribeJurisdiction/subscribeJurisdiction',
@@ -23,10 +25,8 @@ export default {
     'pages/subscribeAdd/subscribeAdd',
     'pages/none/none',
     'pages/webview/webview',
-    'pages/download/download',
     'pages/medical/medical',
-    'pages/nearUse/nearUse',
-    'pages/detail/detail'
+    'pages/nearUse/nearUse'
   ],
   window: {
     backgroundTextStyle: 'light',

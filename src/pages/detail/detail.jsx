@@ -1,66 +1,47 @@
 
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
+import { View, Image } from '@tarojs/components'
 import { TabDetail, List } from '@components'
+import Taro from '@tarojs/taro'
+import { connect } from 'react-redux'
+
 import './detail.scss'
-import banner from '@assets/banner.png'
-import hot from '@assets/hot.png'
 
-
-
+@connect(({detail}) => detail)
 class Detail extends Component {
   constructor(){
     super(...arguments)
+  }
 
-    this.state = {
-      img: `background: url(${banner});background-size: 100% 100%`,
-      data: [
-        {
-          title: '机动车业务',
-          list: [
-            {
-              text: `注册用户机动车驾驶证查询`,
-              img : `background: url(${hot});background-size: 100% 100%`
-            },
-            {
-              text: `注册用户机动车驾驶证查询`,
-              // img : `background: url(${hot});background-size: 100% 100%`
-            },
-            {
-              text: `注册用户机动车驾驶证查询哦我代`,
-              img : `background: url(${hot});background-size: 100% 100%`
-            }
-          ]
-        },
-        {
-          title: '机动车业务1',
-          list: [
-            {
-              text: `注册用户机动车驾驶证查询1`,
-              img : `background: url(${hot});background-size: 100% 100%`
-            },
-            {
-              text: `注册用户机动车驾驶证查询1`,
-              // img : `background: url(${hot});background-size: 100% 100%`
-            },
-            {
-              text: `注册用户机动车驾驶证查询哦我代注册用户机动车驾驶证查询哦我代11`,
-              // img : `background: url(${hot});background-size: 100% 100%`
-            }
-          ]
-        }
-      ]
-    }
+  static getDerivedStateFromProps(props, state){
+    Taro.setNavigationBarTitle({
+      title: props.detail.resourcename
+    })
+  }
+
+  listAllDetail = list => {
+    let data = []
+    list.map(item => {
+      const arr = {
+        title: item[0].cardservice,
+        list: item
+      }
+      data = [...data, arr]
+    })
+    return data
   }
 
   render() {
-    const { img, data } = this.state;
+    const { detail:{ bgpicpath, listTabs, listAll } } = this.props;
+    const list = this.listAllDetail(listAll)
     return (
       <View className="Detail">
-        <View className="Detail-img" style={img}></View>
-        <TabDetail />
+        <Image className="Detail-img" src={bgpicpath}></Image>
         {
-          data.map((item, index) => (
+          listTabs.length === 0 ? '' : <TabDetail tab={listTabs}/>
+        }
+        {
+          list.map((item, index) => (
             <List border title={item.title} list={item.list} key={index}/>
           ))
         }

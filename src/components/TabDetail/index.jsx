@@ -1,32 +1,25 @@
 import React,{ useState } from 'react'
-import { View } from '@tarojs/components';
-import ma from '@assets/ma.png'
+import { View, Image } from '@tarojs/components';
+import { Jump } from '@unilts'
 import './index.scss'
 
-const initialState = [
-  {
-    text: '绑定驾驶证',
-    img: `background: url(${ma});background-size: 100% 100%`
-  },
-  {
-    text: '绑定驾驶证',
-    img: `background: url(${ma});background-size: 100% 100%`
+function Index({tab = []}){
+
+  const [list, setList] = useState(tab)
+
+  const goWebUrl = (url) => {
+    Jump({url})
   }
-]
-
-function Index(){
-
-  const [list, setList] = useState(initialState)
 
   return (
     <View className="DTabDetail">
       {
         list.map((item, index) => (
-          <View className="DTabDetail-list" key={index}>
+          <View className="DTabDetail-list" key={index} onClick={() => goWebUrl(item.appIssueUrl)}>
               <View className="DTabDetail-list-img">
-                <View className="DTabDetail-list-img-imgs" style={item.img}></View>
+                <Image className="DTabDetail-list-img-imgs" src={item.iconUrl}></Image>
               </View>
-              <View className="DTabDetail-list-text">{item.text}</View>
+              <View className="DTabDetail-list-text">{item.name}</View>
           </View>
         ))
       }
