@@ -27,7 +27,10 @@ export default function Jump({ url, title = '', payload = {}, method = 'navigate
 
   if(getEnv && Taro.getEnv() !== getEnv){
     getEnv = getEnv === 'ALIPAY' ? '支付宝' : getEnv === 'WEAPP' ? '微信' : getEnv === 'WEB' ? 'h5' : getEnv === 'RN' ? 'react-native' : getEnv === 'SWAN' ? '百度' : getEnv === 'QQ' ? 'QQ' : getEnv === 'JD' ? '京东' : getEnv === 'TT' ? ' 字节' : '其他小程序'
-    console.error(`目前只支持进入${getEnv}`)
+    Taro.showToast({
+      title: `目前只支持进入${getEnv}`,
+      icon: 'none'
+    })
     return
   }
 
