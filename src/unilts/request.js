@@ -33,12 +33,10 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule}) {
       resolve(data)
     }).catch((err) => {
       const defaultMsg = '请求异常'
-      if (showToast) {
-        Taro.showToast({
-          title: err && err.errorMsg || defaultMsg,
-          icon: 'none'
-        })
-      }
+      Taro.showToast({
+        title: err && err.errorMsg || defaultMsg,
+        icon: 'none'
+      })
   
       return Promise.reject({ message: defaultMsg, ...err })
     })
