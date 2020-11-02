@@ -1,4 +1,19 @@
 @import "@styles/theme.scss";
 
 .UseTime{
+  &-none{
+    padding: 64px 24px 112px 24px;
+    &-text{
+      font-size: $font-size-title;
+      line-height: $line-height-title;
+      color: $font-color-effect;
+      text-align: center;
+      &-login{
+        color:$blue
+      }
+      &-tip{
+        margin-left: 24px;
+      }
+    }
+  }
 }

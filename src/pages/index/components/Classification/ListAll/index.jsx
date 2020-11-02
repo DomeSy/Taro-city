@@ -13,25 +13,17 @@ function Index({ list = [] }){
 
   list = list.length <= number ? list : Method.Intercept(list, number)
 
-  const goService = () => {
-    Jump({url: '/service', method: 'switchTab'})
-  }
-
-  const goWebView = url => {
-    Jump({url})
-  }
-
   return (
     <View className="DListAll">
       {list.map((item, index) => (
-        <View key={index} className="list" onClick={() => goWebView(item.appIssueUrl)}>
+        <View key={index} className="list" onClick={() => Jump({url: item.appIssueUrl})}>
           <View className="img">
             <Image src={item.iconUrl} className="imgUrl" />
           </View>
           <View className="text">{item.name}</View>
         </View>
       ))}
-      <View className="list" onClick={() => goService()}>
+      <View className="list" onClick={() => Jump({url: '/service', method: 'switchTab'})}>
         <View className="img">
           <Image src={allPic} className="imgUrl" />
         </View>

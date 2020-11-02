@@ -17,19 +17,26 @@
       height: 8px;
       background: $blue;
       border-radius: 50%;
-      margin-right: 16px;
     }
-    &-text{
-      font-family: $font-family;
-      font-size: $font-size-list;
-      line-height: $line-height-list;
-      color: $font-color;
-      margin-right: 20px;
-      @include text-ellipsis;
+    &-detail{
+      width: 303px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      &-text{
+        font-family: $font-family;
+        font-size: $font-size-list;
+        line-height: $line-height-list;
+        color: $font-color;
+        margin-left: 16px;
+        margin-right: 20px;
+        @include text-ellipsis;
+      }
+      &-hot{
+        width: 63px;
+        height: 32px;
+      }
     }
-    &-hot{
-      width: 63px;
-      height: 32px;
-    }
+
   }
 }

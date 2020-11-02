@@ -42,10 +42,12 @@ function Index(){
         list.map((item, index) => (
           <View className="DListUseTime-list" key={index}>
             <View className="DListUseTime-list-img"></View>
-            <View className="DListUseTime-list-text">{item.text}</View>
-            {
-              item.isImg && item.text.length < 8 ? <View className="DListUseTime-list-hot" style={img}></View> : ''
-            }
+            <View className="DListUseTime-list-detail">
+              <View className="DListUseTime-list-detail-text">{item.text}</View>
+              {
+                item.isImg && item.text.length < 8 ? <View className="DListUseTime-list-detail-hot" style={img}></View> : ''
+              }
+            </View>
           </View>
         ))
       }

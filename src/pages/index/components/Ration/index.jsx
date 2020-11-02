@@ -10,10 +10,6 @@ class Index extends Component {
     super(...arguments)
   }
 
-  goWebView = (url) => {
-    Jump({url})
-  }
-
   render() {
     let { rationList } = this.props.home
     if(!Method.isObject(this.props.home)){
@@ -31,12 +27,11 @@ class Index extends Component {
           circular
           indicatorDots
           interval="3000"
-          // autoplay
         >
           {
             rationList.map((item, index) => (
               <SwiperItem key={index}>
-                <Image className='Ration-swipe-img' src={item.imageurl} onClick={() => this.goWebView(item.url)}></Image>
+                <Image className='Ration-swipe-img' src={item.imageurl} onClick={() => Jump({url: item.url})}></Image>
               </SwiperItem>
             ))
           }
