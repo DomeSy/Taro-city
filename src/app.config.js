@@ -5,6 +5,7 @@ export default {
     'pages/service/service',
     'pages/my/my',
     'pages/card/card',
+    'pages/loginRedirect/loginRedirect',
     'pages/opinion/opinion',
     'pages/detail/detail',
     'pages/certificate/certificate',

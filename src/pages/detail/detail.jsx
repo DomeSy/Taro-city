@@ -39,7 +39,7 @@ class Detail extends Component {
       <View className="Detail">
         <Image className="Detail-img" src={bgpicpath}></Image>
         {
-          listTabs.length === 0 ? '' : <TabDetail tab={listTabs}/>
+          listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type}/>
         }
         {
           list.map((item, index) => (

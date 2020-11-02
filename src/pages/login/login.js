@@ -11,6 +11,7 @@ Page({
     type: '',
     token: '',
     usertype: '',
+    go: false,
     faceLog: false
   },
   async onShow() {
@@ -36,9 +37,11 @@ Page({
     }
   },
   onLoad(option){
-    const { login } = option;
+    // 参数中有go的时候需要跳转页面
+    const { login, go } = option;
     const { webUrl } = jisConfig;
-    this.data.src = login ? `${webUrl}individualCenter` : webUrl
+    this.data.go = go ? go : false;
+    this.data.src = login ? `${webUrl}individualCenter` : webUrl;
     this.webViewContext = my.createWebViewContext('webviewContainer');
   },
   async faceGo() {
@@ -90,16 +93,31 @@ Page({
     }else if (action === 'loginApp'){
       //登录
       const { token, usertype } = e.detail.params;
-      my.setStorage({
-        key: 'token',
-        data: {
-          token,
-          usertype,
-          type: "login",
-          isLogin: true
-        }
-      });
-      Jump({method: 'navigateBack'})
+      const { go } = this.data;
+      if (go) {
+        my.setStorage({
+          key: 'token',
+          data: {
+            token,
+            usertype,
+            type: "login",
+            isLogin: false
+          }
+        });
+        Jump({url: '/loginRedirect', method: 'redirectTo', payload: {go}})
+      } else {
+        my.setStorage({
+          key: 'token',
+          data: {
+            token,
+            usertype,
+            type: "login",
+            isLogin: true
+          }
+        });
+        Jump({method: 'navigateBack'})
+      }
+      // go ? Jump({}) : 
     }else if(action === 'authFace'){
       const { name, cardId, mobile } = params
       //实人认证服务

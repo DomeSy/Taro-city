@@ -1,7 +1,8 @@
 import React from 'react'
 import { View } from '@tarojs/components'
 import { Jump } from '@unilts'
-import { AtIcon } from 'taro-ui'
+import Taro from '@tarojs/taro'
+import { AtIcon, AtMessage } from 'taro-ui'
 
 import './index.scss'
 
@@ -17,23 +18,33 @@ import './index.scss'
 */ 
 function Index({title, list = [], border, no, type}){
 
-  // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人
+  // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人,3:个人法人
   const goWebView = (url, fwusertype, name) => {
     if(no) return;
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
       if(type){
-
+        if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
+          url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+        } else {
+          const message = fwusertype === 1 ? '个人' : '法人'
+          Taro.atMessage({
+            message: `当前事项只允许${message}办理`,
+            type: 'error',
+            duration: 2000
+          }) 
+        }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login'})
+        Jump({url: '/login', payload: {go: JSON.stringify({url, fwusertype})}})
       }
     }
   }
   
   return (
     <View className="DList" style={border ? 'border-top: 8px solid #f5f5f5' : ''}>
+      <AtMessage />
       {
         title ? <View className="DList-title">{title}</View> : ''
       }
