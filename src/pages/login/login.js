@@ -1,6 +1,13 @@
 import { Jump, jisConfig } from '@unilts';
 import { aliCertify, AlipayRequest, getOpenRes } from '@unilts/dependence'
 
+
+/*
+  登录完成后跳转的两种情况
+    1>switch跳转到tabbar（默认）
+    2>跳转到非tabbar
+      go跳转的地址
+*/
 Page({
   data: {
     src: '',
@@ -37,7 +44,6 @@ Page({
     }
   },
   onLoad(option){
-    // 参数中有go的时候需要跳转页面
     const { login, go } = option;
     const { webUrl } = jisConfig;
     this.data.go = go ? go : false;
