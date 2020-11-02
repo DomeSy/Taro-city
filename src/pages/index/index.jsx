@@ -84,10 +84,6 @@ class Index extends Component {
 
   componentDidHide () {   }
 
-  onClick = () => {
-    Jump({url: '/opinion'})
-  }
-
   render () {
 
     // if(Method.isObject(this.props.home)){
@@ -96,7 +92,6 @@ class Index extends Component {
 
     return (
       <View className="Index">
-        {/* <View onClick={this.onClick}>我是蛇</View> */}
         {/* 搜索框 */}
         <SearchTab />
         {/* 轮播图 */}
