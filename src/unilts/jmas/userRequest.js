@@ -22,9 +22,9 @@ async function userRquest({ payload = {}}) {
   const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
   if(retcode !== '000000'){
     // 如果请求失败说明token失效，则清楚所有缓存信息
-    console.error(msg, '---')
-
+    console.error(msg)
     Taro.clearStorage()
+    return false
   }else{
     return JSON.parse(data)
   }

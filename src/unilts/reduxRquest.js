@@ -3,6 +3,7 @@ import request from './Request'
 import userRequest from './jmas/userRequest'
 import homeRequest from './jmas/homeRequest'
 import jmasRequest from './jmas/jmasRequest'
+import { USER_LOGOUT } from '@constants/user'
 
 /*
   way: 
@@ -24,7 +25,8 @@ export default function createAction({ appid, interfaceid, wayJmas, url, path, p
   return async (dispatch) => {
     if(way === 'user') {
       const res = await userRequest({ payload });
-      dispatch({ type, payload: cb ? cb(res) : res })
+      // 如果返回的是false，则需要走登录失败的方法
+      res ? dispatch({ type, payload: cb ? cb(res) : res }) : dispatch({type: USER_LOGOUT})
       return res
     } else if(way === 'home') {
       const res = await homeRequest({ payload });
