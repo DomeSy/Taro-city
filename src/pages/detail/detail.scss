@@ -2,15 +2,39 @@
 .Detail{
   height: 100vh;
   background: $background;
-  &-img{
-    width: 100vw;
-    height: 206px;
+  &-title{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 0 48px;
+    color: $white;
+    &-name{
+      font-size: 36px;
+      line-height: 50px;
+    }
+    &-tip{
+      font-size: $font-size-title;
+      line-height: $line-height-title;
+    }
+  }
+  &-content{
+    height: calc(100vh - 88px);
+    overflow-y: auto;
+    position: relative;
+    top: 0px;
+    &-img{
+      width: 100vw;
+      height: 206px;
+      font-family: $font-family;
+    }
   }
   &-buttom{
     padding: 24px;
     font-size: $font-size-list;
     line-height: $line-height-list;
     font-family: $font-family;
+    background: $font-color-background;
     display: flex;
     justify-content: left;
     &-text{

@@ -32,20 +32,26 @@ class Detail extends Component {
   }
 
   render() {
-    const { detail:{ bgpicpath, listTabs, listAll }, userInfo } = this.props;
+    const { detail:{ bgpicpath, listTabs, listAll, resourcename }, userInfo } = this.props;
     const type = userInfo.usertype ? userInfo.usertype : false
     const list = this.listAllDetail(listAll)
     return (
       <View className="Detail">
-        <Image className="Detail-img" src={bgpicpath}></Image>
-        {
-          listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type}/>
-        }
-        {
-          list.map((item, index) => (
-            <List border title={item.title} list={item.list} key={index} type={type}/>
-          ))
-        }
+        <View className="Detail-content">
+          <View className="Detail-title">
+            <View className="Detail-title-name">{resourcename}</View>
+            <View className="Detail-title-tip">欢迎使用{resourcename}服务</View>
+          </View>
+          <Image className="Detail-content-img" src={bgpicpath}></Image>
+          {
+            listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type}/>
+          }
+          {
+            list.map((item, index) => (
+              <List border title={item.title} list={item.list} key={index} type={type}/>
+            ))
+          }
+        </View>
         <View className="Detail-buttom">
           <View className="Detail-buttom-text">*更多服务，尽在“爱山东”APP。</View>
           <View className="Detail-buttom-download">如何下载？</View>
