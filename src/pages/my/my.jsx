@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { Info, Space } from './components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
+import pingjia from '@assets/my/pingjia.png'
+import zhengjian from '@assets/my/zhengjian.png'
+import zixun from '@assets/my/zixun.png'
 import { USER_LOGIN } from '@constants/user'
 import * as actions from '@actions/user'
 
@@ -12,21 +15,21 @@ import './my.scss'
 
 const list = [
   {
-    img: `background: url(${banjian});background-size: 100% 100%`,
+    img: `background: url(${zhengjian});background-size: 100% 100%`,
     text: '我的证件',
-    ishot: true
+    // ishot: true
   },
   {
     img: `background: url(${banjian});background-size: 100% 100%`,
-    text: '我的证件',
+    text: '我的办件',
   },
   {
-    img: `background: url(${banjian});background-size: 100% 100%`,
-    text: '我的证件',
+    img: `background: url(${pingjia});background-size: 100% 100%`,
+    text: '我的评价',
   },
   {
-    img: `background: url(${banjian});background-size: 100% 100%`,
-    text: '我的证件',
+    img: `background: url(${zixun});background-size: 100% 100%`,
+    text: '我的咨询',
   },
 ]
 

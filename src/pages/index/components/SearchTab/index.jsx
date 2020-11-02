@@ -4,7 +4,7 @@ import { View } from '@tarojs/components'
 import { Site } from '@components'
 import { AtIcon } from 'taro-ui'
 import { connect } from 'react-redux'
-import { mobileId, clienttype } from '@unilts'
+import { mobileId, clienttype, Jump } from '@unilts'
 import * as actions from '@actions/site'
 import * as homeActions from '@actions/home'
 
@@ -33,7 +33,7 @@ class Index extends Component {
           <Site active={site} onChange={this.ChangeSite} />
         </View>
         <View className="searchs">
-          <View className="sInput">
+          <View className="sInput" onClick={() => Jump({url:'/search'})}>
             <AtIcon value='search' size='16' color='rgba(135,135,135,1)'></AtIcon>
             <View className="text">搜索词</View>
           </View>

@@ -60,12 +60,13 @@ class Index extends Component {
 
   componentDidShow = async () => {
 
-    // const data = await JmasRequest('jmportalnzjk', 'channelfirst', {
-    //   siteid: '620fac8584594096b873a411c93ae228',
-    //   mobileId: '737d972e0a04436287b7a1b59d142bb8',
-    //   clienttype: '2'
-    // })
-    // console.log(data,'--9998')
+    const data = await JmasRequest('jmportalnzjk', 'searchApp', {
+      siteid: '620fac8584594096b873a411c93ae228',
+      keyword: '健康',
+      pageNo: '1',
+      pageSize: 10
+    })
+    console.log(data,'--9998')
 
     // const data = await JmasRequest('jmportalnzjk', 'getcomppageinterface', {
     //   channelid: "10ed186afbb4483793da62335d9c0682"
