@@ -12,7 +12,6 @@ class My extends Component {
   constructor(){
     super(...arguments)
     this.state = {
-      // site[0].area
       title: '',
       area: site,
       open: false
