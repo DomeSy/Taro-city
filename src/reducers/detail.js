@@ -13,8 +13,7 @@ function getDetail(list) {
     bgpicpath
   }
   let arr = {arr0:[], arr1:[], arr2:[], arr3:[], arr4:[], arr5:[]}
-  // console.log(data, '---')
-  data.map((item, index) => {
+  data.map(item => {
     if(item.cardsource === 'tab'){
       detailInit.listTabs.push(item)
     }else if(item.cardsource === 'list0'){

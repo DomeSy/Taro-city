@@ -60,25 +60,11 @@ class Index extends Component {
 
   componentDidShow = async () => {
 
-    const data = await JmasRequest('jmportalnzjk', 'searchApp', {
-      siteid: '620fac8584594096b873a411c93ae228',
-      keyword: '健康',
-      pageNo: '1',
-      pageSize: 10
-    })
-    console.log(data,'--9998')
-
-    // const data = await JmasRequest('jmportalnzjk', 'getcomppageinterface', {
-    //   channelid: "10ed186afbb4483793da62335d9c0682"
-    // })
-    // console.log(data,'--9998')
-    
-    // const data = await JmasRequest('jmportalnzjk', 'getapplist', {
-    //   // siteid: '01f443bfeb054686a28ca8446f9f3810',
-    //   siteid: '178966c2ddf04da8aa2fb447eedf677b',
-    //   colId: 'bc16bc58b4474ecca0405b236c87e78e',
-    //   pageNo:'1',
-    //   pageSize: '10'
+    // const data = await JmasRequest('jmportalnzjk', 'searchApp', {
+    //   siteid: '620fac8584594096b873a411c93ae228',
+    //   keyword: '健康',
+    //   pageNo: '1',
+    //   pageSize: 10
     // })
     // console.log(data,'--9998')
   }

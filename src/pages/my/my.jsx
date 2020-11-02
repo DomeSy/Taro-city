@@ -76,7 +76,6 @@ class My extends Component {
       dispatchLogin({token, usertype})
       if(data.payload){
         const payload = JSON.parse(data.payload)
-        console.log(payload)
         const { url, name } = payload
         name ? Jump({url, payload: { token }}) : Jump({url})
       }
@@ -89,7 +88,6 @@ class My extends Component {
     const { list } = this.state;
     const { login, userInfo } = this.props
 
-    console.log(this.props, '---')
 
     return (
       <View className="My">
