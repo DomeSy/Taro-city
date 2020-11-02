@@ -41,7 +41,13 @@ export default function createAction({ appid, interfaceid, wayJmas, url, path, p
         dispatch({ type, payload: cb ? cb(data) : data })
         return data
       }else{
-        console.log(message)
+        Taro.showModal({
+          title: '提示',
+          content: message,
+          showCancel: false,
+          success: (res) => {
+          }
+        })
       }
     }
   }
