@@ -100,13 +100,13 @@ class Index extends Component {
         {/* 搜索框 */}
         <SearchTab />
         {/* 轮播图 */}
-        {/* <Ration /> */}
+        <Ration />
         {/* 热门分类 */}
-        {/* <Classification /> */}
+        <Classification />
         {/* 我的证照 */}
-        {/* <Licence /> */}
+        <Licence />
         {/* 主题专区 */}
-        {/* <Theme /> */}
+        <Theme />
         {/* 主题服务 */}
         <ThemeService />
         {/* 背景框 */}

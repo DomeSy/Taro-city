@@ -15,7 +15,6 @@ class Special extends Component {
     
     let { themeList } = this.props.home
     themeList = themeList.listAll.length === 0 ? themeList : themeList.listAll;
-    console.log(themeList, '000')
 
     return (
       <View className="Special">

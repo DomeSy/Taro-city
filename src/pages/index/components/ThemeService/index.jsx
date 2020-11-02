@@ -23,7 +23,7 @@ class Index extends Component {
     }
     return (
       <View className="ThemeService">
-        <Title title="主题服务" />
+        <Title title="主题服务" url='/service' switchTab/>
         <ListTheme list={list} />
       </View>
     );

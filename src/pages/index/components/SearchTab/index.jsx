@@ -20,7 +20,6 @@ class Index extends Component {
   componentDidShow(){}
 
   ChangeSite = (value) => {
-    console.log(this.props,'---')
     this.props.DSiteSet({area: value.area, siteid: value.siteid})
     this.props.DHomeInit({siteid: value.siteid, mobileId, clienttype})
   }

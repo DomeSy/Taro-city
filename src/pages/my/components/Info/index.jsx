@@ -12,7 +12,6 @@ class Index extends Component {
     }
   }
   componentDidMount(){
-    console.log(this.props)
     if(this.props.login){
       const { name, loginname } = this.props.userInfo
       this.setState({

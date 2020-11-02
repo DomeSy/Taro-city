@@ -26,7 +26,6 @@ class LoginRedirecr extends Component {
   }
 
   componentDidMount = async() => {
-    console.log(getCurrentInstance().router.params, '----')
     const { dispatchLogin } = this.props;
     let { go } = getCurrentInstance().router.params;
     const data = await getStorage();
