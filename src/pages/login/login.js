@@ -3,7 +3,7 @@ import { aliCertify, AlipayRequest, getOpenRes } from '@unilts/dependence'
 
 
 /*
-  登录完成后跳转的两种情况
+  登录完成后跳转的三种情况
     1>switch跳转到tabbar（默认）
     2>跳转到非tabbar
       go跳转的地址(对象)
@@ -11,6 +11,8 @@ import { aliCertify, AlipayRequest, getOpenRes } from '@unilts/dependence'
         url: 重定向的地址
         ...  其余参数
       }
+    3>跳转到switch并跳转到原始页面
+      payload: 需要所带的参数
 */
 Page({
   data: {
@@ -23,7 +25,8 @@ Page({
     token: '',
     usertype: '',
     go: false,
-    faceLog: false
+    faceLog: false,
+    payload: false
   },
   async onShow() {
     try {
@@ -48,10 +51,12 @@ Page({
     }
   },
   onLoad(option){
-    const { login, go } = option;
+    console.log(option, '---998')
+    const { login, go, payload } = option;
     const { webUrl } = jisConfig;
     this.data.go = go ? go : false;
     this.data.src = login ? `${webUrl}individualCenter` : webUrl;
+    this.data.payload = payload ? payload : false;
     this.webViewContext = my.createWebViewContext('webviewContainer');
   },
   async faceGo() {
@@ -103,7 +108,7 @@ Page({
     }else if (action === 'loginApp'){
       //登录
       const { token, usertype } = e.detail.params;
-      const { go } = this.data;
+      const { go, payload } = this.data;
       if (go) {
         my.setStorage({
           key: 'token',
@@ -116,13 +121,15 @@ Page({
         });
         Jump({url: '/loginRedirect', method: 'redirectTo', payload: {go}})
       } else {
+
         my.setStorage({
           key: 'token',
           data: {
             token,
             usertype,
             type: "login",
-            isLogin: true
+            isLogin: true,
+            payload
           }
         });
         Jump({method: 'navigateBack'})

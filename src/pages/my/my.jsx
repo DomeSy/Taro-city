@@ -7,8 +7,9 @@ import banjian from '@assets/my/banjian.png'
 import pingjia from '@assets/my/pingjia.png'
 import zhengjian from '@assets/my/zhengjian.png'
 import zixun from '@assets/my/zixun.png'
-import { USER_LOGIN } from '@constants/user'
 import * as actions from '@actions/user'
+import { Jump } from '@unilts';
+
 
 import './my.scss'
 
@@ -73,6 +74,12 @@ class My extends Component {
         }
       })
       dispatchLogin({token, usertype})
+      if(data.payload){
+        const payload = JSON.parse(data.payload)
+        console.log(payload)
+        const { url, name } = payload
+        name ? Jump({url, payload: { token }}) : Jump({url})
+      }
     }else if(type == 'loginOut') {
       dispatchLogout()
     }

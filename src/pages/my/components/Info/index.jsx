@@ -52,7 +52,7 @@ class Index extends Component {
           <View className="Info-infos-img"></View>
           <View className="Info-infos-name" onClick={this.goLogin}>{name}</View>
         </View>
-        <View className="Info-opinion">
+        <View className="Info-opinion" onClick={() => Jump({url: '/opinion'})}>
           <View className="Info-opinion-text">意见反馈</View>
         </View>
       </View>
