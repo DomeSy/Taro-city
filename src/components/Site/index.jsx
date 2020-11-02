@@ -12,23 +12,24 @@ class My extends Component {
   constructor(){
     super(...arguments)
     this.state = {
-      title: site[0].area,
+      // site[0].area
+      title: '',
       area: site,
       open: false
     }
   }
 
-  componentWillReceiveProps (nextPrev) {
+  static getDerivedStateFromProps (nextPrev, state) {
     const { active } = nextPrev;
-    const { area } = this.state;
+    const { area } = state;
     const listAll = area.map(item => {
       item.active = item.area === active.area ? true : false;
       return item
     })
-    this.setState({
+    return {
       title: active.area,
       aera: listAll
-    })
+    }
   }
 
   onArea = (item, area) => {

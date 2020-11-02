@@ -11,13 +11,12 @@ function Index(){
 
   const list = [
     {
-      text:'通行码出示',
+      text:'病例与可能密切接扫到都爱斯达克奇偶暗示京东派',
       isImg: true
     },
     {
-      // 字体超出和hot自动存在需要单独处理
       text:'病例与可能密切接扫到都爱斯达克奇偶暗示京东派',
-      // isImg: true
+      isImg: true
     },
     {
       text:'通行码出示',
@@ -45,7 +44,7 @@ function Index(){
             <View className="DListUseTime-list-img"></View>
             <View className="DListUseTime-list-text">{item.text}</View>
             {
-              item.isImg ? <View className="DListUseTime-list-hot" style={img}></View> : ''
+              item.isImg && item.text.length < 8 ? <View className="DListUseTime-list-hot" style={img}></View> : ''
             }
           </View>
         ))

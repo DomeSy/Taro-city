@@ -18,7 +18,6 @@ class Index extends Component {
     let { rationList } = this.props.home
     if(!Method.isObject(this.props.home)){
       rationList = rationList.listAll.length === 0 ? rationList.infos : rationList.listAll;
-      console.log(rationList, '---9')
     } else { 
       return <View></View>
     }
