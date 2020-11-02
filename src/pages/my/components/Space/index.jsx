@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Title } from '@components'
 import { AtIcon } from 'taro-ui'
+import Jump from '@unilts/Jump';
 import banner from '@assets/banner.png'
+import { connect } from 'react-redux'
 
 import './index.scss'
 
@@ -51,6 +53,7 @@ const list = [
   }
 ]
 
+@connect(({user}) => user)
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -61,17 +64,13 @@ class Index extends Component {
 
   render() {
     const { list } = this.state;
+    const { login } = this.props;
     return (
       <View className="Space">
         <Title title="我的空间" effectTitle="授权管理"/>
-        {/* <View className="Space-centent">
-          <View className="Space-centent-none">
-            <View className="Space-centent-none-text">
-              订阅专属服务，开启您的智慧生活…
-            </View>
-          </View>
-        </View> */}
-        <View className="Space-Card">
+        {
+          login ? 
+          <View className="Space-Card">
           {
             list.map((item, index) => (
               <View className="Space-Card-content" key={index} style={item.img}>
@@ -102,7 +101,18 @@ class Index extends Component {
               </View>
             ))
           }
-        </View>
+          </View>
+          :
+          <View className="Space-centent" onClick={() => Jump({url: '/login'})}>
+            <View className="Space-centent-none">
+              <View className="Space-centent-none-text">
+                订阅专属服务，开启您的智慧生活…
+              </View>
+            </View>
+          </View>
+        }
+   
+        
       </View>
     );
   }

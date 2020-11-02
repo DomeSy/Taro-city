@@ -41,7 +41,7 @@ function getStorage() {
   })
 }
 
-@connect(({ user }) => user, { ...actions })
+@connect(({ user, home }) => ({...user, ...home}), { ...actions })
 class My extends Component {
 
   constructor(){
@@ -79,6 +79,8 @@ class My extends Component {
     const { list } = this.state;
     const { login, userInfo } = this.props
 
+    console.log(this.props, '---')
+
     return (
       <View className="My">
         <Info login={login} userInfo={userInfo} />
@@ -100,8 +102,9 @@ class My extends Component {
           }
         </View>
         <View className="My-border" />
-        {/* 我的空间 */}
-        <Space />
+        {
+          userInfo.usertype === 2 ? '' : <Space />
+        }
       </View>
     )
   }
