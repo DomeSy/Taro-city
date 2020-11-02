@@ -51,7 +51,6 @@ Page({
     }
   },
   onLoad(option){
-    console.log(option, '---998')
     const { login, go, payload } = option;
     const { webUrl } = jisConfig;
     this.data.go = go ? go : false;
