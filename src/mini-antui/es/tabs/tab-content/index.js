@@ -1,6 +1,0 @@
-Component({
-  props: {
-    tabId: '',
-    activeTab: ''
-  }
-});
