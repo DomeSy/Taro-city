@@ -5,7 +5,6 @@ import './certificate.scss'
 class Certificate extends Component {
   constructor(){
     super(...arguments)
-    // console.log()
   }
   render() {
 

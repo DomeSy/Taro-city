@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tip } from '@components'
+import Taro from '@tarojs/taro'
 import { ServerList, UseTime } from './components'
 import { SearchTab } from '../index/components'
 import * as actions from '@actions/user'
@@ -8,6 +9,17 @@ import { connect } from 'react-redux'
 import banner from '@assets/sever/banner.png'
 
 import './service.scss'
+
+function getStorage() {
+  return new Promise(res => {
+    Taro.getStorage({
+      key: 'token',
+      success: function (data) {
+        res(data.data)
+      }
+    })
+  })
+}
 
 @connect(({ user }) => user, { ...actions })
 class Service extends Component {
@@ -19,10 +31,26 @@ class Service extends Component {
     }
   }
 
-  componentDidShow = () => {
-   
+  componentDidShow = async () => {
+    const { dispatchLogin } = this.props;
+    
+    const data = await getStorage();
+    const type = data ? data.type : false;
+    
+    if(type == 'login' && data.isLogin){
+      const { token, usertype } = data;
+      Taro.setStorage({
+        key:"token",
+        data: {
+          token,
+          usertype,
+          type: "login",
+          isLogin: false
+        }
+      })
+      dispatchLogin({token, usertype})
+    }
   }
-
   config = {
     navigationBarTitleText: '服务'
   }

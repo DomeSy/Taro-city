@@ -8,7 +8,6 @@ class Enclosure extends Component {
   constructor(){
     super(...arguments)
 
-    // console.log()
     this.state = {
       list: [
         {

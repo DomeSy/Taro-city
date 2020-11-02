@@ -6,7 +6,11 @@ import { aliCertify, AlipayRequest, getOpenRes } from '@unilts/dependence'
   登录完成后跳转的两种情况
     1>switch跳转到tabbar（默认）
     2>跳转到非tabbar
-      go跳转的地址
+      go跳转的地址(对象)
+      go{
+        url: 重定向的地址
+        ...  其余参数
+      }
 */
 Page({
   data: {

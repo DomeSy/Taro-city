@@ -11,12 +11,17 @@ import './index.scss'
   effectTitle副标题名
   url:跳转的方式
   switchTab：存在时，则是跳转首页的
+  login:是否登录，否的话跳转登录页，并实现跳转
 */ 
-function Index({title = '我是标题', effectTitle = '全部', none, url = false, switchTab}){
+function Index({title = '我是标题', effectTitle = '全部', none, url = false, login = false, switchTab}){
 
   const goUrl = () => {
     if(switchTab){
       Jump({url, method: 'switchTab'})
+      return
+    }
+    if(!login){
+      Jump({url: '/login', payload:{go: JSON.stringify({url})}})
       return
     }
     url ? Jump({url}) : ''

@@ -7,23 +7,22 @@ import { Method } from '@unilts'
 import Card from './Card'
 
 import './index.scss'
-@connect(({ home }) => home)
+@connect(({ home, user }) => ({...home, ...user}))
 class Index extends Component {
   constructor(){
     super(...arguments)
-    this.state = {
-
-    }
+    this.state = {}
   }
 
   render() {
+
+    const { login } = this.props;
     if(!Method.isObject(this.props.home)){
       let { licenceList } = this.props.home
     }
-
     return (
       <View className="Licence">
-        <Title title="我的证照" />
+        <Title title="我的证照" url='/card' login={login}/>
         <Card />
       </View>
     );

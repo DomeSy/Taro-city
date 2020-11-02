@@ -14,10 +14,9 @@ class Index extends Component {
 
   render() {
     const { login } = this.props;
-    console.log(this.props)
     return (
       <View className="UseTime">
-        <Title title='最近使用' />
+        <Title title='最近使用' url='/nearUse' login={login}/>
         {
           login ? <ListUseTime /> :         
           <View className="UseTime-none">
