@@ -1,15 +1,38 @@
 @import "@styles/theme.scss";
 
-.Search{
+.Searchs{
   &-border{
     height: 24px;
   }
   &-title{
     padding: 24px;
     font-family: $font-family;
-    color: font-color;
+    color: $font-color;
     font-size: $font-size;
     line-height: $line-height;
+  }
+  &-result{
+    font-family: $font-family;
+    &-list{
+      font-size: $font-size-title;
+      line-height: $line-height-title;
+      margin-left: 24px;
+      padding: 26px 24px 25px 0px;
+      color: $font-color;
+      border-bottom: 1px solid $font-color-background;
+      &-active{
+        color: $blue;
+      }
+      &:first-of-type{
+        padding-top: 0;
+      }
+      &:last-of-type{
+        border-bottom: 0px;
+      }
+    }
+    &-none{
+      text-align: center;
+    }
   }
   &-hot{
     padding: 0px 24px;

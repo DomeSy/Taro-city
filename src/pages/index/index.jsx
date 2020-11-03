@@ -60,11 +60,13 @@ class Index extends Component {
 
   componentDidShow = async () => {
 
-    // const data = await JmasRequest('jmportalnzjk', 'searchApp', {
+    // const data = await JmasRequest('jmportalnzjk', 'searchinfolist', {
     //   siteid: '620fac8584594096b873a411c93ae228',
-    //   keyword: '健康',
-    //   pageNo: '1',
-    //   pageSize: 10
+    //   keyword: '律师',
+    //   num: 10,
+    //   page: 1,
+    //   type: 0,
+    //   resourceid: ''
     // })
     // console.log(data,'--9998')
   }
