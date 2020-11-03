@@ -2,6 +2,7 @@ import React,{ useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View, Image } from '@tarojs/components'
 import { Method, Jump } from '@unilts'
+import { AtMessage } from 'taro-ui'
 import './index.scss'
 
 // 个数
@@ -37,6 +38,7 @@ function Index({tab = [], type}){
 
   return (
     <View className="DTabDetail">
+      <AtMessage />
       {
         list.map((item, index) => (
           <View className="DTabDetail-list" key={index} onClick={() => goWebView(item.appIssueUrl, item.fwusertype, item.name)}>
