@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { SEARCHSET, SEARCHINIT, SEARCHGET } from '../constants/search'
+import { SEARCHSET, SEARCHINIT, SEARCHCLEAR } from '../constants/search'
 
 // 主页搜索记录
 const INITIAL_STATE = {
@@ -26,10 +26,14 @@ export default function counter (state = INITIAL_STATE, action) {
         search: [...action.payload]
       }
     }
-    case SEARCHGET: {
-      return action.payload ? {
-        site: action.payload
-      } : INITIAL_STATE 
+    case SEARCHCLEAR: {
+      try {
+        Taro.removeStorageSync(SEARCHSET)
+      } catch (e) {
+        console.error('移除失败')
+      }
+      console.log(state)
+      return INITIAL_STATE
     }
     default:
       return state

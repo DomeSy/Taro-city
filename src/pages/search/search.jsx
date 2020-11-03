@@ -118,6 +118,11 @@ class Search extends Component {
     DSearchSet(search)
   }
 
+  // 清楚所有记录
+  clearLog = () => {
+    this.props.DSearchClear()
+  }
+
   render() {
     const { list, show, applist, value } = this.state;
     const { search, userInfo:{usertype} } = this.props
@@ -174,7 +179,7 @@ class Search extends Component {
                     </View>
                   ))
                 }
-                <View className="Searchs-log">
+                <View className="Searchs-log" onClick={() => this.clearLog()}>
                   <View className="Searchs-log-text">清除所有历史记录</View>
                 </View>
               </>

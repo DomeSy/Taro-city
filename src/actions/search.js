@@ -1,4 +1,4 @@
-import { SEARCHSET, SEARCHINIT, SEARCHGET } from '../constants/search'
+import { SEARCHSET, SEARCHINIT, SEARCHCLEAR } from '../constants/search'
 import { storage } from '@unilts'
 
 export const DSearchInit = () => storage({
@@ -13,10 +13,9 @@ export const DSearchSet = payload => {
   }
 }
 
-export const DSearchGet = payload => {
+export const DSearchClear = () => {
   return {
-    type: SITESET,
-    payload
+    type: SEARCHCLEAR,
   }
 }
 
