@@ -29,7 +29,6 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule}) {
         })
         return
       }
-
       resolve(data)
     }).catch((err) => {
       const defaultMsg = '请求异常'

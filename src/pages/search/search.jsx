@@ -13,34 +13,19 @@ class Search extends Component {
     super(...arguments)
     this.state = {
       value: '',
-      list: [
-        {
-          text: '社保'
-        },
-        {
-          text: '出入境'
-        },
-        {
-          text: '出入境出入境'
-        }
-        ,
-        {
-          text: '出入'
-        },
-        {
-          text: '出入境出入境'
-        },
-        {
-          text: '出入境出入境'
-        }
-      ],
+      searchList: [],
       show: false,
       applist: [] //搜索列表
     }
   }
 
   componentDidMount = () => {
-    const { DSearchInit } = this.props
+    const { DSearchInit, home } = this.props
+    const searchList = home.searchList.listAll.length === 0 ? home.searchList.apps.data : home.searchList.listAll;
+    console.log(searchList)
+    this.setState({
+      searchList
+    })
     DSearchInit()
   }
 
@@ -48,8 +33,8 @@ class Search extends Component {
   onChange = async (value) => {
     const { siteid } = this.props.site
     const res = await JmasRequest('jmportalnzjk', 'searchinfolist', {
-      siteid: '620fac8584594096b873a411c93ae228',
-      keyword: "律师",
+      siteid,
+      keyword: value,
       num: 10,
       page: 1,
       type: 0,
@@ -73,6 +58,14 @@ class Search extends Component {
         <Text>{name[1]}</Text>
       </>
     )
+  }
+
+  // 点热门的应用
+  goSearch = (url, fwusertype, name) => {
+    const { userInfo:{usertype}, DSearchSet, search} = this.props;
+    const list = [...search, {url, fwusertype, name}];
+    DSearchSet(list)
+    this.goWebView(url, fwusertype, name, usertype)
   }
 
   goWeb = item => {
@@ -123,7 +116,7 @@ class Search extends Component {
   }
 
   render() {
-    const { list, show, applist, value } = this.state;
+    const { searchList, show, applist, value } = this.state;
     const { search, userInfo:{usertype} } = this.props
 
     return (
@@ -137,15 +130,14 @@ class Search extends Component {
             <View className="Searchs-result">
               {
                 applist.length === 0 ? 
-                <View className="Searchs-result-list Searchs-result-none"><Text>暂无内容</Text></View>
+                <View className="Searchs-result-list Searchs-result-none"><Text>暂无内容...</Text></View>
                 :
                 <>
                   {
                     applist.map((item, index) => (
                       <View className="Searchs-result-list" key={index} onClick={() => this.goWeb(item)}>
                         {
-                          // this.TextChange(item.name , value)
-                          this.TextChange(item.name , "律师")
+                          this.TextChange(item.name , value)
                         }
                       </View>
                     ))  
@@ -158,8 +150,8 @@ class Search extends Component {
             <View className="Searchs-title">热门搜索</View>
             <View className="Searchs-hot">
               {
-                list.map((item, index) => (
-                  <Text className="Searchs-hot-text" key={index}>{item.text}</Text>
+                searchList.map((item, index) => (
+                  <Text className="Searchs-hot-text" key={index} onClick={() => this.goSearch(item.appIssueUrl, item.fwusertype, item.name)}>{item.name}</Text>
                 ))
               }
             </View>
