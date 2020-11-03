@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components';
 import { SearchView } from '@components'
 import { JmasRequest, Jump, Method } from '@unilts'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import * as actions from '@actions/search'
 import { AtMessage } from 'taro-ui'
 import './search.scss'
 
-@connect(({site, user}) => ({...site, ...user}))
+@connect(({site, user, search}) => ({...site, ...user, ...search}), {...actions})
 class Search extends Component {
   constructor(){
     super(...arguments)
@@ -33,19 +34,18 @@ class Search extends Component {
           text: '出入境出入境'
         }
       ],
-      lists: [
-        {
-          text: '社保'
-        },
-        {
-          text: '社保社保社保社保社保社保社保社保社保社保社保社保社保社保社保社保社保'
-        }
-      ],
       show: false,
       applist: [] //搜索列表
     }
   }
 
+  componentDidMount = () => {
+    const { DSearchInit, search } = this.props
+    DSearchInit()
+    // console.log(search, '001')
+  }
+
+  // 获得值
   onChange = async (value) => {
     const { siteid } = this.props.site
     const res = await JmasRequest('jmportalnzjk', 'searchinfolist', {
@@ -64,6 +64,7 @@ class Search extends Component {
     })
   }
 
+  // 通过字来改变样式
   TextChange = (str, active) => {
     let name = str.replace(active, '@!').split('@!');
     return (
@@ -75,9 +76,15 @@ class Search extends Component {
     )
   }
 
-  goWeb = (item) => {
+  goWeb = item => {
+    const { userInfo:{usertype}, DSearchSet, search} = this.props;
     const { url, fwusertype, name } =item;
-    const { usertype } = this.props.userInfo
+    const list = [...search, {url, fwusertype, name}];
+    this.setState({
+      value: '',
+      show: false
+    })
+    DSearchSet(list)
     this.goWebView(url, fwusertype, name, usertype)
   }
 
@@ -104,13 +111,21 @@ class Search extends Component {
     }
   }
 
-  render() {
+  // 删除记录
+  closeLog = (index) => {
+    const { search, DSearchSet } = this.props;
+    search.splice(index, 1)
+    DSearchSet(search)
+  }
 
-    const { list, lists, show, applist, value } = this.state;
+  render() {
+    const { list, show, applist, value } = this.state;
+    const { search, userInfo:{usertype} } = this.props
+
     return (
       <View className="Searchs">
         <AtMessage />
-        <SearchView placeholder="请输入搜索关键词" onChange={(value) => this.onChange(value) } />
+        <SearchView placeholder="请输入搜索关键词" value={value} onChange={(value) => this.onChange(value) } />
         <View className="Searchs-border"></View>
         {
           show ? 
@@ -144,25 +159,28 @@ class Search extends Component {
                 ))
               }
             </View>
-            <View className="Searchs-title">历史搜索</View>
             {
-              lists.map((item, index) => (
-                <View className="Searchs-list" key={index + 'searchs'}>
-                  <View className="Searchs-list-left">
-                    <View className="Searchs-list-left-clock"></View>
-                    <View className="Searchs-list-left-text">{item.text}</View>
-                  </View>
-                  <View className="Searchs-list-close"></View>
+              search.length === 0 ? '' : 
+              <>
+                <View className="Searchs-title">历史搜索</View>
+                {
+                  search.map((item, index) => (
+                    <View className="Searchs-list" key={index + 'searchs'}>
+                      <View className="Searchs-list-left" onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype)}>
+                        <View className="Searchs-list-left-clock"></View>
+                        <View className="Searchs-list-left-text">{item.name}</View>
+                      </View>
+                      <View className="Searchs-list-close" onClick={() => this.closeLog(index)}></View>
+                    </View>
+                  ))
+                }
+                <View className="Searchs-log">
+                  <View className="Searchs-log-text">清除所有历史记录</View>
                 </View>
-              ))
+              </>
             }
-            <View className="Searchs-log">
-              <View className="Searchs-log-text">清除所有历史记录</View>
-            </View>
           </>
         }
-
-
       </View>
     )
   }

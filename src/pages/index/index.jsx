@@ -59,7 +59,6 @@ class Index extends Component {
   componentDidUpdate(){}
 
   componentDidShow = async () => {
-
     // const data = await JmasRequest('jmportalnzjk', 'searchinfolist', {
     //   siteid: '620fac8584594096b873a411c93ae228',
     //   keyword: '律师',
