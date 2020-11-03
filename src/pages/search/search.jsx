@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components';
 import { SearchView } from '@components'
-import { JmasRequest, Jump } from '@unilts'
+import { JmasRequest, Jump, Method } from '@unilts'
 import { connect } from 'react-redux';
+import { AtMessage } from 'taro-ui'
 import './search.scss'
 
 @connect(({site, user}) => ({...site, ...user}))
@@ -75,11 +76,32 @@ class Search extends Component {
   }
 
   goWeb = (item) => {
-    const { url } =item;
+    const { url, fwusertype, name } =item;
+    const { usertype } = this.props.userInfo
+    this.goWebView(url, fwusertype, name, usertype)
+  }
 
-    console.log(this.props.userInfo, '---99')
-
-    // Jump({url})
+  // 用于判断事项是否是有个人法人的，是否登录状态
+  goWebView = (url, fwusertype, name, type) => {
+    if (fwusertype === 0) {
+      url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+    } else {
+      if(type){
+        if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
+          url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+        } else {
+          const message = fwusertype === 1 ? '个人' : '法人'
+          Taro.atMessage({
+            message: `当前事项只允许${message}办理`,
+            type: 'error',
+            duration: 2000
+          }) 
+        }
+      }else{
+        // type为false需要跳转登录
+        Jump({url: '/login', payload: {go: JSON.stringify({url, fwusertype})}})
+      }
+    }
   }
 
   render() {
@@ -87,6 +109,7 @@ class Search extends Component {
     const { list, lists, show, applist, value } = this.state;
     return (
       <View className="Searchs">
+        <AtMessage />
         <SearchView placeholder="请输入搜索关键词" onChange={(value) => this.onChange(value) } />
         <View className="Searchs-border"></View>
         {

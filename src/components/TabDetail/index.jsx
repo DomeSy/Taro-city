@@ -14,6 +14,7 @@ function Index({tab = [], type}){
 
   const [list, setList] = useState(tab)
 
+  // 用于判断事项是否是有个人法人的，是否登录状态
   const goWebView = (url, fwusertype, name) => {
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
