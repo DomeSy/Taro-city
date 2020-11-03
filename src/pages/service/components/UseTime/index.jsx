@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
-import { Title, ListUseTime } from '@components'
+import { Title } from '@components'
+import ListUseTime from '../ListUseTime'
 import { Jump } from '@unilts';
 import { connect } from 'react-redux';
 
@@ -18,7 +19,7 @@ class Index extends Component {
       <View className="UseTime">
         <Title title='最近使用' url='/nearUse' login={login}/>
         {
-          login ? <ListUseTime /> :         
+          login ? <ListUseTime /> :
           <View className="UseTime-none">
             <View className="UseTime-none-text">
               <Text className="UseTime-none-text-login" onClick={() => Jump({url: '/login'})}>立即登录</Text>
