@@ -32,6 +32,9 @@ function JamsData(list) {
     } else if(item.resourcename == '法人服务') {
       item.listAll = []
       homeList.legalList = item
+    }else if(item.resourcename == '热搜') {
+      item.listAll = []
+      homeList.searchList = item
     }
   })
 

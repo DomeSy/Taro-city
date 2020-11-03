@@ -16,7 +16,6 @@ class Index extends Component {
   }
 
   static getDerivedStateFromProps (nextPrev, state) {
-    console.log(nextPrev, '---')
     return {
       value: nextPrev.value
     }

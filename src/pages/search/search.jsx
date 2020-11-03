@@ -7,7 +7,7 @@ import * as actions from '@actions/search'
 import { AtMessage } from 'taro-ui'
 import './search.scss'
 
-@connect(({site, user, search}) => ({...site, ...user, ...search}), {...actions})
+@connect(({site, user, home, search}) => ({...site, ...home, ...user, ...search}), {...actions})
 class Search extends Component {
   constructor(){
     super(...arguments)
@@ -40,9 +40,8 @@ class Search extends Component {
   }
 
   componentDidMount = () => {
-    const { DSearchInit, search } = this.props
+    const { DSearchInit } = this.props
     DSearchInit()
-    // console.log(search, '001')
   }
 
   // 获得值
