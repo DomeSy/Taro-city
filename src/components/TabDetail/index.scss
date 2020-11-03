@@ -8,10 +8,10 @@
   &-list{
     width: 100%;
     text-align: center;
-    border-left: 1px solid $font-color-background;
-    &:first-of-type{
-      border-left: 0px;
-    }
+    // border-left: 1px solid $font-color-background;
+    // &:first-of-type{
+    //   border-left: 1px solid $white !important;
+    // }
     &-img{
       display: flex;
       justify-content: center;
