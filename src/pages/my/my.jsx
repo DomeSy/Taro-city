@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Info, Space } from './components'
-import Taro, { getCurrentInstance } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import banjian from '@assets/my/banjian.png'
 import pingjia from '@assets/my/pingjia.png'
 import zhengjian from '@assets/my/zhengjian.png'
@@ -46,7 +46,7 @@ function getStorage() {
   })
 }
 
-@connect(({ user, home }) => ({...user, ...home}), { ...actions, nearUseActions })
+@connect(({ user, home }) => ({...user, ...home}), { ...actions, ...nearUseActions })
 class My extends Component {
 
   constructor(){
@@ -59,6 +59,7 @@ class My extends Component {
   componentDidShow = async () => {
     // Taro.clearStorage()
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
+    console.log(this.props, '--')
     
     const data = await getStorage();
     const type = data ? data.type : false;

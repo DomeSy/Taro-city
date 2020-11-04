@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Method } from '@unilts'
 import './index.scss'
 
-@connect(({ home }) => home)
+@connect(({ home, user }) => ({...home, ...user}))
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -35,7 +35,8 @@ class Index extends Component {
 
   render() {
     const { titleList, value } = this.state;
-    let list = []
+    const { userInfo:{usertype} } = this.props;
+    let list = [];
     if(!Method.isObject(this.props.home)){
       let { hotList, newList } = this.props.home
       hotList = hotList.listAll.length === 0 ? hotList : hotList.listAll;
@@ -46,7 +47,7 @@ class Index extends Component {
     return (
       <View className="Classification">
         <TitleBig list={titleList} onChang={this.onChang}/>
-        <ListAll list={list} />
+        <ListAll list={list} type={usertype}/>
       </View>
     );
   }
