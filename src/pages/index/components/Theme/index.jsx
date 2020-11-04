@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { View, Image } from '@tarojs/components'
 import { Title } from '@components'
 import { connect } from 'react-redux'
-import { Method } from '@unilts'
+import { Method, Jump } from '@unilts'
+import * as actions from '@actions/detail'
 
 import './index.scss'
 
-@connect(({ home }) => home)
+@connect(({ home }) => home, {...actions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -15,8 +16,16 @@ class Index extends Component {
     }
   }
 
+  goWebView = list => {
+    const { data } = list.apps;
+    if(data.length === 1){
+      Jump({url: data[0].appIssueUrl})
+    }else{
+      this.props.DDetailInit(list)
+      Jump({url:'/detail'})
+    }
+  }
 
-  // 
   render() {
     let { themeList } = this.props.home
 
@@ -33,21 +42,22 @@ class Index extends Component {
             <Title title="主题专区" url="/special" />
             <View className="Theme-conent">
               <View className="Theme-conent-top">
-                <Image className="Theme-conent-top-left" src={themeList[0].bgpicpath}></Image>
+                <Image className="Theme-conent-top-left" src={themeList[0].bgpicpath} onClick={() => this.goWebView(themeList[0])}></Image>
                 <View className="Theme-conent-top-right">
                   {
-                    themeList[1] ? <Image className="Theme-conent-top-right-t" src={themeList[1].bgpicpath}></Image> : ''
+                    themeList[1] ? <Image className="Theme-conent-top-right-t" onClick={() => this.goWebView(themeList[1])} src={themeList[1].bgpicpath}></Image> : ''
                   }
                   {
-                    themeList[2] ? <Image className="Theme-conent-top-right-t" src={themeList[2].bgpicpath}></Image> : ''
+                    themeList[2] ? <Image className="Theme-conent-top-right-t" onClick={() => this.goWebView(themeList[2])} src={themeList[2].bgpicpath}></Image> : ''
                   }
                 </View>
               </View>
               {
-                themeList[3] ? <View className="Theme-conent-buttom">
-                <Image className="Theme-conent-buttom-left" src={themeList[3].bgpicpath}></Image>
+                themeList[3] ? 
+                <View className="Theme-conent-buttom">
+                  <Image className="Theme-conent-buttom-left" src={themeList[3].bgpicpath} onClick={() => this.goWebView(themeList[3])}></Image>
                 {
-                  themeList[4] ?  <Image className="Theme-conent-buttom-right" src={themeList[4].bgpicpath}></Image> : ''
+                  themeList[4] ?  <Image className="Theme-conent-buttom-right" onClick={() => this.goWebView(themeList[4])} src={themeList[4].bgpicpath}></Image> : ''
                 }
                 </View> : ''
               }

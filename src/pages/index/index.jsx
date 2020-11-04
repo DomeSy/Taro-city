@@ -59,18 +59,16 @@ class Index extends Component {
   componentDidUpdate(){}
 
   componentDidShow = async () => {
-    // const data = await JmasRequest('jmportalnzjk', 'searchinfolist', {
-    //   siteid: '620fac8584594096b873a411c93ae228',
-    //   keyword: '律师',
-    //   num: 10,
-    //   page: 1,
-    //   type: 0,
-    //   resourceid: ''
+    // const data = await JmasRequest('jmportalnzjk', 'generateticket', {
+    //   app_id: 'generateticket',
+    //   servicename: 'generateTicket',
+    //   params: 'e25da449f02447fea5499dd361ef0ea6417404c5446c44e48a5d03cb707ff7c5'
     // })
     // console.log(data,'--9998')
+    // 
   }
 
-  componentDidHide () {   }
+  componentDidHide () {}
 
   render () {
 
