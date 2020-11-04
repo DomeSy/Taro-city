@@ -22,7 +22,6 @@ class Search extends Component {
   componentDidMount = () => {
     const { DSearchInit, home } = this.props
     const searchList = home.searchList.listAll.length === 0 ? home.searchList.apps.data : home.searchList.listAll;
-    console.log(searchList)
     this.setState({
       searchList
     })

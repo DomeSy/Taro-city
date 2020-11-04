@@ -57,9 +57,7 @@ class My extends Component {
   }
 
   componentDidShow = async () => {
-    // Taro.clearStorage()
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
-    console.log(this.props, '--')
     
     const data = await getStorage();
     const type = data ? data.type : false;
