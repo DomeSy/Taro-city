@@ -2,15 +2,19 @@ import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
 import { Title } from '@components'
 import ListUseTime from '../ListUseTime'
-import { Jump } from '@unilts';
-import { connect } from 'react-redux';
+import { Jump } from '@unilts'
+import { connect } from 'react-redux'
+import * as actions from '@actions/nearUse'
 
 import './index.scss'
 
-@connect(({user, nearUse}) => ({...user, ...nearUse}))
+@connect(({user, nearUse}) => ({...user, ...nearUse}), {...actions})
 class Index extends Component {
   constructor(){
     super(...arguments)
+  }
+  componentDidMount(){
+    this.props.DNearInit()
   }
 
   render() {

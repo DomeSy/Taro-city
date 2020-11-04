@@ -4,19 +4,14 @@ import { connect } from 'react-redux'
 import { Method, Jump } from '@unilts'
 import Taro from '@tarojs/taro'
 import { AtMessage } from 'taro-ui'
-import * as actions from '@actions/nearUse'
 
 import './index.scss'
 
 const number = 6
-@connect(({nearUse, user}) => ({...nearUse, ...user}), {...actions})
+@connect(({nearUse, user}) => ({...nearUse, ...user}))
 class Index extends Component {
   constructor(){
     super(...arguments)
-  }
-
-  componentDidMount(){
-    this.props.DNearInit()
   }
 
   goWebView = (url, fwusertype, name, type) => {
@@ -27,6 +22,7 @@ class Index extends Component {
         url ? Jump({url}) : Jump({url: '/none', payload: {name}})
       } else {
         const message = fwusertype === 1 ? '个人' : '法人'
+
         Taro.atMessage({
           message: `当前事项只允许${message}办理`,
           type: 'error',

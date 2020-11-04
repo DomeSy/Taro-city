@@ -33,9 +33,10 @@ class Detail extends Component {
   }
 
   Listall = (value) => {
-    const { DNearSet, nearUse } = this.props
-    const list = [...nearUse, value];
-    DNearSet(list)
+    const { DNearSet, nearUse, login } = this.props;
+    const arr = nearUse.filter(item => item.name !== value.name)
+    const list = [value, ...arr];
+    login ? DNearSet(list) : ''
   }
 
   render() {
