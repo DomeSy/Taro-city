@@ -62,24 +62,29 @@ class Search extends Component {
 
   // 点热门的应用
   goSearch = (url, fwusertype, name) => {
-    const { userInfo:{usertype}, DSearchSet, search} = this.props;
-    const list = [...search, {url, fwusertype, name}];
-    DSearchSet(list)
+    const { userInfo:{usertype} } = this.props;
+    this.set({ url, fwusertype, name })
     this.goWebView(url, fwusertype, name, usertype)
   }
 
   goWeb = item => {
-    const { userInfo:{usertype}, DSearchSet, search} = this.props;
-    const { url, fwusertype, name } =item;
-    const list = [...search, {url, fwusertype, name}];
+    const { userInfo:{usertype} } = this.props;
+    const { url, fwusertype, name } = item;
     this.setState({
       value: '',
       show: false
     })
-    DSearchSet(list)
+    this.set({ url, fwusertype, name })
     this.goWebView(url, fwusertype, name, usertype)
   }
 
+  set = ({ url, fwusertype, name }) => {
+    const { DSearchSet, search} = this.props;
+    const arr = search.filter(items => items.name !== name)
+    const list = [{url, fwusertype, name}, ...arr];
+    DSearchSet(list)
+  }
+  
   // 用于判断事项是否是有个人法人的，是否登录状态
   goWebView = (url, fwusertype, name, type) => {
     if (fwusertype === 0) {
