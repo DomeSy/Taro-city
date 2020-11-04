@@ -42,22 +42,22 @@ class Index extends Component {
             <Title title="主题专区" url="/special" />
             <View className="Theme-conent">
               <View className="Theme-conent-top">
-                <Image className="Theme-conent-top-left" src={themeList[0].bgpicpath} onClick={() => this.goWebView(themeList[0])}></Image>
+                <Image className="Theme-conent-top-left" src={themeList[0].cateimgurl} onClick={() => this.goWebView(themeList[0])}></Image>
                 <View className="Theme-conent-top-right">
                   {
-                    themeList[1] ? <Image className="Theme-conent-top-right-t" onClick={() => this.goWebView(themeList[1])} src={themeList[1].bgpicpath}></Image> : ''
+                    themeList[1] ? <Image className="Theme-conent-top-right-t" onClick={() => this.goWebView(themeList[1])} src={themeList[1].cateimgurl}></Image> : ''
                   }
                   {
-                    themeList[2] ? <Image className="Theme-conent-top-right-t" onClick={() => this.goWebView(themeList[2])} src={themeList[2].bgpicpath}></Image> : ''
+                    themeList[2] ? <Image className="Theme-conent-top-right-t" onClick={() => this.goWebView(themeList[2])} src={themeList[2].cateimgurl}></Image> : ''
                   }
                 </View>
               </View>
               {
                 themeList[3] ? 
                 <View className="Theme-conent-buttom">
-                  <Image className="Theme-conent-buttom-left" src={themeList[3].bgpicpath} onClick={() => this.goWebView(themeList[3])}></Image>
+                  <Image className="Theme-conent-buttom-left" src={themeList[3].cateimgurl} onClick={() => this.goWebView(themeList[3])}></Image>
                 {
-                  themeList[4] ?  <Image className="Theme-conent-buttom-right" onClick={() => this.goWebView(themeList[4])} src={themeList[4].bgpicpath}></Image> : ''
+                  themeList[4] ?  <Image className="Theme-conent-buttom-right" onClick={() => this.goWebView(themeList[4])} src={themeList[4].cateimgurl}></Image> : ''
                 }
                 </View> : ''
               }

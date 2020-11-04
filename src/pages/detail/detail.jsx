@@ -4,6 +4,7 @@ import { View, Image } from '@tarojs/components'
 import { TabDetail, List } from '@components'
 import Taro from '@tarojs/taro'
 import { connect } from 'react-redux'
+import { Jump } from '@unilts'
 import * as actions from '@actions/nearUse'
 
 import './detail.scss'
@@ -62,7 +63,7 @@ class Detail extends Component {
         </View>
         <View className="Detail-buttom">
           <View className="Detail-buttom-text">*更多服务，尽在“爱山东”APP。</View>
-          <View className="Detail-buttom-download">如何下载？</View>
+          <View className="Detail-buttom-download" onClick={() => Jump({url: '/download'})}>如何下载？</View>
         </View>
       </View>
     )
