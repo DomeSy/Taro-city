@@ -8,6 +8,7 @@ import pingjia from '@assets/my/pingjia.png'
 import zhengjian from '@assets/my/zhengjian.png'
 import zixun from '@assets/my/zixun.png'
 import * as actions from '@actions/user'
+import * as nearUseActions from '@actions/nearUse'
 import { Jump } from '@unilts';
 
 
@@ -45,7 +46,7 @@ function getStorage() {
   })
 }
 
-@connect(({ user, home }) => ({...user, ...home}), { ...actions })
+@connect(({ user, home }) => ({...user, ...home}), { ...actions, nearUseActions })
 class My extends Component {
 
   constructor(){
@@ -57,7 +58,7 @@ class My extends Component {
 
   componentDidShow = async () => {
     // Taro.clearStorage()
-    const { dispatchLogin, dispatchLogout } = this.props;
+    const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
     
     const data = await getStorage();
     const type = data ? data.type : false;
@@ -81,13 +82,13 @@ class My extends Component {
       }
     }else if(type == 'loginOut') {
       dispatchLogout()
+      DNearClear()
     }
   }
 
   render() {
     const { list } = this.state;
     const { login, userInfo } = this.props
-
 
     return (
       <View className="My">
