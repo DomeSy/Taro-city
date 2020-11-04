@@ -16,6 +16,13 @@
       color: $blue;
     }
   }
+  &-none{
+    padding: 24px;
+    text-align: center;
+    font-size: $font-size-list;
+    line-height: $line-height-list;
+    color: $font-color;
+  }
   &-list{
     padding: 30px 24px 26px 0;
     display: flex;

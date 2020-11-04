@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { NEARSET, NEARINIT, SEARCHCLEAR } from '../constants/nearUse'
+import { NEARSET, NEARINIT, NEARCLEAR } from '../constants/nearUse'
 
 // 主页搜索记录
 const INITIAL_STATE = {
@@ -23,9 +23,9 @@ export default function counter (state = INITIAL_STATE, action) {
         nearUse: [...action.payload]
       }
     }
-    case SEARCHCLEAR: {
+    case NEARCLEAR: {
       try {
-        Taro.removeStorageSync(SEARCHSET)
+        Taro.removeStorageSync(NEARSET)
       } catch (e) {
         console.error('移除失败')
       }

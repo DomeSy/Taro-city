@@ -2,37 +2,11 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Method, Jump } from '@unilts'
+import Taro from '@tarojs/taro'
 import { AtMessage } from 'taro-ui'
 import * as actions from '@actions/nearUse'
 
 import './index.scss'
-
-const list = [
-  {
-    text:'病例与可能密切接扫到都爱斯达克奇偶暗示京东派',
-    isImg: true
-  },
-  {
-    text:'病例与可能密切接扫到都爱斯达克奇偶暗示京东派',
-    isImg: true
-  },
-  {
-    text:'通行码出示',
-    isImg: false
-  },
-  {
-    text:'通行码出示',
-    isImg: true
-  },
-  {
-    text:'通行码出示',
-    isImg: true
-  },
-  {
-    text:'通行码出示',
-    isImg: true
-  }
-];
 
 const number = 6
 @connect(({nearUse, user}) => ({...nearUse, ...user}), {...actions})
@@ -66,11 +40,9 @@ class Index extends Component {
     let { nearUse, userInfo:{usertype} } = this.props;
     nearUse = nearUse.length <= number ? nearUse : Method.Intercept(nearUse, number)
 
-
     return (
       <View className="DListUseTime">
         <AtMessage />
-
         {
           nearUse.map((item, index) => (
             <View className="DListUseTime-list" key={index} onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype)}>

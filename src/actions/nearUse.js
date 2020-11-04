@@ -1,4 +1,4 @@
-import { NEARSET, NEARINIT, SEARCHCLEAR } from '../constants/nearUse'
+import { NEARSET, NEARINIT, NEARCLEAR } from '../constants/nearUse'
 import { storage } from '@unilts'
 
 export const DNearInit = () => storage({
@@ -13,9 +13,9 @@ export const DNearSet = payload => {
   }
 }
 
-export const DSearchClear = () => {
+export const DNearClear = () => {
   return {
-    type: SEARCHCLEAR,
+    type: NEARCLEAR,
   }
 }
 
