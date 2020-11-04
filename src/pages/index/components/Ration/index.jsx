@@ -25,6 +25,7 @@ class Index extends Component {
           indicatorColor='#FFFFFF'
           indicatorActiveColor='#1677FF'
           circular
+          autoplay
           indicatorDots
           interval="3000"
         >

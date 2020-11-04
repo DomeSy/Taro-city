@@ -23,7 +23,7 @@ function getStorage() {
   })
 }
 
-@connect(({user, site}) => ({...user, ...site}), { ...actions, ...siteActions, ...homeActions })
+@connect(({user, site, home}) => ({...user, ...site, ...home}), { ...actions, ...siteActions, ...homeActions })
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -74,9 +74,9 @@ class Index extends Component {
 
   render () {
 
-    // if(Method.isObject(this.props.home)){
-    //   return <Loading></Loading>
-    // }
+    if(Method.isObject(this.props.home)){
+      return <Loading></Loading>
+    }
 
     return (
       <View className="Index">
