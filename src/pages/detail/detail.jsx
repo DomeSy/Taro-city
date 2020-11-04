@@ -4,10 +4,11 @@ import { View, Image } from '@tarojs/components'
 import { TabDetail, List } from '@components'
 import Taro from '@tarojs/taro'
 import { connect } from 'react-redux'
+import * as actions from '@actions/nearUse'
 
 import './detail.scss'
 
-@connect(({detail, user}) => ({...detail, ...user}))
+@connect(({detail, user, nearUse}) => ({...detail, ...user, ...nearUse}), {...actions})
 class Detail extends Component {
   constructor(){
     super(...arguments)
@@ -31,6 +32,12 @@ class Detail extends Component {
     return data
   }
 
+  Listall = (value) => {
+    const { DNearSet, nearUse } = this.props
+    const list = [...nearUse, value];
+    DNearSet(list)
+  }
+
   render() {
     const { detail:{ bgpicpath, listTabs, listAll, resourcename }, userInfo } = this.props;
     const type = userInfo.usertype ? userInfo.usertype : false
@@ -44,11 +51,11 @@ class Detail extends Component {
           </View>
           <Image className="Detail-content-img" src={bgpicpath}></Image>
           {
-            listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type}/>
+            listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type} onChang={this.Listall}/>
           }
           {
             list.map((item, index) => (
-              <List border title={item.title} list={item.list} key={index} type={type}/>
+              <List border title={item.title} list={item.list} key={index} type={type} onChang={this.Listall}/>
             ))
           }
         </View>

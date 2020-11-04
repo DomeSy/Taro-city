@@ -8,14 +8,15 @@ import './index.scss'
 // 个数
 const number = 4
 
-function Index({tab = [], type}){
+function Index({tab = [], type, onChang}){
 
   tab = tab.length <= number ? tab : Method.Intercept(tab, number)
 
   const [list, setList] = useState(tab)
 
   // 用于判断事项是否是有个人法人的，是否登录状态
-  const goWebView = (url, fwusertype, name) => {
+  const goWebView = (url, fwusertype, name, isHot) => {
+    onChang ? onChang({url, fwusertype, name, isHot}) : ''
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
@@ -42,7 +43,7 @@ function Index({tab = [], type}){
       <AtMessage />
       {
         list.map((item, index) => (
-          <View className="DTabDetail-list" key={index} onClick={() => goWebView(item.appIssueUrl, item.fwusertype, item.name)}>
+          <View className="DTabDetail-list" key={index} onClick={() => goWebView(item.appIssueUrl, item.fwusertype, item.name, item.isHot)}>
               <View className="DTabDetail-list-img">
                 <Image className="DTabDetail-list-img-imgs" src={item.iconUrl}></Image>
               </View>

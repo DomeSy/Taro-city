@@ -16,11 +16,12 @@ import './index.scss'
   no:不让跳转
   type:判断是否是个人法人类型
 */ 
-function Index({title, list = [], border, no, type}){
+function Index({title, list = [], border, no, type, onChang}){
 
   // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人,3:个人法人
-  const goWebView = (url, fwusertype, name) => {
+  const goWebView = (url, fwusertype, name, isHot) => {
     if(no) return;
+    onChang ? onChang({url, fwusertype, name, isHot}) : ''
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
@@ -50,7 +51,7 @@ function Index({title, list = [], border, no, type}){
       }
       {
         list.map((item, index) => (
-          <View className="DList-list" key={index+"DList"} onClick={() => goWebView(item.appIssueUrl, item.fwusertype, item.name)}>
+          <View className="DList-list" key={index+"DList"} onClick={() => goWebView(item.appIssueUrl, item.fwusertype, item.name, item.isHot)}>
             <View className="DList-list-content" >
               <View className="DList-list-content-text">{item.name}</View>
               {
