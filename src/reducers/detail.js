@@ -16,7 +16,7 @@ function getDetail(list) {
   data.map(item => {
     if(item.cardsource === 'tab'){
       detailInit.listTabs.push(item)
-    }else if(item.cardsource === 'list0'){
+    }else if(item.cardsource === 'list0' || !item.cardsource){
       arr.arr0.push(item)
     }else if(item.cardsource === 'list1'){
       arr.arr1.push(item)
