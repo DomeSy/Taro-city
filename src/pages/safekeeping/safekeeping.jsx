@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text } from '@tarojs/components';
+import { View, Text } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
-import { LogoText, Button } from '@components';
+import { LogoText, Button } from '@components'
+import { Jump } from '@unilts'
 import './safekeeping.scss'
 
 class Safekeeping extends Component {
@@ -34,8 +35,8 @@ class Safekeeping extends Component {
        </View>
        <View className="Safekeeping-area">
          <View className="Safekeeping-area-text">缴存地</View>
-         <View className="Safekeeping-area-effect">
-           <View className="Safekeeping-area-effect-text">济南市</View>
+         <View className="Safekeeping-area-effect" onClick={() => Jump({url: '/enclosure'})}>
+           <View className="Safekeeping-area-effect-text">请选择</View>
            <AtIcon className="Safekeeping-area-effect-icon" value='chevron-right' size='15' color='#999999'></AtIcon>
          </View>
        </View>

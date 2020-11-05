@@ -67,7 +67,7 @@ class Index extends Component {
     const { login } = this.props;
     return (
       <View className="Space">
-        <Title title="我的空间" effectTitle="授权管理" login={login} url="/authorization" my/>
+        <Title title="我的空间" effectTitle="授权管理" login={login} url="/subscribe" my/>
         {
           login ? 
           <View className="Space-Card">

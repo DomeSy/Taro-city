@@ -59,13 +59,15 @@ class Index extends Component {
   componentDidUpdate(){}
 
   componentDidShow = async () => {
-    // const data = await JmasRequest('jmportalnzjk', 'generateticket', {
-    //   app_id: 'generateticket',
-    //   servicename: 'generateTicket',
-    //   params: 'e25da449f02447fea5499dd361ef0ea6417404c5446c44e48a5d03cb707ff7c5'
-    // })
-    // console.log(data,'--9998')
-    // 
+    const data = await JmasRequest('sdsrst', 'rsjmylgrcb', {
+      rsxtid: "3754",
+      sfzhm:"320382194408085022",
+      xm:"梁龙春",
+      operationName:"locPer_WithFlag",
+      serviceName:"SiUrService"
+    })
+    console.log(data,'--9998')
+    
   }
 
   componentDidHide () {}

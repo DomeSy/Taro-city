@@ -1,1 +1,24 @@
 @import "@styles/theme.scss";
+
+.Enclosure{
+  &-area{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 24px 26px 24px;
+    align-items: center;
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $line-height-list;
+    border-bottom: 1px solid $font-color-background;
+    &:last-of-type{
+      border-bottom: 0px;
+    }
+    &-name{
+
+      color: $font-color;
+    }
+    &-effect{
+      color: $font-color-effect;
+    }
+  }
+}
