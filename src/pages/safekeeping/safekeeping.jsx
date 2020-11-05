@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
-import { AtIcon } from 'taro-ui'
+import { AtIcon, AtMessage } from 'taro-ui'
 import { LogoText, Button } from '@components'
 import { getCurrentInstance } from '@tarojs/taro'
 import { Jump } from '@unilts'
 import { connect } from 'react-redux'
+import Taro from '@tarojs/taro'
+import * as actions from '@actions/space'
 
 import './safekeeping.scss'
 
-@connect(({space}) => space)
+@connect(({space, user}) => ({...space, ...user}), {...actions})
 class Safekeeping extends Component {
   constructor(){
     super(...arguments)
@@ -30,18 +32,31 @@ class Safekeeping extends Component {
   }
 
   componentDidShow = () => {
-    console.log(this.props.space, '--987')
     this.setState({
       space: this.props.space[getCurrentInstance().router.params.sign]
     })
   }
 
+  spaceInfo = (value, sign) => {
+    const { DSpaceInfo, userInfo:{name, papersnumber } } = this.props;
+    const { space } = this.state;
+    if(!space.value){
+      Taro.atMessage({
+        message: `请先选择缴存地`,
+        type: 'error',
+        duration: 2000
+      })
+      return
+    }
+    DSpaceInfo({value, sign, name, papersnumber})
+  }
+
   render() {
     const { list, sign, space:{area, value} } = this.state
-    
 
     return (
       <View className="Safekeeping">
+        <AtMessage />
        <View className="Safekeeping-top">
          <View className="Safekeeping-top-img"></View>
          <View className="Safekeeping-top-text">爱山东</View>
@@ -59,7 +74,7 @@ class Safekeeping extends Component {
        {/* <View className="Safekeeping-tip">
         确认授权即表示同意<Text className="Safekeeping-tip-text">《服务协议》</Text>
        </View> */}
-       <Button title="同意并授权"></Button>
+       <Button title="同意并授权" onClick={() => this.spaceInfo(value, sign)}></Button>
       </View>
     )
   }

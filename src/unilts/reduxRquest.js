@@ -2,6 +2,7 @@
 import request from './Request'
 import userRequest from './jmas/userRequest'
 import homeRequest from './jmas/homeRequest'
+import spaceRequest from './jmas/spaceRequest'
 import jmasRequest from './jmas/jmasRequest'
 import { USER_LOGOUT } from '@constants/user'
 
@@ -30,6 +31,10 @@ export default function createAction({ appid, interfaceid, wayJmas, url, path, p
       return res
     } else if(way === 'home') {
       const res = await homeRequest({ payload });
+      dispatch({ type, payload: cb ? cb(res) : res })
+      return res
+    } else if(way === 'space') {
+      const res = await spaceRequest({ payload });
       dispatch({ type, payload: cb ? cb(res) : res })
       return res
     } else if(way == 'request'){

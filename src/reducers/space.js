@@ -1,4 +1,6 @@
-import { DSPACESET } from '../constants/space'
+import { DSPACESET, DSPACEINFO } from '../constants/space'
+import { Jump } from '@unilts';
+import Taro from '@tarojs/taro'
 
 const INITIAL_STATE = {
   space: {
@@ -12,6 +14,22 @@ export default function counter (state = INITIAL_STATE, action) {
       state.space[sign] = { ...state.space[sign], ...action.payload}
       return {
         ...state,
+      }
+    }
+    case DSPACEINFO: {
+      const { sign, result } = action.payload;
+      if(result){
+        Jump({url:'/my', method: 'switchTab'})
+        state.space[sign] = { ...state.space[sign], spaceData: action.payload};
+      } else {
+        Taro.atMessage({
+          message: `授权失败！暂未查询到参保信息`,
+          type: 'error',
+          duration: 2000
+        })
+      }
+      return {
+        ...state
       }
     }
     default:
