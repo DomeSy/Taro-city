@@ -23,6 +23,7 @@ class Index extends Component {
     }else{
       this.props.DDetailInit(list)
       Jump({url:'/detail'})
+      // Jump({url:'/detail', payload: {noTitle: true}})
     }
   }
 

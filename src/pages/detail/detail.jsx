@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { View, Image } from '@tarojs/components'
 import { TabDetail, List } from '@components'
-import Taro from '@tarojs/taro'
+import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { connect } from 'react-redux'
 import { Jump } from '@unilts'
 import * as actions from '@actions/nearUse'
@@ -44,13 +44,17 @@ class Detail extends Component {
     const { detail:{ bgpicpath, listTabs, listAll, resourcename }, userInfo } = this.props;
     const type = userInfo.usertype ? userInfo.usertype : false
     const list = this.listAllDetail(listAll)
+    const { onTitle } = getCurrentInstance().router.params
     return (
       <View className="Detail">
         <View className="Detail-content">
-          <View className="Detail-title">
-            <View className="Detail-title-name">{resourcename}</View>
-            <View className="Detail-title-tip">欢迎使用{resourcename}服务</View>
-          </View>
+          {
+            onTitle ? '': <View className="Detail-title">
+              <View className="Detail-title-name">{resourcename}</View>
+              <View className="Detail-title-tip">欢迎使用{resourcename}服务</View>
+            </View>
+          }
+          
           <Image className="Detail-content-img" src={bgpicpath}></Image>
           {
             listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type} onChang={this.Listall}/>
