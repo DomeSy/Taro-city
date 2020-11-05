@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 import { LogoText, Button } from '@components'
+import { getCurrentInstance } from '@tarojs/taro'
 import { Jump } from '@unilts'
+import { connect } from 'react-redux'
+
 import './safekeeping.scss'
 
+@connect(({space}) => space)
 class Safekeeping extends Component {
   constructor(){
     super(...arguments)
@@ -19,12 +23,22 @@ class Safekeeping extends Component {
         {
           text: '使用人脸识别进行身份核验。'
         }
-      ]
+      ],
+      sign: getCurrentInstance().router.params.sign || false,
+      space: {}
     }
   }
-  render() {
 
-    const { list } = this.state
+  componentDidShow = () => {
+    console.log(this.props.space, '--987')
+    this.setState({
+      space: this.props.space[getCurrentInstance().router.params.sign]
+    })
+  }
+
+  render() {
+    const { list, sign, space:{area, value} } = this.state
+    
 
     return (
       <View className="Safekeeping">
@@ -35,16 +49,16 @@ class Safekeeping extends Component {
        </View>
        <View className="Safekeeping-area">
          <View className="Safekeeping-area-text">缴存地</View>
-         <View className="Safekeeping-area-effect" onClick={() => Jump({url: '/enclosure'})}>
-           <View className="Safekeeping-area-effect-text">请选择</View>
+         <View className="Safekeeping-area-effect" onClick={() => Jump({url: '/enclosure', payload:{sign}})}>
+           <View className="Safekeeping-area-effect-text">{area ? area : '请选择'}</View>
            <AtIcon className="Safekeeping-area-effect-icon" value='chevron-right' size='15' color='#999999'></AtIcon>
          </View>
        </View>
        <View className="Safekeeping-border"><View className="Safekeeping-border-bottom"/></View>
        <LogoText list={list} />
-       <View className="Safekeeping-tip">
+       {/* <View className="Safekeeping-tip">
         确认授权即表示同意<Text className="Safekeeping-tip-text">《服务协议》</Text>
-       </View>
+       </View> */}
        <Button title="同意并授权"></Button>
       </View>
     )

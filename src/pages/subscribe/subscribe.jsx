@@ -11,6 +11,7 @@ class Subscribe extends Component {
       list: [
         {
           title: '我的养老保险',
+          sign: 'pension'
         },
         // {
         //   title: '我的医保',
@@ -42,7 +43,7 @@ class Subscribe extends Component {
                     item.img ? <View className="Subscribe-list-title-left-img" ></View> : ''
                   }
                 </View>
-                <View className="Subscribe-list-title-add" onClick={() => Jump({url: '/safekeeping'})}>授权</View>
+                <View className="Subscribe-list-title-add" onClick={() => Jump({url: '/safekeeping', payload: {sign: item.sign}})}>授权</View>
               </View>
               <View className="Subscribe-list-tip">授权后可查看账户余额等缓存信息</View>
             </View>
