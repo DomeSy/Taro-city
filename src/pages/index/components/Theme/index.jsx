@@ -22,8 +22,7 @@ class Index extends Component {
       Jump({url: data[0].appIssueUrl})
     }else{
       this.props.DDetailInit(list)
-      Jump({url:'/detail'})
-      // Jump({url:'/detail', payload: {noTitle: true}})
+      Jump({url:'/detail', payload: {noTitle: true}})
     }
   }
 
