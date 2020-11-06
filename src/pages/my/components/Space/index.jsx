@@ -64,7 +64,8 @@ class Index extends Component {
 
   render() {
     const { list } = this.state;
-    const { login, space:{ spaceAll } } = this.props;
+    const { login, space } = this.props;
+    const spaceAll = space.spaceAll || []
     console.log( this.props, '----90087866')
 
     return (
@@ -74,27 +75,32 @@ class Index extends Component {
           login ? 
           <View className="Space-Card">
           {
-            list.map((item, index) => (
-              <View className="Space-Card-content" key={index} style={item.img}>
+            spaceAll.map((item, index) => (
+              <View className="Space-Card-content" key={index} style={item.Dimg}>
                 <View className="Space-Card-content-title">
                   <View className="Space-Card-content-title-name">
-                    <View className="Space-Card-content-title-name-text">{item.title}</View>
-                    <View className={item.open? 'Space-Card-content-title-name-eyes' : 'Space-Card-content-title-name-eyes Space-Card-content-title-name-close'}></View>
+                    <View className="Space-Card-content-title-name-text">我的{item.Dname}</View>
+                    {/* <View className={item.open? 'Space-Card-content-title-name-eyes' : 'Space-Card-content-title-name-eyes Space-Card-content-title-name-close'}></View> */}
+                    <View className={'Space-Card-content-title-name-eyes'}></View>
                   </View>
-                  <View className="Space-Card-content-title-data">更新于{item.time}</View>
+                  <View className="Space-Card-content-title-data">更新于{item.Dtime}</View>
                 </View>
                 <View className="Space-Card-content-money">
-                  {
-                    item.listAll.map((items, indexs) => (
-                      <View className="Space-Card-content-money-mid" key={indexs + "listAll"}>
-                        <View className="Space-Card-content-money-mid-all">{items.text}</View>
-                        <View className="Space-Card-content-money-mid-text">{items.name}</View>
-                      </View>
-                    ))
-                  }
+                  <View className="Space-Card-content-money-mid">
+                    <View className="Space-Card-content-money-mid-all">{item.ljjfje}</View>
+                    <View className="Space-Card-content-money-mid-text">账户余额(元)</View>
+                  </View>
+                  <View className="Space-Card-content-money-mid">
+                    <View className="Space-Card-content-money-mid-all">{item.ljjfnx}</View>
+                    <View className="Space-Card-content-money-mid-text">累计缴纳(年)</View>
+                  </View>
+                  <View className="Space-Card-content-money-mid">
+                    <View className="Space-Card-content-money-mid-all">{item.Darea}</View>
+                    <View className="Space-Card-content-money-mid-text">现缴纳地</View>
+                  </View>
                 </View>
                 <View className="Space-Card-content-tip">
-                  <View className="Space-Card-content-tip-text">{item.tip}</View>
+                  <View className="Space-Card-content-tip-text">{item.Dtip}</View>
                   <View className="Space-Card-content-tip-detail">
                     <View className="Space-Card-content-tip-detail-text">查看详情</View>
                     <AtIcon value='chevron-right' size='10' color='#999999'></AtIcon>

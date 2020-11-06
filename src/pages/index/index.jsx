@@ -59,11 +59,11 @@ class Index extends Component {
   componentDidUpdate(){}
 
   componentDidShow = async () => {
-    // const data = await JmasRequest('sdsrst', 'rsjmylgrcb', {
-    //   rsxtid: "3754",
-    //   sfzhm:"320382194408085022",
-    //   xm:"梁龙春",
-    //   operationName:"locPer_WithFlag",
+    // const data = await JmasRequest('sdsrst', 'rssbcxjmyl', {
+    //   rsxtid: "3763",
+    //   sfzhm:"342225197011111989",
+    //   xm:"彭增芹",
+    //   operationName:"queryRcAgedPayHisInfo",
     //   serviceName:"SiUrService"
     // })
     // console.log(data,'--9998')

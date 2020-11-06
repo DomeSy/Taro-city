@@ -48,7 +48,7 @@ class Safekeeping extends Component {
       })
       return
     }
-    DSpaceInfo({value, sign, name, papersnumber})
+    DSpaceInfo({value, sign, name, papersnumber, area: space.area})
   }
 
   render() {

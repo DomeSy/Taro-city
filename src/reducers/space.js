@@ -21,13 +21,15 @@ export default function counter (state = INITIAL_STATE, action) {
       }
     }
     case DSPACEINFO: {
-      const { sign, result } = action.payload;
+      console.log(action.payload, '----9')
+      const { result } = action.payload;
       if(result){
         Jump({url:'/my', method: 'switchTab'})
+        const list = state.space.spaceAll ? state.space.spaceAll : []
         return {
           space: {
             ...state,
-            spaceAll: [{...action.payload}]
+            spaceAll: [{...action.payload}, ...list]
           }
         }
       } else {
