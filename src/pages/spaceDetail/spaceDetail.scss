@@ -1,0 +1,53 @@
+@import "@styles/theme.scss";
+
+.SpaceDetail{
+  font-family: $font-family;
+  &-top{
+    padding: 24px;
+    &-img{
+      width: 100%;
+      color: $white;
+      padding: 60px 48px;
+      &-name{
+        line-height: 48px;
+        font-size: 34px;
+        font-weight: 500;
+      }
+      &-sfz{
+        margin-top: 40px;
+        line-height: $line-height-effect;
+        font-size: $font-size-effect;
+      }
+    }
+  }
+  &-list{
+    &-content{
+      display: flex;
+      justify-content: space-between;
+      padding: 25px 24px;
+      border-bottom: 1px solid $font-color-background;
+      color: $font-color;
+      font-size: $font-size-title;
+      line-height: $line-height-title;
+      &-text{
+        font-weight: 400;
+      }
+      &-area{
+        font-weight: 500;
+      }
+    }
+  }
+  &-tip{
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 24px;
+    &-text{
+      line-height: $line-height-tip;
+      font-size: $font-size-tip;
+      color: $font-color-tip;
+    }
+  }
+}

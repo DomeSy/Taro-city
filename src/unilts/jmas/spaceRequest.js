@@ -1,5 +1,6 @@
 import jmasRequest from './jmasRequest'
 import ylbx from '@assets/my/ylbx.png'
+import banner from '@assets/my/banner.png'
 
 // const channelfirst = payload => {
 //   return jmasRequest('jmportalnzjk', 'channelfirst', payload)
@@ -41,6 +42,7 @@ const getPension = async payload => {
     Dname: '养老保险',
     Dtip: '本服务由山东省人力资源和社会保障厅提供服务',
     Dimg: `background: url(${ylbx});background-size: 100% 100%`,
+    DimgDetail: `background: url(${banner});background-size: 100% 100%`,
     Dtime: getDate(),
     result: true
   } : {

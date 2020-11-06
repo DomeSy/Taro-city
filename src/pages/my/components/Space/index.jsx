@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Title } from '@components'
 import { AtIcon } from 'taro-ui'
-import { Method } from '@unilts'
-import { Jump } from '@unilts'
+import { Method, Jump } from '@unilts'
 import * as spaceActions from '@actions/space'
 import ylbx from '@assets/my/ylbx.png'
 import { connect } from 'react-redux'
@@ -65,7 +64,6 @@ class Index extends Component {
   }
 
   closeEyes = (sign) => {
-    console.log(sign)
     this.props.DSpaceEyes({sign});
   }
 
@@ -106,7 +104,7 @@ class Index extends Component {
                 </View>
                 <View className="Space-Card-content-tip">
                   <View className="Space-Card-content-tip-text">{item.Dtip}</View>
-                  <View className="Space-Card-content-tip-detail">
+                  <View className="Space-Card-content-tip-detail" onClick={() => Jump({url:'/spaceDetail', payload:{sign: item.Dsign}})}>
                     <View className="Space-Card-content-tip-detail-text">查看详情</View>
                     <AtIcon value='chevron-right' size='10' color='#999999'></AtIcon>
                   </View>
