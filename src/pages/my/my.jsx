@@ -3,13 +3,14 @@ import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Info, Space } from './components'
 import Taro from '@tarojs/taro'
+import { Jump, Method } from '@unilts'
 import banjian from '@assets/my/banjian.png'
 import pingjia from '@assets/my/pingjia.png'
 import zhengjian from '@assets/my/zhengjian.png'
 import zixun from '@assets/my/zixun.png'
 import * as actions from '@actions/user'
 import * as nearUseActions from '@actions/nearUse'
-import { Jump } from '@unilts';
+import * as spaceActions from '@actions/space'
 
 
 import './my.scss'
@@ -46,22 +47,27 @@ function getStorage() {
   })
 }
 
-@connect(({ user, home }) => ({...user, ...home}), { ...actions, ...nearUseActions })
+@connect(({ user, home, space }) => ({...user, ...home, ...space}), { ...actions, ...nearUseActions, ...spaceActions})
 class My extends Component {
 
   constructor(){
     super(...arguments)
     this.state = {
-      list
+      list,
+      spaceAll: []
     }
   }
 
+  componentDidMount(){
+    // this.props.DSpaceInit();
+  }
+
   componentDidShow = async () => {
-    const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
-    
+    const { dispatchLogin, dispatchLogout, DNearClear, space } = this.props;
     const data = await getStorage();
     const type = data ? data.type : false;
     
+
     if(type == 'login' && data.isLogin){
       const { token, usertype } = data;
       Taro.setStorage({
@@ -86,8 +92,8 @@ class My extends Component {
   }
 
   render() {
-    const { list } = this.state;
-    const { login, userInfo } = this.props
+    const { list, spaceAll } = this.state;
+    const { login, userInfo } = this.props;
 
     return (
       <View className="My">
@@ -111,7 +117,7 @@ class My extends Component {
         </View>
         <View className="My-border" />
         {
-          userInfo.usertype === 2 ? '' : <Space />
+          userInfo.usertype === 2 ? '' : <Space/>
         }
       </View>
     )

@@ -13,8 +13,8 @@ const getPension = async payload => {
   const data = {
     rsxtid: "3754",
     sfzhm: "320382194408085022",
-    // xm: "梁龙春",
-    xm: name,
+    xm: "梁龙春",
+    // xm: name,
     operationName:"locPer_WithFlag",
     serviceName:"SiUrService"
   }

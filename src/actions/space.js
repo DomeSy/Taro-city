@@ -1,5 +1,7 @@
-import { DSPACESET, DSPACEINFO } from '../constants/space'
+import { DSPACESET, DSPACEINFO, DSPACEINIT } from '../constants/space'
 import { reduxRquest } from '@unilts'
+
+export const DSpaceInit = () => ({type: DSPACEINIT})
 
 export const DSpaceSet = payload => ({type: DSPACESET, payload})
 

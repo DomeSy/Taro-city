@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 import { Title } from '@components'
 import { AtIcon } from 'taro-ui'
 import Jump from '@unilts/Jump';
-import banner from '@assets/banner.png'
+import ylbx from '@assets/my/ylbx.png'
 import { connect } from 'react-redux'
 
 import './index.scss'
@@ -13,7 +13,7 @@ const list = [
     title: '我的医保',
     time: '2020/09/17 16:00',
     open: true,
-    img: `background: url(${banner});background-size: 100% 100%`,
+    img: `background: url(${ylbx});background-size: 100% 100%`,
     listAll: [
       {
         text: '9999.99',
@@ -30,30 +30,30 @@ const list = [
     ],
     tip: '本服务由山东省社保局提供服务'
   },
-  {
-    title: '我的医保1',
-    time: '2020/09/17 16:00',
-    open: true,
-    img: `background: url(${banner});background-size: 100% 100%`,
-    listAll: [
-      {
-        text: '9999.99',
-        name: '账户余额(元)'
-      },
-      {
-        text: '9999.99',
-        name: '累计缴纳(月)'
-      },
-      {
-        text: '济南',
-        name: '现缴纳地'
-      }
-    ],
-    tip: '本服务由山东省社保局提供服务'
-  }
+  // {
+  //   title: '我的医保1',
+  //   time: '2020/09/17 16:00',
+  //   open: true,
+  //   img: `background: url(${banner});background-size: 100% 100%`,
+  //   listAll: [
+  //     {
+  //       text: '9999.99',
+  //       name: '账户余额(元)'
+  //     },
+  //     {
+  //       text: '9999.99',
+  //       name: '累计缴纳(月)'
+  //     },
+  //     {
+  //       text: '济南',
+  //       name: '现缴纳地'
+  //     }
+  //   ],
+  //   tip: '本服务由山东省社保局提供服务'
+  // }
 ]
 
-@connect(({user}) => user)
+@connect(({user, space}) => ({...user, ...space}))
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -64,7 +64,9 @@ class Index extends Component {
 
   render() {
     const { list } = this.state;
-    const { login } = this.props;
+    const { login, space:{ spaceAll } } = this.props;
+    console.log( this.props, '----90087866')
+
     return (
       <View className="Space">
         <Title title="我的空间" effectTitle="授权管理" login={login} url="/subscribe" my/>
