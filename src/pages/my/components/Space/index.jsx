@@ -72,7 +72,7 @@ class Index extends Component {
       <View className="Space">
         <Title title="我的空间" effectTitle="授权管理" login={login} url="/subscribe" my/>
         {
-          login ? 
+          login && spaceAll.length !== 0 ? 
           <View className="Space-Card">
           {
             spaceAll.map((item, index) => (
@@ -111,7 +111,7 @@ class Index extends Component {
           }
           </View>
           :
-          <View className="Space-centent" onClick={() => Jump({url: '/login'})}>
+          <View className="Space-centent" onClick={() => login ? Jump({url: '/subscribe'}) : Jump({url: '/login'})}>
             <View className="Space-centent-none">
               <View className="Space-centent-none-text">
                 订阅专属服务，开启您的智慧生活…

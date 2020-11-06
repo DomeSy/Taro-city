@@ -53,8 +53,7 @@ class My extends Component {
   constructor(){
     super(...arguments)
     this.state = {
-      list,
-      spaceAll: []
+      list
     }
   }
 
@@ -92,7 +91,7 @@ class My extends Component {
   }
 
   render() {
-    const { list, spaceAll } = this.state;
+    const { list } = this.state;
     const { login, userInfo } = this.props;
 
     return (
