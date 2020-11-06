@@ -71,7 +71,6 @@ class Index extends Component {
     const { list } = this.state;
     const { login, space } = this.props;
     const spaceAll = space.spaceAll || []
-    console.log(spaceAll, '---1')
     return (
       <View className="Space">
         <Title title="我的空间" effectTitle="授权管理" login={login} url="/subscribe" my/>

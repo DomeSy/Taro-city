@@ -21,7 +21,6 @@ export default function counter (state = INITIAL_STATE, action) {
       }
     }
     case DSPACEINFO: {
-      console.log(action.payload, '----9')
       const { result } = action.payload;
       if(result){
         Jump({url:'/my', method: 'switchTab'})
@@ -48,7 +47,6 @@ export default function counter (state = INITIAL_STATE, action) {
       data.space.spaceAll.map(item => {
         item.Dopen = !item.Dopen
       })
-      console.log(data,'--987')
       data = JSON.parse(JSON.stringify(data))
       return {
         ...data

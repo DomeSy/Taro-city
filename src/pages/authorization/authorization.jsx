@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
+import { View } from '@tarojs/components'
+import { connect } from 'react-redux'
+
 import './authorization.scss'
 
+@connect(({space}) => space)
 class Authorization extends Component {
   constructor(){
     super(...arguments)
@@ -20,6 +23,8 @@ class Authorization extends Component {
   }
   render() {
     const { list } = this.state
+    const { spaceAll } = this.props.space
+    console.log(spaceAll)
 
     return (
       <View className="Authorization">
