@@ -14,8 +14,9 @@ export default function counter (state = INITIAL_STATE, action) {
       return state
     }
     case DSPACESET: {
-      const { sign } = action.payload;
+      let { sign } = action.payload;
       state.space[sign] = { ...state.space[sign], ...action.payload}
+      sign = JSON.parse(JSON.stringify(sign))
       return {
         ...state
       }
@@ -24,7 +25,10 @@ export default function counter (state = INITIAL_STATE, action) {
       const { result } = action.payload;
       if(result){
         Jump({url:'/my', method: 'switchTab'})
-        const list = state.space.spaceAll ? state.space.spaceAll : []
+        let list = state.space.spaceAll ? state.space.spaceAll : []
+        if(list.length !== 0){
+          list = list.filter(item => item.Dsign !== action.payload.Dsign);
+        }
         return {
           space: {
             ...state,

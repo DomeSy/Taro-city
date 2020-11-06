@@ -32,8 +32,9 @@ class Safekeeping extends Component {
   }
 
   componentDidShow = () => {
+ 
     this.setState({
-      space: this.props.space[getCurrentInstance().router.params.sign]
+      space: this.props.space[getCurrentInstance().router.params.sign] || this.props.space.space[getCurrentInstance().router.params.sign]
     })
   }
 

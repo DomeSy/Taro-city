@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
-import { Jump } from '@unilts';
+import { View } from '@tarojs/components'
+import { Jump } from '@unilts'
+import Taro from '@tarojs/taro'
+import { connect } from 'react-redux'
 
 import './subscribe.scss'
 
+@connect(({space}) => space)
 class Subscribe extends Component {
   constructor(){
     super(...arguments)
@@ -16,6 +19,37 @@ class Subscribe extends Component {
       ]
     }
   }
+
+  getData = (spaceAll, list) => {
+    let result = false
+    spaceAll.map(item => {
+      if(item.Dsign === list.sign){
+        result = true
+        return
+      }
+    })
+    return result
+  }
+
+  goSubscribe = (item) => {
+    const spaceAll = this.props.space.spaceAll || []
+    if(spaceAll.length !== 0){
+      const res = this.getData(spaceAll, item);
+      if(res){
+        Taro.showModal({
+          title: '提示',
+          content: '您已授权过当前服务，重新授权会覆盖之前的授权关系，是否重新授权',
+        }).then(res => {
+          if(res.confirm){
+            Jump({url: '/safekeeping', payload: {sign: item.sign, title: item.title}})
+          }
+        })
+        return
+      }
+    }
+    Jump({url: '/safekeeping', payload: {sign: item.sign, title: item.title}})
+  }
+
   render() {
 
     const { list } = this.state;
@@ -36,7 +70,7 @@ class Subscribe extends Component {
                     item.img ? <View className="Subscribe-list-title-left-img" ></View> : ''
                   }
                 </View>
-                <View className="Subscribe-list-title-add" onClick={() => Jump({url: '/safekeeping', payload: {sign: item.sign, title: item.title}})}>授权</View>
+                <View className="Subscribe-list-title-add" onClick={() => this.goSubscribe(item)}>授权</View>
               </View>
               <View className="Subscribe-list-tip">授权后可查看账户余额等缓存信息</View>
             </View>

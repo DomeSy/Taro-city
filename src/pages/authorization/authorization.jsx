@@ -18,7 +18,6 @@ class Authorization extends Component {
 
   render() {
     const spaceAll = this.props.space.spaceAll || []
-    console.log(spaceAll, '---997')
 
     return (
       <View className="Authorization">
