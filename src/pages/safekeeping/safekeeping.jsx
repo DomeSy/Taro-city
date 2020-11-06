@@ -20,7 +20,7 @@ class Safekeeping extends Component {
           text: '使用您的身份信息(证件号码)，用于快速查询医保基本信息；'
         },
         {
-          text: '在“爱山东—我的空间”中向您展示医保基本信息；'
+          text: `在“爱山东—我的空间”中向您展示${getCurrentInstance().router.params.title}基本信息；`
         },
         {
           text: '使用人脸识别进行身份核验。'
@@ -48,7 +48,7 @@ class Safekeeping extends Component {
       })
       return
     }
-    DSpaceInfo({value, sign, name, papersnumber, area: space.area})
+    DSpaceInfo({value, sign, name, papersnumber, area: space.area, name: getCurrentInstance().router.params.title})
   }
 
   render() {

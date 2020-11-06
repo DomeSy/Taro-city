@@ -1,4 +1,4 @@
-import { DSPACESET, DSPACEINFO, DSPACEINIT, DSPACEEYES } from '../constants/space'
+import { DSPACESET, DSPACEINFO, DSPACEINIT, DSPACEEYES, DSPACECANCEL } from '../constants/space'
 import { reduxRquest } from '@unilts'
 
 export const DSpaceInit = () => ({type: DSPACEINIT})
@@ -9,6 +9,9 @@ export const DSpaceEyes = payload => ({type: DSPACEEYES, payload})
 
 export const DSpaceInfo = payload => reduxRquest({
   type: DSPACEINFO,
-  cb: res => ({ ...res, Dsign: payload.sign, Darea: payload.area}),
+  cb: res => ({ ...res, Dsign: payload.sign, Darea: payload.area, Dname: payload.name}),
   payload
 }, 'space')
+
+export const DSpaceCancel = payload => ({type: DSPACECANCEL, payload})
+

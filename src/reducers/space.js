@@ -1,4 +1,4 @@
-import { DSPACESET, DSPACEINFO, DSPACEINIT, DSPACEEYES } from '../constants/space'
+import { DSPACESET, DSPACEINFO, DSPACEINIT, DSPACEEYES, DSPACECANCEL } from '../constants/space'
 import { Jump } from '@unilts';
 import Taro from '@tarojs/taro'
 
@@ -48,6 +48,15 @@ export default function counter (state = INITIAL_STATE, action) {
         item.Dopen = !item.Dopen
       })
       data = JSON.parse(JSON.stringify(data))
+      return {
+        ...data
+      }
+    }
+    case DSPACECANCEL: {
+      let data = state;
+      const list = data.space.spaceAll.filter(item => item.Dsign !== action.payload.sign);
+      data.space.spaceAll = list;
+      data = JSON.parse(JSON.stringify(data));
       return {
         ...data
       }
