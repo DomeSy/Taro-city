@@ -6,8 +6,6 @@ import none from '@assets/none.png'
 
 import './none.scss'
 
-// img: `background: url(${none});background-size: 100% 100%`
-
 class None extends Component {
   constructor(){
     super(...arguments)

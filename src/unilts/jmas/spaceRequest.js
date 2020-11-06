@@ -2,14 +2,6 @@ import jmasRequest from './jmasRequest'
 import ylbx from '@assets/my/ylbx.png'
 import banner from '@assets/my/banner.png'
 
-// const channelfirst = payload => {
-//   return jmasRequest('jmportalnzjk', 'channelfirst', payload)
-// }
-
-// const getcomppageinterface = payload => {
-//   return jmasRequest('jmportalnzjk', 'getcomppageinterface', payload)
-// }
-
 function getDate(){
   const date = new Date();
   const month = (date.getMonth() + 1) < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
