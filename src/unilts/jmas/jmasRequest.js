@@ -2,8 +2,8 @@ import qs from 'qs'
 import request from '../Request'
 import { FROMPORT, SIGNURL, VERSION, GATEWAY, USERGATEWAY, USERSIGNURL, CHARSET } from './jmasApi'
 
-// appid：appid, interfaceid：接口id, payload: 参数
-const fetch = (appid, interfaceid, payload, way) => {
+// appid：appid, interfaceid：接口id, payload: 参数,loading
+const fetch = (appid, interfaceid, payload, way, loading) => {
   return new Promise(async (resolve, reject) => {
     const datestr = new Date().valueOf()
     const param = {
@@ -16,7 +16,7 @@ const fetch = (appid, interfaceid, payload, way) => {
       origin: FROMPORT,
     }
     const path = way === 'user' ? USERSIGNURL : SIGNURL;
-    const data = await request({path, method: 'POST', payload: qs.stringify(param), rule: 'jmas'})
+    const data = await request({path, method: 'POST', payload: qs.stringify(param), rule: 'jmas', loading})
     if (data == null || data == undefined || data == '') {
       reject(false)
     } else {
@@ -32,7 +32,7 @@ const fetch = (appid, interfaceid, payload, way) => {
         sign,
       }
       const path = way === 'user' ? USERGATEWAY : GATEWAY;
-      const datas = await request({path, method: 'POST', payload: qs.stringify(playod), rule: 'jmas'})
+      const datas = await request({path, method: 'POST', payload: qs.stringify(playod), rule: 'jmas', loading})
       if (datas == null || datas == undefined || datas == '') {
         reject(false)
       } else {
@@ -42,8 +42,8 @@ const fetch = (appid, interfaceid, payload, way) => {
   })
 }
 
-async function jmasRequest(appid = '', interfaceid = '', payload = {}, way){
-  let res = await fetch(appid, interfaceid, JSON.stringify(payload), way)
+async function jmasRequest(appid = '', interfaceid = '', payload = {}, way, loading = false){
+  let res = await fetch(appid, interfaceid, JSON.stringify(payload), way, loading)
   if (res.code == '200' ) {
     if (way === 'user') {
       return res.data

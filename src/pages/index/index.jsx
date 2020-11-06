@@ -59,6 +59,7 @@ class Index extends Component {
   componentDidUpdate(){}
 
   componentDidShow = async () => {
+
     // const data = await JmasRequest('sdsrst', 'rssbcxjmyl', {
     //   rsxtid: "3763",
     //   sfzhm:"342225197011111989",

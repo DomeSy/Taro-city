@@ -30,7 +30,7 @@ const getPension = async payload => {
     operationName:"queryRcAgedPayHisInfo",
     serviceName:"SiUrService"
   }
-  const res = await jmasRequest('sdsrst', 'rsjmylgrcb', data)
+  const res = await jmasRequest('sdsrst', 'rsjmylgrcb', data, '', true)
   const { xm, sfzhm, ljjfnx, ljjfje, errflag } = res.data;
   const result = errflag == 0 ? 
   {
