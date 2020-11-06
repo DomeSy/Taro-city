@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Title } from '@components'
 import { AtIcon } from 'taro-ui'
-import Jump from '@unilts/Jump';
+import { Method } from '@unilts'
+import { Jump } from '@unilts'
+import * as spaceActions from '@actions/space'
 import ylbx from '@assets/my/ylbx.png'
 import { connect } from 'react-redux'
 
@@ -53,7 +55,7 @@ const list = [
   // }
 ]
 
-@connect(({user, space}) => ({...user, ...space}))
+@connect(({user, space}) => ({...user, ...space}), {...spaceActions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -62,12 +64,16 @@ class Index extends Component {
     }
   }
 
+  closeEyes = (sign) => {
+    console.log(sign)
+    this.props.DSpaceEyes({sign});
+  }
+
   render() {
     const { list } = this.state;
     const { login, space } = this.props;
     const spaceAll = space.spaceAll || []
-    console.log( this.props, '----90087866')
-
+    console.log(spaceAll, '---1')
     return (
       <View className="Space">
         <Title title="我的空间" effectTitle="授权管理" login={login} url="/subscribe" my/>
@@ -80,22 +86,21 @@ class Index extends Component {
                 <View className="Space-Card-content-title">
                   <View className="Space-Card-content-title-name">
                     <View className="Space-Card-content-title-name-text">我的{item.Dname}</View>
-                    {/* <View className={item.open? 'Space-Card-content-title-name-eyes' : 'Space-Card-content-title-name-eyes Space-Card-content-title-name-close'}></View> */}
-                    <View className={'Space-Card-content-title-name-eyes'}></View>
+                    <View className={item.Dopen? 'Space-Card-content-title-name-eyes' : 'Space-Card-content-title-name-eyes Space-Card-content-title-name-close'} onClick={() => this.closeEyes(item.Dsign)}></View>
                   </View>
                   <View className="Space-Card-content-title-data">更新于{item.Dtime}</View>
                 </View>
                 <View className="Space-Card-content-money">
                   <View className="Space-Card-content-money-mid">
-                    <View className="Space-Card-content-money-mid-all">{item.ljjfje}</View>
+                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.ljjfje : Method.Desensit(item.ljjfje, 0, item.ljjfje.length)}</View>
                     <View className="Space-Card-content-money-mid-text">账户余额(元)</View>
                   </View>
                   <View className="Space-Card-content-money-mid">
-                    <View className="Space-Card-content-money-mid-all">{item.ljjfnx}</View>
+                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.ljjfnx : Method.Desensit(item.ljjfnx, 0, item.ljjfnx.length)}</View>
                     <View className="Space-Card-content-money-mid-text">累计缴纳(年)</View>
                   </View>
                   <View className="Space-Card-content-money-mid">
-                    <View className="Space-Card-content-money-mid-all">{item.Darea}</View>
+                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.Darea : Method.Desensit(item.Darea, 0, item.Darea.length)}</View>
                     <View className="Space-Card-content-money-mid-text">现缴纳地</View>
                   </View>
                 </View>

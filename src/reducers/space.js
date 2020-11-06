@@ -1,4 +1,4 @@
-import { DSPACESET, DSPACEINFO, DSPACEINIT } from '../constants/space'
+import { DSPACESET, DSPACEINFO, DSPACEINIT, DSPACEEYES } from '../constants/space'
 import { Jump } from '@unilts';
 import Taro from '@tarojs/taro'
 
@@ -41,6 +41,17 @@ export default function counter (state = INITIAL_STATE, action) {
         return {
           ...state
         }
+      }
+    }
+    case DSPACEEYES: {
+      let data = state;
+      data.space.spaceAll.map(item => {
+        item.Dopen = !item.Dopen
+      })
+      console.log(data,'--987')
+      data = JSON.parse(JSON.stringify(data))
+      return {
+        ...data
       }
     }
     default:
