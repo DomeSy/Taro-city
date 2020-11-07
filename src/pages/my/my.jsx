@@ -11,7 +11,7 @@ import zixun from '@assets/my/zixun.png'
 import * as actions from '@actions/user'
 import * as nearUseActions from '@actions/nearUse'
 import * as spaceActions from '@actions/space'
-
+import { AtMessage } from 'taro-ui'
 
 import './my.scss'
 
@@ -96,6 +96,7 @@ class My extends Component {
 
     return (
       <View className="My">
+        <AtMessage />
         <Info login={login} userInfo={userInfo} />
         {/* 信息栏 */}
         <View className="My-border" />

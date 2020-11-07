@@ -88,7 +88,7 @@ class Index extends Component {
         {/* 热门分类 */}
         <Classification />
         {/* 我的证照 */}
-        <Licence />
+        {/* <Licence /> */}
         {/* 主题专区 */}
         <Theme />
         {/* 主题服务 */}
