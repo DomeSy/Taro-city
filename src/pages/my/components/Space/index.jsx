@@ -4,71 +4,27 @@ import { Title } from '@components'
 import { AtIcon } from 'taro-ui'
 import { Method, Jump } from '@unilts'
 import * as spaceActions from '@actions/space'
-import ylbx from '@assets/my/ylbx.png'
 import { connect } from 'react-redux'
 
 import './index.scss'
-
-const list = [
-  {
-    title: '我的医保',
-    time: '2020/09/17 16:00',
-    open: true,
-    img: `background: url(${ylbx});background-size: 100% 100%`,
-    listAll: [
-      {
-        text: '9999.99',
-        name: '账户余额(元)'
-      },
-      {
-        text: '9999.99',
-        name: '累计缴纳(月)'
-      },
-      {
-        text: '济南',
-        name: '现缴纳地'
-      }
-    ],
-    tip: '本服务由山东省社保局提供服务'
-  },
-  // {
-  //   title: '我的医保1',
-  //   time: '2020/09/17 16:00',
-  //   open: true,
-  //   img: `background: url(${banner});background-size: 100% 100%`,
-  //   listAll: [
-  //     {
-  //       text: '9999.99',
-  //       name: '账户余额(元)'
-  //     },
-  //     {
-  //       text: '9999.99',
-  //       name: '累计缴纳(月)'
-  //     },
-  //     {
-  //       text: '济南',
-  //       name: '现缴纳地'
-  //     }
-  //   ],
-  //   tip: '本服务由山东省社保局提供服务'
-  // }
-]
 
 @connect(({user, space}) => ({...user, ...space}), {...spaceActions})
 class Index extends Component {
   constructor(){
     super(...arguments)
-    this.state = {
-      list
-    }
   }
 
   closeEyes = (sign) => {
     this.props.DSpaceEyes({sign});
   }
 
+  detail = async (item) => {
+    const { DareaValue, Dsign, xm, sfzhm, Darea, Dname } = item;
+    await this.props.DSpaceInfo({value: DareaValue, sign: Dsign, name: xm, papersnumber: sfzhm, area: Darea, name: Dname, mdetail: true})
+    Jump({url:'/spaceDetail', payload:{sign: item.Dsign}})
+  }
+
   render() {
-    const { list } = this.state;
     const { login, space } = this.props;
     const spaceAll = space.spaceAll || []
     return (
@@ -103,7 +59,7 @@ class Index extends Component {
                 </View>
                 <View className="Space-Card-content-tip">
                   <View className="Space-Card-content-tip-text">{item.Dtip}</View>
-                  <View className="Space-Card-content-tip-detail" onClick={() => Jump({url:'/spaceDetail', payload:{sign: item.Dsign}})}>
+                  <View className="Space-Card-content-tip-detail" onClick={() => this.detail(item)}>
                     <View className="Space-Card-content-tip-detail-text">查看详情</View>
                     <AtIcon value='chevron-right' size='10' color='#999999'></AtIcon>
                   </View>

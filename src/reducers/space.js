@@ -22,9 +22,11 @@ export default function counter (state = INITIAL_STATE, action) {
       }
     }
     case DSPACEINFO: {
-      const { result } = action.payload;
+      const { result, Ddetail } = action.payload;
       if(result){
-        Jump({url:'/my', method: 'switchTab'})
+        if(!Ddetail){
+          Jump({url:'/my', method: 'switchTab'})
+        }
         let list = state.space.spaceAll ? state.space.spaceAll : []
         if(list.length !== 0){
           list = list.filter(item => item.Dsign !== action.payload.Dsign);

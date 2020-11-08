@@ -15,12 +15,12 @@ function getDate(){
 const getPension = async payload => {
   const { name, papersnumber, value } = payload;
   const data = {
-    // rsxtid: "3763",
-    // sfzhm: "342225197011111989",
-    // xm: "彭增芹",
-    rsxtid: value,
-    sfzhm: papersnumber,
-    xm: name,
+    rsxtid: "3763",
+    sfzhm: "342225197011111989",
+    xm: "彭增芹",
+    // rsxtid: value,
+    // sfzhm: papersnumber,
+    // xm: name,
     operationName:"queryRcAgedPayHisInfo",
     serviceName:"SiUrService"
   }
@@ -33,10 +33,12 @@ const getPension = async payload => {
     ljjfnx,
     ljjfje: Number(ljjfje).toFixed(2),
     Dopen: false,
+    DareaValue: value,
     Dtip: '本服务由山东省人力资源和社会保障厅提供服务',
     Dimg: `background: url(${ylbx});background-size: 100% 100%`,
     DimgDetail: `background: url(${banner});background-size: 100% 100%`,
     Dtime: getDate(),
+    Ddetail: payload.detail ? true : false,
     result: true
   } : {
     result: false

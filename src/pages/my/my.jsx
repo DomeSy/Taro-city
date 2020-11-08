@@ -89,6 +89,14 @@ class My extends Component {
       DNearClear()
     }
   }
+  
+  goWebView = () => {
+    Taro.atMessage({
+      message: `服务正在建设中尽情期待`,
+      type: 'error',
+      duration: 2000
+    }) 
+  }
 
   render() {
     const { list } = this.state;
@@ -103,7 +111,7 @@ class My extends Component {
         <View className="My-List">
           {
             list.map((item, index) => (
-              <View className="My-List-center" key={index}>
+              <View className="My-List-center" key={index} onClick={()=>{this.goWebView()}}>
               <View className="My-List-center-img">
                 <View className="My-List-center-img-imgs" style={item.img}></View>
                 {
