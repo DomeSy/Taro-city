@@ -15,12 +15,12 @@ function getDate(){
 const getPension = async payload => {
   const { name, papersnumber, value } = payload;
   const data = {
-    rsxtid: "3763",
-    sfzhm: "342225197011111989",
-    xm: "彭增芹",
-    // rsxtid: value,
-    // sfzhm: papersnumber,
-    // xm: name,
+    // rsxtid: "3763",
+    // sfzhm: "342225197011111989",
+    // xm: "彭增芹",
+    rsxtid: value,
+    sfzhm: papersnumber,
+    xm: name,
     operationName:"queryRcAgedPayHisInfo",
     serviceName:"SiUrService"
   }
