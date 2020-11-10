@@ -15,7 +15,7 @@ class Download extends Component {
         <View className="Download-img"></View>
         <View className="Download-text1">二、 扫码下载</View>
         <View className="Download-text2">您还可以扫描下方二维码，下载“爱山东”客户端。</View>
-        {/* <View>二维码</View> */}
+        <View className="Download-imgasd"></View>
       </View>
     )
   }
