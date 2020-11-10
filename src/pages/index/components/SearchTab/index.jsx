@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Taro } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { Site } from '@components'
 import { AtIcon } from 'taro-ui'
@@ -19,7 +18,8 @@ class Index extends Component {
 
   componentDidShow(){}
 
-  ChangeSite = (value) => {
+  ChangeSite = async (value) => {
+    await this.props.DHomeClear()
     this.props.DSiteSet({area: value.area, siteid: value.siteid})
     this.props.DHomeInit({siteid: value.siteid, mobileId, clienttype})
   }

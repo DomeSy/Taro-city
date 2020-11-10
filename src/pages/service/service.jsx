@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
-import { Tip } from '@components'
+import { Tip, Loading } from '@components'
 import Taro from '@tarojs/taro'
+import { Method } from '@unilts'
+
 import { ServerList, UseTime } from './components'
 import { SearchTab } from '../index/components'
 import * as actions from '@actions/user'
@@ -21,7 +23,7 @@ function getStorage() {
   })
 }
 
-@connect(({ user }) => user, { ...actions })
+@connect(({ user, home }) => ({...user, ...home}), { ...actions })
 class Service extends Component {
   constructor(){
     super(...arguments);
@@ -57,6 +59,9 @@ class Service extends Component {
 
   render() {
     const { banner } = this.state
+    if(Method.isObject(this.props.home)){
+      return <Loading></Loading>
+    }
 
     return (
       <View className="Service">

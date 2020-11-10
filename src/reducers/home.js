@@ -1,4 +1,4 @@
-import { HOMEINIT } from '../constants/home'
+import { HOMEINIT, HOMECLEAR } from '../constants/home'
 
 const INITIAL_STATE = {
   home: {}
@@ -57,6 +57,11 @@ export default function counter (state = INITIAL_STATE, action) {
         home: {
           ...homeList
         }
+      }
+    }
+    case HOMECLEAR: {
+      return {
+        ...INITIAL_STATE
       }
     }
     default:

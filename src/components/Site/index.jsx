@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { AtFloatLayout, AtIcon } from "taro-ui"
-
-import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { site } from '@unilts/site';
 
 import './index.scss'
