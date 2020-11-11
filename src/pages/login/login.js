@@ -120,7 +120,6 @@ Page({
         });
         Jump({url: '/loginRedirect', method: 'redirectTo', payload: {go}})
       } else {
-
         my.setStorage({
           key: 'token',
           data: {

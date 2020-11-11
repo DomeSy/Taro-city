@@ -47,6 +47,7 @@ function Index({ list = [], type = false }){
           <View className="img">
             <Image src={item.iconUrl} className="imgUrl" />
           </View>
+          {/* <View className="text">{item.name.length < 9 ? item.name : `${item.name.substring(0,9)}...`}</View> */}
           <View className="text">{item.name}</View>
         </View>
       ))}
