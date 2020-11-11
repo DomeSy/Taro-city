@@ -41,8 +41,17 @@ export default function Jump({ url, title = '', payload = {}, method = 'navigate
     })
   } else {
     if (/^https?:\/\//.test(url)) {
+      let urlStr = url
+      if(payload){
+        let str = ''
+        for(let key in payload) {
+          str += `${key}=${payload[key]}`
+        }
+        urlStr +=`?${str}`
+      }
+
       Taro[method]({
-        url: urlStringify(PAGE_WEBVIEW, { url, title })
+        url: urlStringify(PAGE_WEBVIEW, { url: urlStr, title })
       })
     } else if (/^\//.test(url)) {
       const jumpUrl = /^\/pages\//.test(url) ? url : `/pages${url}${url}`
