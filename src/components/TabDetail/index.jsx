@@ -8,7 +8,7 @@ import './index.scss'
 // 个数
 const number = 4
 
-function Index({tab = [], type, onChang}){
+function Index({tab = [], type, onChang, token}){
 
   tab = tab.length <= number ? tab : Method.Intercept(tab, number)
 
@@ -22,7 +22,7 @@ function Index({tab = [], type, onChang}){
     } else {
       if(type){
         if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-          url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+          url ? Jump({url, payload:{token, usertype: type}}) : Jump({url: '/none', payload: {name}})
         } else {
           const message = fwusertype === 1 ? '个人' : '法人'
           Taro.atMessage({

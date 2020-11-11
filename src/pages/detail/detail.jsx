@@ -43,6 +43,7 @@ class Detail extends Component {
   render() {
     const { detail:{ bgpicpath, listTabs, listAll, resourcename }, userInfo } = this.props;
     const type = userInfo.usertype ? userInfo.usertype : false
+    const token = userInfo.token ? userInfo.token : false
     const list = this.listAllDetail(listAll)
     const { onTitle } = getCurrentInstance().router.params
     return (
@@ -57,11 +58,11 @@ class Detail extends Component {
           
           <Image className="Detail-content-img" src={bgpicpath}></Image>
           {
-            listTabs.length === 0 ? '' : <TabDetail tab={listTabs} type={type} onChang={this.Listall}/>
+            listTabs.length === 0 ? '' : <TabDetail tab={listTabs} token={token} type={type} onChang={this.Listall}/>
           }
           {
             list.map((item, index) => (
-              <List border title={item.title} list={item.list} key={index} type={type} onChang={this.Listall}/>
+              <List border title={item.title} list={item.list} key={index} token={token} type={type} onChang={this.Listall}/>
             ))
           }
         </View>

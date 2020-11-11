@@ -34,12 +34,12 @@ class NearUse extends Component {
     this.props.DNearInit()
   }
 
-  goWebView = (url, fwusertype, name, type) => {
+  goWebView = (url, fwusertype, name, type, token) => {
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
       if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-        url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+        url ? Jump({url, payload:{token, usertype: type}}) : Jump({url: '/none', payload: {name}})
       } else {
         const message = fwusertype === 1 ? '个人' : '法人'
         Taro.atMessage({
@@ -75,7 +75,7 @@ class NearUse extends Component {
             {
               nearUse.map((item, index) => (
                 <View className="NearUse-list" key={index}>
-                  <View  className="NearUse-list-content" onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype)}>
+                  <View  className="NearUse-list-content" onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype, item.token)}>
                     <View className="NearUse-list-content-radius"></View>
                     <View className="NearUse-list-content-text">{item.name.length > 15 ? item.name.substring(0,14) + '...' : item.name}</View>
                     { item.name.length < 15 && item.isHot === 1 ? <View className="NearUse-list-content-img"></View> : '' }

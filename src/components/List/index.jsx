@@ -16,7 +16,7 @@ import './index.scss'
   no:不让跳转
   type:判断是否是个人法人类型
 */ 
-function Index({title, list = [], border, no, type, onChang}){
+function Index({title, list = [], border, no, type, onChang, token}){
 
   // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人,3:个人法人
   const goWebView = (url, fwusertype, name, isHot) => {
@@ -27,7 +27,7 @@ function Index({title, list = [], border, no, type, onChang}){
     } else {
       if(type){
         if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-          url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+          url ? Jump({url, payload:{token, usertype: type}}) : Jump({url: '/none', payload: {name}})
         } else {
           const message = fwusertype === 1 ? '个人' : '法人'
           Taro.atMessage({

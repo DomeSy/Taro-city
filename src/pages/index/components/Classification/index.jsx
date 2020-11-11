@@ -35,7 +35,7 @@ class Index extends Component {
 
   render() {
     const { titleList, value } = this.state;
-    const { userInfo:{usertype} } = this.props;
+    const { userInfo:{usertype, token} } = this.props;
     let list = [];
     if(!Method.isObject(this.props.home)){
       let { hotList, newList } = this.props.home
@@ -47,7 +47,7 @@ class Index extends Component {
     return (
       <View className="Classification">
         <TitleBig list={titleList} onChang={this.onChang}/>
-        <ListAll list={list} type={usertype}/>
+        <ListAll list={list} type={usertype} token={token}/>
       </View>
     );
   }

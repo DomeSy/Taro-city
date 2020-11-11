@@ -1,0 +1,6 @@
+{
+  "npm.runInTerminal": false,
+  "gitlens.advanced.caching.enabled": false,
+  "output.smartScroll.enabled": false,
+  "debug.internalConsoleOptions": "neverOpen"
+}

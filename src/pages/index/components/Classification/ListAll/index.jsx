@@ -10,7 +10,7 @@ import './index.scss'
 // 个数
 const number = 7
 
-function Index({ list = [], type = false }){
+function Index({ list = [], type = false, token }){
 
   list = list.length <= number ? list : Method.Intercept(list, number)
 
@@ -18,12 +18,12 @@ function Index({ list = [], type = false }){
 
   const goWebView = item => {
     const { appIssueUrl, fwusertype, name } = item
-    if( fwusertype === 0) {
+    if( fwusertype === 0 ) {
       Jump({url: appIssueUrl})
     } else {
       if(type){
         if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-          appIssueUrl ? Jump({url: appIssueUrl}) : Jump({url: '/none', payload: {name}})
+          appIssueUrl ? Jump({url: appIssueUrl, payload:{token, usertype: type}}) : Jump({url: '/none', payload: {name}})
         } else {
           const message = fwusertype === 1 ? '个人' : '法人'
           Taro.atMessage({

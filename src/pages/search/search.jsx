@@ -85,13 +85,13 @@ class Search extends Component {
   }
   
   // 用于判断事项是否是有个人法人的，是否登录状态
-  goWebView = (url, fwusertype, name, type) => {
+  goWebView = (url, fwusertype, name, type, token) => {
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
       if(type){
         if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-          url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+          url ? Jump({url, payload:{token, usertype: type}}) : Jump({url: '/none', payload: {name}})
         } else {
           const message = fwusertype === 1 ? '个人' : '法人'
           Taro.atMessage({
@@ -166,7 +166,7 @@ class Search extends Component {
                 {
                   search.map((item, index) => (
                     <View className="Searchs-list" key={index + 'searchs'}>
-                      <View className="Searchs-list-left" onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype)}>
+                      <View className="Searchs-list-left" onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype, item.token)}>
                         <View className="Searchs-list-left-clock"></View>
                         <View className="Searchs-list-left-text">{item.name}</View>
                       </View>

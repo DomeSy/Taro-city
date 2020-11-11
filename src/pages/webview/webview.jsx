@@ -17,7 +17,7 @@ class Webview extends Component {
   }
 
   componentDidShow(){
-    const { title = '', url } = getCurrentInstance().router.params
+    const { title = '', url } = getCurrentInstance().router.params;
     this.setState({
       url
     })
@@ -27,7 +27,6 @@ class Webview extends Component {
 
   render() {
     const { url } = this.state
-
     return (
       <View className="Webview">
        <WebView src={url}  />

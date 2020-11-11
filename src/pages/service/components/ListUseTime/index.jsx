@@ -14,12 +14,12 @@ class Index extends Component {
     super(...arguments)
   }
 
-  goWebView = (url, fwusertype, name, type) => {
+  goWebView = (url, fwusertype, name, type, token) => {
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
       if(type === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-        url ? Jump({url}) : Jump({url: '/none', payload: {name}})
+        url ? Jump({url, payload:{token, usertype: type}}) : Jump({url: '/none', payload: {name}})
       } else {
         const message = fwusertype === 1 ? '个人' : '法人'
 
@@ -41,7 +41,7 @@ class Index extends Component {
         <AtMessage />
         {
           nearUse.map((item, index) => (
-            <View className="DListUseTime-list" key={index} onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype)}>
+            <View className="DListUseTime-list" key={index} onClick={() => this.goWebView(item.url, item.fwusertype, item.name, usertype, item.token)}>
               <View className="DListUseTime-list-img"></View>
               <View className="DListUseTime-list-detail">
                 <View className="DListUseTime-list-detail-text">{item.name}</View>
