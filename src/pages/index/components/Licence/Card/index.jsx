@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Swiper, SwiperItem, Image  } from '@tarojs/components';
-import banner from '@assets/heard.png'
+import banner from '@assets/logo.png'
 
 import './index.scss'
 
@@ -32,7 +32,7 @@ function Index(){
           list.map((item, index) => (
             <SwiperItem key={index}  nextMargin="300" previousMargin="300" className='DCard-swiper-item'>
               <View className='DCard-swiper-item-view'>
-                <Image className='DCard-swiper-item-view-img' src='../../../../../assets/banner.png' ></Image>
+                <Image className='DCard-swiper-item-view-img' src='../../../../../assets/logo.png' ></Image>
               </View>
             </SwiperItem>
           ))
