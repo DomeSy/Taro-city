@@ -1,4 +1,4 @@
-import banner from '@assets/banner.png'
+import banner from '@assets/heard.png'
 
 Page({
   data: {

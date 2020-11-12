@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Swiper, SwiperItem, Image  } from '@tarojs/components';
-import banner from '@assets/banner.png'
+import banner from '@assets/heard.png'
 
 import './index.scss'
 
