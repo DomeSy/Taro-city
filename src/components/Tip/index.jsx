@@ -1,4 +1,5 @@
 import React from 'react';
+import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components';
 import { Jump } from '@unilts'
 import './index.scss'
@@ -7,7 +8,12 @@ import './index.scss'
 function Index(){
 
   const goOpinion = () => {
-    Jump({url: '/opinion'})
+    // Jump({url: '/opinion'})
+    Taro.showModal({
+      title: '提示',
+      content: `服务正在建设中尽情期待`,
+      showCancel: false,
+    })
   }
 
   return (

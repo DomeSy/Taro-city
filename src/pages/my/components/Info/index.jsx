@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro' 
 import { Jump, Method } from '@unilts'
 import './index.scss'
 
@@ -52,7 +53,12 @@ class Index extends Component {
           <View className="Info-infos-img"></View>
           <View className="Info-infos-name" onClick={this.goLogin}>{name}</View>
         </View>
-        <View className="Info-opinion" onClick={() => Jump({url: '/opinion'})}>
+        {/* <View className="Info-opinion" onClick={() => Jump({url: '/opinion'})}> */}
+        <View className="Info-opinion" onClick={() =>  Taro.showModal({
+      title: '提示',
+      content: `服务正在建设中尽情期待`,
+      showCancel: false,
+    })}>
           <View className="Info-opinion-text">意见反馈</View>
         </View>
       </View>

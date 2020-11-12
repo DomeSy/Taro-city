@@ -24,11 +24,16 @@ class Opinion extends Component {
   }
 
   onClick = () => {
-    Taro.atMessage({
-      message: `服务正在建设中尽情期待`,
-      type: 'error',
-      duration: 2000
-    }) 
+    // Taro.atMessage({
+    //   message: `服务正在建设中尽情期待`,
+    //   type: 'error',
+    //   duration: 2000
+    // }) 
+    Taro.showModal({
+      title: '提示',
+      content: `服务正在建设中尽情期待`,
+      showCancel: false,
+    })
   }
 
   render() {
