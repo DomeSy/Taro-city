@@ -45,12 +45,13 @@ class Detail extends Component {
     const type = userInfo.usertype ? userInfo.usertype : false
     const token = userInfo.token ? userInfo.token : false
     const list = this.listAllDetail(listAll)
-    const { onTitle } = getCurrentInstance().router.params
+    const { noTitle } = getCurrentInstance().router.params
+
     return (
       <View className="Detail">
         <View className="Detail-content">
           {
-            onTitle ? '': <View className="Detail-title">
+            noTitle ? '': <View className="Detail-title">
               <View className="Detail-title-name">{resourcename}</View>
               <View className="Detail-title-tip">欢迎使用{resourcename}服务</View>
             </View>

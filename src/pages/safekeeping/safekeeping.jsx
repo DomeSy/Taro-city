@@ -49,7 +49,7 @@ class Safekeeping extends Component {
       })
       return
     }
-    DSpaceInfo({value, sign, name, papersnumber, area: space.area, name: getCurrentInstance().router.params.title})
+    DSpaceInfo({value, sign, name, papersnumber, area: space.area, Dname: getCurrentInstance().router.params.title})
   }
 
   render() {

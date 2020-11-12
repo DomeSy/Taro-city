@@ -9,7 +9,7 @@ export const DSpaceEyes = payload => ({type: DSPACEEYES, payload})
 
 export const DSpaceInfo = payload => reduxRquest({
   type: DSPACEINFO,
-  cb: res => ({ ...res, Dsign: payload.sign, Darea: payload.area, Dname: payload.name}),
+  cb: res => ({ ...res, Dsign: payload.sign, Darea: payload.area, Dname: payload.Dname}),
   payload
 }, 'space')
 

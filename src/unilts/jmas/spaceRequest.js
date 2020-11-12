@@ -14,6 +14,7 @@ function getDate(){
 
 const getPension = async payload => {
   const { name, papersnumber, value } = payload;
+  console.log(payload,'---')
   const data = {
     // rsxtid: "3763",
     // sfzhm: "342225197011111989",
