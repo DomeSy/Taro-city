@@ -91,7 +91,6 @@ class My extends Component {
   }
   
   goWebView = () => {
-    console.log('11')
     // Taro.atMessage({
     //   message: `服务正在建设中尽情期待`,
     //   type: 'error',

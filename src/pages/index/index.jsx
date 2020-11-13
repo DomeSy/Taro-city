@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tip, Loading } from '@components'
-import { Method, mobileId, clienttype  } from '@unilts'
+import { Method, mobileId, clienttype, JmasRequest  } from '@unilts'
 import Taro from '@tarojs/taro'
 import { SITESET } from '@constants/site'
 import * as actions from '@actions/user'
@@ -36,6 +36,11 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
+
+
+
+
+
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
     const data = await getStorage();
     if(data){
@@ -59,15 +64,6 @@ class Index extends Component {
   componentDidUpdate(){}
 
   componentDidShow = async () => {
-
-    // const data = await JmasRequest('sdsrst', 'rssbcxjmyl', {
-    //   rsxtid: "3763",
-    //   sfzhm:"342225197011111989",
-    //   xm:"彭增芹",
-    //   operationName:"queryRcAgedPayHisInfo",
-    //   serviceName:"SiUrService"
-    // })
-    // console.log(data,'--9998')
 
   }
 

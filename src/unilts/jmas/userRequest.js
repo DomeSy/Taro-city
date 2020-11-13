@@ -19,8 +19,10 @@ const getCreatesign = payload => {
 // 封装请求
 async function userRquest({ payload = {}}) {
   const res = await getCreatesign(payload)
-
-  const { data, msg, retcode } = JSON.parse(Method.RSAdecrypt(res))
+  const resRSA = await Method.RSAdecrypt(res)
+  // const resRSAData = JSON.parse(JSON.parse(resRSA));
+  const resRSAData = JSON.parse(resRSA);
+  const { data, msg, retcode } = resRSAData
 
   if(retcode !== '000000'){
     // 如果请求失败说明token失效，则清楚token缓存
