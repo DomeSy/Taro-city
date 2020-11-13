@@ -10,6 +10,7 @@ export const jisConfig = {
   httpRequest: 'http://zwfw.sd.gov.cn/JIS/',
   appmark: 'SDVNNVSDV',
   appword: 'n8hhwQup2ERK1g4E',
+  // webUrl: 'https://isdzfb.shandong.gov.cn/jmp_xcx/jis'
   webUrl: 'http://isdapp.shandong.gov.cn/ceshixcx/jis/#/'
 }
 

@@ -13,7 +13,7 @@
   font-size: 24px;
   line-height: 33px;
   color: #1679FF;
-  font-weight: 600px;
+  font-weight: bolder;
 }
 .Subscribes-Card-list{
   display: flex;
