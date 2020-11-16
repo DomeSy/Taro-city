@@ -5,7 +5,7 @@ import { site } from '@unilts/site';
 
 import './index.scss'
 
-class My extends Component {
+class Index extends Component {
 
   constructor(){
     super(...arguments)
@@ -79,4 +79,4 @@ class My extends Component {
   }
 }
 
-export default My
+export default Index

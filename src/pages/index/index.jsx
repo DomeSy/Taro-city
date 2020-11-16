@@ -36,11 +36,6 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
-
-
-
-
-
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
     const data = await getStorage();
     if(data){
