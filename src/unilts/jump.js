@@ -45,11 +45,12 @@ export default function Jump({ url, title = '', payload = {}, method = 'navigate
       if(payload){
         let str = ''
         for(let key in payload) {
-          str += `${key}=${payload[key]}`
+          str += `${key}=${payload[key]}&`
         }
         urlStr +=`?${str}`
       }
 
+      urlStr = urlStr.substring(0, urlStr.length-1)
       Taro[method]({
         url: urlStringify(PAGE_WEBVIEW, { url: urlStr, title })
       })
