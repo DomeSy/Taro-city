@@ -19,6 +19,12 @@
     font-family: $font-family;
     font-size: $font-size-list;
     line-height: $line-height-list;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $blue;
+    &-number{
+      margin: 0 6px;
+    }
   }
 }

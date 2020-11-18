@@ -4,6 +4,13 @@ import { FROMPORT, SIGNURL, VERSION, GATEWAY, USERGATEWAY, USERSIGNURL, CHARSET 
 
 // appid：appid, interfaceid：接口id, payload: 参数,loading
 const fetch = (appid, interfaceid, payload, way, loading) => {
+  let imageFile = []
+  if(way === "imageFile"){
+    const data = JSON.parse(payload);
+    imageFile = data.imageFile;
+    payload = JSON.stringify(data.payload);
+  }
+  
   return new Promise(async (resolve, reject) => {
     const datestr = new Date().valueOf()
     const param = {
@@ -21,15 +28,33 @@ const fetch = (appid, interfaceid, payload, way, loading) => {
       reject(false)
     } else {
       const { sign } = data.data;
-      const playod = {
-        app_id: appid,
-        interface_id: interfaceid,
-        version: VERSION,
-        biz_content: payload,
-        charset: CHARSET,
-        timestamp: datestr,
-        origin: FROMPORT,
-        sign,
+      let playod = {}
+      if (way === "imageFile") {
+        playod = {
+          app_id: appid,
+          interface_id: interfaceid,
+          version: VERSION,
+          biz_content: payload,
+          charset: CHARSET,
+          timestamp: datestr,
+          origin: FROMPORT,
+          sign,
+          imageFile1: imageFile[0] ?  imageFile[0].url : '',
+          imageFile2: imageFile[1] ?  imageFile[1].url : '',
+          imageFile3: imageFile[2] ?  imageFile[2].url : '',
+          imageFile4: imageFile[3] ?  imageFile[3].url : ''
+        }
+      } else {
+        playod = {
+          app_id: appid,
+          interface_id: interfaceid,
+          version: VERSION,
+          biz_content: payload,
+          charset: CHARSET,
+          timestamp: datestr,
+          origin: FROMPORT,
+          sign,
+        }
       }
       const path = way === 'user' ? USERGATEWAY : GATEWAY;
       const datas = await request({path, method: 'POST', payload: qs.stringify(playod), rule: 'jmas', loading})
