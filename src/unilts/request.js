@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import { Jump } from '@unilts'
 
 const CODE_SUCCESS = '200'
 const local = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/'
@@ -44,7 +45,7 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule, load
         title: err && err.errorMsg || defaultMsg,
         icon: 'none'
       })
-  
+      Jump({url: '/catch', method: 'reLaunch'})
       return Promise.reject({ message: defaultMsg, ...err })
     })
   }) 

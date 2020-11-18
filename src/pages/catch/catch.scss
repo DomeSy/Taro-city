@@ -1,0 +1,43 @@
+@import "@styles/theme.scss";
+
+.None{
+  font-family: $font-family;
+  &-img{
+    padding: 80px 24px 24px 24px; 
+    display: flex;
+    justify-content: center;
+    &-content{
+      &-imgs{
+        height: 440px;
+        width: 440px;
+      }
+      &-text{
+        font-size: $font-size-title;
+        line-height: $line-height-title;
+        color: $font-color;
+      }
+    }
+  }
+  &-tip{
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    padding: 40px 24px;
+    text-align: center;
+    &-text{
+      font-size: $font-size-tip;
+      line-height: $line-height-tip;
+      color: $font-color-effect;
+      margin-bottom: 24px;
+    }
+    &-download{
+      padding: 8px 24px;
+      background: $background;
+      border-radius: 25px;
+      font-size: $font-size-effect;
+      line-height: $line-height-effect;
+      color: $blue;
+    }
+  }
+}

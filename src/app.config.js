@@ -26,6 +26,7 @@ export default {
     'pages/searchList/searchList',
     'pages/subscribeAdd/subscribeAdd',
     'pages/none/none',
+    'pages/catch/catch',
     'pages/webview/webview',
     'pages/medical/medical',
     'pages/nearUse/nearUse'
