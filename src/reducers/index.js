@@ -6,6 +6,7 @@ import detail from './detail'
 import search from './search'
 import nearUse from './nearUse'
 import space from './space'
+import show from './show'
 
 export default combineReducers({
   user,
@@ -14,5 +15,6 @@ export default combineReducers({
   detail,
   search,
   nearUse,
-  space
+  space,
+  show
 })

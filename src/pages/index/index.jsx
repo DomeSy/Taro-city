@@ -7,6 +7,7 @@ import { SITESET } from '@constants/site'
 import * as actions from '@actions/user'
 import * as siteActions from '@actions/site'
 import * as homeActions from '@actions/home'
+import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
 
 
@@ -23,7 +24,7 @@ function getStorage() {
   })
 }
 
-@connect(({user, site, home}) => ({...user, ...site, ...home}), { ...actions, ...siteActions, ...homeActions })
+@connect(({user, site, home, show}) => ({...user, ...site, ...home, ...show}), { ...actions, ...siteActions, ...homeActions, ...showActions })
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -36,7 +37,12 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
-    const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
+    const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
+    // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })
+    // if(isShow){
+
+    //   return;
+    // }
     const data = await getStorage();
     if(data){
       const { token, type, usertype } = data;
