@@ -26,13 +26,7 @@ function JamsData(list) {
     } else if(item.resourcename == '上新') {
       item.listAll = []
       homeList.newList = item
-    } else if(item.resourcename == '个人服务') {
-      item.listAll = []
-      homeList.personList = item
-    } else if(item.resourcename == '法人服务') {
-      item.listAll = []
-      homeList.legalList = item
-    }else if(item.resourcename == '热搜') {
+    } else if(item.resourcename == '热搜') {
       item.listAll = []
       homeList.searchList = item
     }
