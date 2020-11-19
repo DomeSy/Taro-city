@@ -10,9 +10,6 @@ import './index.scss'
 class Index extends Component {
   constructor(){
     super(...arguments)
-    this.state={
-      
-    }
   }
 
   getEffectText = (data) => {
@@ -34,23 +31,34 @@ class Index extends Component {
 
   render() {
     const list = this.props.list || [];
-
+    const gongge = this.props.gongge || false;
     return (
-      <View className="DListTheme">
+      <View className={gongge ? "DListTheme DlistThemeGongge" : "DListTheme"}>
         {
           list.map((item, index) => (
-            <View className="DListTheme-them" key={index} onClick={() => this.goDetail(item)}>
-              <Image className="DListTheme-them-img" src={item.cateimgurl}></Image>
-              <View className="DListTheme-them-detail">
-                <View className="DListTheme-them-detail-title">
-                  {item.resourcename}
-                </View>
-                <View className="DListTheme-them-detail-text">
-                  {
-                    this.getEffectText(item.apps.data)
-                  }
-                </View>
-              </View>
+            <View className={gongge ? "DListTheme-them DListTheme-gongge" : "DListTheme-them"} key={index} onClick={() => this.goDetail(item)}>
+              {
+                gongge ? 
+                <> 
+                  <View className="DListTheme-gongge-conent">
+                    <Image className="DListTheme-gongge-conent-img" src={item.cateimgurl}></Image>
+                    <View className="DListTheme-gongge-conent-text">{item.resourcename < 6 ? item.resourcename : `${item.resourcename.substring(0,4)}...`}</View>
+                  </View>
+                </> :
+                <> 
+                 <Image className="DListTheme-them-img" src={item.cateimgurl}></Image>
+                  <View className="DListTheme-them-detail">
+                    <View className="DListTheme-them-detail-title">
+                      {item.resourcename}
+                    </View>
+                    <View className="DListTheme-them-detail-text">
+                      {
+                        this.getEffectText(item.apps.data)
+                      }
+                    </View>
+                  </View>
+                </>
+              }
             </View>
           ))
         }
