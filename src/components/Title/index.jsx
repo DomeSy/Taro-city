@@ -13,6 +13,7 @@ import './index.scss'
   switchTab：存在时，则是跳转首页的
   login:是否登录，否的话跳转登录页，并实现跳转
   my: 我的页面进行跳转
+  none：是否显示副标题
 */ 
 function Index({title = '我是标题', effectTitle = '全部', none, url = false, login = true, switchTab, my = false, name = false}){
 
