@@ -42,7 +42,7 @@ class Index extends Component {
                 <> 
                   <View className="DListTheme-gongge-conent">
                     <Image className="DListTheme-gongge-conent-img" src={item.cateimgurl}></Image>
-                    <View className="DListTheme-gongge-conent-text">{item.resourcename < 6 ? item.resourcename : `${item.resourcename.substring(0,4)}...`}</View>
+                    <View className="DListTheme-gongge-conent-text">{item.resourcename.length < 6 ? item.resourcename : `${item.resourcename.substring(0,4)}...`}</View>
                   </View>
                 </> :
                 <> 
