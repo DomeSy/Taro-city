@@ -14,7 +14,6 @@ function getDate(){
 
 const getPension = async payload => {
   const { name, papersnumber, value } = payload;
-  console.log(payload,'---')
   const data = {
     serviceName: 'SiServiceAgedSzf',
       operationName: 'getEmpJfxxZzCxasd',
@@ -25,7 +24,6 @@ const getPension = async payload => {
       rsxtid: value
   }
   const res = await jmasRequest('sdsrst', 'rssbcxjgqiyl', data, '', true)
-  console.log(res, '0009')
   // const data = {
   //   // rsxtid: "3763",
   //   // sfzhm: "342225197011111989",
