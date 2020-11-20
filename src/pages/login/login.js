@@ -92,7 +92,6 @@ Page({
     }
   },
   async webListener(e) { 
-    console.error(e,'---9')
     const { action } = e.detail;
     if(action === 'loginOut'){
       my.setStorage({
