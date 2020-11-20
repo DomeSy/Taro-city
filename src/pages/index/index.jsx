@@ -9,6 +9,7 @@ import * as siteActions from '@actions/site'
 import * as homeActions from '@actions/home'
 import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
+import { aliCertify, AlipayRequest } from '@unilts/dependence'
 
 
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
@@ -37,6 +38,7 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
+    this.face()
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
     // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })
     // if(isShow){
@@ -60,6 +62,24 @@ class Index extends Component {
         }
       }
     })
+  }
+  face = async() =>{
+    const certify_id = await aliCertify({
+      name: '杜玮',
+      cardId: '620103199707082611'
+    })
+    const url = await AlipayRequest(certify_id)
+    // 跳转人脸认证
+    my.ap.navigateToAlipayPage({
+      path: encodeURIComponent(url),
+      success: (res) => {
+        console.error(res, '003')
+      },
+      fail: (res) => {
+        console.error(res, '002')
+      }
+    })
+
   }
   
   componentDidUpdate(){}

@@ -31,7 +31,7 @@ async function aliCertify(user_info, url = "") {
       }))
     }
     Request({path: `${httpRequest}/jisalipay/userInitialize.do`, payload }).then(res => {
-      const { retcode, msg, data } = res.data || {}
+      const { retcode, msg, data } = res || {}
       if (retcode == '000000') {
         resolve(JSON.parse(data).alipay_user_certify_open_initialize_response.certify_id);
       } else {
@@ -53,7 +53,7 @@ async function AlipayRequest(certify_id) {
       })
     }
     Request({path: `${httpRequest}/jisalipay/userCertify.do`, payload }).then(res => {
-      const { retcode, msg, data } = res.data || {}
+      const { retcode, msg, data } = res || {}
       if (retcode == '000000') {
         resolve(data);
       } else {
@@ -75,7 +75,7 @@ function getOpenRes(params) {
       })
     }
     Request({path: `${httpRequest}/jisalipay/userQuery.do`, payload }).then(res => {
-      const { retcode, msg, data } = res.data || {}
+      const { retcode, msg, data } = res || {}
       if (retcode == '000000') {
         const { alipay_user_certify_open_query_response: { code = "", msg = "", passed = "" } } = data && JSON.parse(data)
         resolve({
