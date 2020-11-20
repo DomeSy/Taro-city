@@ -24,7 +24,6 @@ function getStorage() {
     })
   })
 }
-
 @connect(({user, site, home, show}) => ({...user, ...site, ...home, ...show}), { ...actions, ...siteActions, ...homeActions, ...showActions })
 class Index extends Component {
   constructor(){
@@ -34,11 +33,9 @@ class Index extends Component {
     }
   }
 
-
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
-    this.face()
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
     // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })
     // if(isShow){
@@ -63,23 +60,23 @@ class Index extends Component {
       }
     })
   }
-  face = async() =>{
+  // 人脸识别
+  face = async({name, cardId}) =>{
     const certify_id = await aliCertify({
-      name: '杜玮',
-      cardId: '620103199707082611'
+      name,
+      cardId
     })
     const url = await AlipayRequest(certify_id)
     // 跳转人脸认证
     my.ap.navigateToAlipayPage({
       path: encodeURIComponent(url),
       success: (res) => {
-        console.error(res, '003')
+        console.error("人脸识别成功")
       },
       fail: (res) => {
         console.error(res, '002')
       }
     })
-
   }
   
   componentDidUpdate(){}

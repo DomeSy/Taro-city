@@ -1,25 +1,4 @@
 import { JSEncrypt } from "jsencrypt"
-
-// const myRSA = async (str) => {
-//   return new Promise((res, rej) => {
-//     let PRIVATE_KEY = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJAKGqLW0NncBWfsB+N38oXLIpf56nxPTbMJ/xwDC5bRjHxF6Drf2ERjzFCUxBerNZg6mu59yQT45pw3hJxfFWG39ZeohjIU6uzE65mDdAbgyV03EdPkt3iHO7gOteQhdW7tlru9AA1NzuCfHwkQ5E/eWR6ovCDioBRZIM+BOYg5AgMBAAECgYBwTzCNn6mg9SlR6nwMJM54+/axQTBQVRVkcHr1wHoc0q8Thv6YSUk7qgT5H8X2HozfcXK0WmeO9PP7Al7n/kuQhSpcx8MyKar2p3te4JEi7rKD33+Hj43hxcXZ5X8SKtIbtKG0IiMCkCBsNkIu2OQwyyh8eGztOVIejsr5g9qC8QJBANM711huVsqw/VGpmLZ0AadwgBN7KWfjjqe7cRs7OZ0LE/HqDC7XLWpNGtF7aMwZV+JpW7mICMpi1wbx5mCm43sCQQCukL3MHZQBo49ezslK7Qu80RDUdPwhs91FKVlZrIZv9ECJqjJzpvUTC3rdDqtqRVbaSNE3vPkkm03J466jjGrbAkB52nV5r/0lZEBd0YYlCnrByqY3lr7mDWGH5Rt0aA/uRiu1TBzHEJ5ESkKEQbrMsnn+RGUDfDQF/Eqq2PTbIKrtAkBHAxJyikW/NO4Jv00bcbqooNOb2csHWsfUbrGuTQSTXmUym03SxkRD7xOYAXOx02s1eRHC/tjLD3JhgoF0fpapAkEAgEy994uEXu0OMkZbEtDI2nBnpi7v656COb+Fh/PCWit5NhsiEOZ7KYNc3haWERO2sC8TalmYIVb4+Buad2h9ig=="
-//     my.rsa({
-//       action: 'decrypt',
-//       text: str,
-//       // 设置私钥，需替换你自己的私钥
-//       key: PRIVATE_KEY,
-//       success: (result) => {
-//         res(result)
-//       },
-//       fail(e) {
-//         my.alert({
-//           content: '解密错误',
-//         });
-//         rej(false)
-//       },
-//     });
-//   })
-// }
 class Method {
   /*
     脱敏
