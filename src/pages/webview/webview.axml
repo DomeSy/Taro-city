@@ -1,3 +1,0 @@
-<view class="content">
-  <web-view id="webviewFace" src="{{src}}" onMessage="onFaceAlipay"></web-view>
-</view>

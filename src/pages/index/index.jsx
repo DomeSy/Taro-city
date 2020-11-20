@@ -11,7 +11,6 @@ import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
 import { aliCertify, AlipayRequest } from '@unilts/dependence'
 
-
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 function getStorage() {
