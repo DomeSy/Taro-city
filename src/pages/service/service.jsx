@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tip, Loading } from '@components'
 import Taro from '@tarojs/taro'
-import { Method } from '@unilts'
+import { Method, userToken } from '@unilts'
 
 import { ServerList, UseTime } from './components'
 import { SearchTab } from '../index/components'
@@ -15,7 +15,7 @@ import './service.scss'
 function getStorage() {
   return new Promise(res => {
     Taro.getStorage({
-      key: 'token',
+      key: userToken,
       success: function (data) {
         res(data.data)
       }
@@ -42,7 +42,7 @@ class Service extends Component {
     if(type == 'login' && data.isLogin){
       const { token, usertype } = data;
       Taro.setStorage({
-        key:"token",
+        key: userToken,
         data: {
           token,
           usertype,

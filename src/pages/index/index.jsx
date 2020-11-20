@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tip, Loading } from '@components'
-import { Method, mobileId, clienttype, JmasRequest  } from '@unilts'
+import { Method, mobileId, clienttype, JmasRequest, userToken  } from '@unilts'
 import Taro from '@tarojs/taro'
 import { SITESET } from '@constants/site'
 import * as actions from '@actions/user'
@@ -16,7 +16,7 @@ import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from 
 function getStorage() {
   return new Promise(res => {
     Taro.getStorage({
-      key: 'token',
+      key: userToken,
       success: function (data) {
         res(data.data)
       }

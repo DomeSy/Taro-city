@@ -3,14 +3,14 @@ import { View, Text } from '@tarojs/components'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import * as actions from '@actions/user'
 import { connect } from 'react-redux'
-import { Jump } from '@unilts'
+import { Jump, userToken } from '@unilts'
 
 import './loginRedirect.scss'
 
 function getStorage() {
   return new Promise(res => {
     Taro.getStorage({
-      key: 'token',
+      key: userToken,
       success: function (data) {
         res(data.data)
       }

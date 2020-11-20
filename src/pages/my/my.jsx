@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Info, Space } from './components'
 import Taro from '@tarojs/taro'
-import { Jump } from '@unilts'
+import { Jump, userToken } from '@unilts'
 import banjian from '@assets/my/banjian.png'
 import pingjia from '@assets/my/pingjia.png'
 import zhengjian from '@assets/my/zhengjian.png'
@@ -38,7 +38,7 @@ const list = [
 function getStorage() {
   return new Promise(res => {
     Taro.getStorage({
-      key: 'token',
+      key: userToken,
       success: function (data) {
         res(data.data)
       }
@@ -57,6 +57,7 @@ class My extends Component {
   }
 
   componentDidMount(){
+    // Taro.clearStorage()
     // this.props.DSpaceInit();
   }
 
@@ -64,11 +65,15 @@ class My extends Component {
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
     const data = await getStorage();
     const type = data ? data.type : false;
+    if(!data){
+      dispatchLogout()
+      DNearClear()
+    }
 
     if(type == 'login' && data.isLogin){
       const { token, usertype } = data;
       Taro.setStorage({
-        key:"token",
+        key: userToken,
         data: {
           token,
           usertype,

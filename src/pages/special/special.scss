@@ -3,8 +3,9 @@
 .Special{
   &-list{
     padding: 24px;
+    height: calc(100vh - 228px);
+    overflow-y: auto;
     &-img{
-      // width: calc(100vw - 48px);
       width: 702px;
       height: 180px;
       margin-top: 24px;
@@ -12,5 +13,11 @@
         margin-top: 0;
       }
     }
+  }
+  &-tip{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }

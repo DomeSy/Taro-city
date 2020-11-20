@@ -14,17 +14,29 @@ function getDate(){
 
 const getPension = async payload => {
   const { name, papersnumber, value } = payload;
+  console.log(payload,'---')
   const data = {
-    // rsxtid: "3763",
-    // sfzhm: "342225197011111989",
-    // xm: "彭增芹",
-    rsxtid: value,
-    sfzhm: papersnumber,
-    xm: name,
-    operationName:"queryRcAgedPayHisInfo",
-    serviceName:"SiUrService"
+    serviceName: 'SiServiceAgedSzf',
+      operationName: 'getEmpJfxxZzCxasd',
+      aac147: papersnumber,
+      aae041: "201911",
+      aae042: "202011",
+      aae140: "A",
+      rsxtid: value
   }
-  const res = await jmasRequest('sdsrst', 'rsjmylgrcb', data, '', true)
+  const res = await jmasRequest('sdsrst', 'rssbcxjgqiyl', data, '', true)
+  console.log(res, '0009')
+  // const data = {
+  //   // rsxtid: "3763",
+  //   // sfzhm: "342225197011111989",
+  //   // xm: "彭增芹",
+  //   rsxtid: value,
+  //   sfzhm: papersnumber,
+  //   xm: name,
+  //   operationName:"queryRcAgedPayHisInfo",
+  //   serviceName:"SiUrService"
+  // }
+  // const res = await jmasRequest('sdsrst', 'rsjmylgrcb', data, '', true)
   const { xm, sfzhm, ljjfnx, ljjfje, errflag } = res.data;
   const result = errflag == 0 ? 
   {

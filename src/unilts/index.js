@@ -18,3 +18,6 @@ export const jisConfig = {
 export const mobileId = '737d972e0a04436287b7a1b59d142bb8'
 //展示的端
 export const clienttype = '2' 
+
+// 存储用户的token
+export const userToken = 'USER_INFO_EXPORT'

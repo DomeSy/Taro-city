@@ -37,7 +37,9 @@ class Special extends Component {
             ))
           }
         </View>
-        <Tip />
+        <View className="Special-tip">
+          <Tip />
+        </View>
       </View>
     )
   }

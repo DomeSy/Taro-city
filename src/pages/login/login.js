@@ -1,4 +1,4 @@
-import { Jump, jisConfig } from '@unilts';
+import { Jump, jisConfig, userToken } from '@unilts';
 import { aliCertify, AlipayRequest, getOpenRes } from '@unilts/dependence'
 
 
@@ -92,10 +92,11 @@ Page({
     }
   },
   async webListener(e) { 
+    console.error(e,'---9')
     const { action } = e.detail;
     if(action === 'loginOut'){
       my.setStorage({
-        key: 'token',
+        key: userToken,
         data: {
           token: '',
           usertype: '',
@@ -110,7 +111,7 @@ Page({
       const { go, payload } = this.data;
       if (go) {
         my.setStorage({
-          key: 'token',
+          key: userToken,
           data: {
             token,
             usertype,
@@ -121,7 +122,7 @@ Page({
         Jump({url: '/loginRedirect', method: 'redirectTo', payload: {go}})
       } else {
         my.setStorage({
-          key: 'token',
+          key: userToken,
           data: {
             token,
             usertype,
@@ -143,7 +144,6 @@ Page({
       this.faceGo()
     }else if (action === 'scan'){
       //登录
-      const { token, usertype } = e.detail.params;
       my.scan({
         scanType: ['qrCode'],
         success: (res) => {

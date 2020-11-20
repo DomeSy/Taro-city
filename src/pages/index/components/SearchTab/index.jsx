@@ -35,7 +35,7 @@ class Index extends Component {
         <View className="searchs">
           <View className="sInput" onClick={() => Jump({url:'/search'})}>
             <AtIcon value='search' size='16' color='rgba(135,135,135,1)'></AtIcon>
-            <View className="text">搜索词</View>
+            <View className="text">请输入您要搜索的事项或服务…</View>
           </View>
         </View>
       </View>

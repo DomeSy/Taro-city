@@ -12,7 +12,6 @@ import { JSEncrypt } from "jsencrypt"
 //         res(result)
 //       },
 //       fail(e) {
-//         console.log(e, '---')
 //         my.alert({
 //           content: '解密错误',
 //         });

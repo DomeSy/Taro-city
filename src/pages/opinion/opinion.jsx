@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import * as actions from '@actions/user'
-import { JmasRequest, mobileId, Jump } from '@unilts'
+import { JmasRequest, mobileId, Jump, userToken } from '@unilts'
 import { Textarea, ImagePicker, Button } from '@components'
 
 import './opinion.scss'
@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 function getStorage() {
   return new Promise(res => {
     Taro.getStorage({
-      key: 'token',
+      key: userToken,
       success: function (data) {
         res(data.data)
       }
@@ -37,7 +37,7 @@ class Opinion extends Component {
     if(type == 'login' && data.isLogin){
       const { token, usertype } = data;
       Taro.setStorage({
-        key:"token",
+        key: userToken,
         data: {
           token,
           usertype,
