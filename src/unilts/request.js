@@ -27,8 +27,6 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule, load
       data: payload,
       header
     }).then(async (res) => {
-      // const { path } = getCurrentInstance().router;
-      // Jump({url: '/catch', method: 'reLaunch', payload: { catchPath: path }})
       
       if(loading){
         Taro.hideLoading()
