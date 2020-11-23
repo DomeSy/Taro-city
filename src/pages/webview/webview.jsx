@@ -26,11 +26,10 @@ class Webview extends Component {
 
   onFaceAlipay = (e) => {
     const { webViewContext } = this.state;
-    console.log(e.detail.name ,' 008786')
-    if(e.detail.name === '扫脸'){
-      const { name, papersnumber } = this.props.userInfo;
-      this.face({name, cardId:papersnumber})
-    }
+    // if(e.detail.name === '扫脸'){
+    //   const { name, papersnumber } = this.props.userInfo;
+    //   this.face({name, cardId:papersnumber})
+    // }
     // webViewContext.postMessage("认证成功");
   }
 

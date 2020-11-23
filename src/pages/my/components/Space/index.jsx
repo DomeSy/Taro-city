@@ -19,7 +19,6 @@ class Index extends Component {
   }
 
   detail = async (item) => {
-    console.log(item, '09877')
     const { DareaValue, Dsign, xm, sfzhm, Darea, Dname } = item;
     await this.props.DSpaceInfo({value: DareaValue, sign: Dsign, name: xm, papersnumber: sfzhm, area: Darea, Dname: Dname, mdetail: true})
     Jump({url:'/spaceDetail', payload:{sign: item.Dsign}})

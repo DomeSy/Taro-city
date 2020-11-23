@@ -23,9 +23,6 @@ class SpaceDetail extends Component {
       }
     })
 
-    console.log(list[0], '009')
-    console.log(Method.Desensit(list[0].sfzhm, 2, list[0].sfzhm.length - 2))
-
     Taro.setNavigationBarTitle({
       title: `我的${list[0].Dname}`
     })
