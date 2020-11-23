@@ -26,8 +26,7 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule, load
       method,
       data: payload,
       header
-    }).then(async (res) => {
-      
+    }).then(async (res) => {      
       if(loading){
         Taro.hideLoading()
       }
@@ -45,10 +44,10 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule, load
       // 接口异常是获取从那个页面的地址，用于刷新页面
       const { path } = getCurrentInstance().router;
       const defaultMsg = '请求异常'
-      Taro.showToast({
-        title: err && err.errorMsg || defaultMsg,
-        icon: 'none'
-      })
+      // Taro.showToast({
+      //   title: err && err.errorMsg || defaultMsg,
+      //   icon: 'none'
+      // })
       Jump({url: '/catch', method: 'reLaunch', payload: { catchPath: path }})
       return Promise.reject({ message: defaultMsg, ...err })
     })
