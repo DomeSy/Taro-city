@@ -92,6 +92,7 @@ Page({
     }
   },
   async webListener(e) { 
+    console.log(e, '000')
     const { action } = e.detail;
     if(action === 'loginOut'){
       my.setStorage({

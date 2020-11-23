@@ -18,32 +18,23 @@ const getPension = async payload => {
     serviceName: 'SiServiceAgedSzf',
       operationName: 'getEmpJfxxZzCxasd',
       aac147: papersnumber,
-      aae041: "201911",
-      aae042: "202011",
       aae140: "A",
       rsxtid: value
   }
   const res = await jmasRequest('sdsrst', 'rssbcxjgqiyl', data, '', true)
-  // const data = {
-  //   // rsxtid: "3763",
-  //   // sfzhm: "342225197011111989",
-  //   // xm: "彭增芹",
-  //   rsxtid: value,
-  //   sfzhm: papersnumber,
-  //   xm: name,
-  //   operationName:"queryRcAgedPayHisInfo",
-  //   serviceName:"SiUrService"
-  // }
-  // const res = await jmasRequest('sdsrst', 'rsjmylgrcb', data, '', true)
-  const { xm, sfzhm, ljjfnx, ljjfje, errflag } = res.data;
-  const result = errflag == 0 ? 
+  console.log(res.data, '-99')
+  const { retrieve } = res.data
+  const { aac003, aac002, aae036, bac034, aab069, bac027 } = retrieve[retrieve.length - 1] || null;
+  const result = retrieve !== "null" && retrieve ? 
   {
-    xm,
-    sfzhm,
-    ljjfnx,
-    ljjfje: Number(ljjfje).toFixed(2),
+    xm: aac003,
+    sfzhm: aac002,
+    DUseTime: `${aae036.substring(0,4)}/${aae036.substring(5,7)}`,
+    Dmoney: Number(bac034).toFixed(2),
     Dopen: false,
     DareaValue: value,
+    DCompany: aab069,
+    DBasics: bac027,
     Dtip: '本服务由山东省人力资源和社会保障厅提供服务',
     Dimg: `background: url(${ylbx});background-size: 100% 100%`,
     DimgDetail: `background: url(${banner});background-size: 100% 100%`,

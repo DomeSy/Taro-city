@@ -9,7 +9,6 @@ import * as siteActions from '@actions/site'
 import * as homeActions from '@actions/home'
 import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
-import { aliCertify, AlipayRequest } from '@unilts/dependence'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 function getStorage() {
@@ -55,24 +54,6 @@ class Index extends Component {
         }else{
           DHomeInit({siteid, mobileId, clienttype})
         }
-      }
-    })
-  }
-  // 人脸识别
-  face = async({name, cardId}) =>{
-    const certify_id = await aliCertify({
-      name,
-      cardId
-    })
-    const url = await AlipayRequest(certify_id)
-    // 跳转人脸认证
-    my.ap.navigateToAlipayPage({
-      path: encodeURIComponent(url),
-      success: (res) => {
-        console.error("人脸识别成功")
-      },
-      fail: (res) => {
-        console.error(res, '002')
       }
     })
   }

@@ -19,6 +19,7 @@ class Index extends Component {
   }
 
   detail = async (item) => {
+    console.log(item, '09877')
     const { DareaValue, Dsign, xm, sfzhm, Darea, Dname } = item;
     await this.props.DSpaceInfo({value: DareaValue, sign: Dsign, name: xm, papersnumber: sfzhm, area: Darea, Dname: Dname, mdetail: true})
     Jump({url:'/spaceDetail', payload:{sign: item.Dsign}})
@@ -45,12 +46,12 @@ class Index extends Component {
                 </View>
                 <View className="Space-Card-content-money">
                   <View className="Space-Card-content-money-mid">
-                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.ljjfje : Method.Desensit(item.ljjfje, 0, item.ljjfje.length)}</View>
-                    <View className="Space-Card-content-money-mid-text">账户余额(元)</View>
+                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.Dmoney : Method.Desensit(item.Dmoney, 0, item.Dmoney.length)}</View>
+                    <View className="Space-Card-content-money-mid-text">个人缴纳金额(元)</View>
                   </View>
                   <View className="Space-Card-content-money-mid">
-                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.ljjfnx : Method.Desensit(item.ljjfnx, 0, item.ljjfnx.length)}</View>
-                    <View className="Space-Card-content-money-mid-text">累计缴纳(年)</View>
+                    <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.DUseTime : Method.Desensit(item.DUseTime, 0, item.DUseTime.length)}</View>
+                    <View className="Space-Card-content-money-mid-text">最近缴纳时间</View>
                   </View>
                   <View className="Space-Card-content-money-mid">
                     <View className="Space-Card-content-money-mid-all">{item.Dopen ? item.Darea : Method.Desensit(item.Darea, 0, item.Darea.length)}</View>
