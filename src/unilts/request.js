@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { Jump } from '@unilts'
 
 const CODE_SUCCESS = '200'
@@ -7,13 +7,14 @@ const local = 'https://app-izz.zhengzhou.gov.cn/jmportalzs/interfaces/'
 // 封装请求
 async function Request({url, payload = {}, method = 'GET', path = '', rule, loading = false}) {
   const header = {}
-
+  
   if(rule === 'jmas'){
     header['content-type'] = 'application/x-www-form-urlencoded'
   } else if (method === 'POST' && Taro.getEnv() !== 'WEB') {
     header['content-type'] = 'application/json'
   }
 
+ 
   return new Promise((resolve, reject) => {
     if(loading){
       Taro.showLoading({
@@ -26,6 +27,9 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule, load
       data: payload,
       header
     }).then(async (res) => {
+      // const { path } = getCurrentInstance().router;
+      // Jump({url: '/catch', method: 'reLaunch', payload: { catchPath: path }})
+      
       if(loading){
         Taro.hideLoading()
       }
@@ -40,12 +44,14 @@ async function Request({url, payload = {}, method = 'GET', path = '', rule, load
       }
       resolve(data)
     }).catch((err) => {
+      // 接口异常是获取从那个页面的地址，用于刷新页面
+      const { path } = getCurrentInstance().router;
       const defaultMsg = '请求异常'
       Taro.showToast({
         title: err && err.errorMsg || defaultMsg,
         icon: 'none'
       })
-      Jump({url: '/catch', method: 'reLaunch'})
+      Jump({url: '/catch', method: 'reLaunch', payload: { catchPath: path }})
       return Promise.reject({ message: defaultMsg, ...err })
     })
   }) 

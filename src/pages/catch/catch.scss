@@ -1,43 +1,31 @@
 @import "@styles/theme.scss";
 
-.None{
+.CatchView{
   font-family: $font-family;
   &-img{
-    padding: 80px 24px 24px 24px; 
-    display: flex;
-    justify-content: center;
-    &-content{
-      &-imgs{
-        height: 440px;
-        width: 440px;
-      }
-      &-text{
-        font-size: $font-size-title;
-        line-height: $line-height-title;
-        color: $font-color;
-      }
-    }
+    margin: 0 auto;
+    width: 280px;
+    height: 280px;
+    background: url(../../assets/catch.png);
+    background-size: 100% 100%;
+    margin-top: 160px;
   }
-  &-tip{
-    position: absolute;
-    bottom: 80px;
-    left: 0;
-    right: 0;
-    padding: 40px 24px;
+  &-text{
     text-align: center;
-    &-text{
-      font-size: $font-size-tip;
-      line-height: $line-height-tip;
-      color: $font-color-effect;
-      margin-bottom: 24px;
-    }
-    &-download{
-      padding: 8px 24px;
-      background: $background;
-      border-radius: 25px;
-      font-size: $font-size-effect;
-      line-height: $line-height-effect;
-      color: $blue;
-    }
+    padding: 29px 24px 24px 24px;
+    line-height: $line-height-title;
+    font-size: $font-size-title;
+    color: $font-color;
+  }
+  &-btn{
+    width: 144px;
+    margin: 0 auto;
+    line-height: $line-height-effect;
+    font-size: $font-size-effect;
+    padding: 8px 24px;
+    text-align: center;
+    color: $blue;
+    border-radius: 25px;
+    background: #e7f1ff;
   }
 }

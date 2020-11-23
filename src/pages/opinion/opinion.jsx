@@ -69,7 +69,6 @@ class Opinion extends Component {
     //   showCancel: false,
     // })
     // 首先要处理登录逻辑
-    (this.props, '---9')
 
     const { login } = this.props;
     if(login){
