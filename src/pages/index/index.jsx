@@ -40,11 +40,8 @@ class Index extends Component {
     //   return;
     // }
     const data = await getStorage();
-    console.log(data,'--')
 
     if(data){
-    console.log('--1')
-
       const { token, usertype } = data;
       dispatchLogin({token, usertype}) 
     }

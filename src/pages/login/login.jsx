@@ -9,6 +9,13 @@ import * as nearUseActions from '@actions/nearUse'
 
 import './login.scss'
 
+/**
+ * 情况
+ *  1>登录完返回原页面
+ *  2>登陆完跳转新的页面
+ *  3>登录完成跳转WebView，如果WebView需要传token，则需要单独处理
+ *     fwusertype所传入事项的类型，用于判断是否带入个人信息
+ */
 @connect(({user}) => user, {...actions, ...nearUseActions})
 class Webview extends Component {
 
@@ -26,10 +33,9 @@ class Webview extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props, '009')
     const { webUrl } = jisConfig;
     const { login } = this.props;
-    
+  
     const url = login ?  `${webUrl}individualCenter` : webUrl;
     this.setState({
       url
@@ -103,7 +109,6 @@ class Webview extends Component {
   webListener = async (e) => {
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
     const { action } = e.detail;
-    console.log(e,'--1')
     if (action === 'loginApp'){
       //登录
       const { token, usertype } = e.detail.params;
@@ -115,7 +120,32 @@ class Webview extends Component {
         }
       });
       await dispatchLogin({token, usertype})
-      Jump({ method: 'navigateBack' })
+      const { payload } = getCurrentInstance().router.params
+      if (payload) {
+        const { url, fwusertype, name } = JSON.parse(payload)
+        if(fwusertype){
+          if(fwusertype === 0) {
+            Jump({url, method: 'redirectTo'})
+            return
+          } else if(usertype === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
+            url ? Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+          }  else {
+            const content = fwusertype === 1 ? '个人' : '法人'
+            Taro.showModal({
+              title: '提示',
+              content: `当前事项只允许${content}办理`,
+              showCancel: false,
+              success: (res) => {
+                Jump({method: 'navigateBack'})
+              }
+            })
+          }
+          return
+        }
+        Jump({url, method: 'redirectTo'})
+      } else {
+        Jump({ method: 'navigateBack' })
+      }
     } else if(action === 'loginOut'){
       dispatchLogout()
       DNearClear()

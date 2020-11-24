@@ -34,7 +34,7 @@ function Index({ list = [], type = false, token }){
         }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login', payload: {go: JSON.stringify({url: appIssueUrl, fwusertype})}})
+        Jump({url: '/login', payload: {payload: JSON.stringify({url: appIssueUrl, fwusertype, name})} })
       }
     }
   }

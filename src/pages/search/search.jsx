@@ -86,7 +86,7 @@ class Search extends Component {
   
   // 用于判断事项是否是有个人法人的，是否登录状态
   goWebView = (url, fwusertype, name, type, token) => {
-    if (fwusertype === 0) {
+    if ( fwusertype === 0 ) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
       if(type){
@@ -102,7 +102,7 @@ class Search extends Component {
         }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login', payload: {go: JSON.stringify({url, fwusertype})}})
+        Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
       }
     }
   }

@@ -33,7 +33,7 @@ function Index({tab = [], type, onChang, token}){
         }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login', payload: {go: JSON.stringify({url, fwusertype})}})
+        Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
       }
     }
   }

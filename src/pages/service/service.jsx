@@ -12,17 +12,6 @@ import banner from '@assets/sever/banner.png'
 
 import './service.scss'
 
-function getStorage() {
-  return new Promise(res => {
-    Taro.getStorage({
-      key: userToken,
-      success: function (data) {
-        res(data.data)
-      }
-    })
-  })
-}
-
 @connect(({ user, home }) => ({...user, ...home}), { ...actions })
 class Service extends Component {
   constructor(){
@@ -31,30 +20,6 @@ class Service extends Component {
     this.state = {
       banner: `background: url(${banner});background-size: 100% 100%`
     }
-  }
-
-  componentDidShow = async () => {
-    const { dispatchLogin } = this.props;
-    
-    const data = await getStorage();
-    const type = data ? data.type : false;
-    
-    if(type == 'login' && data.isLogin){
-      const { token, usertype } = data;
-      Taro.setStorage({
-        key: userToken,
-        data: {
-          token,
-          usertype,
-          type: "login",
-          isLogin: false
-        }
-      })
-      dispatchLogin({token, usertype})
-    }
-  }
-  config = {
-    navigationBarTitleText: '服务'
   }
 
   render() {

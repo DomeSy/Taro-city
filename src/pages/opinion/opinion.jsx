@@ -8,17 +8,6 @@ import { Textarea, ImagePicker, Button } from '@components'
 import './opinion.scss'
 import { connect } from 'react-redux'
 
-function getStorage() {
-  return new Promise(res => {
-    Taro.getStorage({
-      key: userToken,
-      success: function (data) {
-        res(data.data)
-      }
-    })
-  })
-}
-
 @connect(({user, site}) => ({...user, ...site}), { ...actions })
 class Opinion extends Component {
   constructor(){
@@ -30,23 +19,10 @@ class Opinion extends Component {
   }
 
   componentDidShow = async () => {
-    const { dispatchLogin } = this.props;
-    const data = await getStorage();
-    const type = data ? data.type : false;
-    
-    if(type == 'login' && data.isLogin){
-      const { token, usertype } = data;
-      Taro.setStorage({
-        key: userToken,
-        data: {
-          token,
-          usertype,
-          type: "login",
-          isLogin: false
-        }
-      })
-      await dispatchLogin({token, usertype})
-      this.onClick(this.state.textValue, this.state.imageFile)
+    const { login } = this.props;
+    const { textValue, imageFile } = this.state;
+    if(login && (imageFile.length !== 0 || !textValue)){
+      this.onClick(textValue, imageFile)
     }
   }
 
@@ -63,13 +39,7 @@ class Opinion extends Component {
   }
 
   onClick = (textValue, imageFile) => {
-    // Taro.showModal({
-    //   title: '提示',
-    //   content: `服务正在建设中尽情期待`,
-    //   showCancel: false,
-    // })
     // 首先要处理登录逻辑
-
     const { login } = this.props;
     if(login){
       textValue ? this.uploadfeed(textValue, imageFile) : Taro.showToast({
