@@ -40,9 +40,13 @@ class Index extends Component {
     //   return;
     // }
     const data = await getStorage();
+    console.log(data,'--')
+
     if(data){
-      const { token, type, usertype } = data;
-      if(type === 'login') dispatchLogin({token, usertype}) 
+    console.log('--1')
+
+      const { token, usertype } = data;
+      dispatchLogin({token, usertype}) 
     }
     DSiteInit()
     Taro.getStorage({

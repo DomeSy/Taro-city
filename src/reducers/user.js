@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import { userToken } from '@unilts';
 import { USER_LOGIN, USER_LOGOUT } from '@constants/user'
 
 const INITIAL_STATE = {
@@ -21,6 +22,7 @@ export default function user(state = INITIAL_STATE, action) {
       return data
     }
     case USER_LOGOUT: {
+      Taro.removeStorageSync(userToken)
       return {
         ...INITIAL_STATE
       }

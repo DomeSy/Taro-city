@@ -117,13 +117,6 @@ class Webview extends Component {
       await dispatchLogin({token, usertype})
       Jump({ method: 'navigateBack' })
     } else if(action === 'loginOut'){
-      my.setStorage({
-        key: userToken,
-        data: {
-          token: '',
-          usertype: '',
-        }
-      });
       dispatchLogout()
       DNearClear()
       //退出
