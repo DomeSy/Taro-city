@@ -22,7 +22,6 @@ const getPension = async payload => {
       rsxtid: value
   }
   const res = await jmasRequest('sdsrst', 'rssbcxjgqiyl', data, '', true)
-  console.log(res.data, '-99')
   const { retrieve } = res.data
   const { aac003, aac002, aae036, bac034, aab069, bac027 } = retrieve[retrieve.length - 1] || null;
   const result = retrieve !== "null" && retrieve ? 
