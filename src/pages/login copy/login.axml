@@ -1,3 +1,0 @@
-<view class="content">
-  <web-view id="webviewContainer" src="{{src}}" onMessage="webListener"></web-view>
-</view>
