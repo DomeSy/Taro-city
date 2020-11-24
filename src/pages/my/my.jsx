@@ -64,33 +64,33 @@ class My extends Component {
   componentDidShow = async () => {
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
     const data = await getStorage();
-    const type = data ? data.type : false;
+    // const type = data ? data.type : false;
     if(!data){
       dispatchLogout()
       DNearClear()
     }
 
-    if(type == 'login' && data.isLogin){
-      const { token, usertype } = data;
-      Taro.setStorage({
-        key: userToken,
-        data: {
-          token,
-          usertype,
-          type: "login",
-          isLogin: false
-        }
-      })
-      dispatchLogin({token, usertype})
-      if(data.payload){
-        const payload = JSON.parse(data.payload)
-        const { url, name } = payload
-        name ? Jump({url, payload: { token }}) : Jump({url})
-      }
-    }else if(type == 'loginOut') {
-      dispatchLogout()
-      DNearClear()
-    }
+    // if(type == 'login' && data.isLogin){
+    //   const { token, usertype } = data;
+    //   Taro.setStorage({
+    //     key: userToken,
+    //     data: {
+    //       token,
+    //       usertype,
+    //       type: "login",
+    //       isLogin: false
+    //     }
+    //   })
+    //   dispatchLogin({token, usertype})
+    //   if(data.payload){
+    //     const payload = JSON.parse(data.payload)
+    //     const { url, name } = payload
+    //     name ? Jump({url, payload: { token }}) : Jump({url})
+    //   }
+    // }else if(type == 'loginOut') {
+    //   dispatchLogout()
+    //   DNearClear()
+    // }
   }
   
   goWebView = () => {
