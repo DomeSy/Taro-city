@@ -9,6 +9,7 @@ import * as siteActions from '@actions/site'
 import * as homeActions from '@actions/home'
 import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
+import { site } from '@unilts/site'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 function getStorage() {
@@ -33,6 +34,7 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
+
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
     // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })
     // if(isShow){
@@ -45,13 +47,13 @@ class Index extends Component {
       const { token, usertype } = data;
       dispatchLogin({token, usertype}) 
     }
-    DSiteInit()
+    await DSiteInit()
     Taro.getStorage({
       key: SITESET,
       success: (res) => {
         if(res.data){
-          const { siteid } = res.data
-          DHomeInit({siteid, mobileId, clienttype})
+          const { area } = res.data
+          site.map(item => item.area === area ? DHomeInit({siteid:item.siteid, mobileId, clienttype}) : '')
         }else{
           DHomeInit({siteid, mobileId, clienttype})
         }
