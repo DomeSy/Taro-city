@@ -12,6 +12,7 @@ const getcomppageinterface = payload => {
 async function userRquest({ payload = {}}) {
   const res = await channelfirst(payload);
   const data = await getcomppageinterface({channelid: res.channels[0].id})
+
   return data
 }
 
