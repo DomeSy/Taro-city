@@ -3,7 +3,7 @@
 export const site = [
   {
     area: '省本级',
-    siteid: '620fac8584594096b873a411c93ae228',
+    siteid: '49c3a5ef025f4fc1a73fb3dc86378b27',
     active: true
   },
   {
@@ -12,15 +12,15 @@ export const site = [
   },
   {
     area: '青岛市',
-    siteid: 'cb3fc72d14864d8cb41eeab07af660c0',
+    siteid: 'b9ba7ad77a6e4ab28ec65f545c964785',
   },
   {
     area: '淄博市',
-    siteid: '0e2a1835592f49f0afa8eb81c9e7bdc5',
+    siteid: '2888497d923f4fc586c31f6162a7a4bf',
   },
   {
     area: '枣庄市',
-    siteid: '68f912ef86ce4e6a8342d15e2f149da6',
+    siteid: 'faefaf1f1f6946dbad1061174de844e8',
   },
   {
     area: '东营市',
