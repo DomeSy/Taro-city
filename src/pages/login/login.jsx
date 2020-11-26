@@ -128,7 +128,7 @@ class Webview extends Component {
             Jump({url, method: 'redirectTo'})
             return
           } else if(usertype === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-            url ? Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+            url ? Jump({url, payload:{token, usertype}, method: 'redirectTo'}) : Jump({url: '/none', payload: {name}, method: 'redirectTo'})
           }  else {
             const content = fwusertype === 1 ? '个人' : '法人'
             Taro.showModal({
