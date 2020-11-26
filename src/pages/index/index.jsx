@@ -34,7 +34,7 @@ class Index extends Component {
   componentWillUnmount () {  }
 
   componentDidMount = async () =>{
-
+    // Taro.clearStorage()
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
     // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })
     // if(isShow){
