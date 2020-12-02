@@ -80,6 +80,7 @@ class Webview extends Component {
   }
 
   onFaceAlipay = (e) => {
+    console.log(e)
     const { webViewContext } = this.state;
     // if(e.detail.name === '扫脸'){
     //   const { name, papersnumber } = this.props.userInfo;
