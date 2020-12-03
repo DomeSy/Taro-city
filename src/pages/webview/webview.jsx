@@ -41,6 +41,11 @@ class Webview extends Component {
   }
 
   componentDidShow = async () => {
+
+    // my.ap.navigateToAlipayPage({      
+    //   path:"alipays://platformapi/startapp?appId=20000178&bizScenario=O12201202595&url=%2Fwww%2Findex.html%3FcityCode%3D370100%26appCode%3DW100001583299738281"
+    // })
+
     const { title = '', url, cf = false } = getCurrentInstance().router.params;
 
     if(cf){
@@ -68,7 +73,6 @@ class Webview extends Component {
           //跳转登录
           Jump({url: '/login'})
         }
-        console.log(data)
       }
       
     }else{
@@ -80,7 +84,6 @@ class Webview extends Component {
   }
 
   onFaceAlipay = (e) => {
-    console.log(e)
     const { webViewContext } = this.state;
     // if(e.detail.name === '扫脸'){
     //   const { name, papersnumber } = this.props.userInfo;
@@ -111,7 +114,6 @@ class Webview extends Component {
 
   render() {
     const { url } = this.state
-    console.log(url, '--')
     return (
       <View className="Webview">
         {/* <WebView id="onFaceAlipay" src="http://172.16.8.209:8080/#/" onMessage={(e) => this.onFaceAlipay(e) } /> */}

@@ -41,6 +41,15 @@ export default function Jump({ url, title = '', payload = {}, method = 'navigate
     })
   } else {
     if (/^https?:\/\//.test(url)) {
+      // 单独处理跳小程序的
+      if(url.indexOf('alipays://platformapi/startapp?appId=20000178') !== -1){
+        const path = url.replace("https://wfw.isdapp.shandong.gov.cn/filejmas/jmas/jmasbucket/", "");
+        my.ap.navigateToAlipayPage({      
+          path:"alipays://platformapi/startapp?appId=20000178&bizScenario=O12201202595&url=%2Fwww%2Findex.html%3FcityCode%3D370100%26appCode%3DW100001583299738281"
+        })
+        return
+      }
+
       let urlStr = url
       if(payload){
         let str = ''
@@ -51,6 +60,7 @@ export default function Jump({ url, title = '', payload = {}, method = 'navigate
       }
 
       urlStr = urlStr.substring(0, urlStr.length-1)
+      
       Taro[method]({
         url: urlStringify(PAGE_WEBVIEW, { url: urlStr, title })
       })
