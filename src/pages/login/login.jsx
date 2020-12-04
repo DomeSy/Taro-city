@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { View, WebView } from '@tarojs/components'
 import { connect } from 'react-redux'
-import { Jump, jisConfig, userToken } from '@unilts';
-import { aliCertify, AlipayRequest, getOpenRes } from '@unilts/dependence'
+import { Jump, jisConfig, info } from '@unilts';
+import { authFaceValidate } from '@unilts/authFace.js'
 import * as actions from '@actions/user'
 import * as nearUseActions from '@actions/nearUse'
 
@@ -42,78 +42,16 @@ class Webview extends Component {
     })
   }
 
-  componentDidShow = async () =>{
-    try {
-      const { action, faceLog } = this.state;
-      if (action == 'authFace') {
-        if (!faceLog) return
-        const { code, result = '请扫脸' } = await getOpenRes(this.state)
-        this.webViewContext.postMessage({
-          action: 'authFace',
-          params: {
-            code,
-            result
-          }
-        })
-        this.setData({
-          faceLog: false
-        })
-      }
-    } catch (error) {
-      Taro.showModal({
-        title: '提示',
-        content: error,
-        showCancel: false,
-      })
-    }
-  }
-
-  faceGo = async () => {
-    try {
-      const certify_id = await aliCertify({
-        name: this.data.name,
-        cardId: this.data.cardId
-      })
-      const url = await AlipayRequest(certify_id)
-      // 跳转人脸认证
-      my.ap.navigateToAlipayPage({
-        path: encodeURIComponent(url),
-        success: (res) => {
-          this.setData({
-            ...this.state,
-            ...{
-              name: this.state.name,
-              cardId: this.state.cardId,
-              mobile: this.state.mobile,
-              certify_id
-            }
-          })
-        },
-        fail: (res) => {
-          Taro.showModal({
-            title: '提示',
-            content: JSON.stringify(res),
-            showCancel: false,
-          })
-        }
-      })
-    } catch (error) {
-      Taro.showModal({
-        title: '提示',
-        content: error,
-        showCancel: false,
-      })
-    }
-  }
-
   webListener = async (e) => {
+    console.log(e, '000')
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
     const { action } = e.detail;
+
     if (action === 'loginApp'){
       //登录
       const { token, usertype } = e.detail.params;
       my.setStorage({
-        key: userToken,
+        key: info,
         data: {
           token,
           usertype,
@@ -152,26 +90,52 @@ class Webview extends Component {
       //退出
       Jump({method: 'navigateBack'})
     } else if(action === 'authFace'){
-      const { name, cardId, mobile } = e.detail.params
-      //实人认证服务
-      this.setData({
-        name,
-        cardId,
-        mobile,
-        action,
-        faceLog: true
+      let message = "", code = "";
+      try {
+        const { name, cardId, mobile } = e.detail.params
+        //实人认证服务
+        message = await authFaceValidate(name, cardId)
+        code = '200'
+        this.setState({
+          name, cardId, mobile
+        })
+      } catch (result) {
+        if (my.canIUse('startAPVerify')) {
+          message = result
+        } else {
+          message = "暂不支持扫脸，敬请期待"
+        }
+      }
+      this.state.webViewContext.postMessage({
+        action: 'authFace',
+        params: {
+          code,
+          result: message
+        }
       })
-      this.faceGo()
     } else if (action === 'scan'){
       //登录
       my.scan({
         scanType: ['qrCode'],
         success: (res) => {
-          this.webViewContext.postMessage({
+          this.state.webViewContext.postMessage({
             action: 'scan',
             params: res.code
           })
         },
+      });
+    } else if (action == 'quickLogin') {
+      my.getAuthCode({
+        scopes: ['auth_user'],
+        complete: (res) => {
+          this.state.webViewContext.postMessage({
+            action: 'quickLogin',
+            params: {
+              authCode: res.authCode || "",
+              error: (res.authErrorScope && res.authErrorScope.scope) || res.errorMessage || ""
+            }
+          })
+        }
       });
     }
   }

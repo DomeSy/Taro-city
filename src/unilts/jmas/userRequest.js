@@ -1,5 +1,5 @@
 import jmasRequest from './jmasRequest'
-import { jisConfig, userToken } from '../index'
+import { jisConfig, info } from '../index'
 import Taro from '@tarojs/taro'
 
 const getCreatesign = payload => {
@@ -24,7 +24,7 @@ async function userRquest({ payload = {}}) {
   if(retcode !== '000000'){
     // 如果请求失败说明token失效，则清楚token缓存
     console.error(msg)
-    Taro.removeStorageSync(userToken)
+    Taro.removeStorageSync(info)
     return false
   }else{
     return JSON.parse(data)

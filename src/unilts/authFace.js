@@ -10,9 +10,10 @@ let authFaceValidate = (name = "", cardId = "") => {
       const certify_id = await aliCertify({
         name,
         cardId
-      }),
-        url = await AlipayRequest(certify_id),
-        statusTable = {
+      });
+      console.error(certify_id, '--0')
+      const url = await AlipayRequest(certify_id)
+      const statusTable = {
           '6001': '用户取消',
           '4000': '业务异常',
           '9000': '认证通过',
@@ -24,7 +25,8 @@ let authFaceValidate = (name = "", cardId = "") => {
         url,
         certifyId: certify_id,
         complete: (res) => {
-          console.error(res,'00000')
+          console.error(res, '认证')
+
           let result = statusTable[res.resultStatus]
           if (res.resultStatus == '9000') {
             resolved(result)
