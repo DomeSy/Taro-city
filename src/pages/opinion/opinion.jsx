@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import * as actions from '@actions/user'
-import { JmasRequest, mobileId, Jump, userToken } from '@unilts'
+import { JmasRequest, mobileId, Jump } from '@unilts'
 import { Textarea, ImagePicker, Button } from '@components'
 
 import './opinion.scss'

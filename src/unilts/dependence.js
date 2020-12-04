@@ -65,30 +65,4 @@ async function AlipayRequest(certify_id) {
   })
 }
 
-//验证本次认证结果
-function getOpenRes(params) {
-  return new Promise((resolve, reject) => {
-    const payload = {
-      appmark,
-      params: JSON.stringify({
-        certify_id: params.certify_id
-      })
-    }
-    Request({path: `${httpRequest}/jisalipay/userQuery.do`, payload }).then(res => {
-      const { retcode, msg, data } = res || {}
-      if (retcode == '000000') {
-        const { alipay_user_certify_open_query_response: { code = "", msg = "", passed = "" } } = data && JSON.parse(data)
-        resolve({
-          code: code == '10000' && passed == "T" ? '200' : code,
-          result: code == '10000' && passed == "T" ? '扫脸成功' : "请重新扫脸"
-        })
-      } else {
-        reject(msg)
-      }
-    }).catch( e => {
-      reject(e)
-    })
-  })
-}
-
-export { aliCertify, AlipayRequest, getOpenRes, jisAPP }
+export { aliCertify, AlipayRequest }

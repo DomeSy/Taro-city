@@ -3,7 +3,7 @@ import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
 import { Info, Space } from './components'
 import Taro from '@tarojs/taro'
-import { Jump, userToken } from '@unilts'
+import { Jump, info } from '@unilts'
 import banjian from '@assets/my/banjian.png'
 import pingjia from '@assets/my/pingjia.png'
 import zhengjian from '@assets/my/zhengjian.png'
@@ -35,16 +35,16 @@ const list = [
   },
 ]
 
-function getStorage() {
-  return new Promise(res => {
-    Taro.getStorage({
-      key: userToken,
-      success: function (data) {
-        res(data.data)
-      }
-    })
-  })
-}
+// function getStorage() {
+//   return new Promise(res => {
+//     Taro.getStorage({
+//       key: info,
+//       success: function (data) {
+//         res(data.data)
+//       }
+//     })
+//   })
+// }
 
 @connect(({ user, home, space }) => ({...user, ...home, ...space}), { ...actions, ...nearUseActions, ...spaceActions})
 class My extends Component {
@@ -62,32 +62,9 @@ class My extends Component {
   }
 
   componentDidShow = async () => {
-    const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
-    const data = await getStorage();
-    // const type = data ? data.type : false;
-    if(!data){
-      dispatchLogout()
-      DNearClear()
-    }
-
-    // if(type == 'login' && data.isLogin){
-    //   const { token, usertype } = data;
-    //   Taro.setStorage({
-    //     key: userToken,
-    //     data: {
-    //       token,
-    //       usertype,
-    //       type: "login",
-    //       isLogin: false
-    //     }
-    //   })
-    //   dispatchLogin({token, usertype})
-    //   if(data.payload){
-    //     const payload = JSON.parse(data.payload)
-    //     const { url, name } = payload
-    //     name ? Jump({url, payload: { token }}) : Jump({url})
-    //   }
-    // }else if(type == 'loginOut') {
+    // const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
+    // const data = await getStorage();
+    // if(!data){
     //   dispatchLogout()
     //   DNearClear()
     // }

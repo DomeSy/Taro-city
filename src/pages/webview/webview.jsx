@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { View, WebView } from '@tarojs/components'
-import { userToken, Jump } from '@unilts';
+import { info, Jump } from '@unilts';
 import './webview.scss'
 import { connect } from 'react-redux'
 import { aliCertify, AlipayRequest } from '@unilts/dependence'
@@ -10,7 +10,7 @@ import userRquest from '../../unilts/jmas/userRequest';
 function getStorage() {
   return new Promise(res => {
     Taro.getStorage({
-      key: userToken,
+      key: info,
       success: function (data) {
         res(data.data)
       }
@@ -37,14 +37,7 @@ class Webview extends Component {
     }
   }
 
-  componentDidMount(){
-  }
-
-  componentDidShow = async () => {
-
-    // my.ap.navigateToAlipayPage({      
-    //   path:"alipays://platformapi/startapp?appId=20000178&bizScenario=O12201202595&url=%2Fwww%2Findex.html%3FcityCode%3D370100%26appCode%3DW100001583299738281"
-    // })
+  componentDidMount = async () => {
 
     const { title = '', url, cf = false } = getCurrentInstance().router.params;
 
@@ -80,7 +73,12 @@ class Webview extends Component {
         url
       })
     }
-    Taro.setNavigationBarTitle({ title })
+    Taro.setNavigationBarTitle({ title })  
+  }
+
+  componentDidShow = async () => {
+
+    
   }
 
   onFaceAlipay = (e) => {

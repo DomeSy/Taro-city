@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { Tip, Loading } from '@components'
 import Taro from '@tarojs/taro'
-import { Method, userToken } from '@unilts'
+import { Method } from '@unilts'
 
 import { ServerList, UseTime } from './components'
 import { SearchTab } from '../index/components'
