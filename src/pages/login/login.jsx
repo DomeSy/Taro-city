@@ -43,7 +43,6 @@ class Webview extends Component {
   }
 
   webListener = async (e) => {
-    console.log(e, '000')
     const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
     const { action } = e.detail;
 

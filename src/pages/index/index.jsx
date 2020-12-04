@@ -10,7 +10,6 @@ import * as homeActions from '@actions/home'
 import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
 import { site } from '@unilts/site'
-import { authFaceValidate } from '@unilts/authFace.js'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
 
 function getStorage() {
@@ -36,16 +35,12 @@ class Index extends Component {
 
   componentDidMount = async () =>{
 
-    try{
-      const message = await authFaceValidate('杜玮', '620103199707082611');
-      console.error(message, '---')
-
-
-    }catch(e){
-      console.error(e, '---')
-
-    
-    }
+    // try{
+    //   const message = await authFaceValidate('杜玮', '620103199707082611');
+    //   console.error(message, '---')
+    // }catch(e){
+    //   console.error(e, '---')
+    // }
 
     // Taro.clearStorage()
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;

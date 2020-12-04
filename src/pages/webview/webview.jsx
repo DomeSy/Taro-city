@@ -4,6 +4,8 @@ import { View, WebView } from '@tarojs/components'
 import { info, Jump } from '@unilts';
 import './webview.scss'
 import { connect } from 'react-redux'
+import { authFaceValidate } from '@unilts/authFace.js'
+
 import { aliCertify, AlipayRequest } from '@unilts/dependence'
 import userRquest from '../../unilts/jmas/userRequest';
 
@@ -37,8 +39,9 @@ class Webview extends Component {
     }
   }
 
-  componentDidMount = async () => {
+  componentDidMount = async () => {}
 
+  componentDidShow = async () => {
     const { title = '', url, cf = false } = getCurrentInstance().router.params;
 
     if(cf){
@@ -76,46 +79,34 @@ class Webview extends Component {
     Taro.setNavigationBarTitle({ title })  
   }
 
-  componentDidShow = async () => {
-
-    
-  }
-
-  onFaceAlipay = (e) => {
+  onFaceAlipay = async (e) => {
     const { webViewContext } = this.state;
-    // if(e.detail.name === '扫脸'){
-    //   const { name, papersnumber } = this.props.userInfo;
-    //   this.face({name, cardId:papersnumber})
-    // }
-    // webViewContext.postMessage("认证成功");
+    if(e.detail.name === '扫脸'){
+      const { name = '', papersnumber = '' } = this.props.userInfo;
+      const message = await this.face({name, cardId: papersnumber})
+      console.error(message, '009')
+
+      message === '认证通过' ? webViewContext.postMessage({res: message}) : Jump({method: 'navigateBack'})
+    }
   }
 
   // 人脸识别
   face = async({name, cardId}) =>{
-    const certify_id = await aliCertify({
-      name,
-      cardId
-    })
-  
-    const url = await AlipayRequest(certify_id);
-    // 跳转人脸认证
-    my.ap.navigateToAlipayPage({
-      path: encodeURIComponent(url),
-      success: (res) => {
-        console.error("人脸识别成功")
-      },
-      fail: (res) => {
-        console.error(res, '002')
-      }
-    })
+    let message = ''
+    try{
+      message = await authFaceValidate(name, cardId);
+    }catch(e){
+      message = e
+    }
+    return message
   }
 
   render() {
     const { url } = this.state
     return (
       <View className="Webview">
-        {/* <WebView id="onFaceAlipay" src="http://172.16.8.209:8080/#/" onMessage={(e) => this.onFaceAlipay(e) } /> */}
-        <WebView id="onFaceAlipay" src={url} onMessage={(e) => onFaceAlipay(e) } />
+        {/* <WebView id="onFaceAlipay" src="http://172.16.8.235:5501/index.html" onMessage={(e) => this.onFaceAlipay(e) } /> */}
+        <WebView id="onFaceAlipay" src={url} onMessage={(e) => this.onFaceAlipay(e) } />
       </View>
     )
   }
