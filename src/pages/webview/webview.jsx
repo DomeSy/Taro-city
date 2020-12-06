@@ -105,7 +105,6 @@ class Webview extends Component {
     const { url } = this.state
     return (
       <View className="Webview">
-        {/* <WebView id="onFaceAlipay" src="http://172.16.8.235:5501/index.html" onMessage={(e) => this.onFaceAlipay(e) } /> */}
         <WebView id="onFaceAlipay" src={url} onMessage={(e) => this.onFaceAlipay(e) } />
       </View>
     )
