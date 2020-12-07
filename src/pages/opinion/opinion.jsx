@@ -19,12 +19,11 @@ class Opinion extends Component {
   }
 
   componentDidShow = async () => {
-    // const { login } = this.props;
-    // const { textValue, imageFile } = this.state;
-    // if(login && (imageFile.length !== 0 || !textValue)){
-    //   console.log('111')
-    //   this.onClick(textValue, imageFile)
-    // }
+    const { login } = this.props;
+    const { textValue, imageFile } = this.state;
+    if(login && (imageFile.length !== 0 || Object.keys(textValue).length !== 0)){
+      this.onClick(textValue, imageFile)
+    }
   }
 
   onChangeText = (textValue) => {
