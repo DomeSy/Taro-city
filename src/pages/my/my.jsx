@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View } from '@tarojs/components'
 import { connect } from 'react-redux'
-import { Info, Space, Loading } from './components'
+import { Loading } from '@components'
+import { Info, Space } from './components'
 import Taro from '@tarojs/taro'
 import { Jump, info, Method } from '@unilts'
 import banjian from '@assets/my/banjian.png'
@@ -72,7 +73,7 @@ class My extends Component {
     const { data = [] } = this.props.home.myList.apps
     if(item.value === 2 && data.length !== 0){
       const list = data.filter(item => item.name === "山东好差评")
-      this.goWebUrl(list[0].appIssueUrl, list[0].fwusertype, list[0].name)
+      list.length !== 0 ? this.goWebUrl(list[0].appIssueUrl, list[0].fwusertype, list[0].name) : ''
     } else {
       Taro.showModal({
         title: '提示',
@@ -82,8 +83,7 @@ class My extends Component {
     }
   }
 
-  goWebUrl = (url, fwusertypes, name) => {
-    const fwusertype = 1
+  goWebUrl = (url, fwusertype, name) => {
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
