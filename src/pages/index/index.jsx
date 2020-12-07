@@ -35,13 +35,6 @@ class Index extends Component {
 
   componentDidMount = async () =>{
 
-    // try{
-    //   const message = await authFaceValidate('杜玮', '620103199707082611');
-    //   console.error(message, '---')
-    // }catch(e){
-    //   console.error(e, '---')
-    // }
-
     // Taro.clearStorage()
     const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
     // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })

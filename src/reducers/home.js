@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 }
 
 function JamsData(list) {
+  
   let homeList = {};
   // 如有配置需求，需要对接写Jmas后台
   list.map(item => {
@@ -29,6 +30,9 @@ function JamsData(list) {
     } else if(item.resourcename == '热搜') {
       item.listAll = []
       homeList.searchList = item
+    } else if(item.resourcename == '个人中心') {
+      item.listAll = []
+      homeList.myList = item
     }
   })
 

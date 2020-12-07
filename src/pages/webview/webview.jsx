@@ -84,8 +84,6 @@ class Webview extends Component {
     if(e.detail.name === '扫脸'){
       const { name = '', papersnumber = '' } = this.props.userInfo;
       const message = await this.face({name, cardId: papersnumber})
-      console.error(message, '009')
-
       message === '认证通过' ? webViewContext.postMessage({res: message}) : Jump({method: 'navigateBack'})
     }
   }
@@ -103,6 +101,7 @@ class Webview extends Component {
 
   render() {
     const { url } = this.state
+    console.log(url,'111')
     return (
       <View className="Webview">
         <WebView id="onFaceAlipay" src={url} onMessage={(e) => this.onFaceAlipay(e) } />
