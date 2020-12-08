@@ -66,13 +66,14 @@ class Index extends Component {
                 </View>
               ))
             }
+            <View className="DSite-site-area DSite-site-none"></View>
           </View>
         </AtFloatLayout>
         <View className="DSite" onClick={() => {this.setState({open: true})}}>
           <View className="DSite-text">
             {title}
           </View>
-          <AtIcon value='chevron-down' size='24' color='rgba(123,123,123,1)'></AtIcon>
+          <AtIcon value='chevron-down' size='14' color='rgba(123,123,123,1)'></AtIcon>
         </View>
       </>
     )

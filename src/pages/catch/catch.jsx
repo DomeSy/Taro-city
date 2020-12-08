@@ -14,7 +14,7 @@ class Catch extends Component {
 
   // 判断是否是Tab页面
   isTab = catchPath => {
-    const { list } = getCurrentInstance().app.config.tabBar;
+    const { list } = getCurrentInstance().app.config.tabBar ;
     const path = catchPath.substring(1, catchPath.length);
     let tab = false;
     list.map(item => item.pagePath === path ? tab = true : '')

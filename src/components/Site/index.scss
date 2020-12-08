@@ -15,18 +15,23 @@
   }
   &-site{
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     &-area{
       z-index: 1;
-      width: 198px;
+      width: 212px;
       background: $background;
-      padding: 15px 8px;
+      padding: 17px 8px 15px 8px;
       margin-right: 24px;
       margin-bottom: 24px;
+      border-radius: 8px;
       text-align: center;
       font-size: $font-size;
       line-height: $line-height;
       color: $font-color;
+    }
+    &-none{
+      background: #ffffff;
     }
     &-active{
       color: $blue;

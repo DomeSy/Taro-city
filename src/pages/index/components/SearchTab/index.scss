@@ -9,13 +9,13 @@
     height: 100%;
   }
   .searchs{
-    // background: orangered;
     flex-grow: 1;
     padding: 14px 24px 14px 12px;
     .sInput{
       height: 100%;
       border: 2px solid $background-tip;
       border-radius: 30px;
+      background: #ffffff;
       padding: 6px 24px;
       display: flex;
       justify-content: left;
