@@ -90,7 +90,6 @@ class My extends Component {
       const {token, usertype } = this.props.userInfo;
       if(usertype){
         if(usertype === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
-          console.log(url, '000',usertype, '009', token )
           url ? Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
         } else {
           const message = fwusertype === 1 ? '个人' : '法人'

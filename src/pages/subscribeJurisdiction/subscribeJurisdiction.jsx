@@ -17,7 +17,6 @@ class SubscribeJurisdiction extends Component {
 
     return (
       <View className="SubscribeJurisdiction">
-        111
        {/* <card 
         thumb={this.state.thumb}
         title="卡片标题"
