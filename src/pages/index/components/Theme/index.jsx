@@ -7,7 +7,7 @@ import * as actions from '@actions/detail'
 
 import './index.scss'
 
-@connect(({ home }) => home, {...actions})
+@connect(({ home, user }) => ({...home, ...user}), {...actions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -19,7 +19,26 @@ class Index extends Component {
   goWebView = list => {
     const { data } = list.apps;
     if(data.length === 1){
-      Jump({url: data[0].appIssueUrl})
+      const { fwusertype, appIssueUrl, name } = data[0];
+      if (fwusertype === 0) {
+        appIssueUrl ? Jump({url: appIssueUrl}) : Jump({url: '/none', payload: {name}})
+      } else {
+        const { usertype, token } = this.props.userInfo;
+        if (usertype) {
+          if(usertype === fwusertype || (fwusertype !== 1 && fwusertype !== 2)){
+            appIssueUrl ? Jump({url: appIssueUrl, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+          } else {
+            const message = fwusertype === 1 ? '个人' : '法人'
+            Taro.showModal({
+              title: '提示',
+              content: `当前事项只允许${message}办理`,
+              showCancel: false,
+            }) 
+          }
+        } else {
+          Jump({url: '/login', payload: {payload: JSON.stringify({url: appIssueUrl, fwusertype, name})} })
+        }
+      }
     }else{
       this.props.DDetailInit(list)
       Jump({url:'/detail', payload: {noTitle: true}})
