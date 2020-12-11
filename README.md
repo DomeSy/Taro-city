@@ -55,7 +55,7 @@
 
 
 ## 项目展示
-![Image text](../remadeImg/1.jpg)
+![Image text](./remadeImg/1.jpg)
 
 
 ## 功能
