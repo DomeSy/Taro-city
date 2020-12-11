@@ -1,9 +1,58 @@
 # Taro-city：山东省支付宝，爱山东
-多端开发 taro3 + redux + taro-ui + Hook
+多端开发 taro3 + React + redux + taro-ui
 
 
 ## 心得
- Taro真的有很多很多坑，在构建上也遇到很多问题，这次搭建这个的前提原因是啥呢，可能闲的无聊才搭建的吧
+  本是一个写React，不知道为啥进的公司用的Vue，大概也就混了一年吧，所以使用的redux，就当练手，重温下React吧，所有的页面大概都小于150行，不知道这么写对不对，秉承着React的一切皆组件的思想，所以把页面画的比较开，但逻辑也非常清晰，应该只要会React的都能看懂，如果你是刚入门写Taro的，我觉得有必要看看代码逻辑，当然高手并不适用，要说遗憾的一点就是这个项目应该是用TS和Mobx写的，当然如果Recoil正式推出的话，用作状态库应该就完美了
+
+#### 如果本项目对你有帮助，请不要吝啬你的star
+
+## 目录结构
+
+    |-- config                                # Taro项目配置，包括别名等
+    |-- src                                   # 开发目录
+    |   |-- assets                            # 本地静态资源
+    |   |-- components                        # 业务组件
+    |   |-- pages                             # 页面模板
+    |   |-- actions                           # action
+    |   |-- constants                         # 状态名
+    |   |-- reducers                          # reducer
+    |   |-- store                             # 存储库
+    |   |-- styles                            # 全局css文件
+    |   |-- unilts                            # 公共方法
+    |   |   |--request                        # Taro接口封装
+    |   |   |--jmas                           # 有关jmas（公司产品）的接口封装和需要存储在状态库的文件
+    |   |   |--jump                           # Taro跳转逻辑封装
+    |   |   |--authFace                       # 人脸识别
+    |   |   |--method                         # 通用方法
+    |   |   |--reduxRequest                   # 统一请求方式
+    |   |   |--storage                        # 需要存储本地的方法
+    |   |   |--site                           # 站点
+    |-- .gitignore                            # git忽略文件
+    |-- babel.config                   
+    |-- package-lock        
+    |-- project.config.json        
+    |-- yarn.lock       
+    |-- yarn-error.log   
+    |-- README.md 
+## 使用
+
+```javascript
+
+  npm install -g @tarojs/cli
+
+  git clone https://github.com/DomeSy/Taro-city.git
+
+  cd Taro-city
+
+  npm i 
+
+  npm run dev:alipay
+
+  npm run build:alipay
+
+```
+
 ## 功能
   登录模块，用户模块，搜索模块，主题服务模块，人脸识别模块等。封装接口，跳转方式，不同情况下未登录时跳转登录在跳转页面方式
 
