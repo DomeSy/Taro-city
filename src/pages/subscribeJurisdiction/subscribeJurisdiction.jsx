@@ -10,9 +10,6 @@ class SubscribeJurisdiction extends Component {
     // }
   }
 
-  Click = () => [
-    
-  ]
   render() {
 
     return (
