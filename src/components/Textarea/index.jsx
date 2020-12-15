@@ -13,6 +13,10 @@ function Index({title, maxLength = 200, placeholder='', onChange}){
     return onChange ? onChange(value) : ''
   }
 
+  const onFocus = () => {
+    document.activeElement.scrollIntoViewIfNeeded()
+  }
+
   return (
     <View className="DTextarea">
       {
@@ -20,6 +24,8 @@ function Index({title, maxLength = 200, placeholder='', onChange}){
       }
       <AtTextarea
         className="DTextarea-textarea"
+          adjustPosition={false}
+          onFocus={() => onFocus()}
         value={text}
         onChange={(value) => onChangText(value, setText)}
         maxLength={maxLength}

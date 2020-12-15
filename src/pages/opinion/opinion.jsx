@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components'
+import { View,Textarea } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import * as actions from '@actions/user'
 import { JmasRequest, mobileId, Jump } from '@unilts'
-import { Textarea, ImagePicker, Button } from '@components'
+import { ImagePicker, Button } from '@components'
 
 import './opinion.scss'
 import { connect } from 'react-redux'
@@ -18,9 +18,10 @@ class Opinion extends Component {
     }
   }
 
-  onChangeText = (textValue) => {
+  onChangeText = (e) => {
+    console.log(e,'===')
     this.setState({
-      textValue
+      textValue: e.detail.value
     })
   }
 
@@ -89,7 +90,10 @@ class Opinion extends Component {
 
     return (
       <View className="Opinion">
-        <Textarea maxLength="140" placeholder="请在此输入您的反馈内容，以便我们更好的为您服务， 谢谢！" onChange={this.onChangeText}/>
+        <View>
+        <Textarea autoFocus autoHeight  maxLength="140" placeholder="请在此输入您的反馈内容，以便我们更好的为您服务， 谢谢！" onInput={(e) => this.onChangeText(e)} className="Opinion-textArea" fixed/>
+        </View>
+
         <ImagePicker count={4} allCount={4} onChange={(file) => this.onChangeImage(file) }/>
         <View className="Opinion-border" />
         <Button onClick={()=>this.onClick(textValue, imageFile)}></Button>

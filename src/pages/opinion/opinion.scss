@@ -3,6 +3,17 @@
 .Opinion{
   height: 100vh;
   background: $background;
+  &-textArea{
+    height: 148px;
+    padding: 24px;
+  }
+  &-height{
+    height: 1px;
+    background: #ffffff;
+  }
+  &-TextArea{
+    height: 178px;
+  }
   &-border{
     height: 36px;
   }
