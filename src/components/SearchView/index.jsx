@@ -3,6 +3,7 @@ import { View, Input } from '@tarojs/components';
 import { AtIcon } from 'taro-ui'
 
 import './index.scss'
+import Jump from '../../unilts/jump';
 
 // 搜索栏
 class Index extends Component { 
@@ -11,7 +12,8 @@ class Index extends Component {
     this.state = {
       type: this.props.text || 'text',
       placeholder: this.props.placeholder || '请输入提示语',
-      value: this.props.value || ""
+      value: this.props.value || "",
+      textValue: ''
     }
   }
 
@@ -22,18 +24,34 @@ class Index extends Component {
   }
 
   onchange = (e) => {
-    const { onChange } = this.props
     const { value } = e.detail;
-    onChange ? onChange(value) : ''
+    if(!value){
+      const { onChange } = this.props
+      onChange ? onChange('') : ''
+    }
+    this.setState({
+      textValue: value
+    })
   }
 
-  Cancel = () => {
-    const { onChange } = this.props
-    onChange ? onChange('') : ''
+  Cancel = (btn) => {
+    console.log(btn)
+    if(btn === '搜索'){
+      const { onChange } = this.props;
+      const { textValue } = this.state;
+      console.log(textValue, '008')
+      onChange ? onChange(textValue) : ''
+    }else{
+      Jump({method: 'navigateBack'})
+    }
   }
 
   render() {
-    const { type, placeholder, value } = this.state
+    const { type, placeholder, value, textValue } = this.state
+    let btn = '取消'
+    if( textValue ) {
+      btn = '搜索'
+    }
 
     return (
       <View className="SearchView">
@@ -41,7 +59,7 @@ class Index extends Component {
           <AtIcon value='search' size='18' color='rgba(155, 156, 157, 1)'></AtIcon>
           <Input type={type} className="SearchView-search-input" placeholderStyle="color: #CCCCCC" value={value}  onInput={(e) => {this.onchange(e)}}  placeholder={placeholder} />
         </View>
-        <View className="SearchView-cancel" onClick={() => this.Cancel()}>取消</View>
+        <View className="SearchView-cancel" onClick={() => this.Cancel(btn)}>{btn}</View>
       </View>
     );
   }
