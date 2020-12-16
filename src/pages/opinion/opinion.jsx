@@ -87,11 +87,10 @@ class Opinion extends Component {
 
   render() {
     const { textValue, imageFile } = this.state
-
     return (
       <View className="Opinion">
         <View>
-        <Textarea autoFocus autoHeight  maxLength="140" placeholder="请在此输入您的反馈内容，以便我们更好的为您服务， 谢谢！" onInput={(e) => this.onChangeText(e)} className="Opinion-textArea" fixed/>
+        <Textarea autoFocus maxLength="140" placeholder="请在此输入您的反馈内容，以便我们更好的为您服务， 谢谢！" onBlur={(e) => this.onChangeText(e)} className="Opinion-textArea" fixed/>
         </View>
 
         <ImagePicker count={4} allCount={4} onChange={(file) => this.onChangeImage(file) }/>
