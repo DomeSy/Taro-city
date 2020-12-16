@@ -1,8 +1,6 @@
-@import "@styles/theme.scss";
-
 .DButton{
   padding: 24px;
-  &-btn{
-    background: $blue;
+  .at-button--primary{
+    background: #1677FF
   }
 }
