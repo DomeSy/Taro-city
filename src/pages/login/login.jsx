@@ -127,6 +127,7 @@ class Webview extends Component {
       my.getAuthCode({
         scopes: ['auth_user'],
         complete: (res) => {
+          console.log(res, '009')
           this.state.webViewContext.postMessage({
             action: 'quickLogin',
             params: {
