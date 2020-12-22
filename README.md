@@ -45,7 +45,7 @@
 
   cd Taro-city
 
-  npm i 
+  yarn install 
 
   npm run dev:alipay
 
