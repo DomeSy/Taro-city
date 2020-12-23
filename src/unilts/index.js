@@ -9,8 +9,7 @@ export const jisConfig = {
   httpRequest: 'https://zwfw.sd.gov.cn/JIS/',
   appmark: 'SDVNNVSDV',
   appword: 'n8hhwQup2ERK1g4E',
-  webUrl: 'https://isdzfb.shandong.gov.cn/jmp_xcx/jis/#/'
-  // webUrl: 'http://172.16.8.235:5500/#/'
+  webUrl: 'https://isdzfb.shandong.gov.cn/jmp_xcx/jisws/index.html#/'
 }
 
 
@@ -18,6 +17,6 @@ export const info= 'USER_INFO_EXPORT';
 
 // jmas移动端配置的大类
 export const mobileId = '737d972e0a04436287b7a1b59d142bb8';
-
+ 
 //展示的端
 export const clienttype = '2';
