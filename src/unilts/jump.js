@@ -1,4 +1,4 @@
-import Taro, { getCurrentInstance } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 
 const PAGE_WEBVIEW = '/pages/webview/webview'
 
