@@ -7,6 +7,7 @@
   justify-content: left;
   align-items: center;
   &-text{
+    font-weight: bolder;
     color: $font-color;
     font-family: $font-family;
     line-height: 45px;

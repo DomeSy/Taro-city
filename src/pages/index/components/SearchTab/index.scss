@@ -3,12 +3,12 @@
 .Search{
   background: $background;
   display: flex;
-  // flex-grow: row;
+  justify-content: space-between;  
   align-items: center;
-  .site{
+  &-site{
     height: 100%;
   }
-  .searchs{
+  &-searchs{
     flex-grow: 1;
     padding: 14px 24px 14px 12px;
     .sInput{
@@ -27,6 +27,25 @@
         line-height: $line-height-tip;
         margin-left: 15px;
       }
+    }
+  }
+  &-Login{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-right: 24px;
+    &-img{
+      width: 60px;
+      height: 60px;
+      background: url(../../../../assets/my/heard.png);
+      background-size: 100% 100%;
+    }
+    &-logins{
+      font-size: 32px;
+      line-height: 45px;
+      color: #333333;
+      font-weight: bolder;
+      margin-left: 12px;
     }
   }
 }

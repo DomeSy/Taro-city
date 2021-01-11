@@ -29,14 +29,18 @@ class Index extends Component {
 
     return (
       <View className="Search">
-        <View className="site">
+        <View className="Search-site">
           <Site active={site} onChange={this.ChangeSite} />
         </View>
-        <View className="searchs">
+        <View className="Search-searchs">
           <View className="sInput" onClick={() => Jump({url:'/search'})}>
             <AtIcon value='search' size='16' color='rgba(135,135,135,1)'></AtIcon>
-            <View className="text">请输入您要搜索的事项或服务…</View>
+            <View className="text">搜索</View>
           </View>
+        </View>
+        <View className="Search-Login">
+          <View className="Search-Login-img"></View>
+          <View className="Search-Login-logins">请登录</View>
         </View>
       </View>
     );
