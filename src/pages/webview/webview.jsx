@@ -5,8 +5,11 @@ import { info, Jump } from '@unilts';
 import './webview.scss'
 import { connect } from 'react-redux'
 import { authFaceValidate } from '@unilts/authFace.js'
+import { getMyMiniAppId } from '@unilts/cloudMonitorHelper.js'
 
 import { aliCertify, AlipayRequest } from '@unilts/dependence'
+const monitor = require('@unilts/alipayLogger')
+
 import userRquest from '../../unilts/jmas/userRequest';
 
 function getStorage() {
@@ -45,16 +48,17 @@ class Webview extends Component {
     const { title = '', url, cf = false } = getCurrentInstance().router.params;
 
     if(cf){
-      // cfList第一个参数是地址，第二个是是否有用户信息
+      // cfList第一个参数是地址，第二个是是否有用户信息，第三个是标题
       const cfList = cf.split('-');
+      const title =  cfList[2] || ""
 
       // 无用户信息
-      if (cfList[1] === '0') {
+      if (cfList[1] == '0') {
         this.setState({
           url: cfList[0]
         })
       } else{
-        // 由用户信息,要其token即可,弹药注意一点，就是token要判断是否失效，判断逻辑，掉一下登录接口，能掉通的话没失效否则失效
+        // 由用户信息,要其token即可,但要注意一点，就是token要判断是否失效，判断逻辑，掉一下登录接口，能掉通的话没失效否则失效
         const data = await getStorage();
         if (data) {
           const { token, usertype } = data;
@@ -70,13 +74,14 @@ class Webview extends Component {
           Jump({url: '/login'})
         }
       }
-      
+      monitor._lgPV({page: title, url: cfList[0], c1: 'h5SE', c2: cfList[0]});
+      Taro.setNavigationBarTitle({ title })  
     }else{
       this.setState({
         url
       })
+      Taro.setNavigationBarTitle({ title })  
     }
-    Taro.setNavigationBarTitle({ title })  
   }
 
   onFaceAlipay = async (e) => {
@@ -101,7 +106,6 @@ class Webview extends Component {
 
   render() {
     const { url } = this.state
-    console.log(url,'111')
     return (
       <View className="Webview">
         <WebView id="onFaceAlipay" src={url} onMessage={(e) => this.onFaceAlipay(e) } />
