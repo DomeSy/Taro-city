@@ -6,11 +6,12 @@ import { connect } from 'react-redux'
 import { mobileId, clienttype, Jump } from '@unilts'
 import * as actions from '@actions/site'
 import * as homeActions from '@actions/home'
+import * as userActions from '@actions/user'
 
 import  './index.scss'
 
 // 搜索栏
-@connect(({ site }) => site, { ...actions, ...homeActions })
+@connect(({ site, user }) => ({...site, ...user}), { ...actions, ...homeActions, ...userActions })
 class Index extends Component {
   constructor () {
     super(...arguments)
@@ -24,8 +25,14 @@ class Index extends Component {
     this.props.DHomeInit({siteid: value.siteid, mobileId, clienttype})
   }
 
+  Login = async () => {
+    this.props.dispatchQuickLogin()
+  }
+
   render() {
-    const { site } = this.props;
+    const { site, login } = this.props;
+    let name = '';
+    if(login) name = this.props.userInfo.name
 
     return (
       <View className="Search">
@@ -40,7 +47,7 @@ class Index extends Component {
         </View>
         <View className="Search-Login">
           <View className="Search-Login-img"></View>
-          <View className="Search-Login-logins">请登录</View>
+          <View className="Search-Login-logins" onClick={() => login ? '' : this.props.dispatchQuickLogin()}> {login ? `*${name.substring(1, name.length)}` : '请登录'}</View>
         </View>
       </View>
     );
