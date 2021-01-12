@@ -35,7 +35,6 @@ class Webview extends Component {
   componentDidMount = () => {
     const { webUrl } = jisConfig;
     const { login } = this.props;
-  
     const url = login ?  `${webUrl}individualCenter` : webUrl;
     this.setState({
       url
@@ -49,7 +48,7 @@ class Webview extends Component {
     if (action === 'loginApp'){
       //登录
       const { token, usertype } = e.detail.params;
-      my.setStorage({
+      Taro.setStorage({
         key: info,
         data: {
           token,
@@ -127,7 +126,6 @@ class Webview extends Component {
       my.getAuthCode({
         scopes: ['auth_user'],
         complete: (res) => {
-          console.log(res, '009')
           this.state.webViewContext.postMessage({
             action: 'quickLogin',
             params: {
