@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { View,Textarea } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import * as actions from '@actions/user'
 import { JmasRequest, mobileId, Jump } from '@unilts'
 import { ImagePicker, Button } from '@components'
-
-import './opinion.scss'
+import * as actions from '@actions/user'
+import * as userActions from '@actions/user'
 import { connect } from 'react-redux'
 
-@connect(({user, site}) => ({...user, ...site}), { ...actions })
+
+import './opinion.scss'
+
+@connect(({user, site}) => ({...user, ...site}), { ...actions, ...userActions })
 class Opinion extends Component {
   constructor(){
     super(...arguments)
@@ -30,9 +32,9 @@ class Opinion extends Component {
     })
   }
 
-  onClick = (textValue, imageFile) => {
+  onClick = async (textValue, imageFile) => {
     // 首先要处理登录逻辑
-    const { login } = this.props;
+    const { login, dispatchQuickLogin } = this.props;
     if(login){
       textValue ? this.uploadfeed(textValue, imageFile) : Taro.showToast({
         title: '请输入反馈内容',
@@ -40,7 +42,8 @@ class Opinion extends Component {
       })
     }else{
       // 需要跳转登录逻辑
-      Jump({url: '/login'})
+      await dispatchQuickLogin()
+      this.onClick(textValue, imageFile)
     }
   }
 

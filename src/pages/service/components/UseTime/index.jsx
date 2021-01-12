@@ -5,10 +5,11 @@ import ListUseTime from '../ListUseTime'
 import { Jump } from '@unilts'
 import { connect } from 'react-redux'
 import * as actions from '@actions/nearUse'
+import * as userActions from '@actions/user'
 
 import './index.scss'
 
-@connect(({user, nearUse}) => ({...user, ...nearUse}), {...actions})
+@connect(({user, nearUse}) => ({...user, ...nearUse}), {...actions, ...userActions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -18,10 +19,10 @@ class Index extends Component {
   }
 
   render() {
-    const { login, nearUse } = this.props;
+    const { login, nearUse, dispatchQuickLogin } = this.props;
     return (
       <View className="UseTime">
-        <Title title='最近使用' url='/nearUse' login={login}/>
+        <Title title='最近使用' url='/nearUse' login={login} fn={dispatchQuickLogin} />
         {
           login && nearUse.length !== 0 ? <ListUseTime /> :
           <View className="UseTime-none">

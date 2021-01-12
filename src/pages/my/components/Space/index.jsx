@@ -5,10 +5,11 @@ import { AtIcon } from 'taro-ui'
 import { Method, Jump } from '@unilts'
 import * as spaceActions from '@actions/space'
 import { connect } from 'react-redux'
+import * as userActions from '@actions/user'
 
 import './index.scss'
 
-@connect(({user, space}) => ({...user, ...space}), {...spaceActions})
+@connect(({user, space}) => ({...user, ...space}), {...spaceActions, ...userActions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -24,12 +25,19 @@ class Index extends Component {
     Jump({url:'/spaceDetail', payload:{sign: item.Dsign}})
   }
 
+  goView = async (login) => {
+    if(!login){
+      await this.props.dispatchQuickLogin()
+    }
+    Jump({url: '/subscribe'})
+  }
+
   render() {
-    const { login, space } = this.props;
+    const { login, space, dispatchQuickLogin } = this.props;
     const spaceAll = space.spaceAll || []
     return (
       <View className="Space">
-        <Title title="我的空间" effectTitle="授权管理" login={login} url="/subscribe" my/>
+        <Title title="我的空间" effectTitle="授权管理" login={login} fn={dispatchQuickLogin} url="/subscribe" my/>
         {
           login && spaceAll.length !== 0 ? 
           <View className="Space-Card">
@@ -69,7 +77,7 @@ class Index extends Component {
           }
           </View>
           :
-          <View className="Space-centent" onClick={() => login ? Jump({url: '/subscribe'}) : Jump({url: '/login'})}>
+          <View className="Space-centent" onClick={() => this.goView(login)}>
             <View className="Space-centent-none">
               <View className="Space-centent-none-text">
                 订阅专属服务，开启您的智慧生活…

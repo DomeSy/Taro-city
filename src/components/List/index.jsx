@@ -16,7 +16,7 @@ import './index.scss'
   no:不让跳转
   type:判断是否是个人法人类型
 */ 
-function Index({title, list = [], border, no, type, onChang, token}){
+function Index({title, list = [], border, no, type, onChang, token, fn}){
 
   // fwusertype:需要判断法人的事件还是个人的，为0游客 1个人，为2法人,3:个人法人
   const goWebView = (url, fwusertype, name, isHot) => {
@@ -38,7 +38,8 @@ function Index({title, list = [], border, no, type, onChang, token}){
         }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
+        // fwusertype为2是法人，其他是个人或者个人和法人，这种情况默认是个人，走快登，法人走正常的登录逻辑,要使用状态提升，原因是跳转的时候用了type, token
+        fwusertype === 2 ? Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} }) : fn({url , name})
       }
     }
   }

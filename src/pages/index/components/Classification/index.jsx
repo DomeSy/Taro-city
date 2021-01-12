@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components';
+import { View } from '@tarojs/components'
 import { TitleBig } from '@components'
 import ListAll from './ListAll'
 import { connect } from 'react-redux'
-import { Method } from '@unilts'
+import { Method, Jump } from '@unilts'
+import * as userActions from '@actions/user'
 import './index.scss'
 
-@connect(({ home, user }) => ({...home, ...user}))
+@connect(({ home, user }) => ({...home, ...user}), {...userActions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -33,6 +34,13 @@ class Index extends Component {
     })
   }
 
+  quickLogin = async (e) => {
+    await this.props.dispatchQuickLogin();
+    const { url, name } = e;
+    const { usertype, token } = this.props.userInfo;
+    url ? Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+  }
+
   render() {
     const { titleList, value } = this.state;
     const { userInfo:{usertype, token} } = this.props;
@@ -47,7 +55,7 @@ class Index extends Component {
     return (
       <View className="Classification">
         <TitleBig list={titleList} onChang={this.onChang}/>
-        <ListAll list={list} type={usertype} token={token}/>
+        <ListAll list={list} type={usertype} fn={(e) => this.quickLogin(e)} token={token}/>
       </View>
     );
   }

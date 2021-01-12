@@ -8,7 +8,7 @@ import './index.scss'
 // 个数
 const number = 4
 
-function Index({tab = [], type, onChang, token}){
+function Index({tab = [], type, onChang, token, fn}){
 
   tab = tab.length <= number ? tab : Method.Intercept(tab, number)
 
@@ -33,7 +33,8 @@ function Index({tab = [], type, onChang, token}){
         }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
+        // fwusertype为2是法人，其他是个人或者个人和法人，这种情况默认是个人，走快登，法人走正常的登录逻辑,要用组件提升，原因是跳转的时候用了type, token
+        fwusertype === 2 ? Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} }) : fn({url, name})
       }
     }
   }

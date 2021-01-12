@@ -5,9 +5,11 @@ import { JmasRequest, Jump, Method } from '@unilts'
 import { connect } from 'react-redux'
 import * as actions from '@actions/search'
 import { AtMessage } from 'taro-ui'
+import * as userActions from '@actions/user'
+
 import './search.scss'
 
-@connect(({site, user, home, search}) => ({...site, ...home, ...user, ...search}), {...actions})
+@connect(({site, user, home, search}) => ({...site, ...home, ...user, ...search}), {...actions, ...userActions})
 class Search extends Component {
   constructor(){
     super(...arguments)
@@ -85,7 +87,7 @@ class Search extends Component {
   }
   
   // 用于判断事项是否是有个人法人的，是否登录状态
-  goWebView = (url, fwusertype, name, type, token) => {
+  goWebView = async (url, fwusertype, name, type, token) => {
     if ( fwusertype === 0 ) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
@@ -101,8 +103,13 @@ class Search extends Component {
           }) 
         }
       }else{
-        // type为false需要跳转登录
-        Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
+        if (fwusertype === 2) {
+          Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
+        } else {
+          await this.props.dispatchQuickLogin();
+          const { usertype, token } = this.props.userInfo;
+          url ?  Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+        }
       }
     }
   }

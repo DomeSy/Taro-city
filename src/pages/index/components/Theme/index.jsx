@@ -4,10 +4,11 @@ import { Title } from '@components'
 import { connect } from 'react-redux'
 import { Method, Jump } from '@unilts'
 import * as actions from '@actions/detail'
+import * as userActions from '@actions/user'
 
 import './index.scss'
 
-@connect(({ home, user }) => ({...home, ...user}), {...actions})
+@connect(({ home, user }) => ({...home, ...user}), {...actions, ...userActions})
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -16,7 +17,7 @@ class Index extends Component {
     }
   }
 
-  goWebView = list => {
+  goWebView = async list => {
     const { data } = list.apps;
     if(data.length === 1){
       const { fwusertype, appIssueUrl, name } = data[0];
@@ -36,7 +37,13 @@ class Index extends Component {
             }) 
           }
         } else {
-          Jump({url: '/login', payload: {payload: JSON.stringify({url: appIssueUrl, fwusertype, name})} })
+          if(fwusertype === 2) {
+            Jump({url: '/login', payload: {payload: JSON.stringify({url: appIssueUrl, fwusertype, name})} })
+          }else{
+            await this.props.dispatchQuickLogin();
+            const { usertype, token } = this.props.userInfo;
+            Jump({url: appIssueUrl, payload:{token, usertype}})
+          }
         }
       }
     }else{

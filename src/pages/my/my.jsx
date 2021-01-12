@@ -62,7 +62,7 @@ class My extends Component {
   }
 
   componentDidMount(){
-    // Taro.clearStorage()
+    Taro.clearStorage()
     // this.props.DSpaceInit();
   }
 

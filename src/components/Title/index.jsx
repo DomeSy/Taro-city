@@ -14,15 +14,17 @@ import './index.scss'
   login:是否登录，否的话跳转登录页，并实现跳转
   none：是否显示副标题
 */ 
-function Index({title = '我是标题', effectTitle = '全部', none, url = false, login = true, switchTab}){
+function Index({title = '我是标题', effectTitle = '全部', none, url = false, login = true, switchTab,fn}){
 
-  const goUrl = () => {
+  const goUrl = async () => {
     if(switchTab){
       Jump({url, method: 'switchTab'})
       return
     }
     if(!login){
-      url ? Jump({url: '/login', payload: {payload: JSON.stringify({url})}}) : ''
+      // url ? Jump({url: '/login', payload: {payload: JSON.stringify({url})}}) : ''
+      await fn();
+      Jump({url})
       return
     }
     url ? Jump({url}) : ''

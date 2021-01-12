@@ -42,7 +42,6 @@ class Index extends Component {
     //   return;
     // }
     const data = await getStorage();
-
     if(data){
       const { token, usertype } = data;
       dispatchLogin({token, usertype}) 

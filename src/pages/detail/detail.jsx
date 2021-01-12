@@ -6,10 +6,11 @@ import Taro, { getCurrentInstance } from '@tarojs/taro'
 import { connect } from 'react-redux'
 import { Jump } from '@unilts'
 import * as actions from '@actions/nearUse'
+import * as userActions from '@actions/user'
 
 import './detail.scss'
 
-@connect(({detail, user, nearUse}) => ({...detail, ...user, ...nearUse}), {...actions})
+@connect(({detail, user, nearUse}) => ({...detail, ...user, ...nearUse}), {...actions, ...userActions})
 class Detail extends Component {
   constructor(){
     super(...arguments)
@@ -40,6 +41,13 @@ class Detail extends Component {
     login ? DNearSet(list) : ''
   }
 
+  quickLogin = async (e) => {
+    await this.props.dispatchQuickLogin();
+    const { url, name } = e;
+    const { usertype, token } = this.props.userInfo;
+    url ? Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+  }
+
   render() {
     const { detail:{ bgpicpath, listTabs, listAll, resourcename }, userInfo } = this.props;
     const type = userInfo.usertype ? userInfo.usertype : false
@@ -59,11 +67,11 @@ class Detail extends Component {
           
           <Image className="Detail-content-img" src={bgpicpath}></Image>
           {
-            listTabs.length === 0 ? '' : <TabDetail tab={listTabs} token={token} type={type} onChang={this.Listall}/>
+            listTabs.length === 0 ? '' : <TabDetail fn={(e) => this.quickLogin(e)} tab={listTabs} token={token} type={type} onChang={this.Listall}/>
           }
           {
             list.map((item, index) => (
-              <List border title={item.title} list={item.list} key={index} token={token} type={type} onChang={this.Listall}/>
+              <List border title={item.title} fn={(e) => this.quickLogin(e)} list={item.list} key={index} token={token} type={type} onChang={this.Listall}/>
             ))
           }
         </View>
