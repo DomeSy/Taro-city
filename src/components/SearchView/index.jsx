@@ -35,11 +35,9 @@ class Index extends Component {
   }
 
   Cancel = (btn) => {
-    console.log(btn)
     if(btn === '搜索'){
       const { onChange } = this.props;
       const { textValue } = this.state;
-      console.log(textValue, '008')
       onChange ? onChange(textValue) : ''
     }else{
       Jump({method: 'navigateBack'})
