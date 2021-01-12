@@ -81,4 +81,3 @@ async function jmasRequest(appid = '', interfaceid = '', payload = {}, way, load
 }
 
 export default jmasRequest;
-

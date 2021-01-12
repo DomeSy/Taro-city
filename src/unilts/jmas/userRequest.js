@@ -3,7 +3,7 @@ import { jisConfig, info } from '../index'
 import Taro from '@tarojs/taro'
 
 const getCreatesign = payload => {
-  const { token, usertype } = payload
+  const { token, usertype } = payload;
   const servicename = usertype == 1 ? 'findOutsideUserByToken' : 'findCorUserByToken'
   const interfaceId = usertype == 1 ? 'findoutsideuserbytoken' : 'findcoruserytoken'
   const datas = {

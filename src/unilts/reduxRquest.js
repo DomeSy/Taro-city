@@ -4,6 +4,7 @@ import userRequest from './jmas/userRequest'
 import homeRequest from './jmas/homeRequest'
 import spaceRequest from './jmas/spaceRequest'
 import jmasRequest from './jmas/jmasRequest'
+import quickLoginRequest  from './jmas/quickLoginRequest'
 import { USER_LOGOUT } from '@constants/user'
 
 
@@ -28,6 +29,14 @@ export default function createAction({ appid, interfaceid, wayJmas, url, path, p
     if(way === 'user') {
       const res = await userRequest({ payload });
       // 如果返回的是false，则需要走登录失败的方法
+      res ? dispatch({ type, payload: cb ? cb(res) : res }) : dispatch({type: USER_LOGOUT})
+      return res
+    } else if(way === 'quickLogin'){
+      // 快登只要拿到token就和普通的登录一样，注：快登只有个人，所以type为1
+      const data = await quickLoginRequest();
+      const payload = {token: data.token, usertype: 1};
+      const result = await userRequest({payload})
+      const res = {...result, ...payload}
       res ? dispatch({ type, payload: cb ? cb(res) : res }) : dispatch({type: USER_LOGOUT})
       return res
     } else if(way === 'home') {
