@@ -12,6 +12,7 @@ import zixun from '@assets/my/zixun.png'
 import * as actions from '@actions/user'
 import * as nearUseActions from '@actions/nearUse'
 import * as spaceActions from '@actions/space'
+import * as userActions from '@actions/user'
 
 import './my.scss'
 
@@ -51,7 +52,7 @@ const list = [
 //   })
 // }
 
-@connect(({ user, home, space }) => ({...user, ...home, ...space}), { ...actions, ...nearUseActions, ...spaceActions})
+@connect(({ user, home, space }) => ({...user, ...home, ...space}), { ...actions, ...nearUseActions, ...spaceActions, ...userActions})
 class My extends Component {
 
   constructor(){
@@ -62,7 +63,7 @@ class My extends Component {
   }
 
   componentDidMount(){
-    Taro.clearStorage()
+    // Taro.clearStorage()
     // this.props.DSpaceInit();
   }
 
@@ -83,7 +84,7 @@ class My extends Component {
     }
   }
 
-  goWebUrl = (url, fwusertype, name) => {
+  goWebUrl = async (url, fwusertype, name) => {
     if (fwusertype === 0) {
       url ? Jump({url}) : Jump({url: '/none', payload: {name}})
     } else {
@@ -101,14 +102,20 @@ class My extends Component {
         }
       }else{
         // type为false需要跳转登录
-        Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
+        if(fwusertype === 2 ){
+          Jump({url: '/login', payload: {payload: JSON.stringify({url, fwusertype, name})} })
+        }else{
+          await this.props.dispatchQuickLogin();
+          const {token, usertype } = this.props.userInfo;
+          url ? Jump({url, payload:{token, usertype}}) : Jump({url: '/none', payload: {name}})
+        }
       }
     }
   }
 
   render() {
     const { list } = this.state;
-    const { login, userInfo } = this.props;
+    const { login, userInfo, dispatchQuickLogin } = this.props;
 
     if(Method.isObject(this.props.home)){
       return <Loading></Loading>
@@ -116,7 +123,7 @@ class My extends Component {
 
     return (
       <View className="My">
-        <Info login={login} userInfo={userInfo} />
+        <Info login={login} userInfo={userInfo} fn={dispatchQuickLogin}/>
         {/* 信息栏 */}
         <View className="My-border" />
         <View className="My-List">

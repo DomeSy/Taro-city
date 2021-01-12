@@ -9,6 +9,24 @@
     display: flex;
     justify-content: left;
     align-items: center;
+    &-login{
+      margin-left: 40px;
+      font-family: $font-family;
+      &-ge{
+        font-size: $font-size-effect;
+        line-height: $line-height-effect;
+        color: $font-color;
+      }
+      &-fr{
+        margin-top: 6px;
+        font-size: 20px;
+        line-height: 30px;
+        color: $white;
+        background: $blue;
+        padding: 3px 12px;
+        border-radius: 8px;
+      }
+    }
     &-img{
       width: 72px;
       height: 72px;

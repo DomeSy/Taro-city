@@ -38,11 +38,6 @@ class Index extends Component {
     }
   }
 
-  goLogin = () => {
-    const { login } = this.props;
-    login ? Jump({url: '/login', payload: {login}}, 'ALIPAY') : Jump({url: '/login'}, 'ALIPAY')
-  }
-
   render() {
     const { name } = this.state;
 
@@ -50,7 +45,15 @@ class Index extends Component {
       <View className="Info">
         <View className="Info-infos">
           <View className="Info-infos-img"></View>
-          <View className="Info-infos-name" onClick={this.goLogin}>{name}</View>
+          {
+            name === '请登录' ? 
+            <View className="Info-infos-login">
+              <View className="Info-infos-login-gr" onClick={() => this.props.fn()}>{name}</View>
+              <View className="Info-infos-login-fr" onClick={() => Jump({url: '/login'}, 'ALIPAY')}>登录法人账号</View>
+            </View>
+            :
+            <View className="Info-infos-name" onClick={() => Jump({url: '/login', payload: {login: true}}, 'ALIPAY')}>{name}</View>
+          }
         </View>
         <View className="Info-opinion" onClick={() => Jump({url: '/opinion'})}>
           <View className="Info-opinion-text">意见反馈</View>
