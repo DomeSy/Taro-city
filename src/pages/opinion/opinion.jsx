@@ -19,7 +19,6 @@ class Opinion extends Component {
   }
 
   onChangeText = (e) => {
-    console.log(e,'===')
     this.setState({
       textValue: e.detail.value
     })
