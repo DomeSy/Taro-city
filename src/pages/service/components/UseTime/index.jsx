@@ -28,7 +28,7 @@ class Index extends Component {
           <View className="UseTime-none">
             <View className="UseTime-none-text">
               {
-                login ? '' : <Text className="UseTime-none-text-login" onClick={() => Jump({url: '/login'})}>立即登录</Text> 
+                login ? '' : <Text className="UseTime-none-text-login" onClick={() => dispatchQuickLogin()}>立即登录</Text> 
               }
               <Text className="UseTime-none-text-tip">
                 {
