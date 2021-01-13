@@ -30,19 +30,21 @@ class Webview extends Component {
       faceLog: false,
       webViewContext: my.createWebViewContext('webviewContainer')
     }
+
   }
 
   componentDidMount = () => {
     const { webUrl } = jisConfig;
     const { login } = this.props;
     const url = login ?  `${webUrl}individualCenter` : webUrl;
+    this.state.webViewContext.postMessage({res : '我是'})
     this.setState({
       url
     })
   }
 
   webListener = async (e) => {
-    const { dispatchLogin, dispatchLogout, DNearClear } = this.props;
+    const { dispatchLogin, dispatchLogout, DNearClear, userInfo } = this.props;
     const { action } = e.detail;
 
     if (action === 'loginApp'){
@@ -122,7 +124,7 @@ class Webview extends Component {
           })
         },
       });
-    } else if (action == 'quickLogin') {
+    } else if (action === 'quickLogin') {
       my.getAuthCode({
         scopes: ['auth_user'],
         complete: (res) => {
@@ -135,6 +137,8 @@ class Webview extends Component {
           })
         }
       });
+    } else if (action === 'alipayInfo') {
+      this.state.webViewContext.postMessage({ userInfo })
     }
   }
 
