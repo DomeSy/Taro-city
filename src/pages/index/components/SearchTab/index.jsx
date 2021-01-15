@@ -45,9 +45,9 @@ class Index extends Component {
             <View className="text">搜索</View>
           </View>
         </View>
-        <View className="Search-Login">
-          <View className="Search-Login-img"></View>
-          <View className="Search-Login-logins" onClick={() => login ? '' : this.props.dispatchQuickLogin()}> {login ? `*${name.substring(1, name.length)}` : '请登录'}</View>
+        <View className="Search-Login" onClick={() => login ? Jump({url: '/login', payload: {login: true}}, 'ALIPAY') : this.props.dispatchQuickLogin()}>
+          <View className="Search-Login-img" ></View>
+          <View className="Search-Login-logins"> {login ? `*${name.substring(1, name.length)}` : '请登录'}</View>
         </View>
       </View>
     );

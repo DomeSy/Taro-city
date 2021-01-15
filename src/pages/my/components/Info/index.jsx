@@ -44,7 +44,7 @@ class Index extends Component {
     return (
       <View className="Info">
         <View className="Info-infos">
-          <View className="Info-infos-img"></View>
+          <View className="Info-infos-img" onClick={() => name === '请登录' ? this.props.fn() : Jump({url: '/login', payload: {login: true}}, 'ALIPAY')}></View>
           {
             name === '请登录' ? 
             <View className="Info-infos-login">

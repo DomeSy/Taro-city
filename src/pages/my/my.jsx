@@ -41,17 +41,6 @@ const list = [
   },
 ]
 
-// function getStorage() {
-//   return new Promise(res => {
-//     Taro.getStorage({
-//       key: info,
-//       success: function (data) {
-//         res(data.data)
-//       }
-//     })
-//   })
-// }
-
 @connect(({ user, home, space }) => ({...user, ...home, ...space}), { ...actions, ...nearUseActions, ...spaceActions, ...userActions})
 class My extends Component {
 
