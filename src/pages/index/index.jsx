@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { View } from '@tarojs/components'
+import { View, MovableArea, MovableView } from '@tarojs/components'
 import { Tip, Loading } from '@components'
-import { Method, mobileId, clienttype, JmasRequest, info  } from '@unilts'
+import { Method, mobileId, clienttype, JmasRequest, info, Jump  } from '@unilts'
 import Taro from '@tarojs/taro'
 import { SITESET } from '@constants/site'
 import * as actions from '@actions/user'
@@ -11,6 +11,7 @@ import * as showActions from '@actions/show'
 import { connect } from 'react-redux'
 import { site } from '@unilts/site'
 import { SearchTab, Ration, Classification, Licence, Theme, ThemeService } from './components';
+import './index.scss'
 
 function getStorage() {
   return new Promise(res => {
@@ -35,12 +36,7 @@ class Index extends Component {
 
   componentDidMount = async () =>{
 
-    const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid }, DShow, show: { isShow } } = this.props;
-    // DShow({ appid: "jmportalnzjk", interfaceid: "noticeParameter", payload: {} })
-    // if(isShow){
-
-    //   return;
-    // }
+    const { dispatchLogin, DSiteInit, DHomeInit, site:{ siteid } } = this.props;
     const data = await getStorage();
     if(data){
       const { token, usertype } = data;
@@ -76,20 +72,25 @@ class Index extends Component {
 
     return (
       <View className="Index">
-        {/* 搜索框 */}
-        <SearchTab />
-        {/* 轮播图 */}
-        <Ration />
-        {/* 热门分类 */}
-        <Classification />
-        {/* 我的证照 */}
-        {/* <Licence /> */}
-        {/* 主题专区 */}
-        <Theme />
-        {/* 主题服务 */}
-        <ThemeService />
-        {/* 背景框 */}
-        <Tip />
+        <MovableArea className="Index-Area">
+          <View className="Index-Content">
+            {/* 搜索框 */}
+            <SearchTab />
+            {/* 轮播图 */}
+            <Ration />
+            {/* 热门分类 */}
+            <Classification />
+            {/* 我的证照 */}
+            {/* <Licence /> */}
+            {/* 主题专区 */}
+            <Theme />
+            {/* 主题服务 */}
+            <ThemeService />
+            {/* 背景框 */}
+          <Tip />
+        </View>
+        <MovableView className="Index-MovableView" x="375" y="475" onClick={() => Jump({url: 'https://csmobile.alipay.com/mypa/generalRobot.htm?scene=app_sddsj_robot&instParams=appId@@2088821696726962%7Cchinfo@@miniapp'})} direction='all'></MovableView>
+        </MovableArea>
       </View>
     )
   }

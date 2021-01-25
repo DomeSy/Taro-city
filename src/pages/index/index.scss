@@ -1,5 +1,21 @@
 @import '@styles/theme.scss';
 
 .Index{
-
+  &-Area{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  &-MovableView{
+    width: 62px;
+    height: 64px;
+    background: url('../../assets/home/zxkf.png');
+    background-size: 100% 100%;
+    z-index: 1000;
+  }
+  &-Content{
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+  }
 }
