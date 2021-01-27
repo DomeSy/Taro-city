@@ -12,7 +12,7 @@ class Index extends Component {
 
   render() {
     let { rationList } = this.props.home
-    if(!Method.isObject(this.props.home)){
+    if(!Method.isObject(this.props.home) && rationList){
       rationList = rationList.listAll.length === 0 ? rationList.infos : rationList.listAll;
     } else { 
       return <View></View>

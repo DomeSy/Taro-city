@@ -44,9 +44,9 @@ class Index extends Component {
   render() {
     const { titleList, value } = this.state;
     const { userInfo:{usertype, token} } = this.props;
+    let { hotList, newList } = this.props.home
     let list = [];
-    if(!Method.isObject(this.props.home)){
-      let { hotList, newList } = this.props.home
+    if(!Method.isObject(this.props.home) && hotList && newList){
       hotList = hotList.listAll.length === 0 ? hotList : hotList.listAll;
       newList = newList.listAll.length === 0 ? newList : newList.listAll;
       list = value === 0 ? hotList.apps.data : newList.apps.data;

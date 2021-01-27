@@ -18,14 +18,16 @@ class Index extends Component {
 
   render() {
     let list = []
-    if(!Method.isObject(this.props.home)){
-      let { themeserveList } = this.props.home
+    let { themeserveList } = this.props.home;
+    if(!Method.isObject(this.props.home) && themeserveList){
       list = themeserveList.listAll.length === 0 ? themeserveList : themeserveList.listAll;
       list = list.length <= number ? list : Method.Intercept(list, number)
     }
     return (
-      <View className="ThemeService">
-        <Title title="主题服务" url='/service' switchTab/>
+      <View className="ThemeService" >
+        {
+          themeserveList ?  <Title title="主题服务" url='/service' switchTab/> : ''
+        }
         <ListTheme list={list} gongge/>
       </View>
     );

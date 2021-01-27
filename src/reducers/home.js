@@ -4,9 +4,8 @@ const INITIAL_STATE = {
   home: {}
 }
 
-function JamsData(list) {
+function JamsData(list, homeList = {}) {
   
-  let homeList = {};
   // 如有配置需求，需要对接写Jmas后台
   list.map(item => {
     if(item.resourcename == '图片新闻') {
@@ -34,6 +33,7 @@ function JamsData(list) {
       item.listAll = []
       homeList.myList = item
     }
+
   })
 
   list.map(item => {
@@ -44,13 +44,16 @@ function JamsData(list) {
       }
     }
   })
+
   return homeList
 }
 
+
+let homeList = {};
 export default function counter (state = INITIAL_STATE, action) {
   switch (action.type) {
     case HOMEINIT: {
-      const homeList = JamsData(action.payload.resource)
+      if(action.payload.resource) homeList = JamsData(action.payload.resource, homeList)
       return {
         home: {
           ...homeList

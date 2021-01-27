@@ -55,7 +55,7 @@ class Index extends Component {
   render() {
     let { themeList } = this.props.home
 
-    if(!Method.isObject(this.props.home)){
+    if(!Method.isObject(this.props.home) && themeList){
       themeList = themeList.listAll.length === 0 ? themeList : themeList.listAll;
     } else { 
       return <View></View>

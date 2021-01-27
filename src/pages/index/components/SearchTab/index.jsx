@@ -23,6 +23,7 @@ class Index extends Component {
     await this.props.DHomeClear()
     this.props.DSiteSet({area: value.area, siteid: value.siteid})
     this.props.DHomeInit({siteid: value.siteid, mobileId, clienttype})
+    this.props.DHomeInit({siteid: value.siteid, mobileId, clienttype,index: 1})
   }
 
   Login = async () => {

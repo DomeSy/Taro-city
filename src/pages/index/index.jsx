@@ -48,9 +48,15 @@ class Index extends Component {
       success: (res) => {
         if(res.data){
           const { area } = res.data
-          site.map(item => item.area === area ? DHomeInit({siteid:item.siteid, mobileId, clienttype}) : '')
+          site.map(item => {
+            if(item.area === area){
+              DHomeInit({siteid:item.siteid, mobileId, clienttype})
+              DHomeInit({siteid:item.siteid, mobileId, clienttype, index:1})
+            }
+          })
         }else{
           DHomeInit({siteid, mobileId, clienttype})
+          DHomeInit({siteid, mobileId, clienttype,index: 1})
         }
       }
     })
