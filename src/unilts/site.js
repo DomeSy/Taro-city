@@ -70,8 +70,8 @@ export const site = [
     area: '菏泽市',
     siteid: 'd7389599a2f840429d5cd66ea2f08a64',
   },
-  {
-    area: '测试',
-    siteid: 'b1fa14684d4f4dd6b7a7ba9defc1628d',
-  }
+  // {
+  //   area: '测试',
+  //   siteid: 'b1fa14684d4f4dd6b7a7ba9defc1628d',
+  // }
 ]
