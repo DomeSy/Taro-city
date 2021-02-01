@@ -97,6 +97,11 @@ class Webview extends Component {
       const { name = '', papersnumber = '' } = this.props.userInfo;
       const message = await this.face({name, cardId: papersnumber})
       message === '认证通过' ? webViewContext.postMessage({res: message}) : Jump({method: 'navigateBack'})
+    }else if(e.detail.evaluate){
+      // 去评价
+      my.ap.navigateToAlipayPage({
+        path: e.detail.evaluate
+      })
     }
   }
 
