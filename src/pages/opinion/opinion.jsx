@@ -94,12 +94,11 @@ class Opinion extends Component {
         <View>
         <Textarea autoFocus maxLength="140" placeholder="请在此输入您的反馈内容，以便我们更好的为您服务， 谢谢！" onBlur={(e) => this.onChangeText(e)} className="Opinion-textArea" fixed/>
         </View>
-
         <ImagePicker count={4} allCount={4} onChange={(file) => this.onChangeImage(file) }/>
         <View className="Opinion-border" />
         <Button onClick={()=>this.onClick(textValue, imageFile)}></Button>
         <View className="Opinion-tip" >联系我们</View>
-        <View className="Opinion-tel"><View className="Opinion-tel-number" onClick={() => this.tel('0531-81286501')}>0531-81286501 </View>/ <View className="Opinion-tel-number" onClick={() => this.tel('0531-81286511')}>0531-81286511 </View></View>
+        <View className="Opinion-tel"><View className="Opinion-tel-number" onClick={() => this.tel('12345')}>12345</View></View>
       </View>
     )
   }
