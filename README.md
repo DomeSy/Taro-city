@@ -38,6 +38,7 @@
 ## 使用
 
 ```javascript
+  注意下使用的版本号 Taro 3.0.14
 
   npm install -g @tarojs/cli
 
